@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Matthias Mittner" />
+        <meta name="copyright" content="Matthias Mittner" />
+
+        <title>All Tags · Matthias Mittner's Homepage
+</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/theme/css/elegant.css" media="screen">
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Matthias Mittner's Homepage - Full Atom Feed" />
+
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/"><span class=site-name>Matthias Mittner's Homepage</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="">Home</a></li>
+                            <li ><a href="/pages/about-me.html">About&nbsp;Me</a></li>
+                            <li ><a href="/categories.html">Categories</a></li>
+                            <li  class="active"><a href="/tags.html">Tags</a></li>
+                            <li ><a href="/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+    <h1><a href="/tags.html">All Tags</a></h1>
+    </header>
+</div>
+<div class="row-fluid">
+    <div class="span8 offset2">
+        <form class="form-search">
+            <input type="text" class="input-medium search-query filterinput" placeholder="Find a tag">
+        </form>
+        <ul class="list-of-tags">
+            <li>
+            <a href="#awesome-ref">awesome<span>1</span></a>
+            </li>
+            <li>
+            <a href="#code-ref">code<span>2</span></a>
+            </li>
+            <li>
+            <a href="#python-ref">python<span>2</span></a>
+            </li>
+            <li>
+            <a href="#thats-ref">thats<span>1</span></a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="row-fluid">
+    <div class="span8 offset2">
+        <h2 id="awesome-ref" class="tag-title">awesome</h2>
+        <ul class="articles-in-tag list-articles-category">
+            <li><span><time pubdate="pubdate" datetime="2010-10-03T10:20:00">Sun 03 October 2010</time></span> <a href="/my-super-post.html">My super&nbsp;title  </a></li>
+        </ul>
+
+        <h2 id="code-ref" class="tag-title">code</h2>
+        <ul class="articles-in-tag list-articles-category">
+            <li><span><time pubdate="pubdate" datetime="2013-12-10T00:00:00">Tue 10 December 2013</time></span> <a href="/brandon-test.html">Compare R to Python&nbsp;Implementation  </a></li>
+            <li><span><time pubdate="pubdate" datetime="2013-12-10T00:00:00">Tue 10 December 2013</time></span> <a href="/test-ipy.html">Some&nbsp;test  </a></li>
+        </ul>
+
+        <h2 id="python-ref" class="tag-title">python</h2>
+        <ul class="articles-in-tag list-articles-category">
+            <li><span><time pubdate="pubdate" datetime="2013-12-10T00:00:00">Tue 10 December 2013</time></span> <a href="/brandon-test.html">Compare R to Python&nbsp;Implementation  </a></li>
+            <li><span><time pubdate="pubdate" datetime="2013-12-10T00:00:00">Tue 10 December 2013</time></span> <a href="/test-ipy.html">Some&nbsp;test  </a></li>
+        </ul>
+
+        <h2 id="thats-ref" class="tag-title">thats</h2>
+        <ul class="articles-in-tag list-articles-category">
+            <li><span><time pubdate="pubdate" datetime="2010-10-03T10:20:00">Sun 03 October 2010</time></span> <a href="/my-super-post.html">My super&nbsp;title  </a></li>
+        </ul>
+
+    </div>
+</div>
+
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>        <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+
+<script>
+    (function ($) {
+        // custom css expression for a case-insensitive contains()
+        jQuery.expr[':'].Contains = function(a,i,m){
+            return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase())>=0;
+        };
+
+        function listFilter() {
+
+            $('.filterinput')
+            .change( function () {
+                var filter = $(this).val();
+                if(filter) {
+                    // this finds all links in a list that contain the input,
+                    // and hide the ones not containing the input while showing the ones that do
+                    $('.list-of-tags').find("a:not(:Contains(" + filter + "))").parent().hide();
+                    $('.list-of-tags').find("a:Contains(" + filter + ")").parent().show();
+                    } else {
+                    $('.list-of-tags').find("li").show();
+                }
+                return false;
+            })
+            .keyup( function () {
+                // fire the above change event after every letter
+                $(this).change();
+            });
+        }
+
+        //ondomready
+        $(function () {
+            listFilter($());
+        });
+    }(jQuery));
+
+</script>
+
+
+    </body>
+</html>
