@@ -6,13 +6,11 @@
         <meta name="author" content="Matthias Mittner" />
         <meta name="copyright" content="Matthias Mittner" />
 
-        <title>All Tags · Matthias Mittner's Homepage
-</title>
+        <title>Matthias Mittner's Homepage - Articles by Matthias Mittner</title>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="http://ihrke.github.io/theme/css/elegant.css" media="screen">
         <link href="http://ihrke.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Matthias Mittner's Homepage - Full Atom Feed" />
-
     </head>
     <body>
         <div id="content-sans-footer">
@@ -40,42 +38,78 @@
             <div class="row-fluid">
                 <div class="span1"></div>
                 <div class="span10">
-
 <div class="row-fluid">
-    <header class="page-header span10 offset2">
-    <h1><a href="http://ihrke.github.io/tags.html">All Tags</a></h1>
+    <header class="page-header span12">
+    <h1><a href="http://ihrke.github.io">
+    This the homepage of Matthias Mittner
+    </a></h1>
     </header>
-</div>
-<div class="row-fluid">
-  <ul style="display:inline-block;list-style-type:none;">
-    <li><a href="http://ihrke.github.io/categories.html">Categories</a></li>
-    <li><a href="http://ihrke.github.io/tags.html">Tags</a></li>
-    <li><a href="http://ihrke.github.io/archives.html">Archives</a></li>
-  </ul>
 
-    <div class="span8 offset2">
-        <form class="form-search">
-            <input type="text" class="input-medium search-query filterinput" placeholder="Find a tag">
-        </form>
-        <ul class="list-of-tags">
-            <li>
-            <a href="#python-ref">python<span>1</span></a>
-            </li>
-        </ul>
+    <div class="row-fluid">
+        <div class="span8">
+            <header>
+            <h1 id="about-me">About me</h1>
+            </header>
+            <div class="article-content">
+                
+Because I got recently busted out of my old webpage, I created this fancy new one. 
+
+Please see the table of contents what this humble site has to offer.
+
+            </div>
+        </div>
+
+		  <div class="span4">
+            <header>
+            <h1 id="my-projects">Table of Contents</h1>
+            </header>
+            <ul class="list-all-articles">
+                <li>
+                <a href="pages/about-me.html" title="About Me">About Me</a> <span class="proj-desc"><p class="first last">Some information about my humble self.</p>
+</span>
+                </li>
+            </ul>
+            <ul class="list-all-articles">
+                <li>
+                <a href="pages/research.html" title="Research">Research</a> <span class="proj-desc"><p class="first last">Papers, outlines, talks and more related to Cognitive
+Neuroscience, Theoretical Neuroscience, Psychology and Methods.</p>
+</span>
+                </li>
+            </ul>
+            <ul class="list-all-articles">
+                <li>
+                <a href="http://ihrke.github.io/archives.html"
+                title="blog">Blog</a> <span class="proj-desc">In case
+                there is any such thing...</span>
+                </li>
+            </ul>
+        </div>
+			 
+    </div>
+
+	 
+
+
+    <div class="row-fluid">
+        <div class="span12">
+            <header>
+            <h1 id="recent-posts">Recent Posts <a id="allposts" href="http://ihrke.github.io/archives.html">all posts</a></h1>
+            </header>
+        <div class="recent-posts">
+            <article>
+                <a href="http://ihrke.github.io/freqspecwav.html">Power-spectrum from&nbsp;<span class="caps">WAV</span>-file  </a>
+                <section>
+                    posted in
+                <a href="http://ihrke.github.io/categories.html#coding-ref">coding</a>
+                <div class="recent-posts-time">
+                <time pubdate="pubdate" datetime="2013-12-11T00:00:00">Wed 11 December 2013</time>
+                </div>
+                </section>
+            </article>
+        </div>
+        </div>
     </div>
 </div>
-
-<div class="row-fluid">
-
-    <div class="span8 offset2">
-        <h2 id="python-ref" class="tag-title">python</h2>
-        <ul class="articles-in-tag list-articles-category">
-            <li><span><time pubdate="pubdate" datetime="2013-12-11T00:00:00">Wed 11 December 2013</time></span> <a href="http://ihrke.github.io/freqspecwav.html">Power-spectrum from&nbsp;<span class="caps">WAV</span>-file  </a></li>
-        </ul>
-
-    </div>
-</div>
-
                 </div>
                 <div class="span1"></div>
             </div>
@@ -95,44 +129,5 @@
                 return (query.length > 0);
             }
         </script>
-
-
-<script>
-    (function ($) {
-        // custom css expression for a case-insensitive contains()
-        jQuery.expr[':'].Contains = function(a,i,m){
-            return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase())>=0;
-        };
-
-        function listFilter() {
-
-            $('.filterinput')
-            .change( function () {
-                var filter = $(this).val();
-                if(filter) {
-                    // this finds all links in a list that contain the input,
-                    // and hide the ones not containing the input while showing the ones that do
-                    $('.list-of-tags').find("a:not(:Contains(" + filter + "))").parent().hide();
-                    $('.list-of-tags').find("a:Contains(" + filter + ")").parent().show();
-                    } else {
-                    $('.list-of-tags').find("li").show();
-                }
-                return false;
-            })
-            .keyup( function () {
-                // fire the above change event after every letter
-                $(this).change();
-            });
-        }
-
-        //ondomready
-        $(function () {
-            listFilter($());
-        });
-    }(jQuery));
-
-</script>
-
-
     </body>
 </html>
