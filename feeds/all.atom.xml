@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Matthias Mittner's Homepage</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2013-12-11T00:00:00+01:00</updated><entry><title>Power-spectrum from WAV-file</title><link href="http://ihrke.github.io/freqspecwav.html" rel="alternate"></link><updated>2013-12-11T00:00:00+01:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2013-12-11:freqspecwav.html</id><summary type="html">&lt;style type="text/css"&gt;.clearfix{*zoom:1;}.clearfix:before,.clearfix:after{display:table;content:"";line-height:0;}
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Matthias Mittner's Homepage</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2013-12-12T00:00:00+01:00</updated><entry><title>Import PDF in Inkscape without replacing fonts</title><link href="http://ihrke.github.io/inkscape-import-latex-pdf.html" rel="alternate"></link><updated>2013-12-12T00:00:00+01:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2013-12-12:inkscape-import-latex-pdf.html</id><summary type="html">&lt;p&gt;Inkscape replaces text in &lt;span class="caps"&gt;PDF&lt;/span&gt; with bad fonts (especially when the &lt;span class="caps"&gt;PDF&lt;/span&gt;
+is generated with latex). I use Inkscape to rearrange some stuff
+or do some fine-tuning of a pstricks-images. Sometimes I just want to
+reset the bounding box (crop the &lt;span class="caps"&gt;PDF&lt;/span&gt;) without losing the &lt;span class="caps"&gt;PDF&lt;/span&gt;
+format. The solution is hidden in &lt;a class="reference external" href="https://bugs.launchpad.net/inkscape/+bug/295564"&gt;this blog post&lt;/a&gt;:&lt;/p&gt;
+&lt;img alt="" src="http://ihrke.github.io/pics/inkscape_fonts.png" style="width: 100%;" /&gt;
+&lt;p&gt;Run the &lt;span class="caps"&gt;PS&lt;/span&gt; file &lt;cite&gt;filename.ps&lt;/cite&gt; through &lt;cite&gt;gs&lt;/cite&gt; to replace the fonts with outlines like&amp;nbsp;so&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;gs -sDEVICE=pswrite -dNOCACHE -sOutputFile=- -q -dbatch -dNOPAUSE -dQUIET filename.ps -c quit | ps2pdf - &amp;quot;`echo filename.ps | cut -f1 -d&amp;#39;.&amp;#39;`&amp;quot;-nofont.pdf
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;to generate &lt;cite&gt;filename-nofont.pdf&lt;/cite&gt;.&lt;/p&gt;
+&lt;p&gt;This file can be imported and used in inkscape (but you can&amp;#8217;t re-type
+the text,&amp;nbsp;obviously).&lt;/p&gt;
+</summary><category term="latex"></category><category term="inkscape"></category></entry><entry><title>Power-spectrum from WAV-file</title><link href="http://ihrke.github.io/freqspecwav.html" rel="alternate"></link><updated>2013-12-11T00:00:00+01:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2013-12-11:freqspecwav.html</id><summary type="html">&lt;style type="text/css"&gt;.clearfix{*zoom:1;}.clearfix:before,.clearfix:after{display:table;content:"";line-height:0;}
 .clearfix:after{clear:both;}
 .hide-text{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0;}
 .input-block-level{display:block;width:100%;min-height:30px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
@@ -3972,16 +3984,4 @@ bUQ0BEEQBNv8f7Xk/hDGATU4AAAAAElFTkSuQmCC
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;</summary><category term="python"></category></entry><entry><title>Import PDF in Inkscape without replacing fonts</title><link href="http://ihrke.github.io/inkscape-import-latex-pdf.html" rel="alternate"></link><updated>2013-12-11T00:00:00+01:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2013-12-11:inkscape-import-latex-pdf.html</id><summary type="html">&lt;p&gt;Inkscape replaces text in &lt;span class="caps"&gt;PDF&lt;/span&gt; with bad fonts (especially when the &lt;span class="caps"&gt;PDF&lt;/span&gt;
-is generated with latex). I use Inkscape to rearrange some stuff
-or do some fine-tuning of a pstricks-images. Sometimes I just want to
-reset the bounding box (crop the &lt;span class="caps"&gt;PDF&lt;/span&gt;) without losing the &lt;span class="caps"&gt;PDF&lt;/span&gt;
-format. The solution is hidden in &lt;a class="reference external" href="https://bugs.launchpad.net/inkscape/+bug/295564"&gt;this blog post&lt;/a&gt;:&lt;/p&gt;
-&lt;img alt="" src="http://ihrke.github.io/pics/inkscape_fonts.png" style="width: 100%;" /&gt;
-&lt;p&gt;Run the &lt;span class="caps"&gt;PS&lt;/span&gt; file &lt;cite&gt;filename.ps&lt;/cite&gt; through &lt;cite&gt;gs&lt;/cite&gt; to replace the fonts with outlines like&amp;nbsp;so&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;gs -sDEVICE=pswrite -dNOCACHE -sOutputFile=- -q -dbatch -dNOPAUSE -dQUIET filename.ps -c quit | ps2pdf - &amp;quot;`echo filename.ps | cut -f1 -d&amp;#39;.&amp;#39;`&amp;quot;-nofont.pdf
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;to generate &lt;cite&gt;filename-nofont.pdf&lt;/cite&gt;.&lt;/p&gt;
-&lt;p&gt;This file can be imported and used in inkscape (but you can&amp;#8217;t re-type
-the text,&amp;nbsp;obviously).&lt;/p&gt;
-</summary><category term="latex"></category><category term="inkscape"></category></entry></feed>
+&lt;/div&gt;</summary><category term="python"></category></entry></feed>
