@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Matthias Mittner's Homepage</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/misc.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2014-04-30T00:00:00+02:00</updated><entry><title>Setup for sharing org-mode agenda with google calendar (and mobile devices)</title><link href="http://ihrke.github.io/setup-for-sharing-org-mode-agenda-with-google-calendar-and-mobile-devices.html" rel="alternate"></link><updated>2014-04-30T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2014-04-30:setup-for-sharing-org-mode-agenda-with-google-calendar-and-mobile-devices.html</id><summary type="html">&lt;p&gt;Note: this is only one-directional from org-mode to google&amp;nbsp;calendar.&lt;/p&gt;
+&lt;div class="section" id="first-step-setup-org-mode-to-export-all-the-agenda-files-to-an-ics-file"&gt;
+&lt;h2&gt;First step: setup org-mode to export all the agenda-files to an ics&amp;nbsp;file.&lt;/h2&gt;
+&lt;p&gt;Put this into the .emacs file (I save the agenda to&amp;nbsp;dropbox).&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;(setq org-icalendar-combined-agenda-file &amp;quot;~/Dropbox/orgfiles/org.ics&amp;quot;)
+(setq org-icalendar-include-todo &amp;#39;(all))
+(setq org-icalendar-use-scheduled &amp;#39;(event-if-todo event-if-not-todo))
+(setq org-icalendar-use-deadline &amp;#39;(event-if-todo event-if-not-todo))
+
+;; this hook saves an ics file once an org-buffer is saved
+(defun my-icalendar-agenda-export()
+    (if (string= (file-name-extension (buffer-file-name)) &amp;quot;org&amp;quot;)
+                              (org-icalendar-combine-agenda-files))
+              )
+(add-hook &amp;#39;after-save-hook &amp;#39;my-icalendar-agenda-export)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="second-share-in-dropbox"&gt;
+&lt;h2&gt;Second: share in&amp;nbsp;dropbox&lt;/h2&gt;
+&lt;p&gt;In your dropbox folder on the web, click on share and &amp;quot;get&amp;nbsp;link&amp;quot;.&lt;/p&gt;
+&lt;p&gt;This links looks like this: &lt;a class="reference external" href="https://www.dropbox.com/s/randomletters/org.ics"&gt;https://www.dropbox.com/s/randomletters/org.ics&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Replace www with dl such that it looks like this: &lt;a class="reference external" href="https://dl.dropbox.com/s/randomletters/org.ics"&gt;https://dl.dropbox.com/s/randomletters/org.ics&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="third-add-by-url-in-google-calendar"&gt;
+&lt;h2&gt;Third: add by url in&amp;nbsp;google-calendar&lt;/h2&gt;
+&lt;p&gt;This is unfortunately not as straight-forward as I would like to
+belive. Google calendar allows to &amp;quot;Add by url&amp;quot; (in the left panel,
+under &amp;quot;Other calendars&amp;quot;). However, with dropbox-links this fails with
+some warning about&amp;nbsp;&amp;quot;robots.txt&amp;quot;.&lt;/p&gt;
+&lt;p&gt;There is the following workaround (thanks to this &lt;a class="reference external" href="https://productforums.google.com/forum/#!topic/calendar/HYN1y-7GYu4"&gt;discussion&lt;/a&gt;).
+You have to create a &lt;a class="reference external" href="http://pipes.yahoo.com/pipes/pipe.info?_id=1f85c5a9c2af3c8768d342531f5ca528"&gt;pipe&lt;/a&gt;, then abbreviate the url with &lt;a class="reference external" href="http://www.tinyurl.com"&gt;tinyurl&lt;/a&gt; and
+finally import the resulting link into google-calendar (works fine
+this&amp;nbsp;time).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="last-subscribe-to-the-new-google-calendar-on-your-devices"&gt;
+&lt;h2&gt;Last: subscribe to the new google calendar on your&amp;nbsp;devices&lt;/h2&gt;
+&lt;p&gt;e.g., mobile phone, mac, thunderbird&amp;nbsp;(lightning),&amp;#8230;&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="calendar"></category></entry></feed>
