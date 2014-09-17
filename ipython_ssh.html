@@ -28,8 +28,8 @@
     </script>
 
 
-<meta name="keywords" content="latex, git, latex, " />
-        <title>Highlight changes with latexdiff  · Matthias Mittner's Homepage
+<meta name="keywords" content=", ipython, " />
+        <title>Access IPython Notebook through SSH to avoid firewall  · Matthias Mittner's Homepage
 </title>
 		  <link rel="stylesheet" type="text/css" href="http://ihrke.github.io/theme/css/font-awesome.css" media="screen">
 		  <link rel="stylesheet" type="text/css" href="http://ihrke.github.io/theme/css/bootstrap-combined.min.css" media="screen">
@@ -65,89 +65,76 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="http://ihrke.github.io/latexdiff.html"> Highlight changes with&nbsp;latexdiff  </a></h1>
+    <h1><a href="http://ihrke.github.io/ipython_ssh.html"> Access IPython Notebook through <span class="caps">SSH</span> to avoid&nbsp;firewall  </a></h1>
     </header>
 </div>
 
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
 
-            <p>Have you ever been asked to provide a resubmission with &quot;changes highlighted&quot;?
-Or have you ever received a modified version of your latex file and wanted to see the changes in a <span class="caps">PDF</span>&nbsp;version?</p>
-<p>Well I have and here&#8217;s my&nbsp;solution.</p>
-<p>I use to track my papers with <a class="reference external" href="http://www.git.org">git</a> which makes the whole process of integrating your co-authors opinions a&nbsp;breeze.</p>
-<p>I will just guide you through the process beginning at&nbsp;zero:</p>
-<ol class="arabic simple" start="0">
-<li>do the&nbsp;research</li>
-<li>when ready to write the paper, make a new directory and initialize it with <a class="reference external" href="http://www.git.org">git</a></li>
+            <p>I usually run ipython notebook on a server and access the web-interface from a different computer. This enables me to start a lengthy computation, shut my laptop and come back once it&#8217;s&nbsp;done.</p>
+<p>However, I recently had the problem that I was not able to find a good way of opening the ipython-specific port in the firewall. Also, it&#8217;s a bit dangerous to do&nbsp;so.</p>
+<p>I was therefore happy to have stumbled across <a class="reference external" href="http://wisdomthroughknowledge.blogspot.no/2012/07/accessing-ipython-notebook-remotely.html">a blog post</a> which told me how to access ipython through a <span class="caps">SSH</span>-tunnel. Basically, this allows to access ipython running on any computer that you can access via&nbsp;<span class="caps">SSH</span>.</p>
+<p>Here&#8217;s the&nbsp;recipe:</p>
+<ol class="arabic simple">
+<li>On the server, start the ipython&nbsp;notebook:</li>
 </ol>
-<div class="highlight"><pre>mkdir awesome_paper
-<span class="nb">cd </span>awesome_paper
-git init
-</pre></div>
+<pre class="code literal-block">
+ipython notebook --no-browser --port=8889
+</pre>
 <ol class="arabic simple" start="2">
-<li>create your paper, images and whatnot. Log changes into <a class="reference external" href="http://www.git.org">git</a>&nbsp;with</li>
+<li>On the local machine, setup a pipe&nbsp;with</li>
 </ol>
-<div class="highlight"><pre>git add paper.tex
-git add pics/*.pdf
-git commit -a -m <span class="s2">&quot;your commit message goes here&quot;</span>
-</pre></div>
+<pre class="code bash literal-block">
+ssh -N -n -L localhost:8889:localhost:8889 user&#64;servername
+</pre>
+<p>(this will have to be redone after opening your laptop&nbsp;again)</p>
 <ol class="arabic simple" start="3">
-<li>send your version to your co-authors and receive feedback <cite>paper_with_some_changes.tex</cite></li>
-<li>use <a class="reference external" href="https://www.sharelatex.com/blog/2013/02/16/using-latexdiff-for-marking-changes-to-tex-documents.html">latexdiff</a> to create a nice highlighted&nbsp;<span class="caps">PDF</span></li>
+<li>access your ipython notebook locally with <cite>localhost:8889</cite></li>
 </ol>
-<div class="highlight"><pre>latex-diff paper.tex paper_with_some_changes.tex &gt; paper_diff.tex
-pdflatex paper_diff.tex
-</pre></div>
-<p>5. submit your paper to your journal of choice (e.g., the <a class="reference external" href="http://www.jasnh.com/">Journal in
-Support of the Null-Hypothesis</a>)</p>
-<ol class="arabic simple" start="6">
-<li>receive angry feedback from the&nbsp;reviewers</li>
-<li><strong>before</strong> hacking your paper in reply to the undoubtedly ill-informed and biased crangling of the reviewers, tag the paper to make sure you find the version you&nbsp;submitted</li>
+<div class="section" id="setup-ipython">
+<h2>Setup&nbsp;IPython</h2>
+<p>Here is an outline how I setup my IPython to serve all my scientific&nbsp;needs:</p>
+<ol class="arabic simple">
+<li>make and activate an&nbsp;virtualenv:</li>
 </ol>
-<div class="highlight"><pre>git tag first_submission
-</pre></div>
-<ol class="arabic simple" start="8">
-<li>hack your paper and shut up those ignorant&nbsp;reviewers</li>
-<li>being forced to resubmit a &quot;changes highlighted&quot; version of your paper (driving home the point how much you had to mutilize your beautiful paper), do the&nbsp;following:</li>
+<pre class="code bash literal-block">
+virtualenv <span class="nb">local</span>/python/name
+<span class="nb">source local</span>/python/name/bin/activate
+</pre>
+<ol class="arabic simple" start="2">
+<li>get the most recent&nbsp;ipython</li>
 </ol>
-<div class="highlight"><pre>git show first_submission:paper.tex &gt; paper_firstsub.tex
-latexdiff paper_firstsub.tex paper.tex &gt; paper_diff.tex
-pdflatex paper_diff.tex
-bibtex paper_diff
-pdflatex paper_diff.tex
-</pre></div>
-<ol class="arabic simple" start="10">
-<li>submit and keep your fingers&nbsp;crossed!</li>
+<pre class="code bash literal-block">
+<span class="c">## get the cutting edge ipython version
+</span>git clone --recursive https://github.com/ipython/ipython.git
+<span class="c"># and install all its dependencies
+</span><span class="nb">cd </span>ipython
+pip install -e <span class="s2">&quot;.[notebook]&quot;</span>
+</pre>
+<ol class="arabic simple" start="3">
+<li>get all the cool&nbsp;packages</li>
 </ol>
-<p>I like to put the last block of commands into a <cite>Makefile</cite> such that all you have to do is&nbsp;a</p>
-<div class="highlight"><pre>make first_diff  <span class="c"># results in highlighted version</span>
-make             <span class="c"># results in clutter-free paper</span>
-</pre></div>
-<p>Here is the&nbsp;Makefile:</p>
-<div class="highlight"><pre><span class="nv"><span class="caps">TARG</span></span><span class="o">=</span>paper
-
-<span class="nv">$<span class="caps">TARG</span></span>.pdf: <span class="nv">$<span class="caps">TARG</span></span>.tex myrefs.bib
-         pdflatex <span class="nv">$<span class="caps">TARG</span></span>.tex
-         bibtex <span class="nv">$<span class="caps">TARG</span></span>.tex
-         pdflatex <span class="nv">$<span class="caps">TARG</span></span>.tex
-
-first_diff:
-         git show first_submission:<span class="nv">$<span class="caps">TARG</span></span>.tex &gt; <span class="nv">$TARG_firstsub</span>.tex
-         latexdiff <span class="nv">$TARG_firstsub</span>.tex <span class="nv">$<span class="caps">TARG</span></span>.tex &gt; <span class="nv">$TARG_diff</span>.tex
-         pdflatex <span class="nv">$TARG_diff</span>.tex
-         bibtex <span class="nv">$TARG_diff</span>
-         pdflatex <span class="nv">$TARG_diff</span>.tex
-</pre></div>
-<p>You might want to look at latexdiff&#8217;s <cite>-t</cite> switch. You can change how
-deletions and additions are displayed in the final&nbsp;<span class="caps">PDF</span>.</p>
+<pre class="code bash literal-block">
+pip install numpy
+pip install scipy
+pip install matplotlib
+pip install pandas
+pip install rpy2
+pip install seaborn
+pip install pymc
+pip install statsmodels
+pip install ipycache
+pip install pushbullet.py
+</pre>
+</div>
 
             <section>
 <div class="accordion" id="accordion2">
     <div class="accordion-group">
         <div class="accordion-heading">
             <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://ihrke.github.io/latexdiff.html#disqus_thread">
+                href="http://ihrke.github.io/ipython_ssh.html#disqus_thread">
                 Comments
             </a>
         </div>
@@ -157,8 +144,8 @@ deletions and additions are displayed in the final&nbsp;<span class="caps">PDF</
                     <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'mmittnerwebsite';
-        var disqus_identifier = 'http://ihrke.github.io/latexdiff.html';
-    var disqus_url = 'http://ihrke.github.io/latexdiff.html';
+        var disqus_identifier = 'http://ihrke.github.io/ipython_ssh.html';
+    var disqus_url = 'http://ihrke.github.io/ipython_ssh.html';
 
     (function() {
          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -181,18 +168,9 @@ deletions and additions are displayed in the final&nbsp;<span class="caps">PDF</
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2014-08-25T00:00:00">Aug 25, 2014</time>
+            <time pubdate="pubdate" datetime="2014-09-16T00:00:00">Sep 16, 2014</time>
             <h4>Category</h4>
-            <a class="category-link" href="http://ihrke.github.io/categories.html#latex-ref">latex</a>
-            <h4>Tags</h4>
-            <ul class="list-of-tags tags-in-article">
-                <li><a href="http://ihrke.github.io/tags.html#git-ref">git
-                    <span>1</span>
-</a></li>
-                <li><a href="http://ihrke.github.io/tags.html#latex-ref">latex
-                    <span>2</span>
-</a></li>
-            </ul>
+            <a class="category-link" href="http://ihrke.github.io/categories.html#ipython-ref">ipython</a>
         </div>
         </section>
 </div>
