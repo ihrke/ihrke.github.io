@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Matthias Mittner's Homepage</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/bayes.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2014-10-07T00:00:00+02:00</updated><entry><title>Get Deviance Information Criterion (DIC) when sampling in JAGS</title><link href="http://ihrke.github.io/dic_jags.html" rel="alternate"></link><updated>2014-10-07T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2014-10-07:dic_jags.html</id><summary type="html">&lt;p&gt;I use the &lt;a class="reference external" href="http://cran.r-project.org/web/packages/rjags/index.html"&gt;rjags&lt;/a&gt; package from R to sample with &lt;a class="reference external" href="http://mcmc-jags.sourceforge.net"&gt;&lt;span class="caps"&gt;JAGS&lt;/span&gt;&lt;/a&gt;. When sampling
+with the &lt;cite&gt;coda.samples()&lt;/cite&gt; function, there is no way of getting the &lt;span class="caps"&gt;DIC&lt;/span&gt;
+from these samples (you need to use another run with
+&lt;cite&gt;dic.samples()&lt;/cite&gt;. When using &lt;cite&gt;jags.samples()&lt;/cite&gt;, it is possible to
+include &lt;cite&gt;deviance&lt;/cite&gt; and &lt;cite&gt;pD&lt;/cite&gt; in the variable-names&amp;nbsp;array&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;
+varnames=c('pD', 'deviance', 'var1', ...)
+out &amp;lt;- jags.samples(model, varnames, n.iter, thin, type = &amp;quot;trace&amp;quot;)
+&lt;/pre&gt;
+&lt;p&gt;but the resulting structure is awkward to handle and even more awkward
+to transfer to the nice &lt;cite&gt;coda&lt;/cite&gt;-structure that allows to use all the
+nice plotting/diagnostic&amp;nbsp;functions.&lt;/p&gt;
+&lt;p&gt;For complex models, the resulting overhead can be severe and I
+therefore set up a &lt;cite&gt;coda.samples.dic()&lt;/cite&gt; function that returns both the
+coda-structure for the mcmc samples and the dic (the solution is
+inspired by a &lt;a class="reference external" href="http://sourceforge.net/p/mcmc-jags/discussion/610037/thread/ea46dc43/"&gt;discussion&lt;/a&gt; in the &lt;a class="reference external" href="http://mcmc-jags.sourceforge.net"&gt;&lt;span class="caps"&gt;JAGS&lt;/span&gt;&lt;/a&gt;&amp;nbsp;forum):&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;
+coda.samples.dic &amp;lt;- function (model, variable.names = NULL, n.iter, thin = 1, ...)
+{
+              load.module('dic') # necessary for pD and deviance monitor
+
+              start &amp;lt;- model$iter() + thin
+              varnames=c(variable.names, c('deviance', 'pD'))
+              out &amp;lt;- jags.samples(model, varnames, n.iter, thin,
+                       type = &amp;quot;trace&amp;quot;, ...)
+              deviance &amp;lt;- out$deviance
+              pD &amp;lt;- out$pD
+              out$deviance &amp;lt;- NULL
+              out$pD &amp;lt;- NULL
+              ans &amp;lt;- vector(&amp;quot;list&amp;quot;, nchain(model))
+              for (ch in 1:nchain(model)) {
+                       ans.ch &amp;lt;- vector(&amp;quot;list&amp;quot;, length(out))
+                       vnames.ch &amp;lt;- NULL
+                       for (i in seq(along = out)) {
+                                varname &amp;lt;- names(out)[[i]]
+                                d &amp;lt;- dim(out[[i]])
+                                if (length(d) &amp;lt; 3) {
+                                              stop(&amp;quot;Invalid dimensions for sampled output&amp;quot;)
+                                }
+                                vardim &amp;lt;- d[1:(length(d) - 2)]
+                                nvar &amp;lt;- prod(vardim)
+                                niter &amp;lt;- d[length(d) - 1]
+                                nchain &amp;lt;- d[length(d)]
+                                values &amp;lt;- as.vector(out[[i]])
+                                var.i &amp;lt;- matrix(NA, nrow = niter, ncol = nvar)
+                                for (j in 1:nvar) {
+                                              var.i[, j] &amp;lt;- values[j + (0:(niter - 1)) * nvar +
+                                                (ch - 1) * niter * nvar]
+                                }
+                                vnames.ch &amp;lt;- c(vnames.ch, coda.names(varname, vardim))
+                                ans.ch[[i]] &amp;lt;- var.i
+                       }
+                       ans.ch &amp;lt;- do.call(&amp;quot;cbind&amp;quot;, ans.ch)
+                       colnames(ans.ch) &amp;lt;- vnames.ch
+                       ans[[ch]] &amp;lt;- mcmc(ans.ch, start = start, thin = thin)
+              }
+
+              dic &amp;lt;- list(deviance = mean(as.vector(deviance)), penalty = mean(as.vector(pD)), type = 'pD')
+              class(dic) &amp;lt;- &amp;quot;dic&amp;quot;
+              return(list(samples=mcmc.list(ans), dic=dic))
+}
+&lt;/pre&gt;
+&lt;p&gt;This code is just a copy of &lt;cite&gt;coda.samples()&lt;/cite&gt; source&amp;nbsp;code.&lt;/p&gt;
+&lt;p&gt;Changes: include &amp;quot;deviance&amp;quot; and &amp;quot;pD&amp;quot; in&amp;nbsp;sampling:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;
+varnames=c(variable.names, c('deviance', 'pD'))
+out &amp;lt;- jags.samples(model, varnames, n.iter, thin,
+         type = &amp;quot;trace&amp;quot;, ...)
+deviance &amp;lt;- out$deviance
+pD &amp;lt;- out$pD
+out$deviance &amp;lt;- NULL
+out$pD &amp;lt;- NULL
+&lt;/pre&gt;
+&lt;p&gt;and return as &lt;cite&gt;dic&lt;/cite&gt; structure&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;
+dic &amp;lt;- list(deviance = mean(as.vector(deviance)), penalty = mean(as.vector(pD)), type = 'pD')
+class(dic) &amp;lt;- &amp;quot;dic&amp;quot;
+return(list(samples=mcmc.list(ans), dic=dic))
+&lt;/pre&gt;
+&lt;p&gt;You need to run the sampler with more than one chain,&amp;nbsp;though.&lt;/p&gt;
+</summary><category term="jags"></category><category term="R"></category><category term="bayes"></category></entry></feed>
