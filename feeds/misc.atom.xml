@@ -1,5 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Matthias Mittner's Homepage</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/misc.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2014-04-30T00:00:00+02:00</updated><entry><title>Setup for sharing org-mode agenda with google calendar (and mobile devices)</title><link href="http://ihrke.github.io/setup-for-sharing-org-mode-agenda-with-google-calendar-and-mobile-devices.html" rel="alternate"></link><updated>2014-04-30T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2014-04-30:setup-for-sharing-org-mode-agenda-with-google-calendar-and-mobile-devices.html</id><summary type="html">&lt;p&gt;Note: this is only one-directional from org-mode to google&amp;nbsp;calendar.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Matthias Mittner's Homepage</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/misc.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2014-11-08T00:00:00+01:00</updated><entry><title>(De-)Assembling of Clavinova CLP-970</title><link href="http://ihrke.github.io/clavinova.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2014-11-08:clavinova.html</id><summary type="html">&lt;img alt="" src="http://ihrke.github.io/pics/clavinova/01.jpg" style="width: 100%;" /&gt;
+&lt;p&gt;I recently had to de-assemble my clavinova &lt;span class="caps"&gt;CLP&lt;/span&gt;-970 for various&amp;nbsp;reasons.&lt;/p&gt;
+&lt;p&gt;I followed the excellently written guide from
+&lt;a class="reference external" href="https://groups.google.com/forum/#%21topic/alt.music.makers.electric-piano/6YSVoEhTk38"&gt;this blog post&lt;/a&gt;
+(by Sylvia) and integrated this text with images. I didn&amp;#8217;t really have
+anything to add to this comprehensive text so in the following I just
+copied her&amp;nbsp;text:&lt;/p&gt;
+&lt;p&gt;I was able to perform the entire task using a single long
+(15cm shaft) cross-headed screw-driver that I had magnetised, and a thin
+piece of metal, which in my case was a paint&amp;nbsp;scraper.&lt;/p&gt;
+&lt;p&gt;In the discussion, &amp;quot;backwards&amp;quot; means towards the back of the piano.
+Related words take their meanings&amp;nbsp;accordingly.&lt;/p&gt;
+&lt;ol class="arabic simple" start="0"&gt;
+&lt;li&gt;Make sure the piano is unplugged from the&amp;nbsp;mains.&lt;/li&gt;
+&lt;li&gt;The music stand is attached using keyhole mountings. Remove it by
+sliding it upwards by a couple of centimeters and it will unlock
+and can be easily be pulled forwards. Be careful that it doesn&amp;#8217;t simply
+fall&amp;nbsp;off!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img alt="" src="http://ihrke.github.io/pics/clavinova/02.jpg" style="width: 100%;" /&gt;
+&lt;ol class="arabic simple" start="2"&gt;
+&lt;li&gt;Remove the two large brass mountings that held the music&amp;nbsp;stand.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img alt="" src="http://ihrke.github.io/pics/clavinova/03.jpg" style="width: 100%;" /&gt;
+&lt;ol class="arabic simple" start="3"&gt;
+&lt;li&gt;The one centimeter thick frame for the fabric speaker cover is now
+held only by Velcro, and can be pulled off from either&amp;nbsp;side.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img alt="" src="http://ihrke.github.io/pics/clavinova/04.jpg" style="width: 100%;" /&gt;
+&lt;ol class="arabic simple" start="4"&gt;
+&lt;li&gt;At each end of the speaker enclosure there is a large slot through
+which a screw can be reached. Remove the two screws (that is, one from
+each&amp;nbsp;end).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img alt="" src="http://ihrke.github.io/pics/clavinova/05.jpg" style="width: 50%;" /&gt;
+&lt;ol class="arabic simple" start="5"&gt;
+&lt;li&gt;The speaker enclosure is hinged at the back, and can now be tilted
+right over until it is completed inverted. Make sure there is a clear
+space in which to do this, and note that the enclosure is&amp;nbsp;heavy.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img alt="" src="http://ihrke.github.io/pics/clavinova/06.jpg" style="width: 50%;" /&gt;
+&lt;img alt="" src="http://ihrke.github.io/pics/clavinova/07.jpg" style="width: 50%;" /&gt;
+&lt;ol class="arabic simple" start="6"&gt;
+&lt;li&gt;I completely removed the keyboard cover. I&amp;#8217;m not sure now that that&amp;#8217;s
+necessary. It may be possible to deal with keyboard without actually
+removing the&amp;nbsp;cover.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;With the keyboard cover closed,
+locate the two plastic clips that cover an opening in the keyboard track
+slot. Remove the two screws (note, they are very small, and accordingly
+easy to drop and lose), and remove the plastic&amp;nbsp;clips.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;img alt="" src="http://ihrke.github.io/pics/clavinova/08.jpg" style="width: 100%;" /&gt;
+&lt;img alt="" src="http://ihrke.github.io/pics/clavinova/09.jpg" style="width: 50%;" /&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Open the keyboard cover until
+it is possible to lift the keyboard axle (which has a gear wheel at each
+end) out of the&amp;nbsp;slot.&lt;/li&gt;
+&lt;li&gt;With the axle now running on
+top of its slot, position the keyboard cover so that it is about half
+closed, then lift the rear until the cover is vertical. Slowly turn your
+body until the keyboard cover front runners disengage. The keyboard
+cover is now free. You shouldn&amp;#8217;t have to apply any&amp;nbsp;force.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;img alt="" src="http://ihrke.github.io/pics/clavinova/10.jpg" style="width: 100%;" /&gt;
+&lt;ol class="arabic simple" start="7"&gt;
+&lt;li&gt;The control panel is attached to the base by 5 metal brackets, each
+containing two screws. Remove the screws. There is also another screw at
+the left hand side, which also needs to be removed. &lt;span class="caps"&gt;NOTE&lt;/span&gt; this is not the
+same type of screw as the other ten. It&amp;#8217;s a self-tapper with a blunt&amp;nbsp;end.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img alt="" src="http://ihrke.github.io/pics/clavinova/11.jpg" style="width: 100%;" /&gt;
+&lt;img alt="" src="http://ihrke.github.io/pics/clavinova/12.jpg" style="width: 100%;" /&gt;
+&lt;ol class="arabic simple" start="8"&gt;
+&lt;li&gt;Remove the screw that attaches the black grounding wire to the
+metallic&amp;nbsp;base.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img alt="" src="http://ihrke.github.io/pics/clavinova/13.jpg" style="width: 100%;" /&gt;
+&lt;ol class="arabic simple" start="9"&gt;
+&lt;li&gt;The control panel can now be lifted up (&lt;span class="caps"&gt;CAREFULLY&lt;/span&gt;!) and rested on the
+keyboard cover track. It is still attached to the base by wires, which
+must not be stretched. The reason the black grounding wire was detached
+in step 8 is that it is not long enough to allow this step without its
+being&amp;nbsp;disconnected.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img alt="" src="http://ihrke.github.io/pics/clavinova/14.jpg" style="width: 100%;" /&gt;
+&lt;ol class="arabic simple" start="10"&gt;
+&lt;li&gt;Remove the nine large and two small brass screws that hold the
+keyboard in&amp;nbsp;place.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img alt="" src="http://ihrke.github.io/pics/clavinova/15.jpg" style="width: 50%;" /&gt;
+&lt;ol class="arabic simple" start="11"&gt;
+&lt;li&gt;Remove the wooden blocks. Each block is held in place by a single
+screw, but has prongs at the front that engage with the case, so
+it has to be moved backwards a bit before it is completely
+free. The right hand one is in any case still attached to wires,
+and can only be moved out of the&amp;nbsp;way.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img alt="" src="http://ihrke.github.io/pics/clavinova/16.jpg" style="width: 50%;" /&gt;
+&lt;ol class="arabic simple" start="12"&gt;
+&lt;li&gt;Lift up the
+front of the keyboard, and detach the multi-wire connector from its
+socket at the front middle of the keyboard.  It should just pull out,
+but be gentle. Do not pull by the wires! You may also see that the wires
+are attached to the keyboard by some adhesive tape, which will have to
+be&amp;nbsp;removed.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;img alt="" src="http://ihrke.github.io/pics/clavinova/17.jpg" style="width: 100%;" /&gt;
+&lt;img alt="" src="http://ihrke.github.io/pics/clavinova/18.jpg" style="width: 100%;" /&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Only if you want to completely remove the keyboard: At the back of
+the keyboard gently prise open the plastic clip that holds the wires in
+place at the back of the keyboard, and release the&amp;nbsp;wires.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;img alt="" src="http://ihrke.github.io/pics/clavinova/19.jpg" style="width: 50%;" /&gt;
+&lt;p&gt;In the original guide, there is more information on removing single
+keys. I didn&amp;#8217;t do that&amp;nbsp;here.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Reassembly&lt;/strong&gt; - the reverse of the&amp;nbsp;above.&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;When plugging the connector back into the keyboard, note that it will
+only go in one way round. Again, be gentle. It shouldn&amp;#8217;t require much&amp;nbsp;force.&lt;/li&gt;
+&lt;li&gt;When replacing the right hand block of wood containing the power switch,
+you will need to watch where the wires go. Both blocks have metal prongs
+at the front, which need to engage into holes in the&amp;nbsp;frame.&lt;/li&gt;
+&lt;li&gt;When putting the keyboard cover back, and before trying to close it,
+make sure that both ends of the axle can reach their rear end stops. If
+only one can, then you&amp;#8217;ll have to lift one end of the axle out of the
+slot, and rotate it a bit. Repeat until&amp;nbsp;correct.&lt;/li&gt;
+&lt;li&gt;The keyboard track clips are mirror images of each other, and are marked
+L and R&amp;nbsp;accordingly.&lt;/li&gt;
+&lt;li&gt;When replacing the fabric speaker cover frame, be careful not to push
+where the fabric covers the speakers. Note that there are central
+plastic locator pins that have to engage with holes in the speaker&amp;nbsp;enclosure.&lt;/li&gt;
+&lt;/ul&gt;
+</summary><category term="piano"></category></entry><entry><title>Setup for sharing org-mode agenda with google calendar (and mobile devices)</title><link href="http://ihrke.github.io/setup-for-sharing-org-mode-agenda-with-google-calendar-and-mobile-devices.html" rel="alternate"></link><updated>2014-04-30T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2014-04-30:setup-for-sharing-org-mode-agenda-with-google-calendar-and-mobile-devices.html</id><summary type="html">&lt;p&gt;Note: this is only one-directional from org-mode to google&amp;nbsp;calendar.&lt;/p&gt;
 &lt;div class="section" id="first-step-setup-org-mode-to-export-all-the-agenda-files-to-an-ics-file"&gt;
 &lt;h2&gt;First step: setup org-mode to export all the agenda-files to an ics&amp;nbsp;file.&lt;/h2&gt;
 &lt;p&gt;Put this into the .emacs file (I save the agenda to&amp;nbsp;dropbox).&lt;/p&gt;
