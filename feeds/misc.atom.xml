@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Matthias Mittner's Homepage</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/misc.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2014-11-08T00:00:00+01:00</updated><entry><title>(Dis-)Assembling a Clavinova CLP-970</title><link href="http://ihrke.github.io/clavinova.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2014-11-08:clavinova.html</id><summary type="html">&lt;img alt="" src="http://ihrke.github.io/pics/clavinova/01.jpg" style="width: 100%;" /&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Matthias Mittner's Homepage</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/misc.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2014-11-08T00:00:00+01:00</updated><entry><title>(Dis-)Assembling a Clavinova CLP-970</title><link href="http://ihrke.github.io/clavinova.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2014-11-08:clavinova.html</id><summary type="html">&lt;img alt="" src="http://ihrke.github.io/pics/clavinova/01.jpg" style="width: 100%;" /&gt;
 &lt;p&gt;I recently had to disassemble my clavinova &lt;span class="caps"&gt;CLP&lt;/span&gt;-970 for various&amp;nbsp;reasons.&lt;/p&gt;
 &lt;p&gt;I followed the excellently written guide from
 &lt;a class="reference external" href="https://groups.google.com/forum/#%21topic/alt.music.makers.electric-piano/6YSVoEhTk38"&gt;this blog post&lt;/a&gt;
@@ -138,17 +138,17 @@ plastic locator pins that have to engage with holes in the speaker&amp;nbsp;encl
 &lt;div class="section" id="first-step-setup-org-mode-to-export-all-the-agenda-files-to-an-ics-file"&gt;
 &lt;h2&gt;First step: setup org-mode to export all the agenda-files to an ics&amp;nbsp;file.&lt;/h2&gt;
 &lt;p&gt;Put this into the .emacs file (I save the agenda to&amp;nbsp;dropbox).&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;(setq org-icalendar-combined-agenda-file &amp;quot;~/Dropbox/orgfiles/org.ics&amp;quot;)
-(setq org-icalendar-include-todo &amp;#39;(all))
-(setq org-icalendar-use-scheduled &amp;#39;(event-if-todo event-if-not-todo))
-(setq org-icalendar-use-deadline &amp;#39;(event-if-todo event-if-not-todo))
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;org-icalendar-combined-agenda-file&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;~/Dropbox/orgfiles/org.ics&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;org-icalendar-include-todo&lt;/span&gt; &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;all&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;org-icalendar-use-scheduled&lt;/span&gt; &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;event-if-todo&lt;/span&gt; &lt;span class="nv"&gt;event-if-not-todo&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;setq&lt;/span&gt; &lt;span class="nv"&gt;org-icalendar-use-deadline&lt;/span&gt; &lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;event-if-todo&lt;/span&gt; &lt;span class="nv"&gt;event-if-not-todo&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 
-;; this hook saves an ics file once an org-buffer is saved
-(defun my-icalendar-agenda-export()
-    (if (string= (file-name-extension (buffer-file-name)) &amp;quot;org&amp;quot;)
-                              (org-icalendar-combine-agenda-files))
-              )
-(add-hook &amp;#39;after-save-hook &amp;#39;my-icalendar-agenda-export)
+&lt;span class="c1"&gt;;; this hook saves an ics file once an org-buffer is saved&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt; &lt;span class="nv"&gt;my-icalendar-agenda-export&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;string=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;file-name-extension&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;buffer-file-name&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;org&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+                              &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;org-icalendar-combine-agenda-files&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+              &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;add-hook&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;after-save-hook&lt;/span&gt; &lt;span class="ss"&gt;&amp;#39;my-icalendar-agenda-export&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="second-share-in-dropbox"&gt;

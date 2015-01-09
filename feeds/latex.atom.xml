@@ -21,7 +21,7 @@ git commit -a -m &lt;span class="s2"&gt;&amp;quot;your commit message goes here&
 &lt;/pre&gt;&lt;/div&gt;
 &lt;ol class="arabic simple" start="3"&gt;
 &lt;li&gt;send your version to your co-authors and receive feedback &lt;cite&gt;paper_with_some_changes.tex&lt;/cite&gt;&lt;/li&gt;
-&lt;li&gt;use &lt;a class="reference external" href="https://www.sharelatex.com/blog/2013/02/16/using-latexdiff-for-marking-changes-to-tex-documents.html"&gt;latexdiff&lt;/a&gt; to create a nice highlighted&amp;nbsp;&lt;span class="caps"&gt;PDF&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;use &lt;a class="reference external" href="https://www.sharelatex.com/blog/2013/02/16/using-latexdiff-for-marking-changes-to-tex-documents.html"&gt;latexdiff&lt;/a&gt; to create a nice highlighted &lt;span class="caps"&gt;PDF&lt;/span&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;latex-diff paper.tex paper_with_some_changes.tex &amp;gt; paper_diff.tex
 pdflatex paper_diff.tex
@@ -52,22 +52,22 @@ pdflatex paper_diff.tex
 make             &lt;span class="c"&gt;# results in clutter-free paper&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Here is the&amp;nbsp;Makefile:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;&lt;span class="caps"&gt;TARG&lt;/span&gt;&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;paper
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;TARG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;paper
 
-&lt;span class="nv"&gt;$&lt;span class="caps"&gt;TARG&lt;/span&gt;&lt;/span&gt;.pdf: &lt;span class="nv"&gt;$&lt;span class="caps"&gt;TARG&lt;/span&gt;&lt;/span&gt;.tex myrefs.bib
-         pdflatex &lt;span class="nv"&gt;$&lt;span class="caps"&gt;TARG&lt;/span&gt;&lt;/span&gt;.tex
-         bibtex &lt;span class="nv"&gt;$&lt;span class="caps"&gt;TARG&lt;/span&gt;&lt;/span&gt;.tex
-         pdflatex &lt;span class="nv"&gt;$&lt;span class="caps"&gt;TARG&lt;/span&gt;&lt;/span&gt;.tex
+&lt;span class="nv"&gt;$TARG&lt;/span&gt;.pdf: &lt;span class="nv"&gt;$TARG&lt;/span&gt;.tex myrefs.bib
+         pdflatex &lt;span class="nv"&gt;$TARG&lt;/span&gt;.tex
+         bibtex &lt;span class="nv"&gt;$TARG&lt;/span&gt;.tex
+         pdflatex &lt;span class="nv"&gt;$TARG&lt;/span&gt;.tex
 
 first_diff:
-         git show first_submission:&lt;span class="nv"&gt;$&lt;span class="caps"&gt;TARG&lt;/span&gt;&lt;/span&gt;.tex &amp;gt; &lt;span class="nv"&gt;$TARG_firstsub&lt;/span&gt;.tex
-         latexdiff &lt;span class="nv"&gt;$TARG_firstsub&lt;/span&gt;.tex &lt;span class="nv"&gt;$&lt;span class="caps"&gt;TARG&lt;/span&gt;&lt;/span&gt;.tex &amp;gt; &lt;span class="nv"&gt;$TARG_diff&lt;/span&gt;.tex
+         git show first_submission:&lt;span class="nv"&gt;$TARG&lt;/span&gt;.tex &amp;gt; &lt;span class="nv"&gt;$TARG_firstsub&lt;/span&gt;.tex
+         latexdiff &lt;span class="nv"&gt;$TARG_firstsub&lt;/span&gt;.tex &lt;span class="nv"&gt;$TARG&lt;/span&gt;.tex &amp;gt; &lt;span class="nv"&gt;$TARG_diff&lt;/span&gt;.tex
          pdflatex &lt;span class="nv"&gt;$TARG_diff&lt;/span&gt;.tex
          bibtex &lt;span class="nv"&gt;$TARG_diff&lt;/span&gt;
          pdflatex &lt;span class="nv"&gt;$TARG_diff&lt;/span&gt;.tex
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;You might want to look at latexdiff&amp;#8217;s &lt;cite&gt;-t&lt;/cite&gt; switch. You can change how
-deletions and additions are displayed in the final&amp;nbsp;&lt;span class="caps"&gt;PDF&lt;/span&gt;.&lt;/p&gt;
+deletions and additions are displayed in the final &lt;span class="caps"&gt;PDF&lt;/span&gt;.&lt;/p&gt;
 </summary><category term="latex"></category><category term="git"></category></entry><entry><title>Import PDF in Inkscape without replacing fonts</title><link href="http://ihrke.github.io/inkscape-import-latex-pdf.html" rel="alternate"></link><updated>2013-12-12T00:00:00+01:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2013-12-12:inkscape-import-latex-pdf.html</id><summary type="html">&lt;p&gt;Inkscape replaces text in &lt;span class="caps"&gt;PDF&lt;/span&gt; with bad fonts (especially when the &lt;span class="caps"&gt;PDF&lt;/span&gt;
 is generated with latex). I use Inkscape to rearrange some stuff
 or do some fine-tuning of a pstricks-images. Sometimes I just want to

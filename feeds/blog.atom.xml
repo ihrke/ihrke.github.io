@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Matthias Mittner's Homepage</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/blog.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2015-01-08T00:00:00+01:00</updated><entry><title>Multi-Language IPython (Jupyter) setup</title><link href="http://ihrke.github.io/jupyter.html" rel="alternate"></link><updated>2015-01-08T00:00:00+01:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2015-01-08:jupyter.html</id><summary type="html">&lt;img alt="" class="align-center" src="http://ihrke.github.io/pics/jupyter_screenshot1.png" style="width: 30%;" /&gt;
+&lt;p&gt;The IPython notebook project (which I adore) is about to be renamed to
+&lt;a class="reference external" href="http://jupyter.org/"&gt;Jupyter&lt;/a&gt; to better reflect the fact that it can be used with other
+languages besides Python. At the moment that is under heavy
+development and probably quite unstable but I found myself aching for
+an &lt;span class="caps"&gt;IR&lt;/span&gt;-Notebook. So here is a guide to set up a multi-language Jupyter
+notebook (meaning that you just start the server and can select if
+you want an R-Notebook, a Python-notebook, or one of the other
+availabel &lt;a class="reference external" href="https://github.com/ipython/ipython/wiki/IPython%20kernels%20for%20other%20languages"&gt;kernels&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Note that the instructions on this page are likely to break since they
+depend on early development versions of the different packages.  I
+expect that the whole procedure is going to be faciliated/documented
+once the Jupyter project gets&amp;nbsp;going.&lt;/p&gt;
+&lt;p&gt;At first, we set up a bleeding-edge ipython (this is from a bare
+bones python&amp;nbsp;installation):&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+&lt;span class="c"&gt;# setup pip
+&lt;/span&gt;wget https://bootstrap.pypa.io/get-pip.py
+sudo python get-pip.py
+
+&lt;span class="c"&gt;# make a virtualenv
+&lt;/span&gt;sudo pip install virtualenv
+&lt;span class="nb"&gt;cd&lt;/span&gt; ~
+virtualenv &lt;span class="nb"&gt;local&lt;/span&gt;/python/jupyter
+&lt;span class="nb"&gt;source local&lt;/span&gt;/python/jupyter/bin/activate
+
+&lt;span class="c"&gt;## get the cutting edge ipython version
+&lt;/span&gt;git clone --recursive https://github.com/ipython/ipython.git
+&lt;span class="c"&gt;# and install all its dependencies
+&lt;/span&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;ipython
+pip install -e &lt;span class="s2"&gt;&amp;quot;.[notebook]&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;You can run the notebook&amp;nbsp;with&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+ipython notebook
+&lt;/pre&gt;
+&lt;p&gt;while you are in the virtualenv. Stay in the virtualenv for the rest
+of the&amp;nbsp;setup.&lt;/p&gt;
+&lt;div class="section" id="adding-r"&gt;
+&lt;h2&gt;Adding&amp;nbsp;R&lt;/h2&gt;
+&lt;p&gt;For adding R-support, you need the experimental &lt;a class="reference external" href="https://github.com/takluyver/IRkernel"&gt;IRKernel&lt;/a&gt;. Just follow
+the instructions in the &lt;cite&gt;&lt;span class="caps"&gt;README&lt;/span&gt;&lt;/cite&gt;:&lt;/p&gt;
+&lt;p&gt;Install&amp;nbsp;dependencies:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+sudo apt-get install libzmq3-dev libcurl4-openssl-dev
+&lt;/pre&gt;
+&lt;p&gt;fire up R&amp;nbsp;and&lt;/p&gt;
+&lt;pre class="code R literal-block"&gt;
+install.packages&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;devtools&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;# Need RCurl for install_github&lt;/span&gt;
+install.packages&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'RCurl'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="kn"&gt;library&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;devtools&lt;span class="p"&gt;)&lt;/span&gt;
+install_github&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'armstrtw/rzmq'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+install_github&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;takluyver/IRdisplay&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+install_github&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;takluyver/IRkernel&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+IRkernel&lt;span class="o"&gt;::&lt;/span&gt;installspec&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;In my case the last line failed with permission problems. The code of
+&lt;cite&gt;IRkernel::installspec&lt;/cite&gt; is as&amp;nbsp;follows:&lt;/p&gt;
+&lt;pre class="code R literal-block"&gt;
+&lt;span class="kr"&gt;function&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+         srcdir &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;system.file&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;kernelspec&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; package &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;IRkernel&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+         cmd &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;paste&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;ipython kernelspec install --replace --name ir&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                       srcdir&lt;span class="p"&gt;,&lt;/span&gt; sep &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot; &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+         &lt;span class="kp"&gt;system&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;cmd&lt;span class="p"&gt;,&lt;/span&gt; wait &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;so the function basically makes a system call to &lt;cite&gt;ipython kernelspec&lt;/cite&gt;
+to install the kernel that is located in &lt;cite&gt;srcdir&lt;/cite&gt;. You can find out
+the value of &lt;cite&gt;srcdir&lt;/cite&gt; by running the first line of the&amp;nbsp;function&lt;/p&gt;
+&lt;pre class="code R literal-block"&gt;
+&lt;span class="kp"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;system.file&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;kernelspec&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; package &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;IRkernel&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;(in my case the path was
+&lt;cite&gt;/home/mittner/R/x86_64-unknown-linux-gnu-library/3.1/IRkernel/kernelspec&lt;/cite&gt;).&lt;/p&gt;
+&lt;p&gt;Now exit R and run the command by hand (supplemented by &amp;quot;&amp;#8212;user&amp;quot; to
+install the kernel in the users directory instead of globally &amp;#8212; that
+was what caused the permission&amp;nbsp;problem):&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+ipython kernelspec install --replace --name ir --user /home/mittner/R/x86_64-unknown-linux-gnu-library/3.1/IRkernel/kernelspec
+&lt;/pre&gt;
+&lt;p&gt;Now fire up the notebook and&amp;nbsp;voila:&lt;/p&gt;
+&lt;img alt="" src="http://ihrke.github.io/pics/jupyter_screenshot1.png" style="width: 50%;" /&gt;
+&lt;p&gt;and by creating an R-notebook, you have the&amp;nbsp;RNotebook:&lt;/p&gt;
+&lt;img alt="" src="http://ihrke.github.io/pics/jupyter_screenshot2.png" style="width: 100%;" /&gt;
+&lt;p&gt;Finally, it&amp;#8217;s possible to add more &lt;a class="reference external" href="https://github.com/ipython/ipython/wiki/IPython%20kernels%20for%20other%20languages"&gt;kernels&lt;/a&gt; for example for &lt;a class="reference external" href="http://julialang.org/"&gt;Julia&lt;/a&gt; in
+a similar&amp;nbsp;way.&lt;/p&gt;
+&lt;/div&gt;
+</summary></entry></feed>

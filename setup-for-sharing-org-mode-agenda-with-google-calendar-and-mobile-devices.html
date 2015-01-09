@@ -76,17 +76,17 @@
 <div class="section" id="first-step-setup-org-mode-to-export-all-the-agenda-files-to-an-ics-file">
 <h2>First step: setup org-mode to export all the agenda-files to an ics&nbsp;file.</h2>
 <p>Put this into the .emacs file (I save the agenda to&nbsp;dropbox).</p>
-<div class="highlight"><pre>(setq org-icalendar-combined-agenda-file &quot;~/Dropbox/orgfiles/org.ics&quot;)
-(setq org-icalendar-include-todo &#39;(all))
-(setq org-icalendar-use-scheduled &#39;(event-if-todo event-if-not-todo))
-(setq org-icalendar-use-deadline &#39;(event-if-todo event-if-not-todo))
+<div class="highlight"><pre><span class="p">(</span><span class="k">setq</span> <span class="nv">org-icalendar-combined-agenda-file</span> <span class="s">&quot;~/Dropbox/orgfiles/org.ics&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="k">setq</span> <span class="nv">org-icalendar-include-todo</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">all</span><span class="p">))</span>
+<span class="p">(</span><span class="k">setq</span> <span class="nv">org-icalendar-use-scheduled</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">event-if-todo</span> <span class="nv">event-if-not-todo</span><span class="p">))</span>
+<span class="p">(</span><span class="k">setq</span> <span class="nv">org-icalendar-use-deadline</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">event-if-todo</span> <span class="nv">event-if-not-todo</span><span class="p">))</span>
 
-;; this hook saves an ics file once an org-buffer is saved
-(defun my-icalendar-agenda-export()
-    (if (string= (file-name-extension (buffer-file-name)) &quot;org&quot;)
-                              (org-icalendar-combine-agenda-files))
-              )
-(add-hook &#39;after-save-hook &#39;my-icalendar-agenda-export)
+<span class="c1">;; this hook saves an ics file once an org-buffer is saved</span>
+<span class="p">(</span><span class="nb">defun</span> <span class="nv">my-icalendar-agenda-export</span><span class="p">()</span>
+    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">string=</span> <span class="p">(</span><span class="nv">file-name-extension</span> <span class="p">(</span><span class="nv">buffer-file-name</span><span class="p">))</span> <span class="s">&quot;org&quot;</span><span class="p">)</span>
+                              <span class="p">(</span><span class="nv">org-icalendar-combine-agenda-files</span><span class="p">))</span>
+              <span class="p">)</span>
+<span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;after-save-hook</span> <span class="ss">&#39;my-icalendar-agenda-export</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="section" id="second-share-in-dropbox">
@@ -150,7 +150,7 @@ this&nbsp;time).</p>
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2014-04-30T00:00:00">Apr 30, 2014</time>
+            <time pubdate="pubdate" datetime="2014-04-30T00:00:00+02:00">april 30, 2014</time>
             <h4>Category</h4>
             <a class="category-link" href="http://ihrke.github.io/categories.html#misc-ref">misc</a>
             <h4>Tags</h4>

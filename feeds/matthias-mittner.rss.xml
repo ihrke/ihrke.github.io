@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Matthias Mittner's Homepage</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2015-01-08T00:00:00+01:00</updated><entry><title>Multi-Language IPython (Jupyter) setup</title><link href="http://ihrke.github.io/jupyter.html" rel="alternate"></link><updated>2015-01-08T00:00:00+01:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2015-01-08:jupyter.html</id><summary type="html">&lt;img alt="" class="align-center" src="http://ihrke.github.io/pics/jupyter_screenshot1.png" style="width: 30%;" /&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Matthias Mittner's Homepage</title><link>http://ihrke.github.io/</link><description></description><atom:link href="http://ihrke.github.io/feeds/matthias-mittner.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 08 Jan 2015 00:00:00 +0100</lastBuildDate><item><title>Multi-Language IPython (Jupyter) setup</title><link>http://ihrke.github.io/jupyter.html</link><description>&lt;img alt="" class="align-center" src="http://ihrke.github.io/pics/jupyter_screenshot1.png" style="width: 30%;" /&gt;
 &lt;p&gt;The IPython notebook project (which I adore) is about to be renamed to
 &lt;a class="reference external" href="http://jupyter.org/"&gt;Jupyter&lt;/a&gt; to better reflect the fact that it can be used with other
 languages besides Python. At the moment that is under heavy
@@ -88,7 +88,7 @@ ipython kernelspec install --replace --name ir --user /home/mittner/R/x86_64-unk
 &lt;p&gt;Finally, it&amp;#8217;s possible to add more &lt;a class="reference external" href="https://github.com/ipython/ipython/wiki/IPython%20kernels%20for%20other%20languages"&gt;kernels&lt;/a&gt; for example for &lt;a class="reference external" href="http://julialang.org/"&gt;Julia&lt;/a&gt; in
 a similar&amp;nbsp;way.&lt;/p&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>(Dis-)Assembling a Clavinova CLP-970</title><link href="http://ihrke.github.io/clavinova.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2014-11-08:clavinova.html</id><summary type="html">&lt;img alt="" src="http://ihrke.github.io/pics/clavinova/01.jpg" style="width: 100%;" /&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Matthias Mittner</dc:creator><pubDate>Thu, 08 Jan 2015 00:00:00 +0100</pubDate><guid>tag:ihrke.github.io,2015-01-08:jupyter.html</guid></item><item><title>(Dis-)Assembling a Clavinova CLP-970</title><link>http://ihrke.github.io/clavinova.html</link><description>&lt;img alt="" src="http://ihrke.github.io/pics/clavinova/01.jpg" style="width: 100%;" /&gt;
 &lt;p&gt;I recently had to disassemble my clavinova &lt;span class="caps"&gt;CLP&lt;/span&gt;-970 for various&amp;nbsp;reasons.&lt;/p&gt;
 &lt;p&gt;I followed the excellently written guide from
 &lt;a class="reference external" href="https://groups.google.com/forum/#%21topic/alt.music.makers.electric-piano/6YSVoEhTk38"&gt;this blog post&lt;/a&gt;
@@ -223,7 +223,7 @@ L and R&amp;nbsp;accordingly.&lt;/li&gt;
 where the fabric covers the speakers. Note that there are central
 plastic locator pins that have to engage with holes in the speaker&amp;nbsp;enclosure.&lt;/li&gt;
 &lt;/ul&gt;
-</summary><category term="piano"></category></entry><entry><title>Get Deviance Information Criterion (DIC) when sampling in JAGS</title><link href="http://ihrke.github.io/dic_jags.html" rel="alternate"></link><updated>2014-10-07T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2014-10-07:dic_jags.html</id><summary type="html">&lt;p&gt;I use the &lt;a class="reference external" href="http://cran.r-project.org/web/packages/rjags/index.html"&gt;rjags&lt;/a&gt; package from R to sample with &lt;a class="reference external" href="http://mcmc-jags.sourceforge.net"&gt;&lt;span class="caps"&gt;JAGS&lt;/span&gt;&lt;/a&gt;. When sampling
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Matthias Mittner</dc:creator><pubDate>Sat, 08 Nov 2014 00:00:00 +0100</pubDate><guid>tag:ihrke.github.io,2014-11-08:clavinova.html</guid><category>piano</category></item><item><title>Get Deviance Information Criterion (DIC) when sampling in JAGS</title><link>http://ihrke.github.io/dic_jags.html</link><description>&lt;p&gt;I use the &lt;a class="reference external" href="http://cran.r-project.org/web/packages/rjags/index.html"&gt;rjags&lt;/a&gt; package from R to sample with &lt;a class="reference external" href="http://mcmc-jags.sourceforge.net"&gt;&lt;span class="caps"&gt;JAGS&lt;/span&gt;&lt;/a&gt;. When sampling
 with the &lt;cite&gt;coda.samples()&lt;/cite&gt; function, there is no way of getting the &lt;span class="caps"&gt;DIC&lt;/span&gt;
 from these samples (you need to use another run with
 &lt;cite&gt;dic.samples()&lt;/cite&gt;. When using &lt;cite&gt;jags.samples()&lt;/cite&gt;, it is possible to
@@ -303,7 +303,7 @@ class(dic) &amp;lt;- &amp;quot;dic&amp;quot;
 return(list(samples=mcmc.list(ans), dic=dic))
 &lt;/pre&gt;
 &lt;p&gt;You need to run the sampler with more than one chain,&amp;nbsp;though.&lt;/p&gt;
-</summary><category term="jags"></category><category term="R"></category><category term="bayes"></category></entry><entry><title>Access IPython Notebook through SSH to avoid firewall</title><link href="http://ihrke.github.io/ipython_ssh.html" rel="alternate"></link><updated>2014-09-16T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2014-09-16:ipython_ssh.html</id><summary type="html">&lt;p&gt;I usually run ipython notebook on a server and access the web-interface from a different computer. This enables me to start a lengthy computation, shut my laptop and come back once it&amp;#8217;s&amp;nbsp;done.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Matthias Mittner</dc:creator><pubDate>Tue, 07 Oct 2014 00:00:00 +0200</pubDate><guid>tag:ihrke.github.io,2014-10-07:dic_jags.html</guid><category>jags</category><category>R</category><category>bayes</category></item><item><title>Access IPython Notebook through SSH to avoid firewall</title><link>http://ihrke.github.io/ipython_ssh.html</link><description>&lt;p&gt;I usually run ipython notebook on a server and access the web-interface from a different computer. This enables me to start a lengthy computation, shut my laptop and come back once it&amp;#8217;s&amp;nbsp;done.&lt;/p&gt;
 &lt;p&gt;However, I recently had the problem that I was not able to find a good way of opening the ipython-specific port in the firewall. Also, it&amp;#8217;s a bit dangerous to do&amp;nbsp;so.&lt;/p&gt;
 &lt;p&gt;I was therefore happy to have stumbled across &lt;a class="reference external" href="http://wisdomthroughknowledge.blogspot.no/2012/07/accessing-ipython-notebook-remotely.html"&gt;a blog post&lt;/a&gt; which told me how to access ipython through a &lt;span class="caps"&gt;SSH&lt;/span&gt;-tunnel. Basically, this allows to access ipython running on any computer that you can access via &lt;span class="caps"&gt;SSH&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Here&amp;#8217;s the&amp;nbsp;recipe:&lt;/p&gt;
@@ -359,7 +359,7 @@ pip install ipycache
 pip install pushbullet.py
 &lt;/pre&gt;
 &lt;/div&gt;
-</summary><category term=""></category></entry><entry><title>Highlight changes with latexdiff</title><link href="http://ihrke.github.io/latexdiff.html" rel="alternate"></link><updated>2014-08-25T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2014-08-25:latexdiff.html</id><summary type="html">&lt;p&gt;Have you ever been asked to provide a resubmission with &amp;quot;changes highlighted&amp;quot;?
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Matthias Mittner</dc:creator><pubDate>Tue, 16 Sep 2014 00:00:00 +0200</pubDate><guid>tag:ihrke.github.io,2014-09-16:ipython_ssh.html</guid><category></category></item><item><title>Highlight changes with latexdiff</title><link>http://ihrke.github.io/latexdiff.html</link><description>&lt;p&gt;Have you ever been asked to provide a resubmission with &amp;quot;changes highlighted&amp;quot;?
 Or have you ever received a modified version of your latex file and wanted to see the changes in a &lt;span class="caps"&gt;PDF&lt;/span&gt;&amp;nbsp;version?&lt;/p&gt;
 &lt;p&gt;Well I have and here&amp;#8217;s my&amp;nbsp;solution.&lt;/p&gt;
 &lt;p&gt;I use to track my papers with &lt;a class="reference external" href="http://www.git.org"&gt;git&lt;/a&gt; which makes the whole process of integrating your co-authors opinions a&amp;nbsp;breeze.&lt;/p&gt;
@@ -428,7 +428,7 @@ first_diff:
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;You might want to look at latexdiff&amp;#8217;s &lt;cite&gt;-t&lt;/cite&gt; switch. You can change how
 deletions and additions are displayed in the final &lt;span class="caps"&gt;PDF&lt;/span&gt;.&lt;/p&gt;
-</summary><category term="latex"></category><category term="git"></category></entry><entry><title>Setup for sharing org-mode agenda with google calendar (and mobile devices)</title><link href="http://ihrke.github.io/setup-for-sharing-org-mode-agenda-with-google-calendar-and-mobile-devices.html" rel="alternate"></link><updated>2014-04-30T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2014-04-30:setup-for-sharing-org-mode-agenda-with-google-calendar-and-mobile-devices.html</id><summary type="html">&lt;p&gt;Note: this is only one-directional from org-mode to google&amp;nbsp;calendar.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Matthias Mittner</dc:creator><pubDate>Mon, 25 Aug 2014 00:00:00 +0200</pubDate><guid>tag:ihrke.github.io,2014-08-25:latexdiff.html</guid><category>latex</category><category>git</category></item><item><title>Setup for sharing org-mode agenda with google calendar (and mobile devices)</title><link>http://ihrke.github.io/setup-for-sharing-org-mode-agenda-with-google-calendar-and-mobile-devices.html</link><description>&lt;p&gt;Note: this is only one-directional from org-mode to google&amp;nbsp;calendar.&lt;/p&gt;
 &lt;div class="section" id="first-step-setup-org-mode-to-export-all-the-agenda-files-to-an-ics-file"&gt;
 &lt;h2&gt;First step: setup org-mode to export all the agenda-files to an ics&amp;nbsp;file.&lt;/h2&gt;
 &lt;p&gt;Put this into the .emacs file (I save the agenda to&amp;nbsp;dropbox).&lt;/p&gt;
@@ -466,7 +466,7 @@ this&amp;nbsp;time).&lt;/p&gt;
 &lt;h2&gt;Last: subscribe to the new google calendar on your&amp;nbsp;devices&lt;/h2&gt;
 &lt;p&gt;e.g., mobile phone, mac, thunderbird&amp;nbsp;(lightning),&amp;#8230;&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="calendar"></category></entry><entry><title>Import PDF in Inkscape without replacing fonts</title><link href="http://ihrke.github.io/inkscape-import-latex-pdf.html" rel="alternate"></link><updated>2013-12-12T00:00:00+01:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2013-12-12:inkscape-import-latex-pdf.html</id><summary type="html">&lt;p&gt;Inkscape replaces text in &lt;span class="caps"&gt;PDF&lt;/span&gt; with bad fonts (especially when the &lt;span class="caps"&gt;PDF&lt;/span&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Matthias Mittner</dc:creator><pubDate>Wed, 30 Apr 2014 00:00:00 +0200</pubDate><guid>tag:ihrke.github.io,2014-04-30:setup-for-sharing-org-mode-agenda-with-google-calendar-and-mobile-devices.html</guid><category>calendar</category></item><item><title>Import PDF in Inkscape without replacing fonts</title><link>http://ihrke.github.io/inkscape-import-latex-pdf.html</link><description>&lt;p&gt;Inkscape replaces text in &lt;span class="caps"&gt;PDF&lt;/span&gt; with bad fonts (especially when the &lt;span class="caps"&gt;PDF&lt;/span&gt;
 is generated with latex). I use Inkscape to rearrange some stuff
 or do some fine-tuning of a pstricks-images. Sometimes I just want to
 reset the bounding box (crop the &lt;span class="caps"&gt;PDF&lt;/span&gt;) without losing the &lt;span class="caps"&gt;PDF&lt;/span&gt;
@@ -478,7 +478,7 @@ format. The solution is hidden in &lt;a class="reference external" href="https:/
 &lt;p&gt;to generate &lt;cite&gt;filename-nofont.pdf&lt;/cite&gt;.&lt;/p&gt;
 &lt;p&gt;This file can be imported and used in inkscape (but you can&amp;#8217;t re-type
 the text,&amp;nbsp;obviously).&lt;/p&gt;
-</summary><category term="latex"></category><category term="inkscape"></category></entry><entry><title>Power-spectrum from WAV-file</title><link href="http://ihrke.github.io/freqspecwav.html" rel="alternate"></link><updated>2013-12-11T00:00:00+01:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2013-12-11:freqspecwav.html</id><summary type="html">
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Matthias Mittner</dc:creator><pubDate>Thu, 12 Dec 2013 00:00:00 +0100</pubDate><guid>tag:ihrke.github.io,2013-12-12:inkscape-import-latex-pdf.html</guid><category>latex</category><category>inkscape</category></item><item><title>Power-spectrum from WAV-file</title><link>http://ihrke.github.io/freqspecwav.html</link><description>
 &lt;style type="text/css"&gt;
 
 /* General text, input and output cells */
@@ -4319,4 +4319,4 @@ bUQ0BEEQBNv8f7Xk/hDGATU4AAAAAElFTkSuQmCC
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;</summary><category term="python"></category></entry></feed>
+&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Matthias Mittner</dc:creator><pubDate>Wed, 11 Dec 2013 00:00:00 +0100</pubDate><guid>tag:ihrke.github.io,2013-12-11:freqspecwav.html</guid><category>python</category></item></channel></rss>
