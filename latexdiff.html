@@ -94,7 +94,7 @@ git commit -a -m <span class="s2">&quot;your commit message goes here&quot;</spa
 </pre></div>
 <ol class="arabic simple" start="3">
 <li>send your version to your co-authors and receive feedback <cite>paper_with_some_changes.tex</cite></li>
-<li>use <a class="reference external" href="https://www.sharelatex.com/blog/2013/02/16/using-latexdiff-for-marking-changes-to-tex-documents.html">latexdiff</a> to create a nice highlighted <span class="caps">PDF</span></li>
+<li>use <a class="reference external" href="https://www.sharelatex.com/blog/2013/02/16/using-latexdiff-for-marking-changes-to-tex-documents.html">latexdiff</a> to create a nice highlighted&nbsp;<span class="caps">PDF</span></li>
 </ol>
 <div class="highlight"><pre>latex-diff paper.tex paper_with_some_changes.tex &gt; paper_diff.tex
 pdflatex paper_diff.tex
@@ -125,22 +125,22 @@ pdflatex paper_diff.tex
 make             <span class="c"># results in clutter-free paper</span>
 </pre></div>
 <p>Here is the&nbsp;Makefile:</p>
-<div class="highlight"><pre><span class="nv">TARG</span><span class="o">=</span>paper
+<div class="highlight"><pre><span class="nv"><span class="caps">TARG</span></span><span class="o">=</span>paper
 
-<span class="nv">$TARG</span>.pdf: <span class="nv">$TARG</span>.tex myrefs.bib
-         pdflatex <span class="nv">$TARG</span>.tex
-         bibtex <span class="nv">$TARG</span>.tex
-         pdflatex <span class="nv">$TARG</span>.tex
+<span class="nv">$<span class="caps">TARG</span></span>.pdf: <span class="nv">$<span class="caps">TARG</span></span>.tex myrefs.bib
+         pdflatex <span class="nv">$<span class="caps">TARG</span></span>.tex
+         bibtex <span class="nv">$<span class="caps">TARG</span></span>.tex
+         pdflatex <span class="nv">$<span class="caps">TARG</span></span>.tex
 
 first_diff:
-         git show first_submission:<span class="nv">$TARG</span>.tex &gt; <span class="nv">$TARG_firstsub</span>.tex
-         latexdiff <span class="nv">$TARG_firstsub</span>.tex <span class="nv">$TARG</span>.tex &gt; <span class="nv">$TARG_diff</span>.tex
+         git show first_submission:<span class="nv">$<span class="caps">TARG</span></span>.tex &gt; <span class="nv">$TARG_firstsub</span>.tex
+         latexdiff <span class="nv">$TARG_firstsub</span>.tex <span class="nv">$<span class="caps">TARG</span></span>.tex &gt; <span class="nv">$TARG_diff</span>.tex
          pdflatex <span class="nv">$TARG_diff</span>.tex
          bibtex <span class="nv">$TARG_diff</span>
          pdflatex <span class="nv">$TARG_diff</span>.tex
 </pre></div>
 <p>You might want to look at latexdiff&#8217;s <cite>-t</cite> switch. You can change how
-deletions and additions are displayed in the final <span class="caps">PDF</span>.</p>
+deletions and additions are displayed in the final&nbsp;<span class="caps">PDF</span>.</p>
 
             <section>
 <div class="accordion" id="accordion2">
@@ -181,7 +181,7 @@ deletions and additions are displayed in the final <span class="caps">PDF</span>
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2014-08-25T00:00:00+02:00">aug. 25, 2014</time>
+            <time pubdate="pubdate" datetime="2014-08-25T00:00:00">Aug 25, 2014</time>
             <h4>Category</h4>
             <a class="category-link" href="http://ihrke.github.io/categories.html#latex-ref">latex</a>
             <h4>Tags</h4>
