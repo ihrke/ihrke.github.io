@@ -64,7 +64,7 @@ IRkernel&lt;span class="o"&gt;::&lt;/span&gt;installspec&lt;span class="p"&gt;()
          srcdir &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;system.file&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;kernelspec&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; package &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;IRkernel&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
          cmd &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;paste&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;ipython kernelspec install --replace --name ir&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
                        srcdir&lt;span class="p"&gt;,&lt;/span&gt; sep &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot; &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-         &lt;span class="kp"&gt;system&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;cmd&lt;span class="p"&gt;,&lt;/span&gt; wait &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;&lt;span class="caps"&gt;TRUE&lt;/span&gt;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+         &lt;span class="kp"&gt;system&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;cmd&lt;span class="p"&gt;,&lt;/span&gt; wait &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;
 &lt;p&gt;so the function basically makes a system call to &lt;cite&gt;ipython kernelspec&lt;/cite&gt;
