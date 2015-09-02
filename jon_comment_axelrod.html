@@ -28,8 +28,8 @@
     </script>
 
 
-<meta name="keywords" content="stan, R, bayes, bayes, " />
-        <title>Fixing numerical underflow in WAIC calculation in Stan  · Matthias Mittner's Homepage
+<meta name="keywords" content="paper, mind-wandering, bayes, modeling, paper, " />
+        <title>Commentary on our mind-wandering paper  · Matthias Mittner's Homepage
 </title>
 		  <link rel="stylesheet" type="text/css" href="http://ihrke.github.io/theme/css/font-awesome.css" media="screen">
 		  <link rel="stylesheet" type="text/css" href="http://ihrke.github.io/theme/css/bootstrap-combined.min.css" media="screen">
@@ -65,83 +65,63 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="http://ihrke.github.io/waic_stan.html"> Fixing numerical underflow in <span class="caps">WAIC</span> calculation in&nbsp;Stan  </a></h1>
+    <h1><a href="http://ihrke.github.io/jon_comment_axelrod.html"> Commentary on our mind-wandering&nbsp;paper  </a></h1>
     </header>
 </div>
 
 <div class="row-fluid">
         <div class="span8 offset2 article-content">
 
-            <p>I recently switched to the amazing software <a class="reference external" href="http://mc-stan.org/index.html">Stan</a> for my <span class="caps">MCMC</span>
-needs. Every now and then, it can be useful to compare different
-models using some kind of information criterion. Previously, I used
-the Deviance Information criterion (<span class="caps">DIC</span>; Spiegelhalter, 2002) because
-that appeared to be the most correct for hierarchical Bayesian
-models. However, <span class="caps">DIC</span> received quite some critique on, e.g., Andrew
-Gelman&#8217;s blog (<a class="reference external" href="http://andrewgelman.com/2011/06/22/deviance_dic_ai/">here</a>, <a class="reference external" href="http://andrewgelman.com/2013/08/15/more-on-aic-waic-etc/">or here</a>) while
-the recent addition to the &quot;<span class="caps">XIC</span>&quot; family <span class="caps">WAIC</span> (Watanabe, 2010) appears
-to have more desirable theoretical properties (<a class="reference external" href="http://andrewgelman.com/2013/08/09/understanding-predictive-information-criteria-for-bayesian-models/">see here</a>
-or <a class="reference external" href="http://andrewgelman.com/2014/05/26/waic-cross-validation-stan/">there</a>). <a class="reference external" href="http://www.stat.columbia.edu/~gelman/research/published/waic_understand3.pdf">This
-paper</a>
-offers an in-depth discussion on the theory behind these&nbsp;measures.</p>
-<p>Recently, Aki Vehtari and Andrew Gelman showed how to implement the
-<span class="caps">WAIC</span> in <a class="reference external" href="http://mc-stan.org/index.html">Stan</a> and, of course, I had to try it for myself. In my very
-first model, I stumbled across a problem. When running <cite>waic(fit)</cite> on
-my <cite>stanfit</cite> object, I&nbsp;got</p>
-<pre class="code literal-block">
-$total
-waic       lpd    p_waic elpd_waic     p_loo  elpd_loo
-Inf      -Inf  113.7925      -Inf       NaN      -Inf
-
-$se
-[1]      NaN      NaN 20.19901      NaN      NaN      NaN
-</pre>
-<p>Hm, not very informative. When I took a look at the <cite>waic()</cite> function
-in more detail, I saw that the <cite>Inf`s in my output were caused by
-numerical underflow in the calculation of `lpd</cite> :</p>
-<div class="highlight"><pre>lpd <span class="o">&lt;-</span> <span class="kp">log</span><span class="p">(</span><span class="kp">colMeans</span><span class="p">(</span><span class="kp">exp</span><span class="p">(</span>log_lik<span class="p">)))</span>
-</pre></div>
-<p>The <cite>exp</cite> function can (of course) only handle arguments of a certain
-magnitude before returning 0. Try, for&nbsp;example,</p>
-<div class="highlight"><pre><span class="kp">exp</span><span class="p">(</span><span class="kp">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">-1000</span><span class="p">,</span> by<span class="o">=</span><span class="m">-10</span><span class="p">))</span>
-</pre></div>
-<p>On my machine, <cite>exp</cite> bails out at -750 and apparently one of my
-log-likelihoods went below that magical&nbsp;threshold.</p>
-<p>To fix this problem, I used the log-sum-exp trick (see e.g., <a class="reference external" href="http://jblevins.org/log/log-sum-exp">this
-webpage</a>). This trick improves
-the numerical stability of calculating the logarithm of the sum of
-exponentials by making use of the fact that
-$$\log\left( \sum_{i=1}^{n} \exp( x_i )\right)=\log\left( \sum_{i=1}^{n} \exp( x_i-a )\right)+a$$
-and by choosing a suitable number for $a$, e.g., the most extreme
-value among the $x_i$, the range of values to be calculated within the
-<cite>exp</cite> can be reduced. In this case, the mean is calculated for each
-column and therefore the formula is
-$$\log\left(\frac{1}{n} \sum_{i=1}^{n} \exp( x_i
-)\right)=\log\frac{1}{n}+\log\left( \sum_{i=1}^{n} \exp( x_i-a&nbsp;)\right)+a.$$</p>
-<p>To do it for each column in the matrix requires a bit of indexing&nbsp;fun:</p>
-<div class="highlight"><pre><span class="c1"># lpd &lt;- log(colMeans(exp(log_lik)))</span>
-offset <span class="o">&lt;-</span> log_lik<span class="p">[</span><span class="kp">cbind</span><span class="p">(</span><span class="kp">max.col</span><span class="p">(</span><span class="kp">abs</span><span class="p">(</span><span class="kp">t</span><span class="p">(</span>log_lik<span class="p">))),</span> <span class="m">1</span><span class="o">:</span>n<span class="p">)]</span> <span class="c1"># column-wise most extreme value</span>
-lpd <span class="o">&lt;-</span> <span class="kp">log</span><span class="p">(</span><span class="m">1.</span><span class="o">/</span>S<span class="p">)</span><span class="o">+</span><span class="kp">log</span><span class="p">(</span><span class="kp">colSums</span><span class="p">(</span><span class="kp">exp</span><span class="p">(</span><span class="kp">sweep</span><span class="p">(</span>log_lik<span class="p">,</span> <span class="m">2</span><span class="p">,</span> offset<span class="p">))))</span><span class="o">+</span>offset
-</pre></div>
-<p>This fixes this issue and allows to calculate the <span class="caps">WAIC</span> for situations
-where the log-likelihood is very low. I also compared this solution to
-a solution where I used an arbitrary-precision library, <a class="reference external" href="http://cran.r-project.org/web/packages/Rmpfr/index.html">Rmpfr</a>, to do
-the calculation on the original&nbsp;data:</p>
-<div class="highlight"><pre><span class="c1"># lpd &lt;- log(colMeans(exp(log_lik)))</span>
-<span class="kn">require</span><span class="p">(</span>Rmpfr<span class="p">)</span>
-log_likp <span class="o">&lt;-</span> mpfr<span class="p">(</span>log_lik<span class="p">,</span> <span class="m">120</span><span class="p">)</span> <span class="c1"># 120 bits precision</span>
-     lpd <span class="o">&lt;-</span> <span class="kp">as.numeric</span><span class="p">(</span><span class="kp">log</span><span class="p">(</span><span class="kp">colMeans</span><span class="p">(</span><span class="kp">exp</span><span class="p">(</span>log_likp<span class="p">))))</span> <span class="c1"># run in arbitrary precision</span>
-</pre></div>
-<p>and the result is identical to my log-sum-exp&nbsp;solution.</p>
-<p>See this <a class="reference external" href="https://gist.github.com/ihrke/507fbffc07c174714ad2">gist</a> for the complete code (original, log-sum-exp and
-arbitrary-precision based&nbsp;versions).</p>
+            <a class="reference external image-reference" href="http://journal.frontiersin.org/article/10.3389/fncom.2015.00083/full#"><img alt="" class="align-center" src="http://ihrke.github.io/pics/commentary_axelrod.png" style="width: 100%;" /></a>
+<p>Vadim Axelrod and Andrei R. Teodorescu wrote an <a class="reference external" href="http://journal.frontiersin.org/article/10.3389/fncom.2015.00083/full#">interesting
+commentary</a> (<a class="reference internal" href="#id3">[1]</a>) on our <a class="reference external" href="http://www.jneurosci.org/content/34/49/16286.abstract">recent mind-wandering paper</a> that was
+published in The Journal of Neuroscience last year (<a class="reference internal" href="#id4">[2]</a>). I am
+happy that they are supportive of our approach and glad about the
+constructive comments that they give in their&nbsp;paper.</p>
+<p>I am particularly happy that someone has gone to the difficulty of
+summarizing and contextualizing our paper because I think that it is
+actually quite hard to read.  I think it is a strength of our paper
+that it combines complex from different modalities (fMRI, rsfMRI,
+pupil diameter, behaviour) with sophisticated analysis techniques
+(<span class="caps">MVPA</span> techniques, cognitive modeling, Bayesian stats). However, this
+particular feature makes the paper very hard to read, I think. I tried
+my best to prepare the paper in a readable way but found it quite
+challenging to present the paper in a both comprehensive and
+easy-to-read format. Axelrod <span class="amp">&amp;</span> Teodorescu&#8217;s comment solves this
+problem for me because there is now an easy-to-read summary out there
+that is independent of our main paper and therefore does not have the
+obligation to comprehensively detail the used&nbsp;methodology.</p>
+<p><em>I wish there was a commentary on all empirical&nbsp;papers&#8230;</em></p>
+<p>There is one more comment I&#8217;d like to make regarding the commentary.
+In their comment, the authors focus on different model parameters that
+might be beneficial to study in the mind-wandering context. I do agree
+and I think the <span class="caps">MW</span> field should really dig deeper into the cognitive
+modeling research that has been done in other fields. For our own data
+however, it was not possible to focus on the parameters suggested by
+Axelrod and Teodorescu. As I commented in an e-mail to Vadim&nbsp;Axelrod:</p>
+<blockquote>
+As you note in one part of your paper, the stop-signal paradigm (at
+least the version we used) did not produce many behavioural errors
+which make it hard to constrain the more flexible models (such as
+those estimating between-trial variability). This was one of the
+reasons we pursued the relatively simple model we ended up with (and
+used a Bayesian hierarchical modeling approach for incorporating fits
+for subjects who did not have many errors).</blockquote>
+<hr class="docutils" />
+<p><strong>References</strong></p>
+<p id="id3">[1] Axelrod V and Teodorescu <span class="caps">AR</span> (2015) Commentary: When the brain
+takes a break: a model-based analysis of mind
+wandering. <em>Front. Comput. Neurosci.</em> 9:83. doi:&nbsp;10.3389/fncom.2015.00083</p>
+<p id="id4">[2] Mittner, M., Boekel, W., Tucker, A. M., Turner, B.M., Heathcote,
+A. and Forstmann, <span class="caps">B.U.</span>(2014). When the brain takes a break: A
+model-based analysis of mind wandering. <em>Journal of Neuroscience</em>,&nbsp;34(49):16286-95.</p>
 
             <section>
 <div class="accordion" id="accordion2">
     <div class="accordion-group">
         <div class="accordion-heading">
             <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://ihrke.github.io/waic_stan.html#disqus_thread">
+                href="http://ihrke.github.io/jon_comment_axelrod.html#disqus_thread">
                 Comments
             </a>
         </div>
@@ -151,8 +131,8 @@ arbitrary-precision based&nbsp;versions).</p>
                     <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'mmittnerwebsite';
-        var disqus_identifier = 'http://ihrke.github.io/waic_stan.html';
-    var disqus_url = 'http://ihrke.github.io/waic_stan.html';
+        var disqus_identifier = 'http://ihrke.github.io/jon_comment_axelrod.html';
+    var disqus_url = 'http://ihrke.github.io/jon_comment_axelrod.html';
 
     (function() {
          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -175,19 +155,22 @@ arbitrary-precision based&nbsp;versions).</p>
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2015-06-16T00:00:00+02:00">juni 16, 2015</time>
+            <time pubdate="pubdate" datetime="2015-06-23T00:00:00+02:00">juni 23, 2015</time>
             <h4>Category</h4>
-            <a class="category-link" href="http://ihrke.github.io/categories.html#bayes-ref">bayes</a>
+            <a class="category-link" href="http://ihrke.github.io/categories.html#paper-ref">paper</a>
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article">
                 <li><a href="http://ihrke.github.io/tags.html#bayes-ref">bayes
                     <span>4</span>
 </a></li>
-                <li><a href="http://ihrke.github.io/tags.html#r-ref">R
-                    <span>3</span>
-</a></li>
-                <li><a href="http://ihrke.github.io/tags.html#stan-ref">stan
+                <li><a href="http://ihrke.github.io/tags.html#mind-wandering-ref">mind-wandering
                     <span>1</span>
+</a></li>
+                <li><a href="http://ihrke.github.io/tags.html#modeling-ref">modeling
+                    <span>1</span>
+</a></li>
+                <li><a href="http://ihrke.github.io/tags.html#paper-ref">paper
+                    <span>2</span>
 </a></li>
             </ul>
         </div>

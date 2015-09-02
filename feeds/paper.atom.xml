@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Matthias Mittner's Homepage</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/paper.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2015-06-23T00:00:00+02:00</updated><entry><title>Commentary on our mind-wandering paper</title><link href="http://ihrke.github.io/jon_comment_axelrod.html" rel="alternate"></link><updated>2015-06-23T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2015-06-23:jon_comment_axelrod.html</id><summary type="html">&lt;a class="reference external image-reference" href="http://journal.frontiersin.org/article/10.3389/fncom.2015.00083/full#"&gt;&lt;img alt="" class="align-center" src="http://ihrke.github.io/pics/commentary_axelrod.png" style="width: 100%;" /&gt;&lt;/a&gt;
+&lt;p&gt;Vadim Axelrod and Andrei R. Teodorescu wrote an &lt;a class="reference external" href="http://journal.frontiersin.org/article/10.3389/fncom.2015.00083/full#"&gt;interesting
+commentary&lt;/a&gt; (&lt;a class="reference internal" href="#id3"&gt;[1]&lt;/a&gt;) on our &lt;a class="reference external" href="http://www.jneurosci.org/content/34/49/16286.abstract"&gt;recent mind-wandering paper&lt;/a&gt; that was
+published in The Journal of Neuroscience last year (&lt;a class="reference internal" href="#id4"&gt;[2]&lt;/a&gt;). I am
+happy that they are supportive of our approach and glad about the
+constructive comments that they give in their&amp;nbsp;paper.&lt;/p&gt;
+&lt;p&gt;I am particularly happy that someone has gone to the difficulty of
+summarizing and contextualizing our paper because I think that it is
+actually quite hard to read.  I think it is a strength of our paper
+that it combines complex from different modalities (fMRI, rsfMRI,
+pupil diameter, behaviour) with sophisticated analysis techniques
+(&lt;span class="caps"&gt;MVPA&lt;/span&gt; techniques, cognitive modeling, Bayesian stats). However, this
+particular feature makes the paper very hard to read, I think. I tried
+my best to prepare the paper in a readable way but found it quite
+challenging to present the paper in a both comprehensive and
+easy-to-read format. Axelrod &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Teodorescu&amp;#8217;s comment solves this
+problem for me because there is now an easy-to-read summary out there
+that is independent of our main paper and therefore does not have the
+obligation to comprehensively detail the used&amp;nbsp;methodology.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;I wish there was a commentary on all empirical&amp;nbsp;papers&amp;#8230;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;There is one more comment I&amp;#8217;d like to make regarding the commentary.
+In their comment, the authors focus on different model parameters that
+might be beneficial to study in the mind-wandering context. I do agree
+and I think the &lt;span class="caps"&gt;MW&lt;/span&gt; field should really dig deeper into the cognitive
+modeling research that has been done in other fields. For our own data
+however, it was not possible to focus on the parameters suggested by
+Axelrod and Teodorescu. As I commented in an e-mail to Vadim&amp;nbsp;Axelrod:&lt;/p&gt;
+&lt;blockquote&gt;
+As you note in one part of your paper, the stop-signal paradigm (at
+least the version we used) did not produce many behavioural errors
+which make it hard to constrain the more flexible models (such as
+those estimating between-trial variability). This was one of the
+reasons we pursued the relatively simple model we ended up with (and
+used a Bayesian hierarchical modeling approach for incorporating fits
+for subjects who did not have many errors).&lt;/blockquote&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
+&lt;p id="id3"&gt;[1] Axelrod V and Teodorescu &lt;span class="caps"&gt;AR&lt;/span&gt; (2015) Commentary: When the brain
+takes a break: a model-based analysis of mind
+wandering. &lt;em&gt;Front. Comput. Neurosci.&lt;/em&gt; 9:83. doi:&amp;nbsp;10.3389/fncom.2015.00083&lt;/p&gt;
+&lt;p id="id4"&gt;[2] Mittner, M., Boekel, W., Tucker, A. M., Turner, B.M., Heathcote,
+A. and Forstmann, &lt;span class="caps"&gt;B.U.&lt;/span&gt;(2014). When the brain takes a break: A
+model-based analysis of mind wandering. &lt;em&gt;Journal of Neuroscience&lt;/em&gt;,&amp;nbsp;34(49):16286-95.&lt;/p&gt;
+</summary><category term="paper"></category><category term="mind-wandering"></category><category term="bayes"></category><category term="modeling"></category></entry></feed>

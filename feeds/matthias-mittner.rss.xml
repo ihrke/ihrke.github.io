@@ -3,7 +3,7 @@
 Web-based cognitive behavioral therapy with face-to-face therapist
 support for depression: A Bayesian analysis&lt;/strong&gt; has been accepted for
 publication in the &lt;a class="reference external" href="http://jmir.org"&gt;Journal of Medical Internet Research&lt;/a&gt; (see
-&lt;a class="reference internal" href="#id8"&gt;[1]&lt;/a&gt; for the full citation).
+&lt;a class="reference internal" href="#id9"&gt;[1]&lt;/a&gt; for the full citation).
 This paper is the result of a fruitful collaboration with &lt;a class="reference external" href="https://uit.no/om/enhet/ansatte/person?p_document_id=42301&amp;amp;p_dimension_id=88120"&gt;Martin
 Eisemann&lt;/a&gt;&amp;#8216;s research group for &lt;a class="reference external" href="https://uit.no/forskning/forskningsgrupper/gruppe?p_document_id=345713"&gt;Mental e-Health&lt;/a&gt; at the
 &lt;a class="reference external" href="http://uit.no"&gt;University of Tromsø&lt;/a&gt;.&lt;/p&gt;
@@ -15,7 +15,7 @@ fascinating (and I do recommend that you read it!), here I would like
 to say a few words about my experiences about publishing the Bayesian
 analyses (that are promised in the title). This is my second paper
 that used entirely Bayesian statistics (my first one was a paper on
-the neural basis of mind-wandering &lt;a class="reference internal" href="#id9"&gt;[2]&lt;/a&gt;) and I learned a lot while
+the &lt;a class="reference external" href="jon_comment_axelrod.html"&gt;neural basis of mind-wandering&lt;/a&gt; , &lt;a class="reference internal" href="#id10"&gt;[2]&lt;/a&gt;) and I learned a lot while
 working on the paper, both about appropriate analyses for this kind of
 data and about the process of publishing such analyses in communitites
 that are not yet used to it. The technical details are pretty much
@@ -143,7 +143,7 @@ future. However, it has several&amp;nbsp;shortcomings:&lt;/p&gt;
 probably not subject to the same strict quality checks as the main
 paper (I often find typos and more serious errors in these&amp;nbsp;materials).&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Give that these supplemental materials are often the most important
+&lt;p&gt;Given that these supplemental materials are often the most important
 source of information when considering reproducibility of the research
 (especially in papers using the ultra-short format that is typical for
 high-impact journals), I think that their status should be
@@ -156,15 +156,58 @@ little stand-alone papers that get their own &lt;span class="caps"&gt;DOI&lt;/sp
 least directly&amp;nbsp;citable.&lt;/p&gt;
 &lt;hr class="docutils" /&gt;
 &lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
-&lt;p id="id8"&gt;[1] Høifødt R. S., Mittner M., Lillevoll K. R., Kolstrup N.,
+&lt;p id="id9"&gt;[1] Høifødt R. S., Mittner M., Lillevoll K. R., Kolstrup N.,
 Eisemann M., Friborg O., Waterloo K. (accepted).  Predictors of
 response to Web-based cognitive behavioral therapy with face-to-face
 therapist support for depression: A Bayesian analysis. &lt;em&gt;Journal of
 Medical Internet Research&lt;/em&gt;.&lt;/p&gt;
-&lt;p id="id9"&gt;[2] Mittner, M., Boekel, W., Tucker, A. M., Turner, B.M., Heathcote,
+&lt;p id="id10"&gt;[2] Mittner, M., Boekel, W., Tucker, A. M., Turner, B.M., Heathcote,
 A. and Forstmann, &lt;span class="caps"&gt;B.U.&lt;/span&gt;(2014). When the brain takes a break: A
 model-based analysis of mind wandering. &lt;em&gt;Journal of Neuroscience&lt;/em&gt;,&amp;nbsp;34(49):16286-95.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Matthias Mittner</dc:creator><pubDate>Wed, 02 Sep 2015 00:00:00 +0200</pubDate><guid>tag:ihrke.github.io,2015-09-02:new paper.html</guid><category>jags</category><category>R</category><category>bayes</category><category>paper</category></item><item><title>Fixing numerical underflow in WAIC calculation in Stan</title><link>http://ihrke.github.io/waic_stan.html</link><description>&lt;p&gt;I recently switched to the amazing software &lt;a class="reference external" href="http://mc-stan.org/index.html"&gt;Stan&lt;/a&gt; for my &lt;span class="caps"&gt;MCMC&lt;/span&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Matthias Mittner</dc:creator><pubDate>Wed, 02 Sep 2015 00:00:00 +0200</pubDate><guid>tag:ihrke.github.io,2015-09-02:new paper.html</guid><category>jags</category><category>R</category><category>bayes</category><category>paper</category></item><item><title>Commentary on our mind-wandering paper</title><link>http://ihrke.github.io/jon_comment_axelrod.html</link><description>&lt;a class="reference external image-reference" href="http://journal.frontiersin.org/article/10.3389/fncom.2015.00083/full#"&gt;&lt;img alt="" class="align-center" src="http://ihrke.github.io/pics/commentary_axelrod.png" style="width: 100%;" /&gt;&lt;/a&gt;
+&lt;p&gt;Vadim Axelrod and Andrei R. Teodorescu wrote an &lt;a class="reference external" href="http://journal.frontiersin.org/article/10.3389/fncom.2015.00083/full#"&gt;interesting
+commentary&lt;/a&gt; (&lt;a class="reference internal" href="#id3"&gt;[1]&lt;/a&gt;) on our &lt;a class="reference external" href="http://www.jneurosci.org/content/34/49/16286.abstract"&gt;recent mind-wandering paper&lt;/a&gt; that was
+published in The Journal of Neuroscience last year (&lt;a class="reference internal" href="#id4"&gt;[2]&lt;/a&gt;). I am
+happy that they are supportive of our approach and glad about the
+constructive comments that they give in their&amp;nbsp;paper.&lt;/p&gt;
+&lt;p&gt;I am particularly happy that someone has gone to the difficulty of
+summarizing and contextualizing our paper because I think that it is
+actually quite hard to read.  I think it is a strength of our paper
+that it combines complex from different modalities (fMRI, rsfMRI,
+pupil diameter, behaviour) with sophisticated analysis techniques
+(&lt;span class="caps"&gt;MVPA&lt;/span&gt; techniques, cognitive modeling, Bayesian stats). However, this
+particular feature makes the paper very hard to read, I think. I tried
+my best to prepare the paper in a readable way but found it quite
+challenging to present the paper in a both comprehensive and
+easy-to-read format. Axelrod &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Teodorescu&amp;#8217;s comment solves this
+problem for me because there is now an easy-to-read summary out there
+that is independent of our main paper and therefore does not have the
+obligation to comprehensively detail the used&amp;nbsp;methodology.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;I wish there was a commentary on all empirical&amp;nbsp;papers&amp;#8230;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;There is one more comment I&amp;#8217;d like to make regarding the commentary.
+In their comment, the authors focus on different model parameters that
+might be beneficial to study in the mind-wandering context. I do agree
+and I think the &lt;span class="caps"&gt;MW&lt;/span&gt; field should really dig deeper into the cognitive
+modeling research that has been done in other fields. For our own data
+however, it was not possible to focus on the parameters suggested by
+Axelrod and Teodorescu. As I commented in an e-mail to Vadim&amp;nbsp;Axelrod:&lt;/p&gt;
+&lt;blockquote&gt;
+As you note in one part of your paper, the stop-signal paradigm (at
+least the version we used) did not produce many behavioural errors
+which make it hard to constrain the more flexible models (such as
+those estimating between-trial variability). This was one of the
+reasons we pursued the relatively simple model we ended up with (and
+used a Bayesian hierarchical modeling approach for incorporating fits
+for subjects who did not have many errors).&lt;/blockquote&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
+&lt;p id="id3"&gt;[1] Axelrod V and Teodorescu &lt;span class="caps"&gt;AR&lt;/span&gt; (2015) Commentary: When the brain
+takes a break: a model-based analysis of mind
+wandering. &lt;em&gt;Front. Comput. Neurosci.&lt;/em&gt; 9:83. doi:&amp;nbsp;10.3389/fncom.2015.00083&lt;/p&gt;
+&lt;p id="id4"&gt;[2] Mittner, M., Boekel, W., Tucker, A. M., Turner, B.M., Heathcote,
+A. and Forstmann, &lt;span class="caps"&gt;B.U.&lt;/span&gt;(2014). When the brain takes a break: A
+model-based analysis of mind wandering. &lt;em&gt;Journal of Neuroscience&lt;/em&gt;,&amp;nbsp;34(49):16286-95.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Matthias Mittner</dc:creator><pubDate>Tue, 23 Jun 2015 00:00:00 +0200</pubDate><guid>tag:ihrke.github.io,2015-06-23:jon_comment_axelrod.html</guid><category>paper</category><category>mind-wandering</category><category>bayes</category><category>modeling</category></item><item><title>Fixing numerical underflow in WAIC calculation in Stan</title><link>http://ihrke.github.io/waic_stan.html</link><description>&lt;p&gt;I recently switched to the amazing software &lt;a class="reference external" href="http://mc-stan.org/index.html"&gt;Stan&lt;/a&gt; for my &lt;span class="caps"&gt;MCMC&lt;/span&gt;
 needs. Every now and then, it can be useful to compare different
 models using some kind of information criterion. Previously, I used
 the Deviance Information criterion (&lt;span class="caps"&gt;DIC&lt;/span&gt;; Spiegelhalter, 2002) because
