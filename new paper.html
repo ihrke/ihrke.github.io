@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Matthias Mittner" />
+        <meta name="copyright" content="Matthias Mittner" />
+    
+    <script type= "text/javascript">
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.src = 'https:' == document.location.protocol ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js' : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'; 
+        s[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" + 
+            "    config: ['MMLorHTML.js']," + 
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS','output/NativeMML']," +
+            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," + 
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    tex2jax: { " +
+            "        inlineMath: [ ['$','$'] ], " +
+            "        displayMath: [ ['$$','$$'] ]," +
+            "        processEscapes: true }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax .mo, .MathJax .mi': {color: 'black ! important'}} " +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(s);
+    </script>
+
+
+<meta name="keywords" content="jags, R, bayes, paper, bayes, " />
+        <title>Publishing Bayesian analyses in a medical journal  · Matthias Mittner's Homepage
+</title>
+		  <link rel="stylesheet" type="text/css" href="http://ihrke.github.io/theme/css/font-awesome.css" media="screen">
+		  <link rel="stylesheet" type="text/css" href="http://ihrke.github.io/theme/css/bootstrap-combined.min.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://ihrke.github.io/theme/css/elegant.css" media="screen">
+        <link href="http://ihrke.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Matthias Mittner's Homepage - Full Atom Feed" />
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://ihrke.github.io/"><span class=site-name>Matthias Mittner's Homepage</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://ihrke.github.io">Home</a></li>
+                            <li ><a href="http://ihrke.github.io/pages/about-me.html">About&nbsp;Me</a></li>
+                            <li ><a href="http://ihrke.github.io/pages/research.html">Research</a></li>
+                            <li><form class="navbar-search" action="http://ihrke.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+    <h1><a href="http://ihrke.github.io/new paper.html"> Publishing Bayesian analyses in a medical&nbsp;journal  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            <p>I am excited to announce that our paper <strong>Predictors of response to
+Web-based cognitive behavioral therapy with face-to-face therapist
+support for depression: A Bayesian analysis</strong> has been accepted for
+publication in the <a class="reference external" href="http://jmir.org">Journal of Medical Internet Research</a> (see
+<a class="reference internal" href="#id8">[1]</a> for the full citation).
+This paper is the result of a fruitful collaboration with <a class="reference external" href="https://uit.no/om/enhet/ansatte/person?p_document_id=42301&amp;p_dimension_id=88120">Martin
+Eisemann</a>&#8216;s research group for <a class="reference external" href="https://uit.no/forskning/forskningsgrupper/gruppe?p_document_id=345713">Mental e-Health</a> at the
+<a class="reference external" href="http://uit.no">University of Tromsø</a>.</p>
+<p>The project (that was led by soon-to-be-doctor <a class="reference external" href="https://uit.no/om/enhet/ansatte/person?p_document_id=56149&amp;p_dimension_id=88120">Ragnhild Høifødt</a>)
+attempted to find individual-level variables that could help to
+predict whether a web-based treatment for depression would be
+effective or not. While the actual finding in the paper are
+fascinating (and I do recommend that you read it!), here I would like
+to say a few words about my experiences about publishing the Bayesian
+analyses (that are promised in the title). This is my second paper
+that used entirely Bayesian statistics (my first one was a paper on
+the neural basis of mind-wandering <a class="reference internal" href="#id9">[2]</a>) and I learned a lot while
+working on the paper, both about appropriate analyses for this kind of
+data and about the process of publishing such analyses in communitites
+that are not yet used to it. The technical details are pretty much
+spelled out in the supplemental material (and, if you ask kindly, I am
+more than happy to share my R/<span class="caps">JAGS</span>&nbsp;code).</p>
+<p>One issue that was immediately obvious to me was the need for a proper
+documentation of the used models. It is all to common for papers in
+area to say something like &quot;linear mixed growth-models were used&quot;
+relying on the common language of the readership and assuming that
+everyone who will find this paper interesting in the future will
+immediately be able to infer exactly which analysis was run. I think
+this is a misconception. Even standard models have different names in
+different literatures and there are many different ways to calculate
+p-values, confidence intervals etc for more complicated statistical
+analyses. Also, standard methods can and will change in the future and
+it is not guaranteed that a researcher in the field twenty years in
+the future will be able to infer (and reproduce!) the exact analyses
+that were conducted.  While people get away with this sort of thing
+when using null-hypothesis-testing (presumably because at least the
+reviewers <span class="caps">DO</span> know which models have been run as there are limited
+options), a Bayesian model is individually tailored to its application
+and needs a careful description. I therefore wrote up the model in a
+very unusual format, detailing all used distributionary assumptions,
+parameter transformations, priors etc. The methods portion grew
+accordingly and it was pretty obvious that this would be a
+hard-to-read paper. Still, I did what I felt was the right thing and
+sent it out to <span class="caps">JMIR</span> for&nbsp;review.</p>
+<p>I was positively surprised by the generally positive attitude of the
+editor and the reviewers who welcomed the Bayesian approach. However,
+one of the reviewers mentioned&nbsp;that</p>
+<blockquote>
+[&#8230;] the justification of Bayesian methods seem somewhat
+over-enthuasiastic and perhaps unnecessarily dismissive of
+null-hypthesis testing (I am no fan of null-hypothesis testing
+either, but still had some doubts with regard to the way this was
+justified here). Bayesian methods are introduced as being
+&quot;preferable&quot;, &quot;more flexible&quot;, &quot;more readily interpretable&quot;; and so
+forth - but they also strike me (at least the way they are
+presented here) as complex to the point of seeming obsure (at least
+to the non-expert).</blockquote>
+<p>Fair enough &#8212; it took me 6 pages to detail the used models while most
+methods section in similar papers using traditional models use maybe a
+paragraph. Here is my&nbsp;response:</p>
+<blockquote>
+[&#8230;] the reviewer argues that Bayesian methods are perceived as
+being too complex or even obscure. We argue, that this perception
+is solely due to the conventional practice in publishing
+statistical analysis. A standardized frequentist analysis (e.g., a
+linear mixed model fit by <span class="caps">ML</span>) is easy to follow for the educated
+reader but this is solely because of the highly standardized nature
+of this type of analysis. A reader from a different field of study
+(where statistical nomenclature and standards may be different)
+will have a hard time reading a &quot;standard&quot; statistical analysis
+that are so familiar to us. We wrote the methods section in a way
+that it is comprehensible for a statistically educated reader from
+any field but we do acknowledge that this came at the cost of
+readability for more applied readers. If standard analyses would be
+reported in the same comprehensive way (discussing all hidden
+assumptions), the description would most certainly fill more pages
+than we used and seem quite obscure (given that many of the
+assumptions and concepts underlying <span class="caps">NHST</span> are much less intuitive
+than the Bayesian equivalents).</blockquote>
+<p>This is basically what I wrote above, if you want to write up all the
+details of traditional methods, the section would be just as long.
+Anyway, the reviewer went on to make some important points. In
+particular I found this statement&nbsp;interesting:</p>
+<blockquote>
+Moreover, a main argument for the Bayesian methods seems to be that
+they present a welcome shift away from arbitrary accepting or
+rejecting hypotheses based on whether the significance level of .05
+is achieved or not. If this is the case, then why present the
+&quot;Bayes Factor&quot; statistics, which seem to again introduce somewhat
+rigid guidelines as to when H1 or H0 is supported (e.g., Bayes
+Factor &gt; 10: &quot;strong evidence for H1&quot;). Wouldn&#8217;t a more
+conventional presentation of effect sizes and confidence intervals
+achieve the same purpose, but in a much more efficient manner (and
+one that might be more familiar to most readers, although
+&quot;familiarity is better&quot; is admittedly a very weak argument)?</blockquote>
+<p>It refers to Jeffrey&#8217;s table that assigns labels to different ranges
+the Bayes factor can take (<a class="reference external" href="https://en.wikipedia.org/wiki/Bayes_factor">it is on wikipedia</a>) and I agree that
+these labels should be taken with a grain of salt. Here is what I&nbsp;responded:</p>
+<blockquote>
+Bayes Factors quantify the degree of evidence that the data provides
+in favor of either the null- or the alternative hypothesis. It is thus
+fundamentally different from p-values (or confidence intervals, at
+that). However, the interpretation provided in Table 1 to which the
+reviewer objects is indeed not uncontroversial (similar tables with
+different wordings and different cut-off values have been
+proposed). We do not want to put too much emphasis at these labels but
+rather focus on the exact interpretation of the Bayes Factor: how much
+more likely one hypothesis is than the other.</blockquote>
+<p>I was, however, a little afronted by the suggestion that effect sizes
+and confidence intervals would carry the same information in a more
+efficient&nbsp;way:</p>
+<blockquote>
+The information contained in the <span class="caps">BF</span> is not identical to effect sizes
+and/or confidence intervals and we argue strongly that confidence
+intervals are neither more efficient nor more easily interpreted. In
+fact, research shows that confidence intervals are robustly
+misinterpreted even by trained researchers (Hoekstra et al., 2014). In
+their study, they asked a sample of psychological researchers
+conceptual questions about which questions confidence intervals could
+or could not answer and they found that 97 % of the researchers failed
+to correctly answer all questions (meaning that 97% of the researchers
+fell into at least one fallacy surrounding the interpretation of
+confidence intervals). We are of the opinion that Bayes Factors are
+far easier interpretable, by comparison.  As an alternative to effect
+sizes + confidence intervals, we do report the mode of the posterior
+distribution of the parameter estimates and their 95% highest density
+interval (the Bayesian equivalent of a confidence interval that is
+much less subject to misinterpretation) [&#8230;].</blockquote>
+<p>Also, in the meantime, I took the time to read Morey&#8217;s excellent paper
+<a class="reference external" href="https://learnbayes.org/papers/confidenceIntervalsFallacy/">The Fallacy of Placing Confidence in Confidence Intervals</a> wich
+contains some excellent and pedagogical examples how confidence
+intervals can be&nbsp;misleading.</p>
+<p>After long discussions, we concluded in outsourcing the technical
+details of the Bayesian analysis into a supplemental material and
+wrote a short, relatively superficial summary for the main paper. I
+think this is a rather nice way to trade off readability and
+comprehensibility and think that I will use this model in the
+future. However, it has several&nbsp;shortcomings:</p>
+<ol class="arabic simple">
+<li>the supplemental material is not itself&nbsp;citable</li>
+<li>while the supplemental material does undergo peer review, it is
+probably not subject to the same strict quality checks as the main
+paper (I often find typos and more serious errors in these&nbsp;materials).</li>
+</ol>
+<p>Give that these supplemental materials are often the most important
+source of information when considering reproducibility of the research
+(especially in papers using the ultra-short format that is typical for
+high-impact journals), I think that their status should be
+enhanced. One possibility would be to publish two versions of the same
+paper, one &quot;long&quot; version that includes all the details and a &quot;short&quot;
+version that does not. In todays world where no one actually prints
+full journals anymore (or does that still happen?), this should not be
+too much of a problem. A second method would be to make supplemental
+little stand-alone papers that get their own <span class="caps">DOI</span> such that they are at
+least directly&nbsp;citable.</p>
+<hr class="docutils" />
+<p><strong>References</strong></p>
+<p id="id8">[1] Høifødt R. S., Mittner M., Lillevoll K. R., Kolstrup N.,
+Eisemann M., Friborg O., Waterloo K. (accepted).  Predictors of
+response to Web-based cognitive behavioral therapy with face-to-face
+therapist support for depression: A Bayesian analysis. <em>Journal of
+Medical Internet Research</em>.</p>
+<p id="id9">[2] Mittner, M., Boekel, W., Tucker, A. M., Turner, B.M., Heathcote,
+A. and Forstmann, <span class="caps">B.U.</span>(2014). When the brain takes a break: A
+model-based analysis of mind wandering. <em>Journal of Neuroscience</em>,&nbsp;34(49):16286-95.</p>
+
+            <section>
+<div class="accordion" id="accordion2">
+    <div class="accordion-group">
+        <div class="accordion-heading">
+            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
+                href="http://ihrke.github.io/new paper.html#disqus_thread">
+                Comments
+            </a>
+        </div>
+        <div id="disqus_thread" class="accordion-body collapse">
+            <div class="accordion-inner">
+                <div class="comments">
+                    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'mmittnerwebsite';
+        var disqus_identifier = 'http://ihrke.github.io/new paper.html';
+    var disqus_url = 'http://ihrke.github.io/new paper.html';
+
+    (function() {
+         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+            <hr/>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2015-09-02T00:00:00+02:00">sep. 2, 2015</time>
+            <h4>Category</h4>
+            <a class="category-link" href="http://ihrke.github.io/categories.html#bayes-ref">bayes</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="http://ihrke.github.io/tags.html#bayes-ref">bayes
+                    <span>3</span>
+</a></li>
+                <li><a href="http://ihrke.github.io/tags.html#jags-ref">jags
+                    <span>2</span>
+</a></li>
+                <li><a href="http://ihrke.github.io/tags.html#paper-ref">paper
+                    <span>1</span>
+</a></li>
+                <li><a href="http://ihrke.github.io/tags.html#r-ref">R
+                    <span>3</span>
+</a></li>
+            </ul>
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+            <script type="text/javascript">
+var disqus_shortname = 'mmittnerwebsite';
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+<script  language="javascript" type="text/javascript">
+function uncollapse() {
+    if (window.location.hash.match(/^#comment-\d+$/)) {
+        $('#disqus_thread').collapse('show');
+    }
+}
+</script>
+<script type="text/javascript" language="JavaScript">
+uncollapse();
+window.onhashchange=function(){
+    if (window.location.hash.match(/^#comment-\d+$/))
+        window.location.reload(true);
+}
+</script>
+<script>
+$('#disqus_thread').on('shown', function () {
+    var link = document.getElementsByClassName('accordion-toggle');
+    var old_innerHTML = link[0].innerHTML;
+    $(link[0]).fadeOut(500, function() {
+        $(this).text('Click here to hide comments').fadeIn(500);
+    });
+    $('#disqus_thread').on('hidden', function () {
+        $(link[0]).fadeOut(500, function() {
+            $(this).text(old_innerHTML).fadeIn(500);
+        });
+    })
+})
+</script>
+
+
+    </body>
+</html>

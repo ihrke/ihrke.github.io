@@ -1,5 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Matthias Mittner's Homepage</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/matthias-mittner.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2015-06-16T00:00:00+02:00</updated><entry><title>Fixing numerical underflow in WAIC calculation in Stan</title><link href="http://ihrke.github.io/waic_stan.html" rel="alternate"></link><updated>2015-06-16T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2015-06-16:waic_stan.html</id><summary type="html">&lt;p&gt;I recently switched to the amazing software &lt;a class="reference external" href="http://mc-stan.org/index.html"&gt;Stan&lt;/a&gt; for my &lt;span class="caps"&gt;MCMC&lt;/span&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Matthias Mittner's Homepage</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/matthias-mittner.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2015-09-02T00:00:00+02:00</updated><entry><title>Publishing Bayesian analyses in a medical journal</title><link href="http://ihrke.github.io/new%20paper.html" rel="alternate"></link><updated>2015-09-02T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2015-09-02:new paper.html</id><summary type="html">&lt;p&gt;I am excited to announce that our paper &lt;strong&gt;Predictors of response to
+Web-based cognitive behavioral therapy with face-to-face therapist
+support for depression: A Bayesian analysis&lt;/strong&gt; has been accepted for
+publication in the &lt;a class="reference external" href="http://jmir.org"&gt;Journal of Medical Internet Research&lt;/a&gt; (see
+&lt;a class="reference internal" href="#id8"&gt;[1]&lt;/a&gt; for the full citation).
+This paper is the result of a fruitful collaboration with &lt;a class="reference external" href="https://uit.no/om/enhet/ansatte/person?p_document_id=42301&amp;amp;p_dimension_id=88120"&gt;Martin
+Eisemann&lt;/a&gt;&amp;#8216;s research group for &lt;a class="reference external" href="https://uit.no/forskning/forskningsgrupper/gruppe?p_document_id=345713"&gt;Mental e-Health&lt;/a&gt; at the
+&lt;a class="reference external" href="http://uit.no"&gt;University of Tromsø&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The project (that was led by soon-to-be-doctor &lt;a class="reference external" href="https://uit.no/om/enhet/ansatte/person?p_document_id=56149&amp;amp;p_dimension_id=88120"&gt;Ragnhild Høifødt&lt;/a&gt;)
+attempted to find individual-level variables that could help to
+predict whether a web-based treatment for depression would be
+effective or not. While the actual finding in the paper are
+fascinating (and I do recommend that you read it!), here I would like
+to say a few words about my experiences about publishing the Bayesian
+analyses (that are promised in the title). This is my second paper
+that used entirely Bayesian statistics (my first one was a paper on
+the neural basis of mind-wandering &lt;a class="reference internal" href="#id9"&gt;[2]&lt;/a&gt;) and I learned a lot while
+working on the paper, both about appropriate analyses for this kind of
+data and about the process of publishing such analyses in communitites
+that are not yet used to it. The technical details are pretty much
+spelled out in the supplemental material (and, if you ask kindly, I am
+more than happy to share my R/&lt;span class="caps"&gt;JAGS&lt;/span&gt;&amp;nbsp;code).&lt;/p&gt;
+&lt;p&gt;One issue that was immediately obvious to me was the need for a proper
+documentation of the used models. It is all to common for papers in
+area to say something like &amp;quot;linear mixed growth-models were used&amp;quot;
+relying on the common language of the readership and assuming that
+everyone who will find this paper interesting in the future will
+immediately be able to infer exactly which analysis was run. I think
+this is a misconception. Even standard models have different names in
+different literatures and there are many different ways to calculate
+p-values, confidence intervals etc for more complicated statistical
+analyses. Also, standard methods can and will change in the future and
+it is not guaranteed that a researcher in the field twenty years in
+the future will be able to infer (and reproduce!) the exact analyses
+that were conducted.  While people get away with this sort of thing
+when using null-hypothesis-testing (presumably because at least the
+reviewers &lt;span class="caps"&gt;DO&lt;/span&gt; know which models have been run as there are limited
+options), a Bayesian model is individually tailored to its application
+and needs a careful description. I therefore wrote up the model in a
+very unusual format, detailing all used distributionary assumptions,
+parameter transformations, priors etc. The methods portion grew
+accordingly and it was pretty obvious that this would be a
+hard-to-read paper. Still, I did what I felt was the right thing and
+sent it out to &lt;span class="caps"&gt;JMIR&lt;/span&gt; for&amp;nbsp;review.&lt;/p&gt;
+&lt;p&gt;I was positively surprised by the generally positive attitude of the
+editor and the reviewers who welcomed the Bayesian approach. However,
+one of the reviewers mentioned&amp;nbsp;that&lt;/p&gt;
+&lt;blockquote&gt;
+[&amp;#8230;] the justification of Bayesian methods seem somewhat
+over-enthuasiastic and perhaps unnecessarily dismissive of
+null-hypthesis testing (I am no fan of null-hypothesis testing
+either, but still had some doubts with regard to the way this was
+justified here). Bayesian methods are introduced as being
+&amp;quot;preferable&amp;quot;, &amp;quot;more flexible&amp;quot;, &amp;quot;more readily interpretable&amp;quot;; and so
+forth - but they also strike me (at least the way they are
+presented here) as complex to the point of seeming obsure (at least
+to the non-expert).&lt;/blockquote&gt;
+&lt;p&gt;Fair enough &amp;#8212; it took me 6 pages to detail the used models while most
+methods section in similar papers using traditional models use maybe a
+paragraph. Here is my&amp;nbsp;response:&lt;/p&gt;
+&lt;blockquote&gt;
+[&amp;#8230;] the reviewer argues that Bayesian methods are perceived as
+being too complex or even obscure. We argue, that this perception
+is solely due to the conventional practice in publishing
+statistical analysis. A standardized frequentist analysis (e.g., a
+linear mixed model fit by &lt;span class="caps"&gt;ML&lt;/span&gt;) is easy to follow for the educated
+reader but this is solely because of the highly standardized nature
+of this type of analysis. A reader from a different field of study
+(where statistical nomenclature and standards may be different)
+will have a hard time reading a &amp;quot;standard&amp;quot; statistical analysis
+that are so familiar to us. We wrote the methods section in a way
+that it is comprehensible for a statistically educated reader from
+any field but we do acknowledge that this came at the cost of
+readability for more applied readers. If standard analyses would be
+reported in the same comprehensive way (discussing all hidden
+assumptions), the description would most certainly fill more pages
+than we used and seem quite obscure (given that many of the
+assumptions and concepts underlying &lt;span class="caps"&gt;NHST&lt;/span&gt; are much less intuitive
+than the Bayesian equivalents).&lt;/blockquote&gt;
+&lt;p&gt;This is basically what I wrote above, if you want to write up all the
+details of traditional methods, the section would be just as long.
+Anyway, the reviewer went on to make some important points. In
+particular I found this statement&amp;nbsp;interesting:&lt;/p&gt;
+&lt;blockquote&gt;
+Moreover, a main argument for the Bayesian methods seems to be that
+they present a welcome shift away from arbitrary accepting or
+rejecting hypotheses based on whether the significance level of .05
+is achieved or not. If this is the case, then why present the
+&amp;quot;Bayes Factor&amp;quot; statistics, which seem to again introduce somewhat
+rigid guidelines as to when H1 or H0 is supported (e.g., Bayes
+Factor &amp;gt; 10: &amp;quot;strong evidence for H1&amp;quot;). Wouldn&amp;#8217;t a more
+conventional presentation of effect sizes and confidence intervals
+achieve the same purpose, but in a much more efficient manner (and
+one that might be more familiar to most readers, although
+&amp;quot;familiarity is better&amp;quot; is admittedly a very weak argument)?&lt;/blockquote&gt;
+&lt;p&gt;It refers to Jeffrey&amp;#8217;s table that assigns labels to different ranges
+the Bayes factor can take (&lt;a class="reference external" href="https://en.wikipedia.org/wiki/Bayes_factor"&gt;it is on wikipedia&lt;/a&gt;) and I agree that
+these labels should be taken with a grain of salt. Here is what I&amp;nbsp;responded:&lt;/p&gt;
+&lt;blockquote&gt;
+Bayes Factors quantify the degree of evidence that the data provides
+in favor of either the null- or the alternative hypothesis. It is thus
+fundamentally different from p-values (or confidence intervals, at
+that). However, the interpretation provided in Table 1 to which the
+reviewer objects is indeed not uncontroversial (similar tables with
+different wordings and different cut-off values have been
+proposed). We do not want to put too much emphasis at these labels but
+rather focus on the exact interpretation of the Bayes Factor: how much
+more likely one hypothesis is than the other.&lt;/blockquote&gt;
+&lt;p&gt;I was, however, a little afronted by the suggestion that effect sizes
+and confidence intervals would carry the same information in a more
+efficient&amp;nbsp;way:&lt;/p&gt;
+&lt;blockquote&gt;
+The information contained in the &lt;span class="caps"&gt;BF&lt;/span&gt; is not identical to effect sizes
+and/or confidence intervals and we argue strongly that confidence
+intervals are neither more efficient nor more easily interpreted. In
+fact, research shows that confidence intervals are robustly
+misinterpreted even by trained researchers (Hoekstra et al., 2014). In
+their study, they asked a sample of psychological researchers
+conceptual questions about which questions confidence intervals could
+or could not answer and they found that 97 % of the researchers failed
+to correctly answer all questions (meaning that 97% of the researchers
+fell into at least one fallacy surrounding the interpretation of
+confidence intervals). We are of the opinion that Bayes Factors are
+far easier interpretable, by comparison.  As an alternative to effect
+sizes + confidence intervals, we do report the mode of the posterior
+distribution of the parameter estimates and their 95% highest density
+interval (the Bayesian equivalent of a confidence interval that is
+much less subject to misinterpretation) [&amp;#8230;].&lt;/blockquote&gt;
+&lt;p&gt;Also, in the meantime, I took the time to read Morey&amp;#8217;s excellent paper
+&lt;a class="reference external" href="https://learnbayes.org/papers/confidenceIntervalsFallacy/"&gt;The Fallacy of Placing Confidence in Confidence Intervals&lt;/a&gt; wich
+contains some excellent and pedagogical examples how confidence
+intervals can be&amp;nbsp;misleading.&lt;/p&gt;
+&lt;p&gt;After long discussions, we concluded in outsourcing the technical
+details of the Bayesian analysis into a supplemental material and
+wrote a short, relatively superficial summary for the main paper. I
+think this is a rather nice way to trade off readability and
+comprehensibility and think that I will use this model in the
+future. However, it has several&amp;nbsp;shortcomings:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;the supplemental material is not itself&amp;nbsp;citable&lt;/li&gt;
+&lt;li&gt;while the supplemental material does undergo peer review, it is
+probably not subject to the same strict quality checks as the main
+paper (I often find typos and more serious errors in these&amp;nbsp;materials).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Give that these supplemental materials are often the most important
+source of information when considering reproducibility of the research
+(especially in papers using the ultra-short format that is typical for
+high-impact journals), I think that their status should be
+enhanced. One possibility would be to publish two versions of the same
+paper, one &amp;quot;long&amp;quot; version that includes all the details and a &amp;quot;short&amp;quot;
+version that does not. In todays world where no one actually prints
+full journals anymore (or does that still happen?), this should not be
+too much of a problem. A second method would be to make supplemental
+little stand-alone papers that get their own &lt;span class="caps"&gt;DOI&lt;/span&gt; such that they are at
+least directly&amp;nbsp;citable.&lt;/p&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
+&lt;p id="id8"&gt;[1] Høifødt R. S., Mittner M., Lillevoll K. R., Kolstrup N.,
+Eisemann M., Friborg O., Waterloo K. (accepted).  Predictors of
+response to Web-based cognitive behavioral therapy with face-to-face
+therapist support for depression: A Bayesian analysis. &lt;em&gt;Journal of
+Medical Internet Research&lt;/em&gt;.&lt;/p&gt;
+&lt;p id="id9"&gt;[2] Mittner, M., Boekel, W., Tucker, A. M., Turner, B.M., Heathcote,
+A. and Forstmann, &lt;span class="caps"&gt;B.U.&lt;/span&gt;(2014). When the brain takes a break: A
+model-based analysis of mind wandering. &lt;em&gt;Journal of Neuroscience&lt;/em&gt;,&amp;nbsp;34(49):16286-95.&lt;/p&gt;
+</summary><category term="jags"></category><category term="R"></category><category term="bayes"></category><category term="paper"></category></entry><entry><title>Fixing numerical underflow in WAIC calculation in Stan</title><link href="http://ihrke.github.io/waic_stan.html" rel="alternate"></link><updated>2015-06-16T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2015-06-16:waic_stan.html</id><summary type="html">&lt;p&gt;I recently switched to the amazing software &lt;a class="reference external" href="http://mc-stan.org/index.html"&gt;Stan&lt;/a&gt; for my &lt;span class="caps"&gt;MCMC&lt;/span&gt;
 needs. Every now and then, it can be useful to compare different
 models using some kind of information criterion. Previously, I used
 the Deviance Information criterion (&lt;span class="caps"&gt;DIC&lt;/span&gt;; Spiegelhalter, 2002) because
