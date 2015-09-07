@@ -1,5 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Matthias Mittner's Homepage</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/matthias-mittner.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2015-09-02T00:00:00+02:00</updated><entry><title>Publishing Bayesian analyses in a medical journal</title><link href="http://ihrke.github.io/new%20paper.html" rel="alternate"></link><updated>2015-09-02T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2015-09-02:new paper.html</id><summary type="html">&lt;a class="reference external image-reference" href="http://www.jmir.org/2015/9/e197/"&gt;&lt;img alt="" class="align-center" src="http://ihrke.github.io/pics/moodgym.png" style="width: 60%;" /&gt;&lt;/a&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Matthias Mittner's Homepage</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/matthias-mittner.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2015-09-07T00:00:00+02:00</updated><entry><title>Stuff you need to know as new (foreign) employee at University of Tromsø</title><link href="http://ihrke.github.io/stuff%20to%20know%20as%20a%20foreigner%20at%20uit.html" rel="alternate"></link><updated>2015-09-07T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2015-09-07:stuff to know as a foreigner at uit.html</id><summary type="html">&lt;p&gt;Even more than a year after moving to the best city on earth, &lt;a class="reference external" href="http://www.tromso.kommune.no/"&gt;Tromsø&lt;/a&gt;,
+and beginning to work at the best university in the country, the
+&lt;a class="reference external" href="http://uit.no"&gt;University of Tromsø&lt;/a&gt;, I stumble across new stuff
+that I wish I would have known earlier. Some of it is probably most
+interesting to foreigners, but most of it might be of interest to you,
+the Norwegian, as well&amp;nbsp;:-)&lt;/p&gt;
+&lt;p&gt;I will use this blog post to keep an updated list of these things (so
+check back for new&amp;nbsp;entries):&lt;/p&gt;
+&lt;div class="section" id="a-good-norwegian-dictionary"&gt;
+&lt;h2&gt;A &lt;strong&gt;good&lt;/strong&gt;, Norwegian&amp;nbsp;dictionary&lt;/h2&gt;
+&lt;p&gt;Yes, there is &lt;a class="reference external" href="http://heinzelnisse.info"&gt;heinzelnisse&lt;/a&gt; for germans
+and &lt;a class="reference external" href="http://dict.cc"&gt;dict.cc&lt;/a&gt; for many other languages but these
+dictionaries are &lt;strong&gt;far&lt;/strong&gt; from good. If you are advanced, you can try
+the very comprehensive &lt;a class="reference external" href="http://www.nob-ordbok.uio.no/"&gt;Bokmålsordboka&lt;/a&gt;  (or the &lt;a class="reference external" href="http://www.nob-ordbok.uio.no/"&gt;Nynorskordboka&lt;/a&gt; if you
+are into that sort of thing) but I often fail to understand
+the gist of the short explanations offered (it&amp;#8217;s norsk-norsk
+only). There is also something called &lt;a class="reference external" href="http://www.ordnett.no/"&gt;ordnett&lt;/a&gt; which is available
+through the university&amp;#8217;s subscription but I found it frustratingly bad
+(unusable interface and funny search&amp;nbsp;results).&lt;/p&gt;
+&lt;p&gt;But today, I found the perfect solution: &lt;a class="reference external" href="https://clue.no/"&gt;Clue&lt;/a&gt;.&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;free for employees (&lt;a class="reference external" href="https://uit.no/om/orakelet/frag?p_document_id=318424"&gt;instructions for access&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;many&amp;nbsp;languages&lt;/li&gt;
+&lt;li&gt;most complete I have seen so&amp;nbsp;far&lt;/li&gt;
+&lt;li&gt;usable from: &lt;a class="reference external" href="http://clue-online.no"&gt;the web&lt;/a&gt;, mobile phone and&amp;nbsp;desktop&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="data-sharing-with-other-people-around-the-globe"&gt;
+&lt;h2&gt;Data-sharing with other people around the&amp;nbsp;globe&lt;/h2&gt;
+&lt;p&gt;This is really cool: &lt;a class="reference external" href="http://www.uit.no"&gt;UiT&lt;/a&gt; has an unlimited-usage account with
+&lt;a class="reference external" href="http://www.box.com"&gt;box.com&lt;/a&gt;. This is a service that works pretty much like Dropbox or
+Google Drive but has much cooler collaboration/sharing/download
+options and unlimited (say that again?) space! &lt;a class="reference external" href="https://uit.no/om/orakelet/frag?p_document_id=391981"&gt;Here are UiT&amp;#8217;s
+instructions&lt;/a&gt;
+on how to set up your computer to use&amp;nbsp;it.&lt;/p&gt;
+&lt;p&gt;There is excellent for data-sharing with people from all over the
+world, for data-archiving (unlimited, remember?!) and even for keeping
+your home and work computer in&amp;nbsp;sync.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="letter-template-for-university-letters"&gt;
+&lt;h2&gt;Letter template for university&amp;nbsp;letters&lt;/h2&gt;
+&lt;p&gt;Ok, this is a bit more nerdy as I write everything that I ever write
+in &lt;a class="reference external" href="http://www.latex-project.org/"&gt;LaTeX&lt;/a&gt;. I wanted to have a template for writing official letters
+(including university&amp;#8217;s logo etc). I ony found this &lt;a class="reference external" href="https://uit.no/ansatte/grafiskprofil/artikkel?p_document_id=150251"&gt;clearly outdated
+template&lt;/a&gt;
+for &lt;span class="caps"&gt;MS&lt;/span&gt; Word and used some letters I received to come up with a nice
+&lt;a class="reference external" href="http://www.latex-project.org/"&gt;LaTeX&lt;/a&gt; template myself. &lt;a class="reference external" href="https://source.uit.no/matthias.mittner/letter_templates/tree/master"&gt;Here is a link&lt;/a&gt;
+to the templates (english and norwegian versions) and &lt;a class="reference external" href="share/letter_template.pdf"&gt;this is what it
+looks like&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Here is how to access the git-repo for you who is from&amp;nbsp;nerd-land:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;
+git clone git&amp;#64;source.uit.no:matthias.mittner/letter_templates.git
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class="section" id="big-computation"&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;BIG&lt;/span&gt;&amp;nbsp;computation&lt;/h2&gt;
+&lt;p&gt;Ok, another entry for nerd-people. &lt;a class="reference external" href="http://www.uit.no"&gt;UiT&lt;/a&gt; has a really good &lt;span class="caps"&gt;HPC&lt;/span&gt; cluster,
+&lt;a class="reference external" href="https://www.notur.no/hardware/stallo"&gt;stallo&lt;/a&gt;, that is readily accessible for &lt;a class="reference external" href="http://www.uit.no"&gt;UiT&lt;/a&gt; employees. You will have
+to fill out an &lt;a class="reference external" href="http://docs.notur.no/uit/stallo_documentation/user_guide/introduction"&gt;online-application&lt;/a&gt;
+(takes 5 minutes) and you will quickly get access by the very helpful
+administrators. You will be using &lt;a class="reference external" href="https://www.notur.no/hardware/stallo"&gt;stallo&lt;/a&gt;&amp;#8216;s queuing system, which may
+need some getting used to (read the&amp;nbsp;docs!).&lt;/p&gt;
+&lt;p&gt;Here is &lt;a class="reference external" href="https://www.notur.no/hardware/stallo"&gt;stallo&lt;/a&gt; &amp;#8216;s documentation: &lt;a class="reference external" href="http://docs.notur.no/uit/stallo_documentation"&gt;link&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="org"></category></entry><entry><title>Publishing Bayesian analyses in a medical journal</title><link href="http://ihrke.github.io/new%20paper.html" rel="alternate"></link><updated>2015-09-02T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2015-09-02:new paper.html</id><summary type="html">&lt;a class="reference external image-reference" href="http://www.jmir.org/2015/9/e197/"&gt;&lt;img alt="" class="align-center" src="http://ihrke.github.io/pics/moodgym.png" style="width: 60%;" /&gt;&lt;/a&gt;
 &lt;p&gt;I am excited to announce that our paper &lt;a class="reference external" href="http://www.jmir.org/2015/9/e197/"&gt;Predictors of response to
 Web-based cognitive behavioral therapy with face-to-face therapist
 support for depression: A Bayesian analysis&lt;/a&gt; has been accepted for
