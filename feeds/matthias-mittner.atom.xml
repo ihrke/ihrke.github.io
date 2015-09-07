@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Matthias Mittner's Homepage</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/matthias-mittner.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2015-09-02T00:00:00+02:00</updated><entry><title>Publishing Bayesian analyses in a medical journal</title><link href="http://ihrke.github.io/new%20paper.html" rel="alternate"></link><updated>2015-09-02T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2015-09-02:new paper.html</id><summary type="html">&lt;p&gt;I am excited to announce that our paper &lt;strong&gt;Predictors of response to
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Matthias Mittner's Homepage</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/matthias-mittner.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2015-09-02T00:00:00+02:00</updated><entry><title>Publishing Bayesian analyses in a medical journal</title><link href="http://ihrke.github.io/new%20paper.html" rel="alternate"></link><updated>2015-09-02T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2015-09-02:new paper.html</id><summary type="html">&lt;a class="reference external image-reference" href="http://www.jmir.org/2015/9/e197/"&gt;&lt;img alt="" class="align-center" src="http://ihrke.github.io/pics/moodgym.png" style="width: 60%;" /&gt;&lt;/a&gt;
+&lt;p&gt;I am excited to announce that our paper &lt;a class="reference external" href="http://www.jmir.org/2015/9/e197/"&gt;Predictors of response to
 Web-based cognitive behavioral therapy with face-to-face therapist
-support for depression: A Bayesian analysis&lt;/strong&gt; has been accepted for
+support for depression: A Bayesian analysis&lt;/a&gt; has been accepted for
 publication in the &lt;a class="reference external" href="http://jmir.org"&gt;Journal of Medical Internet Research&lt;/a&gt; (see
-&lt;a class="reference internal" href="#id9"&gt;[1]&lt;/a&gt; for the full citation).
+&lt;a class="reference internal" href="#id10"&gt;[1]&lt;/a&gt; for the full citation).
 This paper is the result of a fruitful collaboration with &lt;a class="reference external" href="https://uit.no/om/enhet/ansatte/person?p_document_id=42301&amp;amp;p_dimension_id=88120"&gt;Martin
 Eisemann&lt;/a&gt;&amp;#8216;s research group for &lt;a class="reference external" href="https://uit.no/forskning/forskningsgrupper/gruppe?p_document_id=345713"&gt;Mental e-Health&lt;/a&gt; at the
 &lt;a class="reference external" href="http://uit.no"&gt;University of Tromsø&lt;/a&gt;.&lt;/p&gt;
@@ -15,7 +16,7 @@ fascinating (and I do recommend that you read it!), here I would like
 to say a few words about my experiences about publishing the Bayesian
 analyses (that are promised in the title). This is my second paper
 that used entirely Bayesian statistics (my first one was a paper on
-the &lt;a class="reference external" href="jon_comment_axelrod.html"&gt;neural basis of mind-wandering&lt;/a&gt; , &lt;a class="reference internal" href="#id10"&gt;[2]&lt;/a&gt;) and I learned a lot while
+the &lt;a class="reference external" href="jon_comment_axelrod.html"&gt;neural basis of mind-wandering&lt;/a&gt; , &lt;a class="reference internal" href="#id11"&gt;[2]&lt;/a&gt;) and I learned a lot while
 working on the paper, both about appropriate analyses for this kind of
 data and about the process of publishing such analyses in communitites
 that are not yet used to it. The technical details are pretty much
@@ -156,12 +157,12 @@ little stand-alone papers that get their own &lt;span class="caps"&gt;DOI&lt;/sp
 least directly&amp;nbsp;citable.&lt;/p&gt;
 &lt;hr class="docutils" /&gt;
 &lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
-&lt;p id="id9"&gt;[1] Høifødt R. S., Mittner M., Lillevoll K. R., Kolstrup N.,
-Eisemann M., Friborg O., Waterloo K. (accepted).  Predictors of
-response to Web-based cognitive behavioral therapy with face-to-face
-therapist support for depression: A Bayesian analysis. &lt;em&gt;Journal of
-Medical Internet Research&lt;/em&gt;.&lt;/p&gt;
-&lt;p id="id10"&gt;[2] Mittner, M., Boekel, W., Tucker, A. M., Turner, B.M., Heathcote,
+&lt;p id="id10"&gt;[1] Høifødt &lt;span class="caps"&gt;RS&lt;/span&gt;, Mittner M, Lillevoll K, Katla &lt;span class="caps"&gt;SK&lt;/span&gt;, Kolstrup N, Eisemann
+M, Friborg O, Waterloo K Predictors of Response to Web-Based Cognitive
+Behavioral Therapy With High-Intensity Face-to-Face Therapist Guidance
+for Depression: A Bayesian Analysis J Med Internet Res 2015;17(9):e197
+&lt;span class="caps"&gt;URL&lt;/span&gt;: &lt;a class="reference external" href="http://www.jmir.org/2015/9/e197"&gt;http://www.jmir.org/2015/9/e197&lt;/a&gt; &lt;span class="caps"&gt;DOI&lt;/span&gt;: 10.2196/jmir.4351 &lt;span class="caps"&gt;PMID&lt;/span&gt;:&amp;nbsp;26333818&lt;/p&gt;
+&lt;p id="id11"&gt;[2] Mittner, M., Boekel, W., Tucker, A. M., Turner, B.M., Heathcote,
 A. and Forstmann, &lt;span class="caps"&gt;B.U.&lt;/span&gt;(2014). When the brain takes a break: A
 model-based analysis of mind wandering. &lt;em&gt;Journal of Neuroscience&lt;/em&gt;,&amp;nbsp;34(49):16286-95.&lt;/p&gt;
 </summary><category term="jags"></category><category term="R"></category><category term="bayes"></category><category term="paper"></category></entry><entry><title>Commentary on our mind-wandering paper</title><link href="http://ihrke.github.io/jon_comment_axelrod.html" rel="alternate"></link><updated>2015-06-23T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2015-06-23:jon_comment_axelrod.html</id><summary type="html">&lt;a class="reference external image-reference" href="http://journal.frontiersin.org/article/10.3389/fncom.2015.00083/full#"&gt;&lt;img alt="" class="align-center" src="http://ihrke.github.io/pics/commentary_axelrod.png" style="width: 100%;" /&gt;&lt;/a&gt;
