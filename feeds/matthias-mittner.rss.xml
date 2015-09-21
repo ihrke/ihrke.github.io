@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Matthias Mittner's Homepage</title><link>http://ihrke.github.io/</link><description></description><atom:link href="http://ihrke.github.io/feeds/matthias-mittner.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 07 Sep 2015 00:00:00 +0200</lastBuildDate><item><title>Stuff you need to know as new (foreign) employee at University of Tromsø</title><link>http://ihrke.github.io/stuff%20to%20know%20as%20a%20foreigner%20at%20uit.html</link><description>&lt;p&gt;Even more than a year after moving to the best city on earth, &lt;a class="reference external" href="http://www.tromso.kommune.no/"&gt;Tromsø&lt;/a&gt;,
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Random Research (Ruminations)</title><link>http://ihrke.github.io/</link><description></description><atom:link href="http://ihrke.github.io/feeds/matthias-mittner.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 21 Sep 2015 00:00:00 +0200</lastBuildDate><item><title>New paper: Toward a model-based cognitive neuroscience of mind wandering</title><link>http://ihrke.github.io/new%20review%20paper.html</link><description>&lt;a class="reference external image-reference" href="http://www.journals.elsevier.com/neuroscience/"&gt;&lt;img alt="" class="align-center" src="http://ihrke.github.io/pics/tutclass_framework.png" style="width: 60%;" /&gt;&lt;/a&gt;
+&lt;p&gt;I am happy to announce that our review paper on a model-based
+cognitive neuroscience approach to the study of mind-wandering has
+been accepted for publication in &lt;a class="reference external" href="http://www.journals.elsevier.com/neuroscience/"&gt;Neuroscience&lt;/a&gt;, &lt;a class="reference internal" href="#id1"&gt;[1]&lt;/a&gt;. This paper
+summarizes many of the theoretical ideas that we have been discussing
+in our group for quite some time and also reviews and integrates the
+research done so far. Actually, the number of research papers actually
+using cognitive process models to investigate mind wandering has been
+quite rare (e.g., Bastian &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; Sackgur, 2013 &lt;a class="reference internal" href="#id2"&gt;[2]&lt;/a&gt; and our &lt;a class="reference external" href="jon_comment_axelrod.html"&gt;own paper&lt;/a&gt;, &lt;a class="reference internal" href="#id3"&gt;[3]&lt;/a&gt;) but there are a few instances
+where we can reinterpret the results in terms of mind wandering. I am
+really excited about the regression-based approach that is outlined in
+the paper and we are working on implementing this kind of model at the
+moment. Expect more in that direction&amp;nbsp;soon!&lt;/p&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
+&lt;p id="id1"&gt;[1] Hawkins G. E., Mittner, M., Boekel, W., Heathcote, A. and Forstmann,
+&lt;span class="caps"&gt;B.U.&lt;/span&gt;(accepted). Toward a model-based cognitive neuroscience of mind
+wandering. &lt;em&gt;Neuroscience&lt;/em&gt;.&lt;/p&gt;
+&lt;p id="id2"&gt;[2] Bastian M and Sackur J (2013) Mind wandering at the fingertips:
+automatic parsing of subjective states based on response time
+variability. Front. Psychol. 4:573. doi:&amp;nbsp;10.3389/fpsyg.2013.00573&lt;/p&gt;
+&lt;p id="id3"&gt;[2] Mittner, M., Boekel, W., Tucker, A. M., Turner, B.M., Heathcote,
+A. and Forstmann, &lt;span class="caps"&gt;B.U.&lt;/span&gt;(2014). When the brain takes a break: A
+model-based analysis of mind wandering. &lt;em&gt;Journal of Neuroscience&lt;/em&gt;,&amp;nbsp;34(49):16286-95.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Matthias Mittner</dc:creator><pubDate>Mon, 21 Sep 2015 00:00:00 +0200</pubDate><guid>tag:ihrke.github.io,2015-09-21:new review paper.html</guid><category>paper</category><category>review</category></item><item><title>Stuff you need to know as new (foreign) employee at University of Tromsø</title><link>http://ihrke.github.io/stuff%20to%20know%20as%20a%20foreigner%20at%20uit.html</link><description>&lt;p&gt;Even more than a year after moving to the best city on earth, &lt;a class="reference external" href="http://www.tromso.kommune.no/"&gt;Tromsø&lt;/a&gt;,
 and beginning to work at the best university in the country, the
 &lt;a class="reference external" href="http://uit.no"&gt;University of Tromsø&lt;/a&gt;, I stumble across new stuff
 that I wish I would have known earlier. Some of it is probably most
