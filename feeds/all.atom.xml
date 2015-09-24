@@ -1,5 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Random Research (Ruminations)</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2015-09-21T00:00:00+02:00</updated><entry><title>New paper: Toward a model-based cognitive neuroscience of mind wandering</title><link href="http://ihrke.github.io/new%20review%20paper.html" rel="alternate"></link><updated>2015-09-21T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2015-09-21:new review paper.html</id><summary type="html">&lt;a class="reference external image-reference" href="http://www.journals.elsevier.com/neuroscience/"&gt;&lt;img alt="" class="align-center" src="http://ihrke.github.io/pics/tutclass_framework.png" style="width: 60%;" /&gt;&lt;/a&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Random Research (Ruminations)</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/all.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2015-09-24T00:00:00+02:00</updated><entry><title>Conda for handling R dependencies</title><link href="http://ihrke.github.io/conda.html" rel="alternate"></link><updated>2015-09-24T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2015-09-24:conda.html</id><summary type="html">&lt;p&gt;Every now and then, I stumble across the case that I want to return to
+some analysis I have been doing some time in the past only to find out
+that recent developments and package updates totally break my
+scripts. In the python world, I have been relying on &lt;a class="reference external" href="https://virtualenv.pypa.io/en/latest/"&gt;virtualenv&lt;/a&gt; for
+quite some time and it works very well: On the computer I do the work,
+I create a virtualenv which I enable for development. My backups do
+not contain this but simply the project files (where I document in the
+&lt;span class="caps"&gt;README&lt;/span&gt; which virtualenv is needed). When I need to run the scripts on
+a different computer, I just use &lt;code class="bash"&gt;pip freeze &amp;gt; requirements.txt&lt;/code&gt; from
+within the virtualenv and restore it by &lt;code class="bash"&gt;pip install -r
+requirements.txt&lt;/code&gt;. This has worked so far and I have not been bitten
+by any&amp;nbsp;incompatibilities.&lt;/p&gt;
+&lt;p&gt;Recently, I have been relying more and more on &lt;a class="reference external" href="http://r-project.org"&gt;R&lt;/a&gt; and wanted a similar
+solution for that (actually, R packages change so fast, that it&amp;#8217;s
+almost suicide not to do it). I found that &lt;a class="reference external" href="https://rstudio.github.io/packrat/"&gt;packrat&lt;/a&gt; is supposed to be
+the tool for the job. So I tried it and it has resulted in nothing but&amp;nbsp;frustration:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;It&amp;#8217;s &lt;span class="caps"&gt;NOT&lt;/span&gt; possible to have different versions of the&amp;nbsp;R-interpreter&lt;/li&gt;
+&lt;li&gt;The complete library of packages is inevitably stored in the
+project-directory and automatically loaded once an R-interpreter is
+started in this directory (so I need to sync hundreds of MBs for
+that, especially if I run it on different operating&amp;nbsp;systems).&lt;/li&gt;
+&lt;li&gt;The system failed my completely when I was trying to sync between
+our computing server and my desktop. Both systems run linux and so
+packrat on the cluster was just trying to reuse the compiled
+binaries but failed miserably because a differeng &lt;cite&gt;glibc&lt;/cite&gt; version
+had been used for compiling the cluster R and the packages on my&amp;nbsp;desktop.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Anyway, I quickly dropped this solution as impractical for my
+use-cases. That&amp;#8217;s when I stumbled across &lt;a class="reference external" href="http://conda.pydata.org/docs/"&gt;conda&lt;/a&gt; which appears to offer
+all I need: Language-agnostic virtual environments. The article &lt;a class="reference external" href="http://continuum.io/blog/conda-data-science"&gt;over
+here&lt;/a&gt; convinced me even
+more because you just have to build a file &lt;code&gt;environment.yml&lt;/code&gt;
+that can be used by anyone to directly create your environment in one
+go (using builds that, possibly, you have to store on your own
+namespace on the &lt;a class="reference external" href="https://anaconda.org"&gt;anaconda&lt;/a&gt; server). I am not yet sure that &lt;a class="reference external" href="http://conda.pydata.org/docs/"&gt;conda&lt;/a&gt; is
+going to be the right tool for me but I thought I&amp;#8217;d log some of the
+ups and owns while working with it for future&amp;nbsp;reference.&lt;/p&gt;
+&lt;p&gt;So here is a log on how to do different&amp;nbsp;things:&lt;/p&gt;
+&lt;div class="section" id="setup"&gt;
+&lt;h2&gt;Setup&lt;/h2&gt;
+&lt;p&gt;Download and install &lt;a class="reference external" href="http://conda.pydata.org/miniconda.html"&gt;miniconda&lt;/a&gt; which is a bare-bones version of &lt;a class="reference external" href="http://conda.pydata.org/docs/"&gt;conda&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
+bash Miniconda-latest-Linux-x86_64.sh
+conda update conda
+conda install anaconda-client anaconda-build conda-build
+&lt;/pre&gt;
+&lt;p&gt;Add anaconda channel for &lt;a class="reference external" href="http://r-project.org"&gt;R&lt;/a&gt;&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+conda config --add channels r
+&lt;/pre&gt;
+&lt;p&gt;Install &lt;a class="reference external" href="http://r-project.org"&gt;R&lt;/a&gt; and, if wanted, the &amp;quot;essential&amp;quot;&amp;nbsp;packages&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+conda install r r-essential
+&lt;/pre&gt;
+&lt;p&gt;Create an account at &lt;a class="reference external" href="https://anaconda.org"&gt;anaconda&lt;/a&gt; (you will need it to make packages that
+are not in conda&amp;#8217;s default &lt;a class="reference external" href="https://anaconda.org/R"&gt;R-repo&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;This will create a &amp;quot;namespace&amp;quot; for your chosen username which you can
+use to capture packages with individual versions&amp;nbsp;etc.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="starting-up-a-new-project"&gt;
+&lt;h2&gt;Starting up a new&amp;nbsp;project&lt;/h2&gt;
+&lt;p&gt;Create a new &amp;quot;virtualenv&amp;quot; and switch to&amp;nbsp;it&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+conda create --name testenv r
+&lt;span class="nb"&gt;source &lt;/span&gt;activate testenv
+&lt;/pre&gt;
+&lt;p&gt;You can install any R-packages that are already in the &lt;a class="reference external" href="https://anaconda.org/R"&gt;repo&lt;/a&gt; (they are prefixed by &lt;cite&gt;r-&lt;/cite&gt;),&amp;nbsp;e.g.,&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+conda install r-dplyr
+&lt;/pre&gt;
+&lt;p&gt;If you come across a package that is not on anaconda&amp;#8217;s servers, you
+can easily build it yourself (if it is on &lt;a class="reference external" href="https://cran.r-project.org/"&gt;&lt;span class="caps"&gt;CRAN&lt;/span&gt;&lt;/a&gt;; have not tried with
+github-packages). Sometimes, it
+depends on other packages that are not there, so you will need to
+build them, too. Here is an example for building &lt;a class="reference external" href="http://mc-stan.org/interfaces/rstan.html"&gt;rstan&lt;/a&gt;:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+conda skeleton cran rstan
+conda build r-rstan
+&lt;/pre&gt;
+&lt;p&gt;results in a failure, because it depends on &lt;a class="reference external" href="https://cran.r-project.org/web/packages/StanHeaders/index.html"&gt;StanHeaders&lt;/a&gt; and
+&lt;a class="reference external" href="https://cran.r-project.org/web/packages/inline/index.html"&gt;inline&lt;/a&gt;. So you will need to&amp;nbsp;to&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+conda skeleton cran stanheaders
+conda skeleton cran inline
+conda build r-rstan
+&lt;/pre&gt;
+&lt;p&gt;This will detect that you got the recipes in your local tree and it
+will also tell you what you have to do to upload the new packages to
+your own channel at &lt;a class="reference external" href="https://anaconda.org"&gt;anaconda&lt;/a&gt; (my channel is
+&lt;a class="reference external" href="https://anaconda.org/mittner"&gt;https://anaconda.org/mittner&lt;/a&gt;)&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+&lt;span class="c"&gt;# If you want to upload this package to anaconda.org later, type:
+#
+# $ anaconda upload /home/mittner/local/miniconda/conda-bld/linux-64/r-inline-0.3.14-r3.2.1_0.tar.bz2
+#
+# To have conda build upload to anaconda.org automatically, use
+# $ conda config --set anaconda_upload yes&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;So just follow that (and I also recommend setting it to &amp;quot;always
+upload&amp;quot; because, lets be honest, we tend to forget these&amp;nbsp;things):&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+conda config --set anaconda_upload yes
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class="section" id="freezing-dependencies"&gt;
+&lt;h2&gt;Freezing&amp;nbsp;dependencies&lt;/h2&gt;
+&lt;p&gt;Now, all you need to do to reproduce your environment on another
+computer (or in the future) is the equivalent to &lt;code class="bash"&gt;pip freeze&lt;/code&gt;
+which&amp;nbsp;is&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+conda env &lt;span class="nb"&gt;export&lt;/span&gt; --name testenv -f environment.yml
+&lt;/pre&gt;
+&lt;p&gt;If you compiled and uploaded some packages yourself in your private
+channel, you might have to add the channel to the
+&lt;code class="bash"&gt;environment.yml&lt;/code&gt; file. The file looks like&amp;nbsp;this:&lt;/p&gt;
+&lt;pre class="code yaml literal-block"&gt;
+&lt;span class="l-Scalar-Plain"&gt;name&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;testenv&lt;/span&gt;
+&lt;span class="l-Scalar-Plain"&gt;dependencies&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+&lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;cairo=1.12.18=4&lt;/span&gt;
+&lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;fontconfig=2.11.1=4&lt;/span&gt;
+&lt;span class="nn"&gt;...&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;(more packages here)&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;So you have to insert (&lt;a class="reference external" href="https://anaconda.org/mittner"&gt;mittner&lt;/a&gt; is my&amp;nbsp;channel):&lt;/p&gt;
+&lt;pre class="code yaml literal-block"&gt;
+&lt;span class="l-Scalar-Plain"&gt;name&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;testenv&lt;/span&gt;
+&lt;span class="l-Scalar-Plain"&gt;channels&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+&lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;r&lt;/span&gt;
+&lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;mittner&lt;/span&gt;
+&lt;span class="l-Scalar-Plain"&gt;dependencies&lt;/span&gt;&lt;span class="p-Indicator"&gt;:&lt;/span&gt;
+&lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;cairo=1.12.18=4&lt;/span&gt;
+&lt;span class="p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;fontconfig=2.11.1=4&lt;/span&gt;
+&lt;span class="nn"&gt;...&lt;/span&gt; &lt;span class="l-Scalar-Plain"&gt;(more packages here)&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;If you put this file into your project-directory, then the user (or
+you) just has to&amp;nbsp;run&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+conda env create
+&lt;/pre&gt;
+&lt;p&gt;and will end up with hopefully the exact same environment you&amp;nbsp;created.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="problems"&gt;
+&lt;h2&gt;Problems&lt;/h2&gt;
+&lt;p&gt;Here are some problems I have stumbled over so&amp;nbsp;far.&lt;/p&gt;
+&lt;p&gt;When using &lt;code&gt;install.packages()&lt;/code&gt;, I get a Tcl-related&amp;nbsp;error:&lt;/p&gt;
+&lt;pre class="code R literal-block"&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; install.packages&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;arm&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;---&lt;/span&gt; Please select a CRAN mirror &lt;span class="kr"&gt;for&lt;/span&gt; use &lt;span class="kr"&gt;in&lt;/span&gt; this session &lt;span class="o"&gt;---&lt;/span&gt;
+Error &lt;span class="kr"&gt;in&lt;/span&gt; download.file&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;url&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; destfile &lt;span class="o"&gt;=&lt;/span&gt; f&lt;span class="p"&gt;,&lt;/span&gt; quiet &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;TRUE&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;
+       unsupported URL scheme
+Error&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;.&lt;/span&gt;onLoad failed &lt;span class="kr"&gt;in&lt;/span&gt; &lt;span class="kp"&gt;loadNamespace&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="kr"&gt;for&lt;/span&gt; &lt;span class="s"&gt;'tcltk'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; details&lt;span class="o"&gt;:&lt;/span&gt;
+       &lt;span class="kp"&gt;call&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; fun&lt;span class="p"&gt;(&lt;/span&gt;libname&lt;span class="p"&gt;,&lt;/span&gt; pkgname&lt;span class="p"&gt;)&lt;/span&gt;
+       error&lt;span class="o"&gt;:&lt;/span&gt; Can&lt;span class="s"&gt;'t find a usable init.tcl in the following directories:
+              /opt/anaconda1anaconda2anaconda3/lib/tcl8.5 ./lib/tcl8.5 ./lib/tcl8.5 ./library ./library ./tcl8.5.18/library ./tcl8.5.18/library
+This probably means that Tcl wasn'&lt;/span&gt;t installed properly.
+&lt;/pre&gt;
+&lt;p&gt;And, for that matter, I don&amp;#8217;t know how  conda&amp;#8217;s R-packages behave
+together with &lt;code&gt;install.packages()&lt;/code&gt; (at least, they are not
+included in the &lt;code&gt;environment.yml&lt;/code&gt; file, I&amp;nbsp;guess?).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="conclusion"&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;So far, &lt;a class="reference external" href="http://conda.pydata.org/docs/"&gt;conda&lt;/a&gt; looks like a promising tool, but I will have to see how
+it behaves in practice (I will revisit this post later to include new&amp;nbsp;info).&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="R"></category></entry><entry><title>New paper: Toward a model-based cognitive neuroscience of mind wandering</title><link href="http://ihrke.github.io/new%20review%20paper.html" rel="alternate"></link><updated>2015-09-21T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2015-09-21:new review paper.html</id><summary type="html">&lt;a class="reference external image-reference" href="http://www.journals.elsevier.com/neuroscience/"&gt;&lt;img alt="" class="align-center" src="http://ihrke.github.io/pics/tutclass_framework.png" style="width: 60%;" /&gt;&lt;/a&gt;
 &lt;p&gt;I am happy to announce that our review paper on a model-based
 cognitive neuroscience approach to the study of mind-wandering has
 been accepted for publication in &lt;a class="reference external" href="http://www.journals.elsevier.com/neuroscience/"&gt;Neuroscience&lt;/a&gt;, &lt;a class="reference internal" href="#id1"&gt;[1]&lt;/a&gt;. This paper
