@@ -135,7 +135,7 @@ coda.samples.dic &lt;- function (model, variable.names = NULL, n.iter, thin = 1,
 }
 </pre>
 <p>This code is just a copy of <cite>coda.samples()</cite> source&nbsp;code.</p>
-<p>Changes: include &quot;deviance&quot; and &quot;pD&quot; in&nbsp;sampling:</p>
+<p>Changes: include &#8220;deviance&#8221; and &#8220;pD&#8221; in&nbsp;sampling:</p>
 <pre class="code literal-block">
 varnames=c(variable.names, c('deviance', 'pD'))
 out &lt;- jags.samples(model, varnames, n.iter, thin,

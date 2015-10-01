@@ -9,7 +9,7 @@ copied her&amp;nbsp;text:&lt;/p&gt;
 &lt;p&gt;I was able to perform the entire task using a single long
 (15cm shaft) cross-headed screw-driver that I had magnetised, and a thin
 piece of metal, which in my case was a paint&amp;nbsp;scraper.&lt;/p&gt;
-&lt;p&gt;In the discussion, &amp;quot;backwards&amp;quot; means towards the back of the piano.
+&lt;p&gt;In the discussion, &amp;#8220;backwards&amp;#8221; means towards the back of the piano.
 Related words take their meanings&amp;nbsp;accordingly.&lt;/p&gt;
 &lt;ol class="arabic simple" start="0"&gt;
 &lt;li&gt;Make sure the piano is unplugged from the&amp;nbsp;mains.&lt;/li&gt;
@@ -153,16 +153,16 @@ plastic locator pins that have to engage with holes in the speaker&amp;nbsp;encl
 &lt;/div&gt;
 &lt;div class="section" id="second-share-in-dropbox"&gt;
 &lt;h2&gt;Second: share in&amp;nbsp;dropbox&lt;/h2&gt;
-&lt;p&gt;In your dropbox folder on the web, click on share and &amp;quot;get&amp;nbsp;link&amp;quot;.&lt;/p&gt;
+&lt;p&gt;In your dropbox folder on the web, click on share and &amp;#8220;get&amp;nbsp;link&amp;#8221;.&lt;/p&gt;
 &lt;p&gt;This links looks like this: &lt;a class="reference external" href="https://www.dropbox.com/s/randomletters/org.ics"&gt;https://www.dropbox.com/s/randomletters/org.ics&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Replace www with dl such that it looks like this: &lt;a class="reference external" href="https://dl.dropbox.com/s/randomletters/org.ics"&gt;https://dl.dropbox.com/s/randomletters/org.ics&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="third-add-by-url-in-google-calendar"&gt;
 &lt;h2&gt;Third: add by url in&amp;nbsp;google-calendar&lt;/h2&gt;
 &lt;p&gt;This is unfortunately not as straight-forward as I would like to
-belive. Google calendar allows to &amp;quot;Add by url&amp;quot; (in the left panel,
-under &amp;quot;Other calendars&amp;quot;). However, with dropbox-links this fails with
-some warning about&amp;nbsp;&amp;quot;robots.txt&amp;quot;.&lt;/p&gt;
+belive. Google calendar allows to &amp;#8220;Add by url&amp;#8221; (in the left panel,
+under &amp;#8220;Other calendars&amp;#8221;). However, with dropbox-links this fails with
+some warning about&amp;nbsp;&amp;#8220;robots.txt&amp;#8221;.&lt;/p&gt;
 &lt;p&gt;There is the following workaround (thanks to this &lt;a class="reference external" href="https://productforums.google.com/forum/#!topic/calendar/HYN1y-7GYu4"&gt;discussion&lt;/a&gt;).
 You have to create a &lt;a class="reference external" href="http://pipes.yahoo.com/pipes/pipe.info?_id=1f85c5a9c2af3c8768d342531f5ca528"&gt;pipe&lt;/a&gt;, then abbreviate the url with &lt;a class="reference external" href="http://www.tinyurl.com"&gt;tinyurl&lt;/a&gt; and
 finally import the resulting link into google-calendar (works fine

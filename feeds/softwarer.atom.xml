@@ -51,18 +51,18 @@ conda install anaconda-client anaconda-build conda-build
 &lt;pre class="code bash literal-block"&gt;
 conda config --add channels r
 &lt;/pre&gt;
-&lt;p&gt;Install &lt;a class="reference external" href="http://r-project.org"&gt;R&lt;/a&gt; and, if wanted, the &amp;quot;essential&amp;quot;&amp;nbsp;packages&lt;/p&gt;
+&lt;p&gt;Install &lt;a class="reference external" href="http://r-project.org"&gt;R&lt;/a&gt; and, if wanted, the &amp;#8220;essential&amp;#8221;&amp;nbsp;packages&lt;/p&gt;
 &lt;pre class="code bash literal-block"&gt;
 conda install r r-essential
 &lt;/pre&gt;
 &lt;p&gt;Create an account at &lt;a class="reference external" href="https://anaconda.org"&gt;anaconda&lt;/a&gt; (you will need it to make packages that
 are not in conda&amp;#8217;s default &lt;a class="reference external" href="https://anaconda.org/R"&gt;R-repo&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;This will create a &amp;quot;namespace&amp;quot; for your chosen username which you can
+&lt;p&gt;This will create a &amp;#8220;namespace&amp;#8221; for your chosen username which you can
 use to capture packages with individual versions&amp;nbsp;etc.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="starting-up-a-new-project"&gt;
 &lt;h2&gt;Starting up a new&amp;nbsp;project&lt;/h2&gt;
-&lt;p&gt;Create a new &amp;quot;virtualenv&amp;quot; and switch to&amp;nbsp;it&lt;/p&gt;
+&lt;p&gt;Create a new &amp;#8220;virtualenv&amp;#8221; and switch to&amp;nbsp;it&lt;/p&gt;
 &lt;pre class="code bash literal-block"&gt;
 conda create --name testenv r
 &lt;span class="nb"&gt;source &lt;/span&gt;activate testenv
@@ -99,8 +99,8 @@ your own channel at &lt;a class="reference external" href="https://anaconda.org"
 # To have conda build upload to anaconda.org automatically, use
 # $ conda config --set anaconda_upload yes&lt;/span&gt;
 &lt;/pre&gt;
-&lt;p&gt;So just follow that (and I also recommend setting it to &amp;quot;always
-upload&amp;quot; because, lets be honest, we tend to forget these&amp;nbsp;things):&lt;/p&gt;
+&lt;p&gt;So just follow that (and I also recommend setting it to &amp;#8220;always
+upload&amp;#8221; because, lets be honest, we tend to forget these&amp;nbsp;things):&lt;/p&gt;
 &lt;pre class="code bash literal-block"&gt;
 conda config --set anaconda_upload yes
 &lt;/pre&gt;

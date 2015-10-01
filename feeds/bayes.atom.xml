@@ -24,7 +24,7 @@ spelled out in the supplemental material (and, if you ask kindly, I am
 more than happy to share my R/&lt;span class="caps"&gt;JAGS&lt;/span&gt;&amp;nbsp;code).&lt;/p&gt;
 &lt;p&gt;One issue that was immediately obvious to me was the need for a proper
 documentation of the used models. It is all to common for papers in
-area to say something like &amp;quot;linear mixed growth-models were used&amp;quot;
+area to say something like &amp;#8220;linear mixed growth-models were used&amp;#8221;
 relying on the common language of the readership and assuming that
 everyone who will find this paper interesting in the future will
 immediately be able to infer exactly which analysis was run. I think
@@ -53,7 +53,7 @@ over-enthuasiastic and perhaps unnecessarily dismissive of
 null-hypthesis testing (I am no fan of null-hypothesis testing
 either, but still had some doubts with regard to the way this was
 justified here). Bayesian methods are introduced as being
-&amp;quot;preferable&amp;quot;, &amp;quot;more flexible&amp;quot;, &amp;quot;more readily interpretable&amp;quot;; and so
+&amp;#8220;preferable&amp;#8221;, &amp;#8220;more flexible&amp;#8221;, &amp;#8220;more readily interpretable&amp;#8221;; and so
 forth - but they also strike me (at least the way they are
 presented here) as complex to the point of seeming obsure (at least
 to the non-expert).&lt;/blockquote&gt;
@@ -69,7 +69,7 @@ linear mixed model fit by &lt;span class="caps"&gt;ML&lt;/span&gt;) is easy to f
 reader but this is solely because of the highly standardized nature
 of this type of analysis. A reader from a different field of study
 (where statistical nomenclature and standards may be different)
-will have a hard time reading a &amp;quot;standard&amp;quot; statistical analysis
+will have a hard time reading a &amp;#8220;standard&amp;#8221; statistical analysis
 that are so familiar to us. We wrote the methods section in a way
 that it is comprehensible for a statistically educated reader from
 any field but we do acknowledge that this came at the cost of
@@ -88,13 +88,13 @@ Moreover, a main argument for the Bayesian methods seems to be that
 they present a welcome shift away from arbitrary accepting or
 rejecting hypotheses based on whether the significance level of .05
 is achieved or not. If this is the case, then why present the
-&amp;quot;Bayes Factor&amp;quot; statistics, which seem to again introduce somewhat
+&amp;#8220;Bayes Factor&amp;#8221; statistics, which seem to again introduce somewhat
 rigid guidelines as to when H1 or H0 is supported (e.g., Bayes
-Factor &amp;gt; 10: &amp;quot;strong evidence for H1&amp;quot;). Wouldn&amp;#8217;t a more
+Factor &amp;gt; 10: &amp;#8220;strong evidence for H1&amp;#8221;). Wouldn&amp;#8217;t a more
 conventional presentation of effect sizes and confidence intervals
 achieve the same purpose, but in a much more efficient manner (and
 one that might be more familiar to most readers, although
-&amp;quot;familiarity is better&amp;quot; is admittedly a very weak argument)?&lt;/blockquote&gt;
+&amp;#8220;familiarity is better&amp;#8221; is admittedly a very weak argument)?&lt;/blockquote&gt;
 &lt;p&gt;It refers to Jeffrey&amp;#8217;s table that assigns labels to different ranges
 the Bayes factor can take (&lt;a class="reference external" href="https://en.wikipedia.org/wiki/Bayes_factor"&gt;it is on wikipedia&lt;/a&gt;) and I agree that
 these labels should be taken with a grain of salt. Here is what I&amp;nbsp;responded:&lt;/p&gt;
@@ -149,7 +149,7 @@ source of information when considering reproducibility of the research
 (especially in papers using the ultra-short format that is typical for
 high-impact journals), I think that their status should be
 enhanced. One possibility would be to publish two versions of the same
-paper, one &amp;quot;long&amp;quot; version that includes all the details and a &amp;quot;short&amp;quot;
+paper, one &amp;#8220;long&amp;#8221; version that includes all the details and a &amp;#8220;short&amp;#8221;
 version that does not. In todays world where no one actually prints
 full journals anymore (or does that still happen?), this should not be
 too much of a problem. A second method would be to make supplemental
@@ -172,7 +172,7 @@ the Deviance Information criterion (&lt;span class="caps"&gt;DIC&lt;/span&gt;; S
 that appeared to be the most correct for hierarchical Bayesian
 models. However, &lt;span class="caps"&gt;DIC&lt;/span&gt; received quite some critique on, e.g., Andrew
 Gelman&amp;#8217;s blog (&lt;a class="reference external" href="http://andrewgelman.com/2011/06/22/deviance_dic_ai/"&gt;here&lt;/a&gt;, &lt;a class="reference external" href="http://andrewgelman.com/2013/08/15/more-on-aic-waic-etc/"&gt;or here&lt;/a&gt;) while
-the recent addition to the &amp;quot;&lt;span class="caps"&gt;XIC&lt;/span&gt;&amp;quot; family &lt;span class="caps"&gt;WAIC&lt;/span&gt; (Watanabe, 2010) appears
+the recent addition to the &amp;#8220;&lt;span class="caps"&gt;XIC&lt;/span&gt;&amp;#8221; family &lt;span class="caps"&gt;WAIC&lt;/span&gt; (Watanabe, 2010) appears
 to have more desirable theoretical properties (&lt;a class="reference external" href="http://andrewgelman.com/2013/08/09/understanding-predictive-information-criteria-for-bayesian-models/"&gt;see here&lt;/a&gt;
 or &lt;a class="reference external" href="http://andrewgelman.com/2014/05/26/waic-cross-validation-stan/"&gt;there&lt;/a&gt;). &lt;a class="reference external" href="http://www.stat.columbia.edu/~gelman/research/published/waic_understand3.pdf"&gt;This
 paper&lt;/a&gt;
@@ -291,7 +291,7 @@ coda.samples.dic &amp;lt;- function (model, variable.names = NULL, n.iter, thin 
 }
 &lt;/pre&gt;
 &lt;p&gt;This code is just a copy of &lt;cite&gt;coda.samples()&lt;/cite&gt; source&amp;nbsp;code.&lt;/p&gt;
-&lt;p&gt;Changes: include &amp;quot;deviance&amp;quot; and &amp;quot;pD&amp;quot; in&amp;nbsp;sampling:&lt;/p&gt;
+&lt;p&gt;Changes: include &amp;#8220;deviance&amp;#8221; and &amp;#8220;pD&amp;#8221; in&amp;nbsp;sampling:&lt;/p&gt;
 &lt;pre class="code literal-block"&gt;
 varnames=c(variable.names, c('deviance', 'pD'))
 out &amp;lt;- jags.samples(model, varnames, n.iter, thin,

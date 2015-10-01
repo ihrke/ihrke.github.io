@@ -75,7 +75,7 @@ the value of &lt;cite&gt;srcdir&lt;/cite&gt; by running the first line of the&am
 &lt;/pre&gt;
 &lt;p&gt;(in my case the path was
 &lt;cite&gt;/home/mittner/R/x86_64-unknown-linux-gnu-library/3.1/IRkernel/kernelspec&lt;/cite&gt;).&lt;/p&gt;
-&lt;p&gt;Now exit R and run the command by hand (supplemented by &amp;quot;&amp;#8212;user&amp;quot; to
+&lt;p&gt;Now exit R and run the command by hand (supplemented by &amp;#8220;&amp;#8212;user&amp;#8221; to
 install the kernel in the users directory instead of globally &amp;#8212; that
 was what caused the permission&amp;nbsp;problem):&lt;/p&gt;
 &lt;pre class="code bash literal-block"&gt;
