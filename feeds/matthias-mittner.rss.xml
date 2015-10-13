@@ -165,7 +165,7 @@ included in the &lt;code&gt;environment.yml&lt;/code&gt; file, I&amp;nbsp;guess?
 &lt;p&gt;So far, &lt;a class="reference external" href="http://conda.pydata.org/docs/"&gt;conda&lt;/a&gt; looks like a promising tool, but I will have to see how
 it behaves in practice (I will revisit this post later to include new&amp;nbsp;info).&lt;/p&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Matthias Mittner</dc:creator><pubDate>Thu, 24 Sep 2015 00:00:00 +0200</pubDate><guid>tag:ihrke.github.io,2015-09-24:conda.html</guid><category>R</category></item><item><title>New paper: Toward a model-based cognitive neuroscience of mind wandering</title><link>http://ihrke.github.io/new%20review%20paper.html</link><description>&lt;a class="reference external image-reference" href="http://www.journals.elsevier.com/neuroscience/"&gt;&lt;img alt="" class="align-center" src="http://ihrke.github.io/pics/tutclass_framework.png" style="width: 60%;" /&gt;&lt;/a&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Matthias Mittner</dc:creator><pubDate>Thu, 24 Sep 2015 00:00:00 +0200</pubDate><guid>tag:ihrke.github.io,2015-09-24:conda.html</guid><category>R</category></item><item><title>New paper: Toward a model-based cognitive neuroscience of mind wandering</title><link>http://ihrke.github.io/new%20review%20paper.html</link><description>&lt;a class="reference external image-reference" href="http://www.sciencedirect.com/science/article/pii/S0306452215008805"&gt;&lt;img alt="" class="align-center" src="http://ihrke.github.io/pics/tutclass_framework.png" style="width: 60%;" /&gt;&lt;/a&gt;
 &lt;p&gt;I am happy to announce that our review paper on a model-based
 cognitive neuroscience approach to the study of mind-wandering has
 been accepted for publication in &lt;a class="reference external" href="http://www.journals.elsevier.com/neuroscience/"&gt;Neuroscience&lt;/a&gt;, &lt;a class="reference internal" href="#id1"&gt;[1]&lt;/a&gt;. This paper
@@ -182,7 +182,7 @@ moment. Expect more in that direction&amp;nbsp;soon!&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
 &lt;p id="id1"&gt;[1] Hawkins G. E., Mittner, M., Boekel, W., Heathcote, A. and Forstmann,
 &lt;span class="caps"&gt;B.U.&lt;/span&gt;(accepted). Toward a model-based cognitive neuroscience of mind
-wandering. &lt;em&gt;Neuroscience&lt;/em&gt;.&lt;/p&gt;
+wandering. &lt;em&gt;Neuroscience&lt;/em&gt;. &lt;a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0306452215008805"&gt;link&lt;/a&gt;&lt;/p&gt;
 &lt;p id="id2"&gt;[2] Bastian M and Sackur J (2013) Mind wandering at the fingertips:
 automatic parsing of subjective states based on response time
 variability. Front. Psychol. 4:573. doi:&amp;nbsp;10.3389/fpsyg.2013.00573&lt;/p&gt;
