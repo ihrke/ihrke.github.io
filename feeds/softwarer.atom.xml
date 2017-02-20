@@ -53,7 +53,7 @@ conda config --add channels r
 &lt;/pre&gt;
 &lt;p&gt;Install &lt;a class="reference external" href="http://r-project.org"&gt;R&lt;/a&gt; and, if wanted, the &amp;#8220;essential&amp;#8221;&amp;nbsp;packages&lt;/p&gt;
 &lt;pre class="code bash literal-block"&gt;
-conda install r r-essential
+conda install r r-essentials
 &lt;/pre&gt;
 &lt;p&gt;Create an account at &lt;a class="reference external" href="https://anaconda.org"&gt;anaconda&lt;/a&gt; (you will need it to make packages that
 are not in conda&amp;#8217;s default &lt;a class="reference external" href="https://anaconda.org/R"&gt;R-repo&lt;/a&gt;).&lt;/p&gt;
