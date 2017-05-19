@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Random Research (Ruminations)</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/uit.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2015-10-14T00:00:00+02:00</updated><entry><title>Stuff you need to know as new (foreign) employee at University of Tromsø</title><link href="http://ihrke.github.io/stuff%20to%20know%20as%20a%20foreigner%20at%20uit.html" rel="alternate"></link><updated>2015-10-14T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2015-10-14:stuff to know as a foreigner at uit.html</id><summary type="html">&lt;p&gt;Even more than a year after moving to the best city on earth, &lt;a class="reference external" href="http://www.tromso.kommune.no/"&gt;Tromsø&lt;/a&gt;,
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Random Research (Ruminations) - uit</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/uit.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2015-10-14T00:00:00+02:00</updated><entry><title>Stuff you need to know as new (foreign) employee at University of Tromsø</title><link href="http://ihrke.github.io/stuff%20to%20know%20as%20a%20foreigner%20at%20uit.html" rel="alternate"></link><published>2015-10-14T00:00:00+02:00</published><updated>2015-10-14T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2015-10-14:/stuff to know as a foreigner at uit.html</id><summary type="html">&lt;p class="first last"&gt;Even more than a year after moving to the best city on
+earth, Tromsø, and beginning to work at the best university
+in the country, the University of Tromsø, I stumble across
+new stuff that I wish I would have known earlier. Here is a&amp;nbsp;list.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;Even more than a year after moving to the best city on earth, &lt;a class="reference external" href="http://www.tromso.kommune.no/"&gt;Tromsø&lt;/a&gt;,
 and beginning to work at the best university in the country, the
 &lt;a class="reference external" href="http://uit.no"&gt;University of Tromsø&lt;/a&gt;, I stumble across new stuff
 that I wish I would have known earlier. Some of it is probably most
@@ -75,4 +79,4 @@ administrators. You will be using &lt;a class="reference external" href="https:/
 need some getting used to (read the&amp;nbsp;docs!).&lt;/p&gt;
 &lt;p&gt;Here is &lt;a class="reference external" href="https://www.notur.no/hardware/stallo"&gt;stallo&lt;/a&gt; &amp;#8216;s documentation: &lt;a class="reference external" href="http://docs.notur.no/uit/stallo_documentation"&gt;link&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="org"></category></entry></feed>
+</content><category term="org"></category></entry></feed>

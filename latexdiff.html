@@ -81,14 +81,14 @@ Or have you ever received a modified version of your latex file and wanted to se
 <li>do the&nbsp;research</li>
 <li>when ready to write the paper, make a new directory and initialize it with <a class="reference external" href="http://www.git.org">git</a></li>
 </ol>
-<div class="highlight"><pre>mkdir awesome_paper
-<span class="nb">cd </span>awesome_paper
+<div class="highlight"><pre><span></span>mkdir awesome_paper
+<span class="nb">cd</span> awesome_paper
 git init
 </pre></div>
 <ol class="arabic simple" start="2">
 <li>create your paper, images and whatnot. Log changes into <a class="reference external" href="http://www.git.org">git</a>&nbsp;with</li>
 </ol>
-<div class="highlight"><pre>git add paper.tex
+<div class="highlight"><pre><span></span>git add paper.tex
 git add pics/*.pdf
 git commit -a -m <span class="s2">&quot;your commit message goes here&quot;</span>
 </pre></div>
@@ -96,7 +96,7 @@ git commit -a -m <span class="s2">&quot;your commit message goes here&quot;</spa
 <li>send your version to your co-authors and receive feedback <cite>paper_with_some_changes.tex</cite></li>
 <li>use <a class="reference external" href="https://www.sharelatex.com/blog/2013/02/16/using-latexdiff-for-marking-changes-to-tex-documents.html">latexdiff</a> to create a nice highlighted <span class="caps">PDF</span></li>
 </ol>
-<div class="highlight"><pre>latex-diff paper.tex paper_with_some_changes.tex &gt; paper_diff.tex
+<div class="highlight"><pre><span></span>latex-diff paper.tex paper_with_some_changes.tex &gt; paper_diff.tex
 pdflatex paper_diff.tex
 </pre></div>
 <p>5. submit your paper to your journal of choice (e.g., the <a class="reference external" href="http://www.jasnh.com/">Journal in
@@ -105,13 +105,13 @@ Support of the Null-Hypothesis</a>)</p>
 <li>receive angry feedback from the&nbsp;reviewers</li>
 <li><strong>before</strong> hacking your paper in reply to the undoubtedly ill-informed and biased crangling of the reviewers, tag the paper to make sure you find the version you&nbsp;submitted</li>
 </ol>
-<div class="highlight"><pre>git tag first_submission
+<div class="highlight"><pre><span></span>git tag first_submission
 </pre></div>
 <ol class="arabic simple" start="8">
 <li>hack your paper and shut up those ignorant&nbsp;reviewers</li>
 <li>being forced to resubmit a &#8220;changes highlighted&#8221; version of your paper (driving home the point how much you had to mutilize your beautiful paper), do the&nbsp;following:</li>
 </ol>
-<div class="highlight"><pre>git show first_submission:paper.tex &gt; paper_firstsub.tex
+<div class="highlight"><pre><span></span>git show first_submission:paper.tex &gt; paper_firstsub.tex
 latexdiff paper_firstsub.tex paper.tex &gt; paper_diff.tex
 pdflatex paper_diff.tex
 bibtex paper_diff
@@ -121,11 +121,11 @@ pdflatex paper_diff.tex
 <li>submit and keep your fingers&nbsp;crossed!</li>
 </ol>
 <p>I like to put the last block of commands into a <cite>Makefile</cite> such that all you have to do is&nbsp;a</p>
-<div class="highlight"><pre>make first_diff  <span class="c"># results in highlighted version</span>
-make             <span class="c"># results in clutter-free paper</span>
+<div class="highlight"><pre><span></span>make first_diff  <span class="c1"># results in highlighted version</span>
+make             <span class="c1"># results in clutter-free paper</span>
 </pre></div>
 <p>Here is the&nbsp;Makefile:</p>
-<div class="highlight"><pre><span class="nv">TARG</span><span class="o">=</span>paper
+<div class="highlight"><pre><span></span><span class="nv">TARG</span><span class="o">=</span>paper
 
 <span class="nv">$TARG</span>.pdf: <span class="nv">$TARG</span>.tex myrefs.bib
          pdflatex <span class="nv">$TARG</span>.tex

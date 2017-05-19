@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Random Research (Ruminations)</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/bayes.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2015-09-02T00:00:00+02:00</updated><entry><title>Publishing Bayesian analyses in a medical journal</title><link href="http://ihrke.github.io/new%20paper.html" rel="alternate"></link><updated>2015-09-02T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2015-09-02:new paper.html</id><summary type="html">&lt;a class="reference external image-reference" href="http://www.jmir.org/2015/9/e197/"&gt;&lt;img alt="" class="align-center" src="http://ihrke.github.io/pics/moodgym.png" style="width: 60%;" /&gt;&lt;/a&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Random Research (Ruminations) - bayes</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/bayes.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2015-09-02T00:00:00+02:00</updated><entry><title>Publishing Bayesian analyses in a medical journal</title><link href="http://ihrke.github.io/new%20paper.html" rel="alternate"></link><published>2015-09-02T00:00:00+02:00</published><updated>2015-09-02T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2015-09-02:/new paper.html</id><summary type="html">&lt;p class="first last"&gt;New paper: Predictors of response to Web-based cognitive
+behavioral therapy with face-to-face therapist support for
+depression: A Bayesian&amp;nbsp;analysis.&lt;/p&gt;
+</summary><content type="html">&lt;a class="reference external image-reference" href="http://www.jmir.org/2015/9/e197/"&gt;&lt;img alt="" class="align-center" src="http://ihrke.github.io/pics/moodgym.png" style="width: 60%;" /&gt;&lt;/a&gt;
 &lt;p&gt;I am excited to announce that our paper &lt;a class="reference external" href="http://www.jmir.org/2015/9/e197/"&gt;Predictors of response to
 Web-based cognitive behavioral therapy with face-to-face therapist
 support for depression: A Bayesian analysis&lt;/a&gt; has been accepted for
@@ -165,7 +168,8 @@ for Depression: A Bayesian Analysis J Med Internet Res 2015;17(9):e197
 &lt;p id="id11"&gt;[2] Mittner, M., Boekel, W., Tucker, A. M., Turner, B.M., Heathcote,
 A. and Forstmann, &lt;span class="caps"&gt;B.U.&lt;/span&gt;(2014). When the brain takes a break: A
 model-based analysis of mind wandering. &lt;em&gt;Journal of Neuroscience&lt;/em&gt;,&amp;nbsp;34(49):16286-95.&lt;/p&gt;
-</summary><category term="jags"></category><category term="R"></category><category term="bayes"></category><category term="paper"></category></entry><entry><title>Fixing numerical underflow in WAIC calculation in Stan</title><link href="http://ihrke.github.io/waic_stan.html" rel="alternate"></link><updated>2015-06-16T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2015-06-16:waic_stan.html</id><summary type="html">&lt;p&gt;I recently switched to the amazing software &lt;a class="reference external" href="http://mc-stan.org/index.html"&gt;Stan&lt;/a&gt; for my &lt;span class="caps"&gt;MCMC&lt;/span&gt;
+</content><category term="jags"></category><category term="R"></category><category term="bayes"></category><category term="paper"></category></entry><entry><title>Fixing numerical underflow in WAIC calculation in Stan</title><link href="http://ihrke.github.io/waic_stan.html" rel="alternate"></link><published>2015-06-16T00:00:00+02:00</published><updated>2015-06-16T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2015-06-16:/waic_stan.html</id><summary type="html">&lt;p class="first last"&gt;Fixing numerical underflow in &lt;span class="caps"&gt;WAIC&lt;/span&gt; calculation in&amp;nbsp;Stan&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;I recently switched to the amazing software &lt;a class="reference external" href="http://mc-stan.org/index.html"&gt;Stan&lt;/a&gt; for my &lt;span class="caps"&gt;MCMC&lt;/span&gt;
 needs. Every now and then, it can be useful to compare different
 models using some kind of information criterion. Previously, I used
 the Deviance Information criterion (&lt;span class="caps"&gt;DIC&lt;/span&gt;; Spiegelhalter, 2002) because
@@ -192,11 +196,11 @@ $se
 &lt;p&gt;Hm, not very informative. When I took a look at the &lt;cite&gt;waic()&lt;/cite&gt; function
 in more detail, I saw that the &lt;cite&gt;Inf`s in my output were caused by
 numerical underflow in the calculation of `lpd&lt;/cite&gt; :&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;lpd &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;colMeans&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;exp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;log_lik&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;lpd &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;colMeans&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;exp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;log_lik&lt;span class="p"&gt;)))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The &lt;cite&gt;exp&lt;/cite&gt; function can (of course) only handle arguments of a certain
 magnitude before returning 0. Try, for&amp;nbsp;example,&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kp"&gt;exp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;seq&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;-1000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; by&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;-10&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kp"&gt;exp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;seq&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="m"&gt;-1000&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; by&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;-10&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;On my machine, &lt;cite&gt;exp&lt;/cite&gt; bails out at -750 and apparently one of my
 log-likelihoods went below that magical&amp;nbsp;threshold.&lt;/p&gt;
@@ -212,7 +216,7 @@ column and therefore the formula is
 $$\log\left(\frac{1}{n} \sum_{i=1}^{n} \exp( x_i
 )\right)=\log\frac{1}{n}+\log\left( \sum_{i=1}^{n} \exp( x_i-a&amp;nbsp;)\right)+a.$$&lt;/p&gt;
 &lt;p&gt;To do it for each column in the matrix requires a bit of indexing&amp;nbsp;fun:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# lpd &amp;lt;- log(colMeans(exp(log_lik)))&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# lpd &amp;lt;- log(colMeans(exp(log_lik)))&lt;/span&gt;
 offset &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; log_lik&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kp"&gt;cbind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;max.col&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;abs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;t&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;log_lik&lt;span class="p"&gt;))),&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;n&lt;span class="p"&gt;)]&lt;/span&gt; &lt;span class="c1"&gt;# column-wise most extreme value&lt;/span&gt;
 lpd &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;1.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;S&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="kp"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;colSums&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;exp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;sweep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;log_lik&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; offset&lt;span class="p"&gt;))))&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;offset
 &lt;/pre&gt;&lt;/div&gt;
@@ -220,7 +224,7 @@ lpd &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;log&lt;/
 where the log-likelihood is very low. I also compared this solution to
 a solution where I used an arbitrary-precision library, &lt;a class="reference external" href="http://cran.r-project.org/web/packages/Rmpfr/index.html"&gt;Rmpfr&lt;/a&gt;, to do
 the calculation on the original&amp;nbsp;data:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;# lpd &amp;lt;- log(colMeans(exp(log_lik)))&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# lpd &amp;lt;- log(colMeans(exp(log_lik)))&lt;/span&gt;
 &lt;span class="kn"&gt;require&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;Rmpfr&lt;span class="p"&gt;)&lt;/span&gt;
 log_likp &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; mpfr&lt;span class="p"&gt;(&lt;/span&gt;log_lik&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;120&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# 120 bits precision&lt;/span&gt;
      lpd &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kp"&gt;as.numeric&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;colMeans&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kp"&gt;exp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;log_likp&lt;span class="p"&gt;))))&lt;/span&gt; &lt;span class="c1"&gt;# run in arbitrary precision&lt;/span&gt;
@@ -228,7 +232,8 @@ log_likp &lt;span class="o"&gt;&amp;lt;-&lt;/span&gt; mpfr&lt;span class="p"&gt;
 &lt;p&gt;and the result is identical to my log-sum-exp&amp;nbsp;solution.&lt;/p&gt;
 &lt;p&gt;See this &lt;a class="reference external" href="https://gist.github.com/ihrke/507fbffc07c174714ad2"&gt;gist&lt;/a&gt; for the complete code (original, log-sum-exp and
 arbitrary-precision based&amp;nbsp;versions).&lt;/p&gt;
-</summary><category term="stan"></category><category term="R"></category><category term="bayes"></category></entry><entry><title>Get Deviance Information Criterion (DIC) when sampling in JAGS</title><link href="http://ihrke.github.io/dic_jags.html" rel="alternate"></link><updated>2014-10-07T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2014-10-07:dic_jags.html</id><summary type="html">&lt;p&gt;I use the &lt;a class="reference external" href="http://cran.r-project.org/web/packages/rjags/index.html"&gt;rjags&lt;/a&gt; package from R to sample with &lt;a class="reference external" href="http://mcmc-jags.sourceforge.net"&gt;&lt;span class="caps"&gt;JAGS&lt;/span&gt;&lt;/a&gt;. When sampling
+</content><category term="stan"></category><category term="R"></category><category term="bayes"></category></entry><entry><title>Get Deviance Information Criterion (DIC) when sampling in JAGS</title><link href="http://ihrke.github.io/dic_jags.html" rel="alternate"></link><published>2014-10-07T00:00:00+02:00</published><updated>2014-10-07T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2014-10-07:/dic_jags.html</id><summary type="html">&lt;p class="first last"&gt;Get Deviance Information Criterion (&lt;span class="caps"&gt;DIC&lt;/span&gt;) when sampling in &lt;span class="caps"&gt;JAGS&lt;/span&gt;&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;I use the &lt;a class="reference external" href="http://cran.r-project.org/web/packages/rjags/index.html"&gt;rjags&lt;/a&gt; package from R to sample with &lt;a class="reference external" href="http://mcmc-jags.sourceforge.net"&gt;&lt;span class="caps"&gt;JAGS&lt;/span&gt;&lt;/a&gt;. When sampling
 with the &lt;cite&gt;coda.samples()&lt;/cite&gt; function, there is no way of getting the &lt;span class="caps"&gt;DIC&lt;/span&gt;
 from these samples (you need to use another run with
 &lt;cite&gt;dic.samples()&lt;/cite&gt;. When using &lt;cite&gt;jags.samples()&lt;/cite&gt;, it is possible to
@@ -308,4 +313,4 @@ class(dic) &amp;lt;- &amp;quot;dic&amp;quot;
 return(list(samples=mcmc.list(ans), dic=dic))
 &lt;/pre&gt;
 &lt;p&gt;You need to run the sampler with more than one chain,&amp;nbsp;though.&lt;/p&gt;
-</summary><category term="jags"></category><category term="R"></category><category term="bayes"></category></entry></feed>
+</content><category term="jags"></category><category term="R"></category><category term="bayes"></category></entry></feed>

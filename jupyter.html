@@ -88,20 +88,20 @@ once the Jupyter project gets&nbsp;going.</p>
 <p>At first, we set up a bleeding-edge ipython (this is from a bare
 bones python&nbsp;installation):</p>
 <pre class="code bash literal-block">
-<span class="c"># setup pip
+<span class="c1"># setup pip
 </span>wget https://bootstrap.pypa.io/get-pip.py
 sudo python get-pip.py
 
-<span class="c"># make a virtualenv
+<span class="c1"># make a virtualenv
 </span>sudo pip install virtualenv
 <span class="nb">cd</span> ~
-virtualenv <span class="nb">local</span>/python/jupyter
-<span class="nb">source local</span>/python/jupyter/bin/activate
+virtualenv local/python/jupyter
+<span class="nb">source</span> local/python/jupyter/bin/activate
 
-<span class="c">## get the cutting edge ipython version
+<span class="c1">## get the cutting edge ipython version
 </span>git clone --recursive https://github.com/ipython/ipython.git
-<span class="c"># and install all its dependencies
-</span><span class="nb">cd </span>ipython
+<span class="c1"># and install all its dependencies
+</span><span class="nb">cd</span> ipython
 pip install -e <span class="s2">&quot;.[notebook]&quot;</span>
 </pre>
 <p>You can run the notebook&nbsp;with</p>

@@ -99,17 +99,17 @@ ssh -N -n -L localhost:8889:localhost:8889 user&#64;servername
 <li>make and activate an&nbsp;virtualenv:</li>
 </ol>
 <pre class="code bash literal-block">
-virtualenv <span class="nb">local</span>/python/name
-<span class="nb">source local</span>/python/name/bin/activate
+virtualenv local/python/name
+<span class="nb">source</span> local/python/name/bin/activate
 </pre>
 <ol class="arabic simple" start="2">
 <li>get the most recent&nbsp;ipython</li>
 </ol>
 <pre class="code bash literal-block">
-<span class="c">## get the cutting edge ipython version
+<span class="c1">## get the cutting edge ipython version
 </span>git clone --recursive https://github.com/ipython/ipython.git
-<span class="c"># and install all its dependencies
-</span><span class="nb">cd </span>ipython
+<span class="c1"># and install all its dependencies
+</span><span class="nb">cd</span> ipython
 pip install -e <span class="s2">&quot;.[notebook]&quot;</span>
 </pre>
 <ol class="arabic simple" start="3">

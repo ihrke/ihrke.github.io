@@ -99,11 +99,11 @@ $se
 <p>Hm, not very informative. When I took a look at the <cite>waic()</cite> function
 in more detail, I saw that the <cite>Inf`s in my output were caused by
 numerical underflow in the calculation of `lpd</cite> :</p>
-<div class="highlight"><pre>lpd <span class="o">&lt;-</span> <span class="kp">log</span><span class="p">(</span><span class="kp">colMeans</span><span class="p">(</span><span class="kp">exp</span><span class="p">(</span>log_lik<span class="p">)))</span>
+<div class="highlight"><pre><span></span>lpd <span class="o">&lt;-</span> <span class="kp">log</span><span class="p">(</span><span class="kp">colMeans</span><span class="p">(</span><span class="kp">exp</span><span class="p">(</span>log_lik<span class="p">)))</span>
 </pre></div>
 <p>The <cite>exp</cite> function can (of course) only handle arguments of a certain
 magnitude before returning 0. Try, for&nbsp;example,</p>
-<div class="highlight"><pre><span class="kp">exp</span><span class="p">(</span><span class="kp">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">-1000</span><span class="p">,</span> by<span class="o">=</span><span class="m">-10</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><span class="kp">exp</span><span class="p">(</span><span class="kp">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">-1000</span><span class="p">,</span> by<span class="o">=</span><span class="m">-10</span><span class="p">))</span>
 </pre></div>
 <p>On my machine, <cite>exp</cite> bails out at -750 and apparently one of my
 log-likelihoods went below that magical&nbsp;threshold.</p>
@@ -119,7 +119,7 @@ column and therefore the formula is
 $$\log\left(\frac{1}{n} \sum_{i=1}^{n} \exp( x_i
 )\right)=\log\frac{1}{n}+\log\left( \sum_{i=1}^{n} \exp( x_i-a&nbsp;)\right)+a.$$</p>
 <p>To do it for each column in the matrix requires a bit of indexing&nbsp;fun:</p>
-<div class="highlight"><pre><span class="c1"># lpd &lt;- log(colMeans(exp(log_lik)))</span>
+<div class="highlight"><pre><span></span><span class="c1"># lpd &lt;- log(colMeans(exp(log_lik)))</span>
 offset <span class="o">&lt;-</span> log_lik<span class="p">[</span><span class="kp">cbind</span><span class="p">(</span><span class="kp">max.col</span><span class="p">(</span><span class="kp">abs</span><span class="p">(</span><span class="kp">t</span><span class="p">(</span>log_lik<span class="p">))),</span> <span class="m">1</span><span class="o">:</span>n<span class="p">)]</span> <span class="c1"># column-wise most extreme value</span>
 lpd <span class="o">&lt;-</span> <span class="kp">log</span><span class="p">(</span><span class="m">1.</span><span class="o">/</span>S<span class="p">)</span><span class="o">+</span><span class="kp">log</span><span class="p">(</span><span class="kp">colSums</span><span class="p">(</span><span class="kp">exp</span><span class="p">(</span><span class="kp">sweep</span><span class="p">(</span>log_lik<span class="p">,</span> <span class="m">2</span><span class="p">,</span> offset<span class="p">))))</span><span class="o">+</span>offset
 </pre></div>
@@ -127,7 +127,7 @@ lpd <span class="o">&lt;-</span> <span class="kp">log</span><span class="p">(</s
 where the log-likelihood is very low. I also compared this solution to
 a solution where I used an arbitrary-precision library, <a class="reference external" href="http://cran.r-project.org/web/packages/Rmpfr/index.html">Rmpfr</a>, to do
 the calculation on the original&nbsp;data:</p>
-<div class="highlight"><pre><span class="c1"># lpd &lt;- log(colMeans(exp(log_lik)))</span>
+<div class="highlight"><pre><span></span><span class="c1"># lpd &lt;- log(colMeans(exp(log_lik)))</span>
 <span class="kn">require</span><span class="p">(</span>Rmpfr<span class="p">)</span>
 log_likp <span class="o">&lt;-</span> mpfr<span class="p">(</span>log_lik<span class="p">,</span> <span class="m">120</span><span class="p">)</span> <span class="c1"># 120 bits precision</span>
      lpd <span class="o">&lt;-</span> <span class="kp">as.numeric</span><span class="p">(</span><span class="kp">log</span><span class="p">(</span><span class="kp">colMeans</span><span class="p">(</span><span class="kp">exp</span><span class="p">(</span>log_likp<span class="p">))))</span> <span class="c1"># run in arbitrary precision</span>

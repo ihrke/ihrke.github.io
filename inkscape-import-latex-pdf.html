@@ -79,7 +79,7 @@ reset the bounding box (crop the <span class="caps">PDF</span>) without losing t
 format. The solution is hidden in <a class="reference external" href="https://bugs.launchpad.net/inkscape/+bug/295564">this blog post</a>:</p>
 <img alt="" src="http://ihrke.github.io/pics/inkscape_fonts.png" style="width: 100%;" />
 <p>Run the <span class="caps">PS</span> file <cite>filename.ps</cite> through <cite>gs</cite> to replace the fonts with outlines like&nbsp;so</p>
-<div class="highlight"><pre>gs -sDEVICE=pswrite -dNOCACHE -sOutputFile=- -q -dbatch -dNOPAUSE -dQUIET filename.ps -c quit | ps2pdf - &quot;`echo filename.ps | cut -f1 -d&#39;.&#39;`&quot;-nofont.pdf
+<div class="highlight"><pre><span></span>gs -sDEVICE=pswrite -dNOCACHE -sOutputFile=- -q -dbatch -dNOPAUSE -dQUIET filename.ps -c quit | ps2pdf - &quot;`echo filename.ps | cut -f1 -d&#39;.&#39;`&quot;-nofont.pdf
 </pre></div>
 <p>to generate <cite>filename-nofont.pdf</cite>.</p>
 <p>This file can be imported and used in inkscape (but you can&#8217;t re-type

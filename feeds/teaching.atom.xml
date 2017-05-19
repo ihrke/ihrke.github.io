@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Random Research (Ruminations)</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/teaching.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2017-03-29T00:00:00+02:00</updated><entry><title>Resources for learning (and teaching) statistics</title><link href="http://ihrke.github.io/statistical-resources.html" rel="alternate"></link><updated>2017-03-29T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2017-03-29:statistical-resources.html</id><summary type="html">&lt;p&gt;This is an on-going collection of resources for learning and teaching statistical&amp;nbsp;concepts.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Random Research (Ruminations) - teaching</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/teaching.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2017-03-29T00:00:00+02:00</updated><entry><title>Resources for learning (and teaching) statistics</title><link href="http://ihrke.github.io/statistical-resources.html" rel="alternate"></link><published>2017-03-29T00:00:00+02:00</published><updated>2017-03-29T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2017-03-29:/statistical-resources.html</id><summary type="html">&lt;p&gt;Collection of resources for learning (and teaching)&amp;nbsp;statistics&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is an on-going collection of resources for learning and teaching statistical&amp;nbsp;concepts.&lt;/p&gt;
 &lt;h2&gt;Visualisations&lt;/h2&gt;
 &lt;dl&gt;
 &lt;dt&gt;&lt;a href="http://guessthecorrelation.com/"&gt;Guess the&amp;nbsp;correlation&lt;/a&gt;&lt;/dt&gt;
@@ -58,4 +58,4 @@
 &lt;li&gt;&lt;a href="https://richarddmorey.org/"&gt;Richard Morey&lt;/a&gt; (and &lt;a href="http://bayesfactor.blogspot.no/"&gt;BayesFactor&lt;/a&gt; and &lt;a href="https://medium.com/@richarddmorey"&gt;@Medium&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.fharrell.com/"&gt;Frank&amp;nbsp;Harrell&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.sumsar.net/"&gt;Rasmus&amp;nbsp;Bååth&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</summary><category term="stats"></category><category term="R"></category></entry></feed>
+&lt;/ul&gt;</content><category term="stats"></category><category term="R"></category></entry></feed>

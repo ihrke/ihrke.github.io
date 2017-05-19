@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Random Research (Ruminations)</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/softwarer.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2015-09-24T00:00:00+02:00</updated><entry><title>Conda for handling R dependencies</title><link href="http://ihrke.github.io/conda.html" rel="alternate"></link><updated>2015-09-24T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2015-09-24:conda.html</id><summary type="html">&lt;p&gt;Every now and then, I stumble across the case that I want to return to
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Random Research (Ruminations) - software,R</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/softwarer.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2015-09-24T00:00:00+02:00</updated><entry><title>Conda for handling R dependencies</title><link href="http://ihrke.github.io/conda.html" rel="alternate"></link><published>2015-09-24T00:00:00+02:00</published><updated>2015-09-24T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2015-09-24:/conda.html</id><summary type="html">&lt;p class="first last"&gt;Handling R packages/dependencies with&amp;nbsp;conda.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;Every now and then, I stumble across the case that I want to return to
 some analysis I have been doing some time in the past only to find out
 that recent developments and package updates totally break my
 scripts. In the python world, I have been relying on &lt;a class="reference external" href="https://virtualenv.pypa.io/en/latest/"&gt;virtualenv&lt;/a&gt; for
@@ -65,7 +66,7 @@ use to capture packages with individual versions&amp;nbsp;etc.&lt;/p&gt;
 &lt;p&gt;Create a new &amp;#8220;virtualenv&amp;#8221; and switch to&amp;nbsp;it&lt;/p&gt;
 &lt;pre class="code bash literal-block"&gt;
 conda create --name testenv r
-&lt;span class="nb"&gt;source &lt;/span&gt;activate testenv
+&lt;span class="nb"&gt;source&lt;/span&gt; activate testenv
 &lt;/pre&gt;
 &lt;p&gt;You can install any R-packages that are already in the &lt;a class="reference external" href="https://anaconda.org/R"&gt;repo&lt;/a&gt; (they are prefixed by &lt;cite&gt;r-&lt;/cite&gt;),&amp;nbsp;e.g.,&lt;/p&gt;
 &lt;pre class="code bash literal-block"&gt;
@@ -92,7 +93,7 @@ will also tell you what you have to do to upload the new packages to
 your own channel at &lt;a class="reference external" href="https://anaconda.org"&gt;anaconda&lt;/a&gt; (my channel is
 &lt;a class="reference external" href="https://anaconda.org/mittner"&gt;https://anaconda.org/mittner&lt;/a&gt;)&lt;/p&gt;
 &lt;pre class="code bash literal-block"&gt;
-&lt;span class="c"&gt;# If you want to upload this package to anaconda.org later, type:
+&lt;span class="c1"&gt;# If you want to upload this package to anaconda.org later, type:
 #
 # $ anaconda upload /home/mittner/local/miniconda/conda-bld/linux-64/r-inline-0.3.14-r3.2.1_0.tar.bz2
 #
@@ -165,4 +166,4 @@ included in the &lt;code&gt;environment.yml&lt;/code&gt; file, I&amp;nbsp;guess?
 &lt;p&gt;So far, &lt;a class="reference external" href="http://conda.pydata.org/docs/"&gt;conda&lt;/a&gt; looks like a promising tool, but I will have to see how
 it behaves in practice (I will revisit this post later to include new&amp;nbsp;info).&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="R"></category></entry></feed>
+</content><category term="R"></category></entry></feed>
