@@ -1104,12 +1104,11 @@ format. The solution is hidden in &lt;a class="reference external" href="https:/
 &lt;p&gt;This file can be imported and used in inkscape (but you can&amp;#8217;t re-type
 the text,&amp;nbsp;obviously).&lt;/p&gt;
 </content><category term="latex"></category><category term="inkscape"></category></entry><entry><title>Power-spectrum from WAV-file</title><link href="http://ihrke.github.io/freqspecwav.html" rel="alternate"></link><published>2013-12-11T00:00:00+01:00</published><updated>2013-12-11T00:00:00+01:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2013-12-11:/freqspecwav.html</id><summary type="html">
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h1 id="Frequency-spectrum-of-a-WAV-file"&gt;Frequency spectrum of a &lt;span class="caps"&gt;WAV&lt;/span&gt; file&lt;a class="anchor-link" href="#Frequency-spectrum-of-a-WAV-file"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Here is how to plot the power-spectrum of a &lt;span class="caps"&gt;WAV&lt;/span&gt;-file.&lt;/p&gt;
+&lt;h1 id="Frequency-spectrum-of-a-WAV-file"&gt;Frequency spectrum of a &lt;span class="caps"&gt;WAV&lt;/span&gt; file&lt;a class="anchor-link" href="#Frequency-spectrum-of-a-WAV-file"&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Here is how to plot the power-spectrum of a &lt;span class="caps"&gt;WAV&lt;/span&gt;-file.&lt;/p&gt;
 &lt;p&gt;Install required packages with &lt;code&gt;pip&lt;/code&gt; or &lt;code&gt;easy_install&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://stackoverflow.com/questions/4315989/python-frequency-analysis-of-sound-files"&gt;Acknowledgment&lt;/a&gt;&lt;/p&gt;
 
@@ -12463,12 +12462,11 @@ span.autosave_status {
 
 .ansi-bold { font-weight: bold; }
 &lt;/style&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h1 id="Frequency-spectrum-of-a-WAV-file"&gt;Frequency spectrum of a &lt;span class="caps"&gt;WAV&lt;/span&gt; file&lt;a class="anchor-link" href="#Frequency-spectrum-of-a-WAV-file"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Here is how to plot the power-spectrum of a &lt;span class="caps"&gt;WAV&lt;/span&gt;-file.&lt;/p&gt;
+&lt;h1 id="Frequency-spectrum-of-a-WAV-file"&gt;Frequency spectrum of a &lt;span class="caps"&gt;WAV&lt;/span&gt; file&lt;a class="anchor-link" href="#Frequency-spectrum-of-a-WAV-file"&gt;&amp;#194;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Here is how to plot the power-spectrum of a &lt;span class="caps"&gt;WAV&lt;/span&gt;-file.&lt;/p&gt;
 &lt;p&gt;Install required packages with &lt;code&gt;pip&lt;/code&gt; or &lt;code&gt;easy_install&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://stackoverflow.com/questions/4315989/python-frequency-analysis-of-sound-files"&gt;Acknowledgment&lt;/a&gt;&lt;/p&gt;
 
@@ -12491,8 +12489,7 @@ span.autosave_status {
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -12515,8 +12512,7 @@ span.autosave_status {
 &lt;/div&gt;
 
 &lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;
-&lt;div class="prompt input_prompt"&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -12543,7 +12539,9 @@ span.autosave_status {
 
 
 &lt;div class="output_area"&gt;
+
 &lt;div class="prompt"&gt;&lt;/div&gt;
+
 
 
 
@@ -14414,7 +14412,9 @@ BwAAAAAAAAAAAAAAACgRhHkAAAAAAAAAAAAAAACAEkGYBwAAAAAAAAAAAAAAACgR/wcYa11qBNkU
 
 
 &lt;div class="output_area"&gt;
+
 &lt;div class="prompt"&gt;&lt;/div&gt;
+
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;Signal has 1635 samples and is sampled with sampling-rate 22050
@@ -14453,7 +14453,9 @@ Signal is 0.074150 seconds
 
 
 &lt;div class="output_area"&gt;
+
 &lt;div class="prompt"&gt;&lt;/div&gt;
+
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
 &lt;pre&gt;Peak frequency:  2211.74311927 Hz
@@ -14462,7 +14464,9 @@ Signal is 0.074150 seconds
 &lt;/div&gt;
 
 &lt;div class="output_area"&gt;
+
 &lt;div class="prompt"&gt;&lt;/div&gt;
+
 
 
 
