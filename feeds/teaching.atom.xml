@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Random Research (Ruminations) - teaching</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/teaching.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2017-03-29T00:00:00+02:00</updated><entry><title>Resources for learning (and teaching) statistics</title><link href="http://ihrke.github.io/statistical-resources.html" rel="alternate"></link><published>2017-03-29T00:00:00+02:00</published><updated>2017-03-29T00:00:00+02:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2017-03-29:/statistical-resources.html</id><summary type="html">&lt;p&gt;Collection of resources for learning (and teaching)&amp;nbsp;statistics&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is an on-going collection of resources for learning and teaching statistical&amp;nbsp;concepts.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Random Research (Ruminations) - teaching</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/teaching.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2017-11-22T00:00:00+01:00</updated><entry><title>Resources for learning (and teaching) statistics</title><link href="http://ihrke.github.io/statistical-resources.html" rel="alternate"></link><published>2017-03-29T00:00:00+02:00</published><updated>2017-11-22T00:00:00+01:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2017-03-29:/statistical-resources.html</id><summary type="html">&lt;p&gt;Collection of resources for learning (and teaching)&amp;nbsp;statistics&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is an on-going collection of resources for learning and teaching statistical&amp;nbsp;concepts.&lt;/p&gt;
 &lt;h2&gt;Visualisations&lt;/h2&gt;
 &lt;dl&gt;
 &lt;dt&gt;&lt;a href="http://guessthecorrelation.com/"&gt;Guess the&amp;nbsp;correlation&lt;/a&gt;&lt;/dt&gt;
@@ -50,6 +50,13 @@
 &lt;dt&gt;&lt;a href="http://www.stat.cmu.edu/~cshalizi/mreg/15/"&gt;Modern Regression by Cosma&amp;nbsp;Shalizi&lt;/a&gt;&lt;/dt&gt;
 &lt;dd&gt;
 &lt;p&gt;really good but pretty mathematical introduction to regression. Check out the lecture scripts (e.g., &lt;a href="http://www.stat.cmu.edu/~cshalizi/mreg/15/lectures/03/lecture-03.pdf"&gt;this one&lt;/a&gt;)&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;h2&gt;Fun&amp;nbsp;stuff&lt;/h2&gt;
+&lt;dl&gt;
+&lt;dt&gt;&lt;a href="https://mathwithbaddrawings.com/2016/07/13/why-not-to-trust-statistics/"&gt;Why not to trust&amp;nbsp;statistics&lt;/a&gt;&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;nice demonstration how measures of central tendency/variance can be misleading; includes bad&amp;nbsp;drawings!&lt;/p&gt;
 &lt;/dd&gt;
 &lt;/dl&gt;
 &lt;h2&gt;Blogs&lt;/h2&gt;
