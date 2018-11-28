@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Random Research (Ruminations) - Matthias Mittner</title><link href="http://ihrke.github.io/" rel="alternate"></link><link href="http://ihrke.github.io/feeds/matthias-mittner.atom.xml" rel="self"></link><id>http://ihrke.github.io/</id><updated>2017-11-22T00:00:00+01:00</updated><entry><title>Resources for learning (and teaching) statistics</title><link href="http://ihrke.github.io/statistical-resources.html" rel="alternate"></link><published>2017-03-29T00:00:00+02:00</published><updated>2017-11-22T00:00:00+01:00</updated><author><name>Matthias Mittner</name></author><id>tag:ihrke.github.io,2017-03-29:/statistical-resources.html</id><summary type="html">&lt;p&gt;Collection of resources for learning (and teaching)&amp;nbsp;statistics&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is an on-going collection of resources for learning and teaching statistical&amp;nbsp;concepts.&lt;/p&gt;
+&lt;h2&gt;Statisticial&amp;nbsp;practices&lt;/h2&gt;
+&lt;dl&gt;
+&lt;dt&gt;&lt;a href="https://www.nicebread.de/introducing-p-hacker/"&gt;p-hacker&amp;nbsp;app&lt;/a&gt;&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;Ned Bicare writes: &amp;#8220;I developed an online app that allows to practice creative data analysis and how to polish your p-values. It’s primarily aimed at young researchers who do not have our level of expertise yet, but I guess even old hands might learn one or two new tricks! It’s called “The p-hacker” (please note that ‘hacker’ is meant in a very positive way here. You should think of the cool hackers who fight for world peace). You can use the app in teaching, or to practice p-hacking&amp;nbsp;yourself.&amp;#8221;&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
 &lt;h2&gt;Visualisations&lt;/h2&gt;
 &lt;dl&gt;
 &lt;dt&gt;&lt;a href="http://guessthecorrelation.com/"&gt;Guess the&amp;nbsp;correlation&lt;/a&gt;&lt;/dt&gt;
