@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Random Research Ruminations</title>
+    <link>/tags/</link>
+    <description>Recent content in Tags on Random Research Ruminations</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 22 Nov 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>R</title>
+      <link>/tags/r/</link>
+      <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bayes</title>
+      <link>/tags/bayes/</link>
+      <pubDate>Wed, 02 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/bayes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>calendar</title>
+      <link>/tags/calendar/</link>
+      <pubDate>Wed, 30 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/calendar/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>computer</title>
+      <link>/tags/computer/</link>
+      <pubDate>Thu, 08 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/computer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>/tags/git/</link>
+      <pubDate>Mon, 25 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>inkscape</title>
+      <link>/tags/inkscape/</link>
+      <pubDate>Thu, 12 Dec 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/inkscape/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ipython</title>
+      <link>/tags/ipython/</link>
+      <pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/ipython/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jags</title>
+      <link>/tags/jags/</link>
+      <pubDate>Wed, 02 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/jags/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>latex</title>
+      <link>/tags/latex/</link>
+      <pubDate>Mon, 25 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/latex/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mind-wandering</title>
+      <link>/tags/mind-wandering/</link>
+      <pubDate>Tue, 23 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/mind-wandering/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>modeling</title>
+      <link>/tags/modeling/</link>
+      <pubDate>Tue, 23 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/modeling/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>org</title>
+      <link>/tags/org/</link>
+      <pubDate>Wed, 14 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/org/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>paper</title>
+      <link>/tags/paper/</link>
+      <pubDate>Mon, 29 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/paper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>piano</title>
+      <link>/tags/piano/</link>
+      <pubDate>Sat, 08 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/piano/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>/tags/python/</link>
+      <pubDate>Thu, 08 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>review</title>
+      <link>/tags/review/</link>
+      <pubDate>Mon, 21 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/review/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>stan</title>
+      <link>/tags/stan/</link>
+      <pubDate>Tue, 16 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/stan/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>stats</title>
+      <link>/tags/stats/</link>
+      <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/stats/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>uit</title>
+      <link>/tags/uit/</link>
+      <pubDate>Wed, 14 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/uit/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

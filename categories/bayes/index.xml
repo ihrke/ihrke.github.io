@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>bayes on Random Research Ruminations</title>
+    <link>/categories/bayes/</link>
+    <description>Recent content in bayes on Random Research Ruminations</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Jun 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/bayes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Fixing numerical underflow in WAIC calculation in Stan</title>
+      <link>/post/2015/06/16/fixing-numerical-underflow-in-waic-calculation-in-stan/</link>
+      <pubDate>Tue, 16 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015/06/16/fixing-numerical-underflow-in-waic-calculation-in-stan/</guid>
+      <description>Fixing numerical underflow in WAIC calculation in Stan I recently switched to the amazing software Stan for my MCMC needs. Every now and then, it can be useful to compare different models using some kind of information criterion. Previously, I used the Deviance Information criterion (DIC; Spiegelhalter, 2002) because that appeared to be the most correct for hierarchical Bayesian models. However, DIC received quite some critique on, e.g., Andrew Gelman&#39;s blog (here, or here) while the recent addition to the &amp;quot;XIC&amp;quot; family WAIC (Watanabe, 2010) appears to have more desirable theoretical properties (see here or there).</description>
+    </item>
+    
+    <item>
+      <title>Get Deviance Information Criterion (DIC) when sampling in JAGS</title>
+      <link>/post/2014/10/07/dicjags/</link>
+      <pubDate>Tue, 07 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014/10/07/dicjags/</guid>
+      <description>Get Deviance Information Criterion (DIC) when sampling in JAGS I use the rjags package from R to sample with JAGS. When sampling with the coda.samples() function, there is no way of getting the DIC from these samples (you need to use another run with dic.samples(). When using jags.samples(), it is possible to include deviance and pD in the variable-names array
+varnames=c(&amp;#39;pD&amp;#39;, &amp;#39;deviance&amp;#39;, &amp;#39;var1&amp;#39;, ...) out &amp;lt;- jags.samples(model, varnames, n.iter, thin, type = &amp;quot;trace&amp;quot;) but the resulting structure is awkward to handle and even more awkward to transfer to the nice coda-structure that allows to use all the nice plotting/diagnostic functions.</description>
+    </item>
+    
+  </channel>
+</rss>

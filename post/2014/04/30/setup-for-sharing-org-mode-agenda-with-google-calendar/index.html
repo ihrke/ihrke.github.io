@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Setup for sharing org-mode agenda with google calendar | Random Research Ruminations</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+      <li><a href="/index.xml">Subscribe</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title">Setup for sharing org-mode agenda with google calendar</span></h1>
+
+<h2 class="date">2014/04/30</h2>
+</div>
+
+<main>
+
+
+
+<div id="setup-for-sharing-org-mode-agenda-with-google-calendar-and-mobile-devices" class="section level1">
+<h1>Setup for sharing org-mode agenda with google calendar (and mobile devices)</h1>
+<p>Note: this is only one-directional from org-mode to google calendar.</p>
+<div id="first-step-setup-org-mode-to-export-all-the-agenda-files-to-an-ics-file." class="section level2">
+<h2>First step: setup org-mode to export all the agenda-files to an ics file.</h2>
+<p>Put this into the .emacs file (I save the agenda to dropbox).</p>
+<pre class="sourceCode elisp"><code>(setq org-icalendar-combined-agenda-file &quot;~/Dropbox/orgfiles/org.ics&quot;)
+(setq org-icalendar-include-todo &#39;(all))
+(setq org-icalendar-use-scheduled &#39;(event-if-todo event-if-not-todo)) 
+(setq org-icalendar-use-deadline &#39;(event-if-todo event-if-not-todo))
+
+;; this hook saves an ics file once an org-buffer is saved
+(defun my-icalendar-agenda-export()
+    (if (string= (file-name-extension (buffer-file-name)) &quot;org&quot;)
+              (org-icalendar-combine-agenda-files)) 
+      )
+(add-hook &#39;after-save-hook &#39;my-icalendar-agenda-export)</code></pre>
+</div>
+<div id="second-share-in-dropbox" class="section level2">
+<h2>Second: share in dropbox</h2>
+<p>In your dropbox folder on the web, click on share and &quot;get link&quot;.</p>
+<p>This links looks like this:
+<a href="https://www.dropbox.com/s/randomletters/org.ics" class="uri">https://www.dropbox.com/s/randomletters/org.ics</a></p>
+<p>Replace www with dl such that it looks like this:
+<a href="https://dl.dropbox.com/s/randomletters/org.ics" class="uri">https://dl.dropbox.com/s/randomletters/org.ics</a></p>
+</div>
+<div id="third-add-by-url-in-google-calendar" class="section level2">
+<h2>Third: add by url in google-calendar</h2>
+<p>This is unfortunately not as straight-forward as I would like to belive.
+Google calendar allows to &quot;Add by url&quot; (in the left panel, under
+&quot;Other calendars&quot;). However, with dropbox-links this fails with some
+warning about &quot;robots.txt&quot;.</p>
+<p>There is the following workaround (thanks to this
+<a href="https://productforums.google.com/forum/#!topic/calendar/HYN1y-7GYu4">discussion</a>).
+You have to create a
+<a href="http://pipes.yahoo.com/pipes/pipe.info?_id=1f85c5a9c2af3c8768d342531f5ca528">pipe</a>,
+then abbreviate the url with <a href="http://www.tinyurl.com">tinyurl</a> and
+finally import the resulting link into google-calendar (works fine this
+time).</p>
+</div>
+<div id="last-subscribe-to-the-new-google-calendar-on-your-devices" class="section level2">
+<h2>Last: subscribe to the new google calendar on your devices</h2>
+<p>e.g., mobile phone, mac, thunderbird (lightning),...</p>
+</div>
+</div>
+
+</main>
+
+  <footer>
+  <script src="//yihui.name/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script async src="//yihui.name/js/center-img.js"></script>
+
+
+ <script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/bash.min.js"></script>
+
+ <script>
+hljs.configure({languages: []});
+hljs.initHighlightingOnLoad();
+</script>
+  
+  <hr/>
+  &copy; Matthias Mittner | <a href="https://github.com/ihrke">Github</a> | <a href="https://twitter.com/thias_mittner">Twitter</a>
+  
+  </footer>
+  </body>
+</html>
+

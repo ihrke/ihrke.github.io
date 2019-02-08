@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on Random Research Ruminations</title>
+    <link>/tags/r/</link>
+    <description>Recent content in R on Random Research Ruminations</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 22 Nov 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Resources for learning (and teaching) statistics</title>
+      <link>/post/2017/11/22/resources-for-learning-and-teaching-statistics/</link>
+      <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2017/11/22/resources-for-learning-and-teaching-statistics/</guid>
+      <description>This is an on-going collection of resources for learning and teaching statistical concepts.
+Statisticial practices  p-hacker app Ned Bicare writes: “I developed an online app that allows to practice creative data analysis and how to polish your p-values. It’s primarily aimed at young researchers who do not have our level of expertise yet, but I guess even old hands might learn one or two new tricks! It’s called “The p-hacker” (please note that ‘hacker’ is meant in a very positive way here.</description>
+    </item>
+    
+    <item>
+      <title>Handling R packages/dependencies with conda.</title>
+      <link>/post/2015/09/24/conda/</link>
+      <pubDate>Thu, 24 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015/09/24/conda/</guid>
+      <description>Conda for handling R dependencies Every now and then, I stumble across the case that I want to return to some analysis I have been doing some time in the past only to find out that recent developments and package updates totally break my scripts. In the python world, I have been relying on virtualenv for quite some time and it works very well: On the computer I do the work, I create a virtualenv which I enable for development.</description>
+    </item>
+    
+    <item>
+      <title>Publishing Bayesian analyses in a medical journal</title>
+      <link>/post/2015/09/02/publishing-bayesian-analyses-in-a-medical-journal/</link>
+      <pubDate>Wed, 02 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015/09/02/publishing-bayesian-analyses-in-a-medical-journal/</guid>
+      <description>Publishing Bayesian analyses in a medical journal 
+I am excited to announce that our paper Predictors of response to Web-based cognitive behavioral therapy with face-to-face therapist support for depression: A Bayesian analysis has been accepted for publication in the Journal of Medical Internet Research (see below for the full citation). This paper is the result of a fruitful collaboration with Martin Eisemann&#39;s research group for Mental e-Health at the University of Tromsø.</description>
+    </item>
+    
+    <item>
+      <title>Fixing numerical underflow in WAIC calculation in Stan</title>
+      <link>/post/2015/06/16/fixing-numerical-underflow-in-waic-calculation-in-stan/</link>
+      <pubDate>Tue, 16 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015/06/16/fixing-numerical-underflow-in-waic-calculation-in-stan/</guid>
+      <description>Fixing numerical underflow in WAIC calculation in Stan I recently switched to the amazing software Stan for my MCMC needs. Every now and then, it can be useful to compare different models using some kind of information criterion. Previously, I used the Deviance Information criterion (DIC; Spiegelhalter, 2002) because that appeared to be the most correct for hierarchical Bayesian models. However, DIC received quite some critique on, e.g., Andrew Gelman&#39;s blog (here, or here) while the recent addition to the &amp;quot;XIC&amp;quot; family WAIC (Watanabe, 2010) appears to have more desirable theoretical properties (see here or there).</description>
+    </item>
+    
+    <item>
+      <title>Get Deviance Information Criterion (DIC) when sampling in JAGS</title>
+      <link>/post/2014/10/07/dicjags/</link>
+      <pubDate>Tue, 07 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014/10/07/dicjags/</guid>
+      <description>Get Deviance Information Criterion (DIC) when sampling in JAGS I use the rjags package from R to sample with JAGS. When sampling with the coda.samples() function, there is no way of getting the DIC from these samples (you need to use another run with dic.samples(). When using jags.samples(), it is possible to include deviance and pD in the variable-names array
+varnames=c(&amp;#39;pD&amp;#39;, &amp;#39;deviance&amp;#39;, &amp;#39;var1&amp;#39;, ...) out &amp;lt;- jags.samples(model, varnames, n.iter, thin, type = &amp;quot;trace&amp;quot;) but the resulting structure is awkward to handle and even more awkward to transfer to the nice coda-structure that allows to use all the nice plotting/diagnostic functions.</description>
+    </item>
+    
+  </channel>
+</rss>

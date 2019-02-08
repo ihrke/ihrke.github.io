@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>paper on Random Research Ruminations</title>
+    <link>/tags/paper/</link>
+    <description>Recent content in paper on Random Research Ruminations</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 29 Feb 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/paper/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Association Between Executive Functions, Working Memory, and Manual Dexterity</title>
+      <link>/post/2016/02/29/association-between-executive-functions-working-memory-and-manual-dexterity/</link>
+      <pubDate>Mon, 29 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2016/02/29/association-between-executive-functions-working-memory-and-manual-dexterity/</guid>
+      <description>New paper (open data!): Association Between Executive Functions, Working Memory, and Manual Dexterity 
+I am thrilled to see that our fully-Bayesian, open-data paper &amp;quot;Association Between Executive Functions, Working Memory, and Manual Dexterity in Young and Healthy Older Adults&amp;quot; has been published in Perceptual &amp;amp; Motor Skills. This paper takes on the rarely asked question about the relationship between cognitive functions and manual dexterity. The history of my involvement with this manuscript is maybe unusual in that one of the reviewers actually requested the use of Bayesian statistics (because he felt that the analyses reported in an initial version of the MS in which I was not involved were not appropriate).</description>
+    </item>
+    
+    <item>
+      <title>New paper: Toward a model-based cognitive neuroscience of mind wandering</title>
+      <link>/post/2015/09/21/newreviewpaper/</link>
+      <pubDate>Mon, 21 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015/09/21/newreviewpaper/</guid>
+      <description>New paper: Toward a model-based cognitive neuroscience of mind wandering 
+I am happy to announce that our review paper on a model-based cognitive neuroscience approach to the study of mind-wandering has been accepted for publication in Neuroscience, (Hawkins et al., accepted). This paper summarizes many of the theoretical ideas that we have been discussing in our group for quite some time and also reviews and integrates the research done so far.</description>
+    </item>
+    
+    <item>
+      <title>Publishing Bayesian analyses in a medical journal</title>
+      <link>/post/2015/09/02/publishing-bayesian-analyses-in-a-medical-journal/</link>
+      <pubDate>Wed, 02 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015/09/02/publishing-bayesian-analyses-in-a-medical-journal/</guid>
+      <description>Publishing Bayesian analyses in a medical journal 
+I am excited to announce that our paper Predictors of response to Web-based cognitive behavioral therapy with face-to-face therapist support for depression: A Bayesian analysis has been accepted for publication in the Journal of Medical Internet Research (see below for the full citation). This paper is the result of a fruitful collaboration with Martin Eisemann&#39;s research group for Mental e-Health at the University of Tromsø.</description>
+    </item>
+    
+    <item>
+      <title>Commentary on our mind-wandering paper</title>
+      <link>/post/2015/06/23/commentary-on-our-mind-wandering-paper/</link>
+      <pubDate>Tue, 23 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015/06/23/commentary-on-our-mind-wandering-paper/</guid>
+      <description>Commentary on our mind-wandering paper 
+Vadim Axelrod and Andrei R. Teodorescu wrote an interesting commentary on our recent mind-wandering paper that was published in The Journal of Neuroscience last year. I am happy that they are supportive of our approach and glad about the constructive comments that they give in their paper.
+I am particularly happy that someone has gone to the difficulty of summarizing and contextualizing our paper because I think that it is actually quite hard to read.</description>
+    </item>
+    
+  </channel>
+</rss>

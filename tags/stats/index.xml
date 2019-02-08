@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>stats on Random Research Ruminations</title>
+    <link>/tags/stats/</link>
+    <description>Recent content in stats on Random Research Ruminations</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 22 Nov 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/stats/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Resources for learning (and teaching) statistics</title>
+      <link>/post/2017/11/22/resources-for-learning-and-teaching-statistics/</link>
+      <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2017/11/22/resources-for-learning-and-teaching-statistics/</guid>
+      <description>This is an on-going collection of resources for learning and teaching statistical concepts.
+Statisticial practices  p-hacker app Ned Bicare writes: “I developed an online app that allows to practice creative data analysis and how to polish your p-values. It’s primarily aimed at young researchers who do not have our level of expertise yet, but I guess even old hands might learn one or two new tricks! It’s called “The p-hacker” (please note that ‘hacker’ is meant in a very positive way here.</description>
+    </item>
+    
+  </channel>
+</rss>

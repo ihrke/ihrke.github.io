@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ipython on Random Research Ruminations</title>
+    <link>/tags/ipython/</link>
+    <description>Recent content in ipython on Random Research Ruminations</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Sep 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/ipython/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Access IPython Notebook through SSH to avoid firewall</title>
+      <link>/post/2014/09/16/access-ipython-notebook-through-ssh-to-avoid-firewall/</link>
+      <pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014/09/16/access-ipython-notebook-through-ssh-to-avoid-firewall/</guid>
+      <description>Access IPython Notebook through SSH to avoid firewall I usually run ipython notebook on a server and access the web-interface from a different computer. This enables me to start a lengthy computation, shut my laptop and come back once it&#39;s done.
+However, I recently had the problem that I was not able to find a good way of opening the ipython-specific port in the firewall. Also, it&#39;s a bit dangerous to do so.</description>
+    </item>
+    
+  </channel>
+</rss>

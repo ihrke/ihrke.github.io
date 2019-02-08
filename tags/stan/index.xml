@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>stan on Random Research Ruminations</title>
+    <link>/tags/stan/</link>
+    <description>Recent content in stan on Random Research Ruminations</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Jun 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/stan/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Fixing numerical underflow in WAIC calculation in Stan</title>
+      <link>/post/2015/06/16/fixing-numerical-underflow-in-waic-calculation-in-stan/</link>
+      <pubDate>Tue, 16 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015/06/16/fixing-numerical-underflow-in-waic-calculation-in-stan/</guid>
+      <description>Fixing numerical underflow in WAIC calculation in Stan I recently switched to the amazing software Stan for my MCMC needs. Every now and then, it can be useful to compare different models using some kind of information criterion. Previously, I used the Deviance Information criterion (DIC; Spiegelhalter, 2002) because that appeared to be the most correct for hierarchical Bayesian models. However, DIC received quite some critique on, e.g., Andrew Gelman&#39;s blog (here, or here) while the recent addition to the &amp;quot;XIC&amp;quot; family WAIC (Watanabe, 2010) appears to have more desirable theoretical properties (see here or there).</description>
+    </item>
+    
+  </channel>
+</rss>

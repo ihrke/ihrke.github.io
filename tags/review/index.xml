@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>review on Random Research Ruminations</title>
+    <link>/tags/review/</link>
+    <description>Recent content in review on Random Research Ruminations</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 21 Sep 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/review/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>New paper: Toward a model-based cognitive neuroscience of mind wandering</title>
+      <link>/post/2015/09/21/newreviewpaper/</link>
+      <pubDate>Mon, 21 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015/09/21/newreviewpaper/</guid>
+      <description>New paper: Toward a model-based cognitive neuroscience of mind wandering 
+I am happy to announce that our review paper on a model-based cognitive neuroscience approach to the study of mind-wandering has been accepted for publication in Neuroscience, (Hawkins et al., accepted). This paper summarizes many of the theoretical ideas that we have been discussing in our group for quite some time and also reviews and integrates the research done so far.</description>
+    </item>
+    
+  </channel>
+</rss>

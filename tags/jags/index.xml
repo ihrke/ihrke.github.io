@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>jags on Random Research Ruminations</title>
+    <link>/tags/jags/</link>
+    <description>Recent content in jags on Random Research Ruminations</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 02 Sep 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/jags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Publishing Bayesian analyses in a medical journal</title>
+      <link>/post/2015/09/02/publishing-bayesian-analyses-in-a-medical-journal/</link>
+      <pubDate>Wed, 02 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015/09/02/publishing-bayesian-analyses-in-a-medical-journal/</guid>
+      <description>Publishing Bayesian analyses in a medical journal 
+I am excited to announce that our paper Predictors of response to Web-based cognitive behavioral therapy with face-to-face therapist support for depression: A Bayesian analysis has been accepted for publication in the Journal of Medical Internet Research (see below for the full citation). This paper is the result of a fruitful collaboration with Martin Eisemann&#39;s research group for Mental e-Health at the University of Tromsø.</description>
+    </item>
+    
+    <item>
+      <title>Get Deviance Information Criterion (DIC) when sampling in JAGS</title>
+      <link>/post/2014/10/07/dicjags/</link>
+      <pubDate>Tue, 07 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014/10/07/dicjags/</guid>
+      <description>Get Deviance Information Criterion (DIC) when sampling in JAGS I use the rjags package from R to sample with JAGS. When sampling with the coda.samples() function, there is no way of getting the DIC from these samples (you need to use another run with dic.samples(). When using jags.samples(), it is possible to include deviance and pD in the variable-names array
+varnames=c(&amp;#39;pD&amp;#39;, &amp;#39;deviance&amp;#39;, &amp;#39;var1&amp;#39;, ...) out &amp;lt;- jags.samples(model, varnames, n.iter, thin, type = &amp;quot;trace&amp;quot;) but the resulting structure is awkward to handle and even more awkward to transfer to the nice coda-structure that allows to use all the nice plotting/diagnostic functions.</description>
+    </item>
+    
+  </channel>
+</rss>

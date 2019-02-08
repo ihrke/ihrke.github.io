@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on Random Research Ruminations</title>
+    <link>/categories/r/</link>
+    <description>Recent content in R on Random Research Ruminations</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 24 Sep 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Handling R packages/dependencies with conda.</title>
+      <link>/post/2015/09/24/conda/</link>
+      <pubDate>Thu, 24 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015/09/24/conda/</guid>
+      <description>Conda for handling R dependencies Every now and then, I stumble across the case that I want to return to some analysis I have been doing some time in the past only to find out that recent developments and package updates totally break my scripts. In the python world, I have been relying on virtualenv for quite some time and it works very well: On the computer I do the work, I create a virtualenv which I enable for development.</description>
+    </item>
+    
+  </channel>
+</rss>

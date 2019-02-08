@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>computer on Random Research Ruminations</title>
+    <link>/categories/computer/</link>
+    <description>Recent content in computer on Random Research Ruminations</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 08 Jan 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/computer/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Multi-Language IPython (Jupyter) setup</title>
+      <link>/post/2015/01/08/multi-language-ipython-jupyter-setup/</link>
+      <pubDate>Thu, 08 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015/01/08/multi-language-ipython-jupyter-setup/</guid>
+      <description>Multi-Language IPython (Jupyter) setup The IPython notebook project (which I adore) is about to be renamed to Jupyter to better reflect the fact that it can be used with other languages besides Python. At the moment that is under heavy development and probably quite unstable but I found myself aching for an IR-Notebook. So here is a guide to set up a multi-language Jupyter notebook (meaning that you just start the server and can select if you want an R-Notebook, a Python-notebook, or one of the other availabel kernels).</description>
+    </item>
+    
+    <item>
+      <title>Access IPython Notebook through SSH to avoid firewall</title>
+      <link>/post/2014/09/16/access-ipython-notebook-through-ssh-to-avoid-firewall/</link>
+      <pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014/09/16/access-ipython-notebook-through-ssh-to-avoid-firewall/</guid>
+      <description>Access IPython Notebook through SSH to avoid firewall I usually run ipython notebook on a server and access the web-interface from a different computer. This enables me to start a lengthy computation, shut my laptop and come back once it&#39;s done.
+However, I recently had the problem that I was not able to find a good way of opening the ipython-specific port in the firewall. Also, it&#39;s a bit dangerous to do so.</description>
+    </item>
+    
+  </channel>
+</rss>

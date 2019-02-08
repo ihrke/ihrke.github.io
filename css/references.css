@@ -1,0 +1,21 @@
+.refnum {
+  float: left;
+  width: 5%;
+}
+
+.ref {
+  float: left;
+  width: 95%;
+}
+
+/* Clear floats after the columns */
+.reference:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.refnum p {
+  padding: 0;
+  border: none;
+}

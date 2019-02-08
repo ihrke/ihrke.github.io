@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Random Research Ruminations</title>
+    <link>/post/</link>
+    <description>Recent content in Posts on Random Research Ruminations</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 22 Nov 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Resources for learning (and teaching) statistics</title>
+      <link>/post/2017/11/22/resources-for-learning-and-teaching-statistics/</link>
+      <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2017/11/22/resources-for-learning-and-teaching-statistics/</guid>
+      <description>This is an on-going collection of resources for learning and teaching statistical concepts.
+Statisticial practices  p-hacker app Ned Bicare writes: “I developed an online app that allows to practice creative data analysis and how to polish your p-values. It’s primarily aimed at young researchers who do not have our level of expertise yet, but I guess even old hands might learn one or two new tricks! It’s called “The p-hacker” (please note that ‘hacker’ is meant in a very positive way here.</description>
+    </item>
+    
+    <item>
+      <title>Association Between Executive Functions, Working Memory, and Manual Dexterity</title>
+      <link>/post/2016/02/29/association-between-executive-functions-working-memory-and-manual-dexterity/</link>
+      <pubDate>Mon, 29 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2016/02/29/association-between-executive-functions-working-memory-and-manual-dexterity/</guid>
+      <description>New paper (open data!): Association Between Executive Functions, Working Memory, and Manual Dexterity 
+I am thrilled to see that our fully-Bayesian, open-data paper &amp;quot;Association Between Executive Functions, Working Memory, and Manual Dexterity in Young and Healthy Older Adults&amp;quot; has been published in Perceptual &amp;amp; Motor Skills. This paper takes on the rarely asked question about the relationship between cognitive functions and manual dexterity. The history of my involvement with this manuscript is maybe unusual in that one of the reviewers actually requested the use of Bayesian statistics (because he felt that the analyses reported in an initial version of the MS in which I was not involved were not appropriate).</description>
+    </item>
+    
+    <item>
+      <title>Stuff you need to know as new (foreign) employee at UiT</title>
+      <link>/post/2015/10/14/stuff-you-need-to-know-as-new-foreign-employee-at-uit/</link>
+      <pubDate>Wed, 14 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015/10/14/stuff-you-need-to-know-as-new-foreign-employee-at-uit/</guid>
+      <description>Stuff you need to know as new (foreign) employee at University of Tromsø Even more than a year after moving to the best city on earth, Tromsø, and beginning to work at the best university in the country, the University of Tromsø, I stumble across new stuff that I wish I would have known earlier. Some of it is probably most interesting to foreigners, but most of it might be of interest to you, the Norwegian, as well :-)</description>
+    </item>
+    
+    <item>
+      <title>Handling R packages/dependencies with conda.</title>
+      <link>/post/2015/09/24/conda/</link>
+      <pubDate>Thu, 24 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015/09/24/conda/</guid>
+      <description>Conda for handling R dependencies Every now and then, I stumble across the case that I want to return to some analysis I have been doing some time in the past only to find out that recent developments and package updates totally break my scripts. In the python world, I have been relying on virtualenv for quite some time and it works very well: On the computer I do the work, I create a virtualenv which I enable for development.</description>
+    </item>
+    
+    <item>
+      <title>New paper: Toward a model-based cognitive neuroscience of mind wandering</title>
+      <link>/post/2015/09/21/newreviewpaper/</link>
+      <pubDate>Mon, 21 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015/09/21/newreviewpaper/</guid>
+      <description>New paper: Toward a model-based cognitive neuroscience of mind wandering 
+I am happy to announce that our review paper on a model-based cognitive neuroscience approach to the study of mind-wandering has been accepted for publication in Neuroscience, (Hawkins et al., accepted). This paper summarizes many of the theoretical ideas that we have been discussing in our group for quite some time and also reviews and integrates the research done so far.</description>
+    </item>
+    
+    <item>
+      <title>Publishing Bayesian analyses in a medical journal</title>
+      <link>/post/2015/09/02/publishing-bayesian-analyses-in-a-medical-journal/</link>
+      <pubDate>Wed, 02 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015/09/02/publishing-bayesian-analyses-in-a-medical-journal/</guid>
+      <description>Publishing Bayesian analyses in a medical journal 
+I am excited to announce that our paper Predictors of response to Web-based cognitive behavioral therapy with face-to-face therapist support for depression: A Bayesian analysis has been accepted for publication in the Journal of Medical Internet Research (see below for the full citation). This paper is the result of a fruitful collaboration with Martin Eisemann&#39;s research group for Mental e-Health at the University of Tromsø.</description>
+    </item>
+    
+    <item>
+      <title>Commentary on our mind-wandering paper</title>
+      <link>/post/2015/06/23/commentary-on-our-mind-wandering-paper/</link>
+      <pubDate>Tue, 23 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015/06/23/commentary-on-our-mind-wandering-paper/</guid>
+      <description>Commentary on our mind-wandering paper 
+Vadim Axelrod and Andrei R. Teodorescu wrote an interesting commentary on our recent mind-wandering paper that was published in The Journal of Neuroscience last year. I am happy that they are supportive of our approach and glad about the constructive comments that they give in their paper.
+I am particularly happy that someone has gone to the difficulty of summarizing and contextualizing our paper because I think that it is actually quite hard to read.</description>
+    </item>
+    
+    <item>
+      <title>Fixing numerical underflow in WAIC calculation in Stan</title>
+      <link>/post/2015/06/16/fixing-numerical-underflow-in-waic-calculation-in-stan/</link>
+      <pubDate>Tue, 16 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015/06/16/fixing-numerical-underflow-in-waic-calculation-in-stan/</guid>
+      <description>Fixing numerical underflow in WAIC calculation in Stan I recently switched to the amazing software Stan for my MCMC needs. Every now and then, it can be useful to compare different models using some kind of information criterion. Previously, I used the Deviance Information criterion (DIC; Spiegelhalter, 2002) because that appeared to be the most correct for hierarchical Bayesian models. However, DIC received quite some critique on, e.g., Andrew Gelman&#39;s blog (here, or here) while the recent addition to the &amp;quot;XIC&amp;quot; family WAIC (Watanabe, 2010) appears to have more desirable theoretical properties (see here or there).</description>
+    </item>
+    
+    <item>
+      <title>Multi-Language IPython (Jupyter) setup</title>
+      <link>/post/2015/01/08/multi-language-ipython-jupyter-setup/</link>
+      <pubDate>Thu, 08 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015/01/08/multi-language-ipython-jupyter-setup/</guid>
+      <description>Multi-Language IPython (Jupyter) setup The IPython notebook project (which I adore) is about to be renamed to Jupyter to better reflect the fact that it can be used with other languages besides Python. At the moment that is under heavy development and probably quite unstable but I found myself aching for an IR-Notebook. So here is a guide to set up a multi-language Jupyter notebook (meaning that you just start the server and can select if you want an R-Notebook, a Python-notebook, or one of the other availabel kernels).</description>
+    </item>
+    
+    <item>
+      <title>(Dis-)Assembling of Clavinova CLP-970</title>
+      <link>/post/2014/11/08/clavinova/</link>
+      <pubDate>Sat, 08 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014/11/08/clavinova/</guid>
+      <description>(Dis-)Assembling a Clavinova CLP-970 I recently had to disassemble my clavinova CLP-970 for various reasons.
+I followed the excellently written guide from this blog post (by Sylvia) and integrated this text with images. I didn’t really have anything to add to this comprehensive text so in the following I just copied her text:
+I was able to perform the entire task using a single long (15cm shaft) cross-headed screw-driver that I had magnetised, and a thin piece of metal, which in my case was a paint scraper.</description>
+    </item>
+    
+    <item>
+      <title>Get Deviance Information Criterion (DIC) when sampling in JAGS</title>
+      <link>/post/2014/10/07/dicjags/</link>
+      <pubDate>Tue, 07 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014/10/07/dicjags/</guid>
+      <description>Get Deviance Information Criterion (DIC) when sampling in JAGS I use the rjags package from R to sample with JAGS. When sampling with the coda.samples() function, there is no way of getting the DIC from these samples (you need to use another run with dic.samples(). When using jags.samples(), it is possible to include deviance and pD in the variable-names array
+varnames=c(&amp;#39;pD&amp;#39;, &amp;#39;deviance&amp;#39;, &amp;#39;var1&amp;#39;, ...) out &amp;lt;- jags.samples(model, varnames, n.iter, thin, type = &amp;quot;trace&amp;quot;) but the resulting structure is awkward to handle and even more awkward to transfer to the nice coda-structure that allows to use all the nice plotting/diagnostic functions.</description>
+    </item>
+    
+    <item>
+      <title>Access IPython Notebook through SSH to avoid firewall</title>
+      <link>/post/2014/09/16/access-ipython-notebook-through-ssh-to-avoid-firewall/</link>
+      <pubDate>Tue, 16 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014/09/16/access-ipython-notebook-through-ssh-to-avoid-firewall/</guid>
+      <description>Access IPython Notebook through SSH to avoid firewall I usually run ipython notebook on a server and access the web-interface from a different computer. This enables me to start a lengthy computation, shut my laptop and come back once it&#39;s done.
+However, I recently had the problem that I was not able to find a good way of opening the ipython-specific port in the firewall. Also, it&#39;s a bit dangerous to do so.</description>
+    </item>
+    
+    <item>
+      <title>Highlight changes with latexdiff</title>
+      <link>/post/2014/08/25/highlight-changes-with-latexdiff/</link>
+      <pubDate>Mon, 25 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014/08/25/highlight-changes-with-latexdiff/</guid>
+      <description>Highlight changes with latexdiff Have you ever been asked to provide a resubmission with &amp;quot;changes highlighted&amp;quot;? Or have you ever received a modified version of your latex file and wanted to see the changes in a PDF version?
+Well I have and here&#39;s my solution.
+I use to track my papers with git which makes the whole process of integrating your co-authors opinions a breeze.
+I will just guide you through the process beginning at zero:</description>
+    </item>
+    
+    <item>
+      <title>Setup for sharing org-mode agenda with google calendar</title>
+      <link>/post/2014/04/30/setup-for-sharing-org-mode-agenda-with-google-calendar/</link>
+      <pubDate>Wed, 30 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014/04/30/setup-for-sharing-org-mode-agenda-with-google-calendar/</guid>
+      <description>Setup for sharing org-mode agenda with google calendar (and mobile devices) Note: this is only one-directional from org-mode to google calendar.
+First step: setup org-mode to export all the agenda-files to an ics file. Put this into the .emacs file (I save the agenda to dropbox).
+(setq org-icalendar-combined-agenda-file &amp;quot;~/Dropbox/orgfiles/org.ics&amp;quot;) (setq org-icalendar-include-todo &amp;#39;(all)) (setq org-icalendar-use-scheduled &amp;#39;(event-if-todo event-if-not-todo)) (setq org-icalendar-use-deadline &amp;#39;(event-if-todo event-if-not-todo)) ;; this hook saves an ics file once an org-buffer is saved (defun my-icalendar-agenda-export() (if (string= (file-name-extension (buffer-file-name)) &amp;quot;org&amp;quot;) (org-icalendar-combine-agenda-files)) ) (add-hook &amp;#39;after-save-hook &amp;#39;my-icalendar-agenda-export)  Second: share in dropbox In your dropbox folder on the web, click on share and &amp;quot;get link&amp;quot;.</description>
+    </item>
+    
+    <item>
+      <title>Import PDF in Inkscape without replacing fonts</title>
+      <link>/post/2013/12/12/import-pdf-in-inkscape-without-replacing-fonts/</link>
+      <pubDate>Thu, 12 Dec 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2013/12/12/import-pdf-in-inkscape-without-replacing-fonts/</guid>
+      <description>Import PDF in Inkscape without replacing fonts Inkscape replaces text in PDF with bad fonts (especially when the PDF is generated with latex). I use Inkscape to rearrange some stuff or do some fine-tuning of a pstricks-images. Sometimes I just want to reset the bounding box (crop the PDF) without losing the PDF format. The solution is hidden in this blog post:
+Run the PS file filename.ps through gs to replace the fonts with outlines like so</description>
+    </item>
+    
+  </channel>
+</rss>

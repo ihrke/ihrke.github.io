@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mind-wandering on Random Research Ruminations</title>
+    <link>/tags/mind-wandering/</link>
+    <description>Recent content in mind-wandering on Random Research Ruminations</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 23 Jun 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/mind-wandering/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Commentary on our mind-wandering paper</title>
+      <link>/post/2015/06/23/commentary-on-our-mind-wandering-paper/</link>
+      <pubDate>Tue, 23 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2015/06/23/commentary-on-our-mind-wandering-paper/</guid>
+      <description>Commentary on our mind-wandering paper 
+Vadim Axelrod and Andrei R. Teodorescu wrote an interesting commentary on our recent mind-wandering paper that was published in The Journal of Neuroscience last year. I am happy that they are supportive of our approach and glad about the constructive comments that they give in their paper.
+I am particularly happy that someone has gone to the difficulty of summarizing and contextualizing our paper because I think that it is actually quite hard to read.</description>
+    </item>
+    
+  </channel>
+</rss>

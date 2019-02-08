@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on Random Research Ruminations</title>
+    <link>/tags/git/</link>
+    <description>Recent content in git on Random Research Ruminations</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 25 Aug 2014 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Highlight changes with latexdiff</title>
+      <link>/post/2014/08/25/highlight-changes-with-latexdiff/</link>
+      <pubDate>Mon, 25 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2014/08/25/highlight-changes-with-latexdiff/</guid>
+      <description>Highlight changes with latexdiff Have you ever been asked to provide a resubmission with &amp;quot;changes highlighted&amp;quot;? Or have you ever received a modified version of your latex file and wanted to see the changes in a PDF version?
+Well I have and here&#39;s my solution.
+I use to track my papers with git which makes the whole process of integrating your co-authors opinions a breeze.
+I will just guide you through the process beginning at zero:</description>
+    </item>
+    
+  </channel>
+</rss>

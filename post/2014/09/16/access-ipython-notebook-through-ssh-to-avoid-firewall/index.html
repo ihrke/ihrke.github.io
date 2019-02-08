@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Access IPython Notebook through SSH to avoid firewall | Random Research Ruminations</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+      <li><a href="/index.xml">Subscribe</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title">Access IPython Notebook through SSH to avoid firewall</span></h1>
+
+<h2 class="date">2014/09/16</h2>
+</div>
+
+<main>
+
+
+
+<div id="access-ipython-notebook-through-ssh-to-avoid-firewall" class="section level1">
+<h1>Access IPython Notebook through SSH to avoid firewall</h1>
+<p>I usually run ipython notebook on a server and access the web-interface
+from a different computer. This enables me to start a lengthy
+computation, shut my laptop and come back once it's done.</p>
+<p>However, I recently had the problem that I was not able to find a good
+way of opening the ipython-specific port in the firewall. Also, it's a
+bit dangerous to do so.</p>
+<p>I was therefore happy to have stumbled across <a href="http://wisdomthroughknowledge.blogspot.no/2012/07/accessing-ipython-notebook-remotely.html">a blog
+post</a>
+which told me how to access ipython through a SSH-tunnel. Basically,
+this allows to access ipython running on any computer that you can
+access via SSH.</p>
+<p>Here's the recipe:</p>
+<ol style="list-style-type: decimal">
+<li>On the server, start the ipython notebook:</li>
+</ol>
+<pre><code>ipython notebook --no-browser --port=8889</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>On the local machine, setup a pipe with</li>
+</ol>
+<pre><code>ssh -N -n -L localhost:8889:localhost:8889 user@servername</code></pre>
+<p>(this will have to be redone after opening your laptop again)</p>
+<ol start="3" style="list-style-type: decimal">
+<li>access your ipython notebook locally with
+<span class="title-ref">localhost:8889</span></li>
+</ol>
+<div id="setup-ipython" class="section level2">
+<h2>Setup IPython</h2>
+<p>Here is an outline how I setup my IPython to serve all my scientific
+needs:</p>
+<ol style="list-style-type: decimal">
+<li>make and activate an virtualenv:</li>
+</ol>
+<pre class="sourceCode bash"><code>virtualenv local/python/name
+source local/python/name/bin/activate</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>get the most recent ipython</li>
+</ol>
+<pre class="sourceCode bash"><code>## get the cutting edge ipython version
+git clone --recursive https://github.com/ipython/ipython.git
+# and install all its dependencies
+cd ipython
+pip install -e &quot;.[notebook]&quot; </code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>get all the cool packages</li>
+</ol>
+<pre class="sourceCode bash"><code>pip install numpy
+pip install scipy
+pip install matplotlib
+pip install pandas
+pip install rpy2
+pip install seaborn
+pip install pymc
+pip install statsmodels
+pip install ipycache
+pip install pushbullet.py</code></pre>
+</div>
+</div>
+
+</main>
+
+  <footer>
+  <script src="//yihui.name/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script async src="//yihui.name/js/center-img.js"></script>
+
+
+ <script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/languages/bash.min.js"></script>
+
+ <script>
+hljs.configure({languages: []});
+hljs.initHighlightingOnLoad();
+</script>
+  
+  <hr/>
+  &copy; Matthias Mittner | <a href="https://github.com/ihrke">Github</a> | <a href="https://twitter.com/thias_mittner">Twitter</a>
+  
+  </footer>
+  </body>
+</html>
+
