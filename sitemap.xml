@@ -98,6 +98,14 @@
   </url>
   
   <url>
+    <loc>/preprints/</loc>
+  </url>
+  
+  <url>
+    <loc>/bibtex/</loc>
+  </url>
+  
+  <url>
     <loc>/tags/r/</loc>
     <lastmod>2017-11-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
