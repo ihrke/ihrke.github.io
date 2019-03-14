@@ -18,7 +18,7 @@
       
       <guid>/post/2017/11/22/resources-for-learning-and-teaching-statistics/</guid>
       <description>This is an on-going collection of resources for learning and teaching statistical concepts.
-This post was last updated on 2019-03-07.
+This post was last updated on 2019-03-14.
 Statisticial practices  p-hacker app Ned Bicare writes: “I developed an online app that allows to practice creative data analysis and how to polish your p-values. It’s primarily aimed at young researchers who do not have our level of expertise yet, but I guess even old hands might learn one or two new tricks!</description>
     </item>
     
@@ -96,7 +96,7 @@ I am particularly happy that someone has gone to the difficulty of summarizing a
       <pubDate>Thu, 08 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>/post/2015/01/08/multi-language-ipython-jupyter-setup/</guid>
-      <description>Multi-Language IPython (Jupyter) setup The IPython notebook project (which I adore) is about to be renamed to Jupyter to better reflect the fact that it can be used with other languages besides Python. At the moment that is under heavy development and probably quite unstable but I found myself aching for an IR-Notebook. So here is a guide to set up a multi-language Jupyter notebook (meaning that you just start the server and can select if you want an R-Notebook, a Python-notebook, or one of the other availabel kernels).</description>
+      <description>Multi-Language IPython (Jupyter) setup  The IPython notebook project (which I adore) is about to be renamed to Jupyter to better reflect the fact that it can be used with other languages besides Python. At the moment that is under heavy development and probably quite unstable but I found myself aching for an IR-Notebook. So here is a guide to set up a multi-language Jupyter notebook (meaning that you just start the server and can select if you want an R-Notebook, a Python-notebook, or one of the other availabel kernels).</description>
     </item>
     
     <item>
@@ -105,7 +105,7 @@ I am particularly happy that someone has gone to the difficulty of summarizing a
       <pubDate>Sat, 08 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>/post/2014/11/08/clavinova/</guid>
-      <description>(Dis-)Assembling a Clavinova CLP-970 I recently had to disassemble my clavinova CLP-970 for various reasons.
+      <description>(Dis-)Assembling a Clavinova CLP-970  I recently had to disassemble my clavinova CLP-970 for various reasons.
 I followed the excellently written guide from this blog post (by Sylvia) and integrated this text with images. I didn’t really have anything to add to this comprehensive text so in the following I just copied her text:
 I was able to perform the entire task using a single long (15cm shaft) cross-headed screw-driver that I had magnetised, and a thin piece of metal, which in my case was a paint scraper.</description>
     </item>
@@ -160,7 +160,7 @@ First step: setup org-mode to export all the agenda-files to an ics file. Put th
       
       <guid>/post/2013/12/12/import-pdf-in-inkscape-without-replacing-fonts/</guid>
       <description>Import PDF in Inkscape without replacing fonts Inkscape replaces text in PDF with bad fonts (especially when the PDF is generated with latex). I use Inkscape to rearrange some stuff or do some fine-tuning of a pstricks-images. Sometimes I just want to reset the bounding box (crop the PDF) without losing the PDF format. The solution is hidden in this blog post:
-Run the PS file filename.ps through gs to replace the fonts with outlines like so</description>
+ Run the PS file filename.ps through gs to replace the fonts with outlines like so</description>
     </item>
     
     <item>

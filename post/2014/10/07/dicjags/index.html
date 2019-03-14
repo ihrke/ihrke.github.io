@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/fonts.css" />
     <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
-
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   </head>
 
   <body>
@@ -40,25 +40,11 @@
 
 <div id="get-deviance-information-criterion-dic-when-sampling-in-jags" class="section level1">
 <h1>Get Deviance Information Criterion (DIC) when sampling in JAGS</h1>
-<p>I use the
-<a href="http://cran.r-project.org/web/packages/rjags/index.html">rjags</a> package
-from R to sample with <a href="http://mcmc-jags.sourceforge.net">JAGS</a>. When
-sampling with the <span class="title-ref">coda.samples()</span> function, there is no way
-of getting the DIC from these samples (you need to use another run with
-<span class="title-ref">dic.samples()</span>. When using <span class="title-ref">jags.samples()</span>, it
-is possible to include <span class="title-ref">deviance</span> and <span class="title-ref">pD</span> in
-the variable-names array</p>
+<p>I use the <a href="http://cran.r-project.org/web/packages/rjags/index.html">rjags</a> package from R to sample with <a href="http://mcmc-jags.sourceforge.net">JAGS</a>. When sampling with the <span class="title-ref">coda.samples()</span> function, there is no way of getting the DIC from these samples (you need to use another run with <span class="title-ref">dic.samples()</span>. When using <span class="title-ref">jags.samples()</span>, it is possible to include <span class="title-ref">deviance</span> and <span class="title-ref">pD</span> in the variable-names array</p>
 <pre class="r"><code>varnames=c(&#39;pD&#39;, &#39;deviance&#39;, &#39;var1&#39;, ...)
 out &lt;- jags.samples(model, varnames, n.iter, thin, type = &quot;trace&quot;)</code></pre>
-<p>but the resulting structure is awkward to handle and even more awkward
-to transfer to the nice <span class="title-ref">coda</span>-structure that allows to use
-all the nice plotting/diagnostic functions.</p>
-<p>For complex models, the resulting overhead can be severe and I therefore
-set up a <span class="title-ref">coda.samples.dic()</span> function that returns both the
-coda-structure for the mcmc samples and the dic (the solution is
-inspired by a
-<a href="http://sourceforge.net/p/mcmc-jags/discussion/610037/thread/ea46dc43/">discussion</a>
-in the <a href="http://mcmc-jags.sourceforge.net">JAGS</a> forum):</p>
+<p>but the resulting structure is awkward to handle and even more awkward to transfer to the nice <span class="title-ref">coda</span>-structure that allows to use all the nice plotting/diagnostic functions.</p>
+<p>For complex models, the resulting overhead can be severe and I therefore set up a <span class="title-ref">coda.samples.dic()</span> function that returns both the coda-structure for the mcmc samples and the dic (the solution is inspired by a <a href="http://sourceforge.net/p/mcmc-jags/discussion/610037/thread/ea46dc43/">discussion</a> in the <a href="http://mcmc-jags.sourceforge.net">JAGS</a> forum):</p>
 <pre class="r"><code>coda.samples.dic &lt;- function (model, variable.names = NULL, n.iter, thin = 1, ...) 
 {
       load.module(&#39;dic&#39;) # necessary for pD and deviance monitor

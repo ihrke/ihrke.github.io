@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/fonts.css" />
     <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
-
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   </head>
 
   <body>
@@ -40,51 +40,38 @@
 
 <div id="highlight-changes-with-latexdiff" class="section level1">
 <h1>Highlight changes with latexdiff</h1>
-<p>Have you ever been asked to provide a resubmission with &quot;changes
-highlighted&quot;? Or have you ever received a modified version of your
-latex file and wanted to see the changes in a PDF version?</p>
+<p>Have you ever been asked to provide a resubmission with &quot;changes highlighted&quot;? Or have you ever received a modified version of your latex file and wanted to see the changes in a PDF version?</p>
 <p>Well I have and here's my solution.</p>
-<p>I use to track my papers with <a href="http://www.git.org">git</a> which makes the
-whole process of integrating your co-authors opinions a breeze.</p>
+<p>I use to track my papers with <a href="http://www.git.org">git</a> which makes the whole process of integrating your co-authors opinions a breeze.</p>
 <p>I will just guide you through the process beginning at zero:</p>
 <ol start="0" style="list-style-type: decimal">
 <li>do the research</li>
-<li>when ready to write the paper, make a new directory and initialize
-it with <a href="http://www.git.org">git</a></li>
+<li>when ready to write the paper, make a new directory and initialize it with <a href="http://www.git.org">git</a></li>
 </ol>
 <pre class="sourceCode bash"><code>mkdir awesome_paper
 cd awesome_paper
 git init</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>create your paper, images and whatnot. Log changes into
-<a href="http://www.git.org">git</a> with</li>
+<li>create your paper, images and whatnot. Log changes into <a href="http://www.git.org">git</a> with</li>
 </ol>
 <pre class="sourceCode bash"><code>git add paper.tex
 git add pics/*.pdf
 git commit -a -m &quot;your commit message goes here&quot;</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li>send your version to your co-authors and receive feedback
-<span class="title-ref">paper_with_some_changes.tex</span></li>
-<li>use
-<a href="https://www.sharelatex.com/blog/2013/02/16/using-latexdiff-for-marking-changes-to-tex-documents.html">latexdiff</a>
-to create a nice highlighted PDF</li>
+<li>send your version to your co-authors and receive feedback <span class="title-ref">paper_with_some_changes.tex</span></li>
+<li>use <a href="https://www.sharelatex.com/blog/2013/02/16/using-latexdiff-for-marking-changes-to-tex-documents.html">latexdiff</a> to create a nice highlighted PDF</li>
 </ol>
 <pre class="sourceCode bash"><code>latex-diff paper.tex paper_with_some_changes.tex &gt; paper_diff.tex
 pdflatex paper_diff.tex</code></pre>
-<p>5. submit your paper to your journal of choice (e.g., the <a href="http://www.jasnh.com/">Journal in
-Support of the Null-Hypothesis</a>)</p>
+<p>5. submit your paper to your journal of choice (e.g., the <a href="http://www.jasnh.com/">Journal in Support of the Null-Hypothesis</a>)</p>
 <ol start="6" style="list-style-type: decimal">
 <li>receive angry feedback from the reviewers</li>
-<li><strong>before</strong> hacking your paper in reply to the undoubtedly
-ill-informed and biased crangling of the reviewers, tag the paper to
-make sure you find the version you submitted</li>
+<li><strong>before</strong> hacking your paper in reply to the undoubtedly ill-informed and biased crangling of the reviewers, tag the paper to make sure you find the version you submitted</li>
 </ol>
 <pre class="sourceCode bash"><code>git tag first_submission</code></pre>
 <ol start="8" style="list-style-type: decimal">
 <li>hack your paper and shut up those ignorant reviewers</li>
-<li>being forced to resubmit a &quot;changes highlighted&quot; version of your
-paper (driving home the point how much you had to mutilize your
-beautiful paper), do the following:</li>
+<li>being forced to resubmit a &quot;changes highlighted&quot; version of your paper (driving home the point how much you had to mutilize your beautiful paper), do the following:</li>
 </ol>
 <pre class="sourceCode bash"><code>git show first_submission:paper.tex &gt; paper_firstsub.tex 
 latexdiff paper_firstsub.tex paper.tex &gt; paper_diff.tex
@@ -94,8 +81,7 @@ pdflatex paper_diff.tex</code></pre>
 <ol start="10" style="list-style-type: decimal">
 <li>submit and keep your fingers crossed!</li>
 </ol>
-<p>I like to put the last block of commands into a <span class="title-ref">Makefile</span>
-such that all you have to do is a</p>
+<p>I like to put the last block of commands into a <span class="title-ref">Makefile</span> such that all you have to do is a</p>
 <pre class="sourceCode bash"><code>make first_diff  # results in highlighted version
 make             # results in clutter-free paper</code></pre>
 <p>Here is the Makefile:</p>
@@ -112,8 +98,7 @@ first_diff:
      pdflatex $TARG_diff.tex
      bibtex $TARG_diff
      pdflatex $TARG_diff.tex</code></pre>
-<p>You might want to look at latexdiff's <span class="title-ref">-t</span> switch. You can
-change how deletions and additions are displayed in the final PDF.</p>
+<p>You might want to look at latexdiff's <span class="title-ref">-t</span> switch. You can change how deletions and additions are displayed in the final PDF.</p>
 </div>
 
 </main>

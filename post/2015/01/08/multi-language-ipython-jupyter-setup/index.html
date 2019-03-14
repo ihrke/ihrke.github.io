@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/fonts.css" />
     <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
-
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   </head>
 
   <body>
@@ -40,22 +40,13 @@
 
 <div id="multi-language-ipython-jupyter-setup" class="section level1">
 <h1>Multi-Language IPython (Jupyter) setup</h1>
-<p><img src="/pics/jupyter_screenshot1.png" class="align-center" style="width:30.0%" /></p>
-<p>The IPython notebook project (which I adore) is about to be renamed to
-<a href="http://jupyter.org/">Jupyter</a> to better reflect the fact that it can be
-used with other languages besides Python. At the moment that is under
-heavy development and probably quite unstable but I found myself aching
-for an IR-Notebook. So here is a guide to set up a multi-language
-Jupyter notebook (meaning that you just start the server and can select
-if you want an R-Notebook, a Python-notebook, or one of the other
-availabel
-<a href="https://github.com/ipython/ipython/wiki/IPython%20kernels%20for%20other%20languages">kernels</a>).</p>
-<p>Note that the instructions on this page are likely to break since they
-depend on early development versions of the different packages. I expect
-that the whole procedure is going to be faciliated/documented once the
-Jupyter project gets going.</p>
-<p>At first, we set up a bleeding-edge ipython (this is from a bare bones
-python installation):</p>
+<div class="figure">
+<img src="/pics/jupyter_screenshot1.png" class="align-center" style="width:30.0%" />
+
+</div>
+<p>The IPython notebook project (which I adore) is about to be renamed to <a href="http://jupyter.org/">Jupyter</a> to better reflect the fact that it can be used with other languages besides Python. At the moment that is under heavy development and probably quite unstable but I found myself aching for an IR-Notebook. So here is a guide to set up a multi-language Jupyter notebook (meaning that you just start the server and can select if you want an R-Notebook, a Python-notebook, or one of the other availabel <a href="https://github.com/ipython/ipython/wiki/IPython%20kernels%20for%20other%20languages">kernels</a>).</p>
+<p>Note that the instructions on this page are likely to break since they depend on early development versions of the different packages. I expect that the whole procedure is going to be faciliated/documented once the Jupyter project gets going.</p>
+<p>At first, we set up a bleeding-edge ipython (this is from a bare bones python installation):</p>
 <pre class="sourceCode bash"><code># setup pip
 wget https://bootstrap.pypa.io/get-pip.py  
 sudo python get-pip.py
@@ -73,13 +64,10 @@ cd ipython
 pip install -e &quot;.[notebook]&quot; </code></pre>
 <p>You can run the notebook with</p>
 <pre class="sourceCode bash"><code>ipython notebook</code></pre>
-<p>while you are in the virtualenv. Stay in the virtualenv for the rest of
-the setup.</p>
+<p>while you are in the virtualenv. Stay in the virtualenv for the rest of the setup.</p>
 <div id="adding-r" class="section level2">
 <h2>Adding R</h2>
-<p>For adding R-support, you need the experimental
-<a href="https://github.com/takluyver/IRkernel">IRKernel</a>. Just follow the
-instructions in the `README`:</p>
+<p>For adding R-support, you need the experimental <a href="https://github.com/takluyver/IRkernel">IRKernel</a>. Just follow the instructions in the `README`:</p>
 <p>Install dependencies:</p>
 <pre class="sourceCode bash"><code>sudo apt-get install libzmq3-dev libcurl4-openssl-dev</code></pre>
 <p>fire up R and</p>
@@ -91,8 +79,7 @@ install_github(&#39;armstrtw/rzmq&#39;)
 install_github(&quot;takluyver/IRdisplay&quot;)
 install_github(&quot;takluyver/IRkernel&quot;)
 IRkernel::installspec() </code></pre>
-<p>In my case the last line failed with permission problems. The code of
-<span class="title-ref">IRkernel::installspec</span> is as follows:</p>
+<p>In my case the last line failed with permission problems. The code of <span class="title-ref">IRkernel::installspec</span> is as follows:</p>
 <pre class="sourceCode R"><code>function () 
 {
      srcdir = system.file(&quot;kernelspec&quot;, package = &quot;IRkernel&quot;)
@@ -100,24 +87,22 @@ IRkernel::installspec() </code></pre>
            srcdir, sep = &quot; &quot;)
      system(cmd, wait = TRUE)
 }</code></pre>
-<p>so the function basically makes a system call to <span class="title-ref">ipython
-kernelspec</span> to install the kernel that is located in
-<span class="title-ref">srcdir</span>. You can find out the value of <span class="title-ref">srcdir</span>
-by running the first line of the function</p>
+<p>so the function basically makes a system call to <span class="title-ref">ipython kernelspec</span> to install the kernel that is located in <span class="title-ref">srcdir</span>. You can find out the value of <span class="title-ref">srcdir</span> by running the first line of the function</p>
 <pre class="sourceCode R"><code>print(system.file(&quot;kernelspec&quot;, package = &quot;IRkernel&quot;))</code></pre>
-<p>(in my case the path was
-<span class="title-ref">/home/mittner/R/x86_64-unknown-linux-gnu-library/3.1/IRkernel/kernelspec</span>).</p>
-<p>Now exit R and run the command by hand (supplemented by &quot;--user&quot; to
-install the kernel in the users directory instead of globally -- that
-was what caused the permission problem):</p>
+<p>(in my case the path was <span class="title-ref">/home/mittner/R/x86_64-unknown-linux-gnu-library/3.1/IRkernel/kernelspec</span>).</p>
+<p>Now exit R and run the command by hand (supplemented by &quot;--user&quot; to install the kernel in the users directory instead of globally -- that was what caused the permission problem):</p>
 <pre class="sourceCode bash"><code>ipython kernelspec install --replace --name ir --user /home/mittner/R/x86_64-unknown-linux-gnu-library/3.1/IRkernel/kernelspec</code></pre>
 <p>Now fire up the notebook and voila:</p>
-<p><img src="/pics/jupyter_screenshot1.png" style="width:50.0%" /></p>
+<div class="figure">
+<img src="/pics/jupyter_screenshot1.png" style="width:50.0%" />
+
+</div>
 <p>and by creating an R-notebook, you have the RNotebook:</p>
-<p><img src="/pics/jupyter_screenshot2.png" style="width:100.0%" /></p>
-<p>Finally, it's possible to add more
-<a href="https://github.com/ipython/ipython/wiki/IPython%20kernels%20for%20other%20languages">kernels</a>
-for example for <a href="http://julialang.org/">Julia</a> in a similar way.</p>
+<div class="figure">
+<img src="/pics/jupyter_screenshot2.png" style="width:100.0%" />
+
+</div>
+<p>Finally, it's possible to add more <a href="https://github.com/ipython/ipython/wiki/IPython%20kernels%20for%20other%20languages">kernels</a> for example for <a href="http://julialang.org/">Julia</a> in a similar way.</p>
 </div>
 </div>
 

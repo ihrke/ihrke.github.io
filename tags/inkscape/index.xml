@@ -18,7 +18,7 @@
       
       <guid>/post/2013/12/12/import-pdf-in-inkscape-without-replacing-fonts/</guid>
       <description>Import PDF in Inkscape without replacing fonts Inkscape replaces text in PDF with bad fonts (especially when the PDF is generated with latex). I use Inkscape to rearrange some stuff or do some fine-tuning of a pstricks-images. Sometimes I just want to reset the bounding box (crop the PDF) without losing the PDF format. The solution is hidden in this blog post:
-Run the PS file filename.ps through gs to replace the fonts with outlines like so</description>
+ Run the PS file filename.ps through gs to replace the fonts with outlines like so</description>
     </item>
     
   </channel>
