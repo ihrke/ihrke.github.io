@@ -17,7 +17,7 @@
       <pubDate>Sat, 08 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>/post/2014/11/08/clavinova/</guid>
-      <description>(Dis-)Assembling a Clavinova CLP-970  I recently had to disassemble my clavinova CLP-970 for various reasons.
+      <description>(Dis-)Assembling a Clavinova CLP-970 I recently had to disassemble my clavinova CLP-970 for various reasons.
 I followed the excellently written guide from this blog post (by Sylvia) and integrated this text with images. I didn’t really have anything to add to this comprehensive text so in the following I just copied her text:
 I was able to perform the entire task using a single long (15cm shaft) cross-headed screw-driver that I had magnetised, and a thin piece of metal, which in my case was a paint scraper.</description>
     </item>
@@ -30,7 +30,7 @@ I was able to perform the entire task using a single long (15cm shaft) cross-hea
       <guid>/post/2014/04/30/setup-for-sharing-org-mode-agenda-with-google-calendar/</guid>
       <description>Setup for sharing org-mode agenda with google calendar (and mobile devices) Note: this is only one-directional from org-mode to google calendar.
 First step: setup org-mode to export all the agenda-files to an ics file. Put this into the .emacs file (I save the agenda to dropbox).
-(setq org-icalendar-combined-agenda-file &amp;quot;~/Dropbox/orgfiles/org.ics&amp;quot;) (setq org-icalendar-include-todo &amp;#39;(all)) (setq org-icalendar-use-scheduled &amp;#39;(event-if-todo event-if-not-todo)) (setq org-icalendar-use-deadline &amp;#39;(event-if-todo event-if-not-todo)) ;; this hook saves an ics file once an org-buffer is saved (defun my-icalendar-agenda-export() (if (string= (file-name-extension (buffer-file-name)) &amp;quot;org&amp;quot;) (org-icalendar-combine-agenda-files)) ) (add-hook &amp;#39;after-save-hook &amp;#39;my-icalendar-agenda-export)  Second: share in dropbox In your dropbox folder on the web, click on share and &amp;quot;get link&amp;quot;.</description>
+(setq org-icalendar-combined-agenda-file &amp;quot;~/Dropbox/orgfiles/org.ics&amp;quot;) (setq org-icalendar-include-todo &amp;#39;(all)) (setq org-icalendar-use-scheduled &amp;#39;(event-if-todo event-if-not-todo)) (setq org-icalendar-use-deadline &amp;#39;(event-if-todo event-if-not-todo)) ;; this hook saves an ics file once an org-buffer is saved (defun my-icalendar-agenda-export() (if (string= (file-name-extension (buffer-file-name)) &amp;quot;org&amp;quot;) (org-icalendar-combine-agenda-files)) ) (add-hook &amp;#39;after-save-hook &amp;#39;my-icalendar-agenda-export)  Second: share in dropbox In your dropbox folder on the web, click on share and &#34;</description>
     </item>
     
   </channel>

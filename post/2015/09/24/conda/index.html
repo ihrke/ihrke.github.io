@@ -40,64 +40,122 @@
 
 <div id="conda-for-handling-r-dependencies" class="section level1">
 <h1>Conda for handling R dependencies</h1>
-<p>Every now and then, I stumble across the case that I want to return to some analysis I have been doing some time in the past only to find out that recent developments and package updates totally break my scripts. In the python world, I have been relying on <a href="https://virtualenv.pypa.io/en/latest/">virtualenv</a> for quite some time and it works very well: On the computer I do the work, I create a virtualenv which I enable for development. My backups do not contain this but simply the project files (where I document in the README which virtualenv is needed). When I need to run the scripts on a different computer, I just use <code>pip freeze &gt; requirements.txt</code> from within the virtualenv and restore it by <code>pip install -r requirements.txt</code>. This has worked so far and I have not been bitten by any incompatibilities.</p>
-<p>Recently, I have been relying more and more on <a href="http://r-project.org">R</a> and wanted a similar solution for that (actually, R packages change so fast, that it's almost suicide not to do it). I found that <a href="https://rstudio.github.io/packrat/">packrat</a> is supposed to be the tool for the job. So I tried it and it has resulted in nothing but frustration:</p>
+<p>Every now and then, I stumble across the case that I want to return to
+some analysis I have been doing some time in the past only to find out
+that recent developments and package updates totally break my scripts.
+In the python world, I have been relying on
+<a href="https://virtualenv.pypa.io/en/latest/">virtualenv</a> for quite some time
+and it works very well: On the computer I do the work, I create a
+virtualenv which I enable for development. My backups do not contain
+this but simply the project files (where I document in the README which
+virtualenv is needed). When I need to run the scripts on a different
+computer, I just use <code>pip freeze &gt; requirements.txt</code>
+from within the virtualenv and restore it by <code>pip install -r requirements.txt</code>. This has worked so far and I have
+not been bitten by any incompatibilities.</p>
+<p>Recently, I have been relying more and more on <a href="http://r-project.org">R</a>
+and wanted a similar solution for that (actually, R packages change so
+fast, that it's almost suicide not to do it). I found that
+<a href="https://rstudio.github.io/packrat/">packrat</a> is supposed to be the tool
+for the job. So I tried it and it has resulted in nothing but
+frustration:</p>
 <ol style="list-style-type: decimal">
 <li>It's NOT possible to have different versions of the R-interpreter</li>
-<li>The complete library of packages is inevitably stored in the project-directory and automatically loaded once an R-interpreter is started in this directory (so I need to sync hundreds of MBs for that, especially if I run it on different operating systems).</li>
-<li>The system failed my completely when I was trying to sync between our computing server and my desktop. Both systems run linux and so packrat on the cluster was just trying to reuse the compiled binaries but failed miserably because a differeng <span class="title-ref">glibc</span> version had been used for compiling the cluster R and the packages on my desktop.</li>
+<li>The complete library of packages is inevitably stored in the
+project-directory and automatically loaded once an R-interpreter is
+started in this directory (so I need to sync hundreds of MBs for
+that, especially if I run it on different operating systems).</li>
+<li>The system failed my completely when I was trying to sync between
+our computing server and my desktop. Both systems run linux and so
+packrat on the cluster was just trying to reuse the compiled
+binaries but failed miserably because a differeng
+<span class="title-ref">glibc</span> version had been used for compiling the cluster
+R and the packages on my desktop.</li>
 </ol>
-<p>Anyway, I quickly dropped this solution as impractical for my use-cases. That's when I stumbled across <a href="http://conda.pydata.org/docs/">conda</a> which appears to offer all I need: Language-agnostic virtual environments. The article <a href="http://continuum.io/blog/conda-data-science">over here</a> convinced me even more because you just have to build a file <code>environment.yml</code> that can be used by anyone to directly create your environment in one go (using builds that, possibly, you have to store on your own namespace on the <a href="https://anaconda.org">anaconda</a> server). I am not yet sure that <a href="http://conda.pydata.org/docs/">conda</a> is going to be the right tool for me but I thought I'd log some of the ups and owns while working with it for future reference.</p>
+<p>Anyway, I quickly dropped this solution as impractical for my use-cases.
+That's when I stumbled across <a href="http://conda.pydata.org/docs/">conda</a>
+which appears to offer all I need: Language-agnostic virtual
+environments. The article <a href="http://continuum.io/blog/conda-data-science">over here</a> convinced me even
+more because you just have to build a file
+<code>environment.yml</code> that can be used by anyone to directly
+create your environment in one go (using builds that, possibly, you have
+to store on your own namespace on the <a href="https://anaconda.org">anaconda</a>
+server). I am not yet sure that <a href="http://conda.pydata.org/docs/">conda</a>
+is going to be the right tool for me but I thought I'd log some of the
+ups and owns while working with it for future reference.</p>
 <p>So here is a log on how to do different things:</p>
 <div id="setup" class="section level2">
 <h2>Setup</h2>
-<p>Download and install <a href="http://conda.pydata.org/miniconda.html">miniconda</a> which is a bare-bones version of <a href="http://conda.pydata.org/docs/">conda</a>.</p>
+<p>Download and install <a href="http://conda.pydata.org/miniconda.html">miniconda</a>
+which is a bare-bones version of <a href="http://conda.pydata.org/docs/">conda</a>.</p>
 <pre class="bash"><code>wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
 bash Miniconda-latest-Linux-x86_64.sh
 conda update conda
 conda install anaconda-client anaconda-build conda-build</code></pre>
 <p>Add anaconda channel for <a href="http://r-project.org">R</a></p>
 <pre class="bash"><code>conda config --add channels r</code></pre>
-<p>Install <a href="http://r-project.org">R</a> and, if wanted, the &quot;essential&quot; packages</p>
+<p>Install <a href="http://r-project.org">R</a> and, if wanted, the "essential"
+packages</p>
 <pre class="bash"><code>conda install r r-essentials</code></pre>
-<p>Create an account at <a href="https://anaconda.org">anaconda</a> (you will need it to make packages that are not in conda's default <a href="https://anaconda.org/R">R-repo</a>).</p>
-<p>This will create a &quot;namespace&quot; for your chosen username which you can use to capture packages with individual versions etc.</p>
+<p>Create an account at <a href="https://anaconda.org">anaconda</a> (you will need it
+to make packages that are not in conda's default
+<a href="https://anaconda.org/R">R-repo</a>).</p>
+<p>This will create a "namespace" for your chosen username which you can
+use to capture packages with individual versions etc.</p>
 </div>
 <div id="starting-up-a-new-project" class="section level2">
 <h2>Starting up a new project</h2>
-<p>Create a new &quot;virtualenv&quot; and switch to it</p>
+<p>Create a new "virtualenv" and switch to it</p>
 <pre class="bash"><code>conda create --name testenv r
 source activate testenv</code></pre>
-<p>You can install any R-packages that are already in the <a href="">repo &lt;https://anaconda.org/R&gt;</a> (they are prefixed by <span class="title-ref">r-</span>), e.g.,</p>
+<p>You can install any R-packages that are already in the <a href="">repo
+&lt;https://anaconda.org/R&gt;</a> (they are prefixed by <span class="title-ref">r-</span>),
+e.g.,</p>
 <pre class="bash"><code>conda install r-dplyr</code></pre>
-<p>If you come across a package that is not on anaconda's servers, you can easily build it yourself (if it is on <a href="https://cran.r-project.org/">CRAN</a>; have not tried with github-packages). Sometimes, it depends on other packages that are not there, so you will need to build them, too. Here is an example for building <a href="http://mc-stan.org/interfaces/rstan.html">rstan</a>:</p>
+<p>If you come across a package that is not on anaconda's servers, you can
+easily build it yourself (if it is on
+<a href="https://cran.r-project.org/">CRAN</a>; have not tried with
+github-packages). Sometimes, it depends on other packages that are not
+there, so you will need to build them, too. Here is an example for
+building <a href="http://mc-stan.org/interfaces/rstan.html">rstan</a>:</p>
 <pre class="bash"><code>conda skeleton cran rstan
 conda build r-rstan</code></pre>
-<p>results in a failure, because it depends on <a href="https://cran.r-project.org/web/packages/StanHeaders/index.html">StanHeaders</a> and <a href="https://cran.r-project.org/web/packages/inline/index.html">inline</a>. So you will need to to</p>
+<p>results in a failure, because it depends on
+<a href="https://cran.r-project.org/web/packages/StanHeaders/index.html">StanHeaders</a>
+and <a href="https://cran.r-project.org/web/packages/inline/index.html">inline</a>.
+So you will need to to</p>
 <pre class="bash"><code>conda skeleton cran stanheaders
 conda skeleton cran inline
 conda build r-rstan</code></pre>
-<p>This will detect that you got the recipes in your local tree and it will also tell you what you have to do to upload the new packages to your own channel at <a href="https://anaconda.org">anaconda</a> (my channel is <a href="https://anaconda.org/mittner" class="uri">https://anaconda.org/mittner</a>)</p>
+<p>This will detect that you got the recipes in your local tree and it will
+also tell you what you have to do to upload the new packages to your own
+channel at <a href="https://anaconda.org">anaconda</a> (my channel is
+<a href="https://anaconda.org/mittner" class="uri">https://anaconda.org/mittner</a>)</p>
 <pre class="bash"><code># If you want to upload this package to anaconda.org later, type:
 #
 # $ anaconda upload /home/mittner/local/miniconda/conda-bld/linux-64/r-inline-0.3.14-r3.2.1_0.tar.bz2
 #
 # To have conda build upload to anaconda.org automatically, use
 # $ conda config --set anaconda_upload yes</code></pre>
-<p>So just follow that (and I also recommend setting it to &quot;always upload&quot; because, lets be honest, we tend to forget these things):</p>
+<p>So just follow that (and I also recommend setting it to "always
+upload" because, lets be honest, we tend to forget these things):</p>
 <pre class="bash"><code>conda config --set anaconda_upload yes</code></pre>
 </div>
 <div id="freezing-dependencies" class="section level2">
 <h2>Freezing dependencies</h2>
-<p>Now, all you need to do to reproduce your environment on another computer (or in the future) is the equivalent to <code>pip freeze</code>{.bash, eval=F .sourceCode} which is</p>
+<p>Now, all you need to do to reproduce your environment on another
+computer (or in the future) is the equivalent to <code>pip freeze</code>{.bash, eval=F
+.sourceCode} which is</p>
 <pre class="bash"><code>conda env export --name testenv -f environment.yml</code></pre>
-<p>If you compiled and uploaded some packages yourself in your private channel, you might have to add the channel to the <code>environment.yml</code> file. The file looks like this:</p>
+<p>If you compiled and uploaded some packages yourself in your private
+channel, you might have to add the channel to the
+<code>environment.yml</code> file. The file looks like this:</p>
 <pre><code>name: testenv
 dependencies:
 - cairo=1.12.18=4
 - fontconfig=2.11.1=4
 ... (more packages here)</code></pre>
-<p>So you have to insert (<a href="https://anaconda.org/mittner">mittner</a> is my channel):</p>
+<p>So you have to insert (<a href="https://anaconda.org/mittner">mittner</a> is my
+channel):</p>
 <pre><code>name: testenv
 channels:
 - r
@@ -106,7 +164,8 @@ dependencies:
 - cairo=1.12.18=4
 - fontconfig=2.11.1=4
 ... (more packages here)</code></pre>
-<p>If you put this file into your project-directory, then the user (or you) just has to run</p>
+<p>If you put this file into your project-directory, then the user (or you)
+just has to run</p>
 <pre class="bash"><code>conda env create</code></pre>
 <p>and will end up with hopefully the exact same environment you created.</p>
 </div>
@@ -123,11 +182,15 @@ Error: .onLoad failed in loadNamespace() for &#39;tcltk&#39;, details:
    error: Can&#39;t find a usable init.tcl in the following directories: 
       /opt/anaconda1anaconda2anaconda3/lib/tcl8.5 ./lib/tcl8.5 ./lib/tcl8.5 ./library ./library ./tcl8.5.18/library ./tcl8.5.18/library
 This probably means that Tcl wasn&#39;t installed properly.</code></pre>
-<p>And, for that matter, I don't know how conda's R-packages behave together with <code>install.packages()</code> (at least, they are not included in the <code>environment.yml</code> file, I guess?).</p>
+<p>And, for that matter, I don't know how conda's R-packages behave
+together with <code>install.packages()</code> (at least, they are not
+included in the <code>environment.yml</code> file, I guess?).</p>
 </div>
 <div id="conclusion" class="section level2">
 <h2>Conclusion</h2>
-<p>So far, <a href="http://conda.pydata.org/docs/">conda</a> looks like a promising tool, but I will have to see how it behaves in practice (I will revisit this post later to include new info).</p>
+<p>So far, <a href="http://conda.pydata.org/docs/">conda</a> looks like a promising
+tool, but I will have to see how it behaves in practice (I will revisit
+this post later to include new info).</p>
 </div>
 </div>
 

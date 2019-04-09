@@ -40,15 +40,19 @@
 
 <div id="import-pdf-in-inkscape-without-replacing-fonts" class="section level1">
 <h1>Import PDF in Inkscape without replacing fonts</h1>
-<p>Inkscape replaces text in PDF with bad fonts (especially when the PDF is generated with latex). I use Inkscape to rearrange some stuff or do some fine-tuning of a pstricks-images. Sometimes I just want to reset the bounding box (crop the PDF) without losing the PDF format. The solution is hidden in <a href="https://bugs.launchpad.net/inkscape/+bug/295564">this blog post</a>:</p>
-<div class="figure">
-<img src="/pics/inkscape_fonts.png" style="width:100.0%" />
-
-</div>
-<p>Run the PS file <span class="title-ref">filename.ps</span> through <span class="title-ref">gs</span> to replace the fonts with outlines like so</p>
+<p>Inkscape replaces text in PDF with bad fonts (especially when the PDF is
+generated with latex). I use Inkscape to rearrange some stuff or do some
+fine-tuning of a pstricks-images. Sometimes I just want to reset the
+bounding box (crop the PDF) without losing the PDF format. The solution
+is hidden in <a href="https://bugs.launchpad.net/inkscape/+bug/295564">this blog
+post</a>:</p>
+<p><img src="/pics/inkscape_fonts.png" style="width:100.0%" /></p>
+<p>Run the PS file <span class="title-ref">filename.ps</span> through <span class="title-ref">gs</span> to
+replace the fonts with outlines like so</p>
 <pre class="bash"><code>gs -sDEVICE=pswrite -dNOCACHE -sOutputFile=- -q -dbatch -dNOPAUSE -dQUIET filename.ps -c quit | ps2pdf - &quot;`echo filename.ps | cut -f1 -d&#39;.&#39;`&quot;-nofont.pdf</code></pre>
 <p>to generate <code>filename-nofont.pdf</code>.</p>
-<p>This file can be imported and used in inkscape (but you can't re-type the text, obviously).</p>
+<p>This file can be imported and used in inkscape (but you can't re-type
+the text, obviously).</p>
 </div>
 
 </main>
