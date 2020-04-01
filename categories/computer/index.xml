@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>computer on Random Research Ruminations</title>
@@ -17,7 +17,7 @@
       <pubDate>Thu, 08 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>/post/2015/01/08/multi-language-ipython-jupyter-setup/</guid>
-      <description>Multi-Language IPython (Jupyter) setup The IPython notebook project (which I adore) is about to be renamed to Jupyter to better reflect the fact that it can be used with other languages besides Python. At the moment that is under heavy development and probably quite unstable but I found myself aching for an IR-Notebook. So here is a guide to set up a multi-language Jupyter notebook (meaning that you just start the server and can select if you want an R-Notebook, a Python-notebook, or one of the other availabel kernels).</description>
+      <description>Using the IPython (Jupyter) notebook with different languages (Python/R).</description>
     </item>
     
     <item>

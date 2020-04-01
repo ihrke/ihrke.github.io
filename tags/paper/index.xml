@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>paper on Random Research Ruminations</title>
@@ -18,7 +18,7 @@
       
       <guid>/post/2016/02/29/association-between-executive-functions-working-memory-and-manual-dexterity/</guid>
       <description>New paper (open data!): Association Between Executive Functions, Working Memory, and Manual Dexterity 
-I am thrilled to see that our fully-Bayesian, open-data paper &#34;Association Between Executive Functions, Working Memory, and Manual Dexterity in Young and Healthy Older Adults&#34; has been published in Perceptual &amp;amp; Motor Skills. This paper takes on the rarely asked question about the relationship between cognitive functions and manual dexterity. The history of my involvement with this manuscript is maybe unusual in that one of the reviewers actually requested the use of Bayesian statistics (because he felt that the analyses reported in an initial version of the MS in which I was not involved were not appropriate).</description>
+I am thrilled to see that our fully-Bayesian, open-data paper &amp;quot;Association Between Executive Functions, Working Memory, and Manual Dexterity in Young and Healthy Older Adults&amp;quot; has been published in Perceptual &amp;amp; Motor Skills. This paper takes on the rarely asked question about the relationship between cognitive functions and manual dexterity. The history of my involvement with this manuscript is maybe unusual in that one of the reviewers actually requested the use of Bayesian statistics (because he felt that the analyses reported in an initial version of the MS in which I was not involved were not appropriate).</description>
     </item>
     
     <item>
@@ -37,8 +37,7 @@ I am happy to announce that our review paper on a model-based cognitive neurosci
       <pubDate>Wed, 02 Sep 2015 00:00:00 +0000</pubDate>
       
       <guid>/post/2015/09/02/publishing-bayesian-analyses-in-a-medical-journal/</guid>
-      <description>Publishing Bayesian analyses in a medical journal 
-I am excited to announce that our paper Predictors of response to Web-based cognitive behavioral therapy with face-to-face therapist support for depression: A Bayesian analysis has been accepted for publication in the Journal of Medical Internet Research (see below for the full citation). This paper is the result of a fruitful collaboration with Martin Eisemann&#39;s research group for Mental e-Health at the University of Tromsø.</description>
+      <description>New paper: Predictors of response to Web-based cognitive behavioral therapy with face-to-face therapist support for depression: A Bayesian analysis.</description>
     </item>
     
     <item>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>bayes on Random Research Ruminations</title>
@@ -17,8 +17,7 @@
       <pubDate>Wed, 02 Sep 2015 00:00:00 +0000</pubDate>
       
       <guid>/post/2015/09/02/publishing-bayesian-analyses-in-a-medical-journal/</guid>
-      <description>Publishing Bayesian analyses in a medical journal 
-I am excited to announce that our paper Predictors of response to Web-based cognitive behavioral therapy with face-to-face therapist support for depression: A Bayesian analysis has been accepted for publication in the Journal of Medical Internet Research (see below for the full citation). This paper is the result of a fruitful collaboration with Martin Eisemann&#39;s research group for Mental e-Health at the University of Tromsø.</description>
+      <description>New paper: Predictors of response to Web-based cognitive behavioral therapy with face-to-face therapist support for depression: A Bayesian analysis.</description>
     </item>
     
     <item>
@@ -38,7 +37,7 @@ I am particularly happy that someone has gone to the difficulty of summarizing a
       <pubDate>Tue, 16 Jun 2015 00:00:00 +0000</pubDate>
       
       <guid>/post/2015/06/16/fixing-numerical-underflow-in-waic-calculation-in-stan/</guid>
-      <description>Fixing numerical underflow in WAIC calculation in Stan I recently switched to the amazing software Stan for my MCMC needs. Every now and then, it can be useful to compare different models using some kind of information criterion. Previously, I used the Deviance Information criterion (DIC; Spiegelhalter, 2002) because that appeared to be the most correct for hierarchical Bayesian models. However, DIC received quite some critique on, e.g., Andrew Gelman&#39;s blog (here, or here) while the recent addition to the &#34;</description>
+      <description>Fixing numerical underflow in WAIC calculation in Stan</description>
     </item>
     
     <item>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Random Research Ruminations</title>
@@ -18,7 +18,7 @@
       
       <guid>/post/2017/11/22/resources-for-learning-and-teaching-statistics/</guid>
       <description>This is an on-going collection of resources for learning and teaching statistical concepts.
-This post was last updated on 2020-01-17.
+This post was last updated on 2020-04-01.
 Statisticial practices  p-hacker app Ned Bicare writes: “I developed an online app that allows to practice creative data analysis and how to polish your p-values. It’s primarily aimed at young researchers who do not have our level of expertise yet, but I guess even old hands might learn one or two new tricks!</description>
     </item>
     
@@ -29,7 +29,7 @@ Statisticial practices  p-hacker app Ned Bicare writes: “I developed an online
       
       <guid>/post/2016/02/29/association-between-executive-functions-working-memory-and-manual-dexterity/</guid>
       <description>New paper (open data!): Association Between Executive Functions, Working Memory, and Manual Dexterity 
-I am thrilled to see that our fully-Bayesian, open-data paper &#34;Association Between Executive Functions, Working Memory, and Manual Dexterity in Young and Healthy Older Adults&#34; has been published in Perceptual &amp;amp; Motor Skills. This paper takes on the rarely asked question about the relationship between cognitive functions and manual dexterity. The history of my involvement with this manuscript is maybe unusual in that one of the reviewers actually requested the use of Bayesian statistics (because he felt that the analyses reported in an initial version of the MS in which I was not involved were not appropriate).</description>
+I am thrilled to see that our fully-Bayesian, open-data paper &amp;quot;Association Between Executive Functions, Working Memory, and Manual Dexterity in Young and Healthy Older Adults&amp;quot; has been published in Perceptual &amp;amp; Motor Skills. This paper takes on the rarely asked question about the relationship between cognitive functions and manual dexterity. The history of my involvement with this manuscript is maybe unusual in that one of the reviewers actually requested the use of Bayesian statistics (because he felt that the analyses reported in an initial version of the MS in which I was not involved were not appropriate).</description>
     </item>
     
     <item>
@@ -38,7 +38,7 @@ I am thrilled to see that our fully-Bayesian, open-data paper &#34;Association B
       <pubDate>Wed, 14 Oct 2015 00:00:00 +0000</pubDate>
       
       <guid>/post/2015/10/14/stuff-you-need-to-know-as-new-foreign-employee-at-uit/</guid>
-      <description>Stuff you need to know as new (foreign) employee at University of Tromsø Even more than a year after moving to the best city on earth, Tromsø, and beginning to work at the best university in the country, the University of Tromsø, I stumble across new stuff that I wish I would have known earlier. Some of it is probably most interesting to foreigners, but most of it might be of interest to you, the Norwegian, as well :-)</description>
+      <description>Even more than a year after moving to the best city on earth, Tromsø, and beginning to work at the best university in the country, the University of Tromsø, I stumble across new stuff that I wish I would have known earlier. Here is a list.</description>
     </item>
     
     <item>
@@ -66,8 +66,7 @@ I am happy to announce that our review paper on a model-based cognitive neurosci
       <pubDate>Wed, 02 Sep 2015 00:00:00 +0000</pubDate>
       
       <guid>/post/2015/09/02/publishing-bayesian-analyses-in-a-medical-journal/</guid>
-      <description>Publishing Bayesian analyses in a medical journal 
-I am excited to announce that our paper Predictors of response to Web-based cognitive behavioral therapy with face-to-face therapist support for depression: A Bayesian analysis has been accepted for publication in the Journal of Medical Internet Research (see below for the full citation). This paper is the result of a fruitful collaboration with Martin Eisemann&#39;s research group for Mental e-Health at the University of Tromsø.</description>
+      <description>New paper: Predictors of response to Web-based cognitive behavioral therapy with face-to-face therapist support for depression: A Bayesian analysis.</description>
     </item>
     
     <item>
@@ -87,7 +86,7 @@ I am particularly happy that someone has gone to the difficulty of summarizing a
       <pubDate>Tue, 16 Jun 2015 00:00:00 +0000</pubDate>
       
       <guid>/post/2015/06/16/fixing-numerical-underflow-in-waic-calculation-in-stan/</guid>
-      <description>Fixing numerical underflow in WAIC calculation in Stan I recently switched to the amazing software Stan for my MCMC needs. Every now and then, it can be useful to compare different models using some kind of information criterion. Previously, I used the Deviance Information criterion (DIC; Spiegelhalter, 2002) because that appeared to be the most correct for hierarchical Bayesian models. However, DIC received quite some critique on, e.g., Andrew Gelman&#39;s blog (here, or here) while the recent addition to the &#34;</description>
+      <description>Fixing numerical underflow in WAIC calculation in Stan</description>
     </item>
     
     <item>
@@ -96,7 +95,7 @@ I am particularly happy that someone has gone to the difficulty of summarizing a
       <pubDate>Thu, 08 Jan 2015 00:00:00 +0000</pubDate>
       
       <guid>/post/2015/01/08/multi-language-ipython-jupyter-setup/</guid>
-      <description>Multi-Language IPython (Jupyter) setup The IPython notebook project (which I adore) is about to be renamed to Jupyter to better reflect the fact that it can be used with other languages besides Python. At the moment that is under heavy development and probably quite unstable but I found myself aching for an IR-Notebook. So here is a guide to set up a multi-language Jupyter notebook (meaning that you just start the server and can select if you want an R-Notebook, a Python-notebook, or one of the other availabel kernels).</description>
+      <description>Using the IPython (Jupyter) notebook with different languages (Python/R).</description>
     </item>
     
     <item>
@@ -136,10 +135,7 @@ However, I recently had the problem that I was not able to find a good way of op
       <pubDate>Mon, 25 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>/post/2014/08/25/highlight-changes-with-latexdiff/</guid>
-      <description>Highlight changes with latexdiff Have you ever been asked to provide a resubmission with &#34;changes highlighted&#34;? Or have you ever received a modified version of your latex file and wanted to see the changes in a PDF version?
-Well I have and here&#39;s my solution.
-I use to track my papers with git which makes the whole process of integrating your co-authors opinions a breeze.
-I will just guide you through the process beginning at zero:</description>
+      <description>Have you ever been asked to provide a resubmission with &amp;ldquo;changes highlighted&amp;rdquo;?</description>
     </item>
     
     <item>
@@ -148,9 +144,7 @@ I will just guide you through the process beginning at zero:</description>
       <pubDate>Wed, 30 Apr 2014 00:00:00 +0000</pubDate>
       
       <guid>/post/2014/04/30/setup-for-sharing-org-mode-agenda-with-google-calendar/</guid>
-      <description>Setup for sharing org-mode agenda with google calendar (and mobile devices) Note: this is only one-directional from org-mode to google calendar.
-First step: setup org-mode to export all the agenda-files to an ics file. Put this into the .emacs file (I save the agenda to dropbox).
-(setq org-icalendar-combined-agenda-file &amp;quot;~/Dropbox/orgfiles/org.ics&amp;quot;) (setq org-icalendar-include-todo &amp;#39;(all)) (setq org-icalendar-use-scheduled &amp;#39;(event-if-todo event-if-not-todo)) (setq org-icalendar-use-deadline &amp;#39;(event-if-todo event-if-not-todo)) ;; this hook saves an ics file once an org-buffer is saved (defun my-icalendar-agenda-export() (if (string= (file-name-extension (buffer-file-name)) &amp;quot;org&amp;quot;) (org-icalendar-combine-agenda-files)) ) (add-hook &amp;#39;after-save-hook &amp;#39;my-icalendar-agenda-export)  Second: share in dropbox In your dropbox folder on the web, click on share and &#34;</description>
+      <description>Setup for sharing org-mode agenda with google calendar (and mobile devices)</description>
     </item>
     
     <item>
