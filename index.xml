@@ -167,7 +167,7 @@ Run the PS file filename.ps through gs to replace the fonts with outlines like s
  my CV  Publications My publications as bibtex.
 Books Mehmetoglu, M. &amp;amp; Mittner, M. (2020, in press). Innføring i R for statistiske dataanalyser. Universitetsforlaget. link
  Pre-prints (unpublished) for a list of all preprints go here.
-[42] Turi, Z., Mittner, M., Lehr, A.</description>
+[43] Boayue, N., Csifcsák, G., Kreis, I.</description>
     </item>
     
     <item>
@@ -177,7 +177,7 @@ Books Mehmetoglu, M. &amp;amp; Mittner, M. (2020, in press). Innføring i R for 
       
       <guid>/preprints/</guid>
       <description>This is a list of all preprints published by my group, so far. The preprints for which the status is “published” all have a corresponding publication on my publication list.
- {&#34;x&#34;:{&#34;filter&#34;:&#34;none&#34;,&#34;data&#34;:[[&#34;1&#34;,&#34;2&#34;,&#34;3&#34;,&#34;4&#34;,&#34;5&#34;,&#34;6&#34;,&#34;7&#34;,&#34;8&#34;,&#34;9&#34;,&#34;10&#34;],[&#34;2020-04-01&#34;,&#34;2019-07-30&#34;,&#34;2019-07-04&#34;,&#34;2019-04-12&#34;,&#34;2019-04-11&#34;,&#34;2019-01-15&#34;,&#34;2018-10-30&#34;,&#34;2018-05-23&#34;,&#34;2018-03-28&#34;,&#34;2018-02-15&#34;],[&#34;Turi, Z., Mittner, M., Lehr, A., Bürger, H., Antal, A., &amp;amp; Paulus, W. (2020, April 1). Theta-gamma cross-frequency transcranial alternating current stimulation over the trough impairs cognitive control. https://doi.org/10.31234/osf.io/4y3uh\n&#34;,&#34;Kreis, I., Biegler, R., Tjelmeland, H.</description>
+ {&#34;x&#34;:{&#34;filter&#34;:&#34;none&#34;,&#34;data&#34;:[[&#34;1&#34;,&#34;2&#34;,&#34;3&#34;,&#34;4&#34;,&#34;5&#34;,&#34;6&#34;,&#34;7&#34;,&#34;8&#34;,&#34;9&#34;,&#34;10&#34;],[&#34;2020-05-08&#34;,&#34;2020-04-01&#34;,&#34;2019-07-30&#34;,&#34;2019-07-04&#34;,&#34;2019-04-12&#34;,&#34;2019-04-11&#34;,&#34;2019-01-15&#34;,&#34;2018-10-30&#34;,&#34;2018-05-23&#34;,&#34;2018-03-28&#34;],[&#34;Boayue, N. M., Csifcsák, G., Kreis, I., Carole, S., Finn, I. C., Vollsund, A. E., &amp;amp; Mittner, M. (2020, May 8). The interplay between cognitive control, behavioral variability and mind wandering: Insights from a HD-tDCS study.</description>
     </item>
     
     <item>
