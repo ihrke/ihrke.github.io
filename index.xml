@@ -18,7 +18,7 @@
       
       <guid>/post/2017/11/22/resources-for-learning-and-teaching-statistics/</guid>
       <description>This is an on-going collection of resources for learning and teaching statistical concepts.
-This post was last updated on 2020-08-10.
+This post was last updated on 2020-09-01.
 Statisticial practices  p-hacker app Ned Bicare writes: “I developed an online app that allows to practice creative data analysis and how to polish your p-values. It’s primarily aimed at young researchers who do not have our level of expertise yet, but I guess even old hands might learn one or two new tricks!</description>
     </item>
     
@@ -167,7 +167,7 @@ Run the PS file filename.ps through gs to replace the fonts with outlines like s
  my CV  Publications My publications as bibtex.
 Books Mehmetoglu, M. &amp;amp; Mittner, M. (2020). Innføring i R for statistiske dataanalyser. Universitetsforlaget. link
  Pre-prints (unpublished) for a list of all preprints go here.
-[45] Groot, J., Boayue, N., Csifcsák, G., Boekel, W.</description>
+[46] Csifcsák, G., Bjørkøy, J., Kuyateh, S., Reithe, H.</description>
     </item>
     
     <item>
@@ -177,7 +177,7 @@ Books Mehmetoglu, M. &amp;amp; Mittner, M. (2020). Innføring i R for statistisk
       
       <guid>/preprints/</guid>
       <description>This is a list of all preprints published by my group, so far. The preprints for which the status is “published” all have a corresponding publication on my publication list.
- {&#34;x&#34;:{&#34;filter&#34;:&#34;none&#34;,&#34;data&#34;:[[&#34;1&#34;,&#34;2&#34;,&#34;3&#34;,&#34;4&#34;,&#34;5&#34;,&#34;6&#34;,&#34;7&#34;,&#34;8&#34;,&#34;9&#34;,&#34;10&#34;],[&#34;2020-07-24&#34;,&#34;2020-06-05&#34;,&#34;2020-05-08&#34;,&#34;2020-04-01&#34;,&#34;2019-07-30&#34;,&#34;2019-07-04&#34;,&#34;2019-04-12&#34;,&#34;2019-04-11&#34;,&#34;2019-01-15&#34;,&#34;2018-10-30&#34;],[&#34;Kreis, I., Zhang, L., Mittner, M., Syla, L., Lamm, C., &amp;amp; Pfuhl, G. (2020, July 24). Aberrant uncertainty processing is linked to psychotic-like experiences, autistic traits and reflected in pupil dilation. https://doi.org/10.31219/osf.io/nc2rx\n&#34;,&#34;Groot, J.</description>
+ {&#34;x&#34;:{&#34;filter&#34;:&#34;none&#34;,&#34;data&#34;:[[&#34;1&#34;,&#34;2&#34;,&#34;3&#34;,&#34;4&#34;,&#34;5&#34;,&#34;6&#34;,&#34;7&#34;,&#34;8&#34;,&#34;9&#34;,&#34;10&#34;],[&#34;2020-08-31&#34;,&#34;2020-07-24&#34;,&#34;2020-06-05&#34;,&#34;2020-05-08&#34;,&#34;2020-04-01&#34;,&#34;2019-07-30&#34;,&#34;2019-07-04&#34;,&#34;2019-04-12&#34;,&#34;2019-04-11&#34;,&#34;2019-01-15&#34;],[&#34;Csifcsák, G., Bjørkøy, J., Kuyateh, S., Reithe, H., &amp;amp; Mittner, M. (2020, August 31). Transcranial direct current stimulation above the medial prefrontal cortex counteracts the effects of diminished outcome controllability during reinforcement learning.</description>
     </item>
     
     <item>
