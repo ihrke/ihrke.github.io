@@ -18,7 +18,7 @@
       
       <guid>/post/2017/11/22/resources-for-learning-and-teaching-statistics/</guid>
       <description>This is an on-going collection of resources for learning and teaching statistical concepts.
-This post was last updated on 2020-10-13.
+This post was last updated on 2020-10-29.
 Statisticial practices  p-hacker app Ned Bicare writes: “I developed an online app that allows to practice creative data analysis and how to polish your p-values. It’s primarily aimed at young researchers who do not have our level of expertise yet, but I guess even old hands might learn one or two new tricks!</description>
     </item>
     
@@ -167,7 +167,7 @@ Run the PS file filename.ps through gs to replace the fonts with outlines like s
  my CV  Publications My publications as bibtex.
 Books Mehmetoglu, M. &amp;amp; Mittner, M. (2020). Innføring i R for statistiske dataanalyser. Universitetsforlaget. link
  Pre-prints (unpublished) for a list of all preprints go here.
-[48] Turi, Z., Lenz, M., Paulus, W., Mittner, M.</description>
+[49] Zmeykina, E., Mittner, M., Paulus, W. &amp;amp; Turi, Z.</description>
     </item>
     
     <item>
@@ -177,7 +177,7 @@ Books Mehmetoglu, M. &amp;amp; Mittner, M. (2020). Innføring i R for statistisk
       
       <guid>/preprints/</guid>
       <description>This is a list of all preprints published by my group, so far. The preprints for which the status is “published” all have a corresponding publication on my publication list.
- {&#34;x&#34;:{&#34;filter&#34;:&#34;none&#34;,&#34;data&#34;:[[&#34;1&#34;,&#34;2&#34;,&#34;3&#34;,&#34;4&#34;,&#34;5&#34;,&#34;6&#34;,&#34;7&#34;,&#34;8&#34;,&#34;9&#34;,&#34;10&#34;,&#34;11&#34;],[&#34;2020-10-01&#34;,&#34;2020-08-31&#34;,&#34;2020-07-24&#34;,&#34;2020-06-05&#34;,&#34;2020-05-08&#34;,&#34;2020-04-01&#34;,&#34;2019-07-30&#34;,&#34;2019-07-04&#34;,&#34;2019-04-12&#34;,&#34;2019-04-11&#34;,&#34;2019-01-15&#34;],[&#34;Turi, Z., Lenz, M., Paulus, W., Mittner, M. &amp;amp; Vlachos, A. (2020-10-01). Selecting stimulation intensity in repetitive transcranial magnetic stimulation studies: A systematic review between 1991 and 2020. https://www.biorxiv.org/content/early/2020/10/01/2020.09.28.316190 status: submitted\n&#34;,&#34;Csifcsák, G., Bjørkøy, J.</description>
+ {&#34;x&#34;:{&#34;filter&#34;:&#34;none&#34;,&#34;data&#34;:[[&#34;1&#34;,&#34;2&#34;,&#34;3&#34;,&#34;4&#34;,&#34;5&#34;,&#34;6&#34;,&#34;7&#34;,&#34;8&#34;,&#34;9&#34;,&#34;10&#34;,&#34;11&#34;,&#34;12&#34;],[&#34;2020-10-28&#34;,&#34;2020-10-01&#34;,&#34;2020-08-31&#34;,&#34;2020-07-24&#34;,&#34;2020-06-05&#34;,&#34;2020-05-08&#34;,&#34;2020-04-01&#34;,&#34;2019-07-30&#34;,&#34;2019-07-04&#34;,&#34;2019-04-12&#34;,&#34;2019-04-11&#34;,&#34;2019-01-15&#34;],[&#34;Zmeykina, E., Mittner, M., Paulus, W. &amp;amp; Turi, Z. (2020-10-28). Short-lived alpha power suppression induced by low-intensity arrhythmic rTMS. https://www.biorxiv.org/content/10.1101/2020.10.28.358986v1 status: submitted\n&#34;,&#34;Turi, Z., Lenz, M., Paulus, W., Mittner, M. &amp;amp; Vlachos, A. (2020-10-01).</description>
     </item>
     
     <item>
