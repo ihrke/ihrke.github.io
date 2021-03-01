@@ -18,7 +18,7 @@
       
       <guid>/post/2017/11/22/resources-for-learning-and-teaching-statistics/</guid>
       <description>This is an on-going collection of resources for learning and teaching statistical concepts.
-This post was last updated on 2021-02-16.
+This post was last updated on 2021-03-01.
 Statisticial practices  p-hacker app Ned Bicare writes: “I developed an online app that allows to practice creative data analysis and how to polish your p-values. It’s primarily aimed at young researchers who do not have our level of expertise yet, but I guess even old hands might learn one or two new tricks!</description>
     </item>
     
@@ -163,11 +163,9 @@ Run the PS file filename.ps through gs to replace the fonts with outlines like s
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/about/</guid>
-      <description>I am an associate professor at the University of Tromsø. My main interests are in cognitive neuroscience, mind wandering, cognitive modeling, computational methods and selective attention.
+      <description>I am a professor at the University of Tromsø. My main interests within the field of cognitive neuroscience are mind wandering, non-invasive brain stimulation, decision making, pupillometry and selective attention. I am also interested in the development of methodological approaches in my field and enjoy computational methods, cognitive modeling, machine-learning and Bayesian statistics.
  my CV  Publications My publications as bibtex.
-Books Mehmetoglu, M. &amp;amp; Mittner, M. (2020). Innføring i R for statistiske dataanalyser. Universitetsforlaget. link
- Pre-prints (unpublished) for a list of all preprints go here.
-[50] Alexandersen, A., Csifcsák, G. &amp;amp; Mittner, M.</description>
+Books Mehmetoglu, M. &amp;amp; Mittner, M. (in press).</description>
     </item>
     
     <item>
