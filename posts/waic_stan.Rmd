@@ -1,0 +1,99 @@
+---
+title: Fixing numerical underflow in WAIC calculation in Stan
+date:   2015-06-16
+categories:   
+  - bayes
+tags:   
+  - stan
+  - R
+  - bayes
+summary:   Fixing numerical underflow in WAIC calculation in Stan
+---
+Fixing numerical underflow in WAIC calculation in Stan
+======================================================
+
+I recently switched to the amazing software
+[Stan](http://mc-stan.org/index.html) for my MCMC needs. Every now and
+then, it can be useful to compare different models using some kind of
+information criterion. Previously, I used the Deviance Information
+criterion (DIC; Spiegelhalter, 2002) because that appeared to be the
+most correct for hierarchical Bayesian models. However, DIC received
+quite some critique on, e.g., Andrew Gelman\'s blog ([here](http://andrewgelman.com/2011/06/22/deviance\_dic\_ai/), [or here](http://andrewgelman.com/2013/08/15/more-on-aic-waic-etc/)) while
+the recent addition to the \"XIC\" family WAIC (Watanabe, 2010) appears
+to have more desirable theoretical properties ([see here](http://andrewgelman.com/2013/08/09/understanding-predictive-information-criteria-for-bayesian-models)
+or [there](http://andrewgelman.com/2014/05/26/waic-cross-validation-stan/)).
+[This paper](http://www.stat.columbia.edu/\~gelman/research/published/waic\_understand3.pdf)
+offers an in-depth discussion on the theory behind these measures.
+
+Recently, Aki Vehtari and Andrew Gelman showed how to implement the WAIC
+in [Stan](http://mc-stan.org/index.html) and, of course, I had to try it
+for myself. In my very first model, I stumbled across a problem. When
+running [waic(fit)]{.title-ref} on my [stanfit]{.title-ref} object, I
+got
+
+```
+$total
+waic       lpd    p_waic elpd_waic     p_loo  elpd_loo 
+Inf      -Inf  113.7925      -Inf       NaN      -Inf 
+
+$se
+[1]      NaN      NaN 20.19901      NaN      NaN      NaN
+```
+
+Hm, not very informative. When I took a look at the [waic()]{.title-ref}
+function in more detail, I saw that the Inf's in my output were caused
+by numerical underflow in the calculation of `lpd`:
+
+``` {.sourceCode .R}
+lpd <- log(colMeans(exp(log_lik)))
+```
+
+The [exp]{.title-ref} function can (of course) only handle arguments of
+a certain magnitude before returning 0. Try, for example,
+
+``` {.sourceCode .R}
+exp(seq(0,-1000, by=-10))
+```
+
+On my machine, [exp]{.title-ref} bails out at -750 and apparently one of
+my log-likelihoods went below that magical threshold.
+
+To fix this problem, I used the log-sum-exp trick (see e.g., [this
+webpage](http://jblevins.org/log/log-sum-exp)). This trick improves
+the numerical stability of calculating the logarithm of the sum of
+exponentials by making use of the fact that $$\log\left(
+\sum_{i=1}^{n} \exp( x_i )\right)=\log\left(
+\sum_{i=1}^{n} \exp( x_i-a )\right)+a$$ and by choosing a
+suitable number for $a$, e.g., the most extreme value among the
+$x_i$, the range of values to be calculated within the
+[exp]{.title-ref} can be reduced. In this case, the mean is calculated
+for each column and therefore the formula is
+$$\log\left(\frac{1}{n} \sum_{i=1}^{n} \exp( x_i )\right)=\log\frac{1}{n}+\log\left( \sum_{i=1}^{n} \exp(
+x_i-a )\right)+a.$$
+
+To do it for each column in the matrix requires a bit of indexing fun:
+
+``` {.sourceCode .R}
+# lpd <- log(colMeans(exp(log_lik)))
+offset <- log_lik[cbind(max.col(abs(t(log_lik))), 1:n)] # column-wise most extreme value
+lpd <- log(1./S)+log(colSums(exp(sweep(log_lik, 2, offset))))+offset
+```
+
+This fixes this issue and allows to calculate the WAIC for situations
+where the log-likelihood is very low. I also compared this solution to a
+solution where I used an arbitrary-precision library,
+[Rmpfr](http://cran.r-project.org/web/packages/Rmpfr/index.html), to do
+the calculation on the original data:
+
+``` {.sourceCode .R}
+# lpd <- log(colMeans(exp(log_lik)))
+require(Rmpfr)
+log_likp <- mpfr(log_lik, 120) # 120 bits precision
+ lpd <- as.numeric(log(colMeans(exp(log_likp)))) # run in arbitrary precision
+```
+
+and the result is identical to my log-sum-exp solution.
+
+See this [gist](https://gist.github.com/ihrke/507fbffc07c174714ad2) for
+the complete code (original, log-sum-exp and arbitrary-precision based
+versions).

@@ -1,0 +1,64 @@
+---
+title: Setup for sharing org-mode agenda with google calendar
+date:   2014-04-30
+categories:   
+  - misc
+summary: Setup for sharing org-mode agenda with google calendar (and mobile devices)
+tags:
+  - calendar
+---
+Setup for sharing org-mode agenda with google calendar (and mobile devices)
+===========================================================================
+
+Note: this is only one-directional from org-mode to google calendar.
+
+First step: setup org-mode to export all the agenda-files to an ics file.
+-------------------------------------------------------------------------
+
+Put this into the .emacs file (I save the agenda to dropbox).
+
+``` {.sourceCode .elisp}
+(setq org-icalendar-combined-agenda-file "~/Dropbox/orgfiles/org.ics")
+(setq org-icalendar-include-todo '(all))
+(setq org-icalendar-use-scheduled '(event-if-todo event-if-not-todo)) 
+(setq org-icalendar-use-deadline '(event-if-todo event-if-not-todo))
+
+;; this hook saves an ics file once an org-buffer is saved
+(defun my-icalendar-agenda-export()
+    (if (string= (file-name-extension (buffer-file-name)) "org")
+              (org-icalendar-combine-agenda-files)) 
+      )
+(add-hook 'after-save-hook 'my-icalendar-agenda-export)
+```
+
+Second: share in dropbox
+------------------------
+
+In your dropbox folder on the web, click on share and \"get link\".
+
+This links looks like this:
+<https://www.dropbox.com/s/randomletters/org.ics>
+
+Replace www with dl such that it looks like this:
+<https://dl.dropbox.com/s/randomletters/org.ics>
+
+Third: add by url in google-calendar
+------------------------------------
+
+This is unfortunately not as straight-forward as I would like to belive.
+Google calendar allows to \"Add by url\" (in the left panel, under
+\"Other calendars\"). However, with dropbox-links this fails with some
+warning about \"robots.txt\".
+
+There is the following workaround (thanks to this
+[discussion](https://productforums.google.com/forum/#!topic/calendar/HYN1y-7GYu4)).
+You have to create a
+[pipe](http://pipes.yahoo.com/pipes/pipe.info?_id=1f85c5a9c2af3c8768d342531f5ca528),
+then abbreviate the url with [tinyurl](http://www.tinyurl.com) and
+finally import the resulting link into google-calendar (works fine this
+time).
+
+Last: subscribe to the new google calendar on your devices
+----------------------------------------------------------
+
+e.g., mobile phone, mac, thunderbird (lightning),\...

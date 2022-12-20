@@ -1,0 +1,47 @@
+---
+date:   2015-09-21
+categories:   
+  - paper
+tags:   
+  - paper
+  - review
+title: "New paper: Toward a model-based cognitive neuroscience of mind wandering"
+slug: newreviewpaper
+---
+New paper: Toward a model-based cognitive neuroscience of mind wandering
+========================================================================
+
+[![](/pics/tutclass_framework.png){.align-center
+width="60.0%"}](http://www.sciencedirect.com/science/article/pii/S0306452215008805)
+
+I am happy to announce that our review paper on a model-based cognitive
+neuroscience approach to the study of mind-wandering has been accepted
+for publication in [Neuroscience](http://www.journals.elsevier.com/neuroscience/), (Hawkins et al., accepted).
+This paper summarizes many of the theoretical ideas that we have been
+discussing in our group for quite some time and also reviews and
+integrates the research done so far. Actually, the number of research
+papers actually using cognitive process models to investigate mind
+wandering has been quite rare (e.g., Bastian & Sackgur, 2013) and our [own paper](/post/2015/06/23/commentary-on-our-mind-wandering-paper/),
+(Mittner et al., 2014) but there are a few instances where we can reinterpret
+the results in terms of mind wandering. I am really excited about the
+regression-based approach that is outlined in the paper and we are
+working on implementing this kind of model at the moment. Expect more in
+that direction soon!
+
+------------------------------------------------------------------------
+
+**References**
+
+- Hawkins G. E., Mittner, M., Boekel, W., Heathcote, A. and
+Forstmann, B.U. (accepted). Toward a model-based cognitive neuroscience
+of mind wandering. *Neuroscience*.
+[link](http://www.sciencedirect.com/science/article/pii/S0306452215008805)
+
+- Bastian M and Sackur J (2013) Mind wandering at the fingertips:
+automatic parsing of subjective states based on response time
+variability. Front. Psychol. 4:573. doi: 10.3389/fpsyg.2013.00573
+
+- Mittner, M., Boekel, W., Tucker, A. M., Turner, B.M., Heathcote,
+A. and Forstmann, B.U. (2014). When the brain takes a break: A
+model-based analysis of mind wandering. *Journal of Neuroscience*,
+34(49):16286-95.

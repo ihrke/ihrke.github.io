@@ -1,0 +1,284 @@
+---
+title: "Publications"
+format:
+  html:
+    toc-depth: 5
+---
+
+```{r setup, cache=F, include=FALSE}
+library(tidyverse)
+library(jsonlite)
+library(lubridate)
+library(httr) 
+library(glue)
+library(bib2df)
+library(R.rsp)
+library(scholar)
+library(xml2)
+source("lib/functions.R")
+```
+
+```{r, cache=F, include=F}
+print.impact=T
+
+
+## preprints
+##------------------------------------------------------------------------------------
+preprints <- get_my_osf_preprints()
+
+# order/filter
+preprints %>% filter(unpublished) %>% arrange(desc(date)) %>% ungroup -> preprints
+
+
+# other preprints not on osf
+if(fs::is_file("pubs/preprints.bib")){
+bib2df("pubs/preprints.bib", separate_names = T) %>%
+  select(authors=AUTHOR, journal=JOURNAL, title=TITLE, date=YEAR, 
+         doi=DOI, link=URL) %>%
+  mutate(title=strip_curly_braces(title), date=get_date_from_doi(doi),
+         status="submitted", unpublished=T, citation="",
+         authors=map(authors, ~.x %>% rename(family_name=last_name,given_name=first_name))) -> preprints.add
+  
+full_join(preprints,preprints.add) -> preprints
+preprints %>% arrange(desc(date)) %>% ungroup -> preprints
+}
+
+```
+
+```{r, include=F}
+
+##------------------------------------------------------------------------------------
+## publications
+is.not.list=function(x){ !is.list(x)}
+months=c("jan","feb","mar","apr","may","jun","jul","aug","sep", "oct","nov","dec")
+
+
+articles=bib2df("pubs/articles.bib", separate_names = T) %>%
+  select(authors=AUTHOR, journal=JOURNAL, pages=PAGES, title=TITLE, year=YEAR, 
+         doi=DOI, link=URL, vol=VOLUME, num=NUMBER, note=ANNOTE, month=MONTH) %>%
+  mutate(month=ordered(month, levels=months)) %>%
+  mutate(title=strip_curly_braces(title)) %>% 
+  mutate(impactfactor=get_impactfactor(journal)$ImpactFactor) 
+articles=left_join(articles, get_citation_info_dimensions(articles$doi),by="doi") %>%
+  arrange(desc(year),desc(month)) %>%
+  mutate_if(is.not.list, as.character) %>%
+  replace(., is.na(.), "") 
+
+
+articles %<>% mutate(note=str_replace_all(note, c("\\[\\["="<","\\]\\]"=">"))) %>%
+  mutate(note=map(note, function(x){
+    a=read_xml(str_c("<notes>",x,"</notes>"))
+    r=a %>% xml_children() %>% xml_text()
+    names(r) <- a %>% xml_children() %>% xml_name()
+    r
+  }))
+
+chapters=bib2df("pubs/chapters.bib", separate_names = T) %>%
+  select(authors=AUTHOR, editors=EDITOR, book=BOOKTITLE, publisher=PUBLISHER, pages=PAGES, title=TITLE, year=YEAR, 
+         doi=DOI, link=URL) %>%
+  mutate(title=strip_curly_braces(title), 
+         book=strip_curly_braces(book))
+chapters=left_join(chapters, get_citation_info_dimensions(chapters$doi), by="doi") %>%
+  replace(., is.na(.), "") %>%
+  arrange(desc(year))
+
+
+proceedings=bib2df("pubs/proceedings.bib", separate_names = T) %>% 
+  select(authors=AUTHOR, book=BOOKTITLE, series=SERIES, pages=PAGES, title=TITLE, year=YEAR, 
+         doi=DOI, link=URL) %>%
+  mutate(title=strip_curly_braces(title),
+         book=strip_curly_braces(book),
+         series=strip_curly_braces(series))
+proceedings=left_join(proceedings, get_citation_info_dimensions(proceedings$doi), by="doi") %>%
+  replace(., is.na(.), "") %>%
+  arrange(desc(year))
+
+
+npreprints=dim(preprints)[1]
+narticles=dim(articles)[1]
+nchapters=dim(chapters)[1]
+nproceedings=dim(proceedings)[1]
+npub=npreprints+narticles+nchapters+nproceedings
+
+if(npreprints!=0){
+  preprints   <- mutate(preprints,    index=npub:(npub-npreprints+1))
+}
+articles    <- mutate(articles,     index=(npub-npreprints):(npub-npreprints-narticles+1))
+chapters    <- mutate(chapters,     index=(npub-npreprints-narticles):(npub-npreprints-narticles-nchapters+1))
+proceedings <- mutate(proceedings,  index=(npub-npreprints-narticles-nchapters):(1))
+
+```
+
+## Books
+
+:::: {.columns}
+::: {.column width="10%"}
+![](pics/sagebook.jpg){height=100px} 
+:::
+::: {.column width="85%"}
+Mehmetoglu, M. & Mittner, M. (in press). Applied Statistics using R. SAGE. [link](https://uk.sagepub.com/en-gb/eur/applied-statistics-using-r/book266647)
+:::
+::::
+
+:::: {.columns}
+::: {.column width="10%"}
+![](pics/norskbook.jpg){height=100px} 
+:::
+::: {.column width="85%"}
+Mehmetoglu, M. & Mittner, M. (2020). Innføring i R for statistiske dataanalyser. Universitetsforlaget. [link](https://www.universitetsforlaget.no/innforing-i-r-for-statistiske-dataanalyser)
+:::
+::::
+
+## Preprints
+
+Go here for a list of [all my preprints](/pubs/preprints.qmd)
+
+
+```{r, echo=F, results='asis'}
+if(dim(preprints)[1]!=0){
+for(i in 1:dim(preprints)[1]){
+  authors=preprints[i,]$authors[[1]]
+  index=preprints$index[i]
+  
+  if(dim(authors)[1]==1){
+    latexauth<-glue("**<family_name>, <str_sub(given_name, 1,1)>.**", .envir=authors, .open="<", .close=">")
+  } else {
+    latexauth<-glue("{family_name}, {str_sub(given_name, 1,1)}.", .envir=authors) 
+    latexauth=if_else(startsWith(latexauth, "Mittner") | startsWith(latexauth, "Ihrke"), sprintf("**%s**",latexauth), as.character(latexauth))
+    latexauth<-glue_collapse(latexauth, sep = ", ", last = " & ")
+  }
+  ref=glue("<div class='reference'><span class='refnum'>[{index}]</span>
+           <span class='ref'>
+           {latexauth} ({date}). {title}. {link} status: {status}
+           </span></div>", .envir=preprints[i,])
+  cat(ref,"\n")
+}
+}
+```
+
+## Papers
+
+
+```{r, echo=F, results='asis'}
+curyear=""
+for(i in 1:dim(articles)[1]){
+  year=articles[i,]$year
+  if(year!=curyear){
+    if(curyear!=""){
+      cat("</section>","\n")
+    }
+    s=glue::glue('<section id="{year}" class="level3">
+    <h3 class="anchored" data-anchor-id="{year}">{year}</h3>')
+    cat(s,"\n")
+    curyear <- year
+  }
+  authors=articles[i,]$authors[[1]]
+  index=articles$index[i]
+  if(dim(authors)[1]==1){
+    latexauth<-glue("**<last_name>, <str_sub(first_name, 1,1)>.**", .envir=authors, .open="<", .close=">")
+  } else {
+    latexauth<-glue("{last_name}, {str_sub(first_name, 1,1)}.", .envir=authors) 
+    latexauth=if_else(startsWith(latexauth, "Mittner") | startsWith(latexauth, "Ihrke"), sprintf("**%s**",latexauth), as.character(latexauth))
+    latexauth<-glue_collapse(latexauth, sep = ", ", last = " & ")
+  }
+  cnum="" 
+  if(str_length(articles[i,"num"])>0){
+    cnum=sprintf(":%s", articles[i,"num"])
+  }
+  cpages=""
+  if(str_length(articles[i,"pages"])>0){
+    cpages=sprintf(", pp. %s", articles[i,"pages"])
+  }
+  impact=""
+  if(print.impact){
+    cdoi=as.character(articles[i,"doi"])
+    #impact=blogdown::shortcode("dimensions", cdoi)
+    #impact="{{% dimensions 10.3389/fpsyg.2019.00130 %}}"
+    impact=glue('<span style="float:left" class="__dimensions_badge_embed__" data-doi="{cdoi}" data-style="small_rectangle"></span><script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>')
+  }
+  notes=articles[i,"note"][[1]][[1]]
+  cnotes=glue("<div class='notes'><div class='note journal'><a href='http://doi.org/{doi}'>journal</a></div>", .envir=articles[i,])
+  for(name in names(notes)){
+    notecontent=notes[name] 
+    cnotes=str_c(cnotes, glue("<div class='note {name}'><a href='{notecontent}'>{name}</a></div>"))
+  }
+  cnotes=str_c(cnotes,"</div>")
+  
+  ref=glue("<div class='reference'><span class='refnum'>[{index}]</span>
+           <span class='ref'>
+           {latexauth} ({year}). {title}. *{journal}*. {vol}{cnum}{cpages} [doi:{doi}](https://doi.org/{doi})
+           <br>{cnotes}
+           {impact}</span></div>", .envir=articles[i,])
+  #ref=glue("\n::::::{.reference}\n[[<index>]]{.refnum}\n[<latexauth> (<year>). <title>. *<journal>*. <vol><cnum><cpages> doi:<doi> <impact> ]{.ref}\n::::::\n", .open="<", .close=">",.envir=articles[i,])
+  cat(ref,"\n")
+}
+cat("</section>","\n")
+```
+ 
+ 
+## Book Chapters
+
+
+```{r, echo=F, results='asis'}
+for(i in 1:dim(chapters)[1]){
+  authors=chapters[i,]$authors[[1]]
+  editors=chapters[i,]$editors[[1]]
+  index=chapters$index[i]
+  
+  if(dim(authors)[1]==1){
+    latexauth<-glue("**<last_name>, <str_sub(first_name, 1,1)>.**", .envir=authors, .open="<", .close=">")
+  } else {
+    latexauth<-glue("{last_name}, {str_sub(first_name, 1,1)}.", .envir=authors) 
+    latexauth=if_else(startsWith(latexauth, "Mittner") | startsWith(latexauth, "Ihrke"), sprintf("**%s**",latexauth), as.character(latexauth))
+    latexauth<-glue_collapse(latexauth, sep = ", ", last = " & ")
+  }
+  latexed<-glue("{last_name}, {str_sub(first_name, 1,1)}.", .envir=editors) 
+  latexed<-glue_collapse(latexed, sep = ", ", last = " & ")
+
+  impact=""
+  if(print.impact){
+    cdoi=as.character(chapters[i,"doi"])
+    #impact=blogdown::shortcode("dimensions", cdoi)
+    #impact="{{% dimensions 10.3389/fpsyg.2019.00130 %}}"
+    impact=glue('<span class="__dimensions_badge_embed__" data-doi="{cdoi}" data-style="small_rectangle"></span><script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>')
+  }
+  ref=glue("<div class='reference'><span class='refnum'>[{index}]</span>
+           <span class='ref'>
+           {latexauth} ({year}). {title}. In {latexed} (Eds.), *{book}*. {publisher} [doi:{doi}](https://doi.org/{doi})
+           {impact}</span></div>", .envir=chapters[i,])
+  #ref=glue("\n::::::{.reference}\n[[<index>]]{.refnum}\n[<latexauth> (<year>). <title>. *<journal>*. <vol><cnum><cpages> doi:<doi> <impact> ]{.ref}\n::::::\n", .open="<", .close=">",.envir=chapters[i,])
+  cat(ref,"\n")
+}
+```
+
+
+## Peer-Reviewed Conference Proceedings
+
+
+```{r, echo=F, results='asis'}
+for(i in 1:dim(proceedings)[1]){
+  authors=proceedings[i,]$authors[[1]]
+  index=proceedings$index[i]
+  
+  if(dim(authors)[1]==1){
+    latexauth<-glue("**<last_name>, <str_sub(first_name, 1,1)>.**", .envir=authors, .open="<", .close=">")
+  } else {
+    latexauth<-glue("{last_name}, {str_sub(first_name, 1,1)}.", .envir=authors) 
+    latexauth=if_else(startsWith(latexauth, "Mittner") | startsWith(latexauth, "Ihrke"), sprintf("**%s**",latexauth), as.character(latexauth))
+    latexauth<-glue_collapse(latexauth, sep = ", ", last = " & ")
+  }
+  impact=""
+  if(print.impact){
+    cdoi=as.character(proceedings[i,"doi"])
+    #impact=blogdown::shortcode("dimensions", cdoi)
+    #impact="{{% dimensions 10.3389/fpsyg.2019.00130 %}}"
+    impact=glue('<span class="__dimensions_badge_embed__" data-doi="{cdoi}" data-style="small_rectangle"></span><script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>')
+  }
+  ref=glue("<div class='reference'><span class='refnum'>[{index}]</span>
+           <span class='ref'>
+           {latexauth} ({year}). {title}. *{series}*, {book}, pp. {pages}. [doi:{doi}](https://doi.org/{doi})
+           {impact}</span></div>", .envir=proceedings[i,])
+  #ref=glue("\n::::::{.reference}\n[[<index>]]{.refnum}\n[<latexauth> (<year>). <title>. *<journal>*. <vol><cnum><cpages> doi:<doi> <impact> ]{.ref}\n::::::\n", .open="<", .close=">",.envir=proceedings[i,])
+  cat(ref,"\n")
+}
+```

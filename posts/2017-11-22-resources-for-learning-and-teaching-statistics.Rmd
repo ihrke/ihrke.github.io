@@ -1,0 +1,95 @@
+---
+title: Resources for learning (and teaching) statistics
+author: Matthias Mittner
+date: '2017-11-22'
+slug: resources-for-learning-and-teaching-statistics
+categories:
+  - stats
+tags:
+  - stats
+  - R
+--- 
+
+This is an on-going collection of resources for learning and teaching statistical concepts.
+
+This post was last updated on `r format(Sys.Date(), "%Y-%m-%d")`.
+
+## Statisticial practices
+
+[p-hacker app](https://www.nicebread.de/introducing-p-hacker/)
+
+: Ned Bicare writes: "I developed an online app that allows to practice creative data analysis and how to polish your p-values. It’s primarily aimed at young researchers who do not have our level of expertise yet, but I guess even old hands might learn one or two new tricks! It’s called “The p-hacker” (please note that ‘hacker’ is meant in a very positive way here. You should think of the cool hackers who fight for world peace). You can use the app in teaching, or to practice p-hacking yourself."
+
+## Visualisations
+
+[Guess the correlation](http://guessthecorrelation.com/)
+
+: Nice retro-look game for learning to guess the strength of the correlation in a cloud of points.
+
+[Seeing Theory](http://students.brown.edu/seeing-theory/)
+
+: a visual introduction to probability and statistics. Many good visualisations.
+
+[R<-Psychologist](http://rpsychologist.com/)
+
+: some cool shiny-based visualisations of important concepts.
+
+    Examples:
+
+    - [Power and NHST](http://rpsychologist.com/d3/NHST/)
+    - [Confidence Intervals](http://rpsychologist.com/d3/CI/)
+    - [Correlation](http://rpsychologist.com/d3/correlation/)
+    - [Cohen's d](http://rpsychologist.com/d3/cohend/)
+
+[Spurious correlations](http://tylervigen.com/spurious-correlations)
+
+: unending list of spurious correlations
+
+[Linear regression demo](http://sites.uclouvain.be/selt/files/medias/unamur-regression-lineaire-module20.swf)
+
+: nice and clean (but french) demo for linear regression
+
+[Sampling Distribution Demo](http://onlinestatbook.com/stat_sim/sampling_dist/index.html)
+
+: nice and interactive demonstration of sampling distributions
+
+## Cool datasets
+
+[Human Penguin Project](https://osf.io/2rm5b/)
+
+: this is a cool many-labs dataset that has many interesting variables and can potentially be used for regression and ANOVA-based exercises
+
+[Open Stats Lab](https://sites.trinity.edu/osl/data-sets-and-activities)
+
+: nice collection of data-sets from real psychological studies that come with detailed assignments to reproduce the analyses from the accompanying papers
+
+
+
+## Lectures/tutorials
+
+[Modern Regression by Cosma Shalizi](http://www.stat.cmu.edu/~cshalizi/mreg/15/)
+
+: really good but pretty mathematical introduction to regression. Check out the lecture scripts (e.g., [this one](http://www.stat.cmu.edu/~cshalizi/mreg/15/lectures/03/lecture-03.pdf))
+
+## Fun stuff
+
+[Why not to trust statistics](https://mathwithbaddrawings.com/2016/07/13/why-not-to-trust-statistics/)
+
+: nice demonstration how measures of central tendency/variance can be misleading; includes bad drawings!
+
+## Blogs
+
+
+- [Andrew Gelman](http://andrewgelman.com/)
+- [Richard Morey](https://richarddmorey.org/) (and [BayesFactor](http://bayesfactor.blogspot.no/) and [@Medium](https://medium.com/@richarddmorey))
+- [Frank Harrell](http://www.fharrell.com/)
+- [Rasmus Bååth](http://www.sumsar.net/)
+
+## Tweets
+
+This is a collection of statistics-related tweets that I would like to keep...
+
+
+{{< tweet rabaath 699992929927106565 >}}
+
+

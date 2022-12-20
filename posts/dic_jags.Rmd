@@ -1,0 +1,110 @@
+---
+date:   2014-10-07
+categories:   
+  - bayes
+tags:   
+  - jags
+  - R
+  - bayes
+title:   Get Deviance Information Criterion (DIC) when sampling in JAGS
+slug: dicjags
+---
+
+Get Deviance Information Criterion (DIC) when sampling in JAGS
+==============================================================
+
+I use the
+[rjags](http://cran.r-project.org/web/packages/rjags/index.html) package
+from R to sample with [JAGS](http://mcmc-jags.sourceforge.net). When
+sampling with the [coda.samples()]{.title-ref} function, there is no way
+of getting the DIC from these samples (you need to use another run with
+[dic.samples()]{.title-ref}. When using [jags.samples()]{.title-ref}, it
+is possible to include [deviance]{.title-ref} and [pD]{.title-ref} in
+the variable-names array
+
+``` {R, eval=F}
+varnames=c('pD', 'deviance', 'var1', ...)
+out <- jags.samples(model, varnames, n.iter, thin, type = "trace")
+```
+
+but the resulting structure is awkward to handle and even more awkward
+to transfer to the nice [coda]{.title-ref}-structure that allows to use
+all the nice plotting/diagnostic functions.
+
+For complex models, the resulting overhead can be severe and I therefore
+set up a [coda.samples.dic()]{.title-ref} function that returns both the
+coda-structure for the mcmc samples and the dic (the solution is
+inspired by a
+[discussion](http://sourceforge.net/p/mcmc-jags/discussion/610037/thread/ea46dc43/)
+in the [JAGS](http://mcmc-jags.sourceforge.net) forum):
+
+``` {R, eval=F}
+coda.samples.dic <- function (model, variable.names = NULL, n.iter, thin = 1, ...) 
+{
+      load.module('dic') # necessary for pD and deviance monitor
+
+      start <- model$iter() + thin
+      varnames=c(variable.names, c('deviance', 'pD'))
+      out <- jags.samples(model, varnames, n.iter, thin, 
+           type = "trace", ...)
+      deviance <- out$deviance
+      pD <- out$pD
+      out$deviance <- NULL
+      out$pD <- NULL    
+      ans <- vector("list", nchain(model))
+      for (ch in 1:nchain(model)) {
+           ans.ch <- vector("list", length(out))
+           vnames.ch <- NULL
+           for (i in seq(along = out)) {
+                varname <- names(out)[[i]]
+                d <- dim(out[[i]])
+                if (length(d) < 3) {
+                      stop("Invalid dimensions for sampled output")
+                }
+                vardim <- d[1:(length(d) - 2)]
+                nvar <- prod(vardim)
+                niter <- d[length(d) - 1]
+                nchain <- d[length(d)]
+                values <- as.vector(out[[i]])
+                var.i <- matrix(NA, nrow = niter, ncol = nvar)
+                for (j in 1:nvar) {
+                      var.i[, j] <- values[j + (0:(niter - 1)) * nvar + 
+                        (ch - 1) * niter * nvar]
+                }
+                vnames.ch <- c(vnames.ch, coda.names(varname, vardim))
+                ans.ch[[i]] <- var.i
+           }
+           ans.ch <- do.call("cbind", ans.ch)
+           colnames(ans.ch) <- vnames.ch
+           ans[[ch]] <- mcmc(ans.ch, start = start, thin = thin)
+      }
+
+      dic <- list(deviance = mean(as.vector(deviance)), penalty = mean(as.vector(pD)), type = 'pD')
+      class(dic) <- "dic"
+      return(list(samples=mcmc.list(ans), dic=dic))
+}
+```
+
+This code is just a copy of [coda.samples()]{.title-ref} source code.
+
+Changes: include \"deviance\" and \"pD\" in sampling:
+
+``` {R, eval=F}
+varnames=c(variable.names, c('deviance', 'pD'))
+out <- jags.samples(model, varnames, n.iter, thin, 
+     type = "trace", ...)
+deviance <- out$deviance
+pD <- out$pD
+out$deviance <- NULL
+out$pD <- NULL    
+```
+
+and return as [dic]{.title-ref} structure
+
+``` {R, eval=F}
+dic <- list(deviance = mean(as.vector(deviance)), penalty = mean(as.vector(pD)), type = 'pD')
+class(dic) <- "dic"
+return(list(samples=mcmc.list(ans), dic=dic))
+```
+
+You need to run the sampler with more than one chain, though.

@@ -1,0 +1,46 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Arctic Neuroscience"
+  open-graph: true
+  repo-url: https://github.com/ihrke/ihrke.github.io
+  repo-actions: [issue]  
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: publications.qmd
+        text: Publications
+      - href: software.qmd
+        text: Software
+      - href: blog.qmd
+        text: Blog
+    right:
+      - icon: mastodon
+        href: https://scicomm.xyz/@thias_mittner
+      - icon: github
+        href: https://github.com/ihrke
+      - icon: envelope-fill
+        href: mailto:matthias.mittner@uit.no
+  page-footer: 
+    left: 
+      - "Copyright 2022, Matthias Mittner" 
+    right: 
+      - icon: mastodon
+        href: https://scicomm.xyz/@thias_mittner
+      - icon: github
+        href: https://github.com/ihrke
+      - icon: envelope-fill
+        href: mailto:matthias.mittner@uit.no
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 5
+    css: styles.css
+
+
+

@@ -1,0 +1,70 @@
+---
+title: Association Between Executive Functions, Working Memory, and Manual Dexterity
+date:   2016-02-29
+categories:   
+  - paper
+tags:   
+  - paper
+---
+New paper (open data!): Association Between Executive Functions, Working Memory, and Manual Dexterity
+=====================================================================================================
+
+[![](/pics/kincog.png){.align-center
+width="40.0%"}](http://pms.sagepub.com/content/122/1/165.abstract)
+
+I am thrilled to see that our fully-Bayesian, open-data paper
+\"Association Between Executive Functions, Working Memory, and Manual
+Dexterity in Young and Healthy Older Adults\" has been published in
+[Perceptual & Motor Skills](http://www.amsciepub.com/loi/pms). 
+This paper takes on the rarely asked question about the
+relationship between cognitive functions and manual dexterity. The
+history of my involvement with this manuscript is maybe unusual in that
+one of the reviewers actually requested the use of Bayesian statistics
+(because he felt that the analyses reported in an initial version of the
+MS in which I was not involved were not appropriate). I was, of course,
+all too happy to help and our efforts have resulted in a fully-Bayesian
+paper.
+
+I have recently started to think about openness of data and materials to
+the scientific community. Ever since it\'s initiation, I have been a fan
+of Richard Morey\'s [Peer Reviewers\' Openness
+Initiative](http://opennessinitiative.org/) and I have recently
+[signed](https://opennessinitiative.org/signatories/) the initiative
+(you should do so, too!). At the time of this writing, there are already
+278 people who have committed to require that data and experimental
+materials are made openly available before reviewing a paper. Obviously,
+making such a commitment requires that I also follow these rules in my
+own research! So far, I have not done so (shame on me!), mostly for
+practical reasons (publishing large fMRI data is difficult;
+anonymization not trivial; documentation of the datasets time-consuming
+etc, etc) even though I was always committed to give out data/materials
+when requested (we signed a declaration in my old lab). However, I do
+see the difference between agreeing to handing out data and putting it
+up on the web for anyone to look at. How often did I not wish to have
+easy access to the data published in scientific articles (for research,
+teaching and sometimes just for fun)! I have therefore decided to
+implement an open-data policy and upload all data per-default upon
+publication.
+
+Given that usually many co-authors are involved in most research
+projects, it is not always easy to convince everyone to go along with
+these requirements. I am happy that my co-authors on our new paper
+[Claudia
+Rodriguez-Aranda](https://uit.no/om/enhet/ansatte/person?p_document_id=42307&p_dimension_id=88120)
+and [Olena
+Vasylenko](https://uit.no/om/enhet/ansatte/person?p_document_id=256295&p_dimension_id=88120)
+from the [Research group \"Behavioral neuroscience and human
+development\"](https://en.uit.no/forskning/forskningsgrupper/gruppe?p_document_id=345695)
+readily agreed to share their hard-won data with anyone who can use a
+computer to download files. The data and all analysis scripts (R + Stan)
+are available from
+[github](https://github.com/ihrke/2016-executive-functions-manual-dexterity).
+
+------------------------------------------------------------------------
+
+**References**
+
+- Rodriguez-Aranda, C., *Mittner, M.* & Vasylenko, O. (2016).
+Association between Executive Functions, Working Memory, and Manual
+Dexterity in Young and Healthy Older Adults: An exploratory study.
+*Perceptual & Motor Skills*, 122 (1), 165-192.

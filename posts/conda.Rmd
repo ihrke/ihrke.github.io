@@ -1,0 +1,235 @@
+---
+date:   2015-09-24
+categories:   
+  - software
+  - R
+tags:   
+  - R
+title:   Handling R packages/dependencies with conda.
+slug:   conda
+---
+
+Conda for handling R dependencies
+=================================
+
+
+Every now and then, I stumble across the case that I want to return to
+some analysis I have been doing some time in the past only to find out
+that recent developments and package updates totally break my scripts.
+In the python world, I have been relying on
+[virtualenv](https://virtualenv.pypa.io/en/latest/) for quite some time
+and it works very well: On the computer I do the work, I create a
+virtualenv which I enable for development. My backups do not contain
+this but simply the project files (where I document in the README which
+virtualenv is needed). When I need to run the scripts on a different
+computer, I just use `pip freeze > requirements.txt`
+from within the virtualenv and restore it by `pip install -r
+requirements.txt`. This has worked so far and I have
+not been bitten by any incompatibilities.
+
+Recently, I have been relying more and more on [R](http://r-project.org)
+and wanted a similar solution for that (actually, R packages change so
+fast, that it\'s almost suicide not to do it). I found that
+[packrat](https://rstudio.github.io/packrat/) is supposed to be the tool
+for the job. So I tried it and it has resulted in nothing but
+frustration:
+
+1.  It\'s NOT possible to have different versions of the R-interpreter
+2.  The complete library of packages is inevitably stored in the
+    project-directory and automatically loaded once an R-interpreter is
+    started in this directory (so I need to sync hundreds of MBs for
+    that, especially if I run it on different operating systems).
+3.  The system failed my completely when I was trying to sync between
+    our computing server and my desktop. Both systems run linux and so
+    packrat on the cluster was just trying to reuse the compiled
+    binaries but failed miserably because a differeng
+    [glibc]{.title-ref} version had been used for compiling the cluster
+    R and the packages on my desktop.
+
+Anyway, I quickly dropped this solution as impractical for my use-cases.
+That\'s when I stumbled across [conda](http://conda.pydata.org/docs/)
+which appears to offer all I need: Language-agnostic virtual
+environments. The article [over here](http://continuum.io/blog/conda-data-science) convinced me even
+more because you just have to build a file
+`environment.yml` that can be used by anyone to directly
+create your environment in one go (using builds that, possibly, you have
+to store on your own namespace on the [anaconda](https://anaconda.org)
+server). I am not yet sure that [conda](http://conda.pydata.org/docs/)
+is going to be the right tool for me but I thought I\'d log some of the
+ups and owns while working with it for future reference.
+
+So here is a log on how to do different things:
+
+Setup
+-----
+
+Download and install [miniconda](http://conda.pydata.org/miniconda.html)
+which is a bare-bones version of [conda](http://conda.pydata.org/docs/).
+
+```{bash, eval=F}
+wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
+bash Miniconda-latest-Linux-x86_64.sh
+conda update conda
+conda install anaconda-client anaconda-build conda-build
+```
+
+Add anaconda channel for [R](http://r-project.org)
+
+```{bash, eval=F}
+conda config --add channels r
+```
+
+Install [R](http://r-project.org) and, if wanted, the \"essential\"
+packages
+
+``` {bash, eval=F}
+conda install r r-essentials
+```
+
+Create an account at [anaconda](https://anaconda.org) (you will need it
+to make packages that are not in conda\'s default
+[R-repo](https://anaconda.org/R)).
+
+This will create a \"namespace\" for your chosen username which you can
+use to capture packages with individual versions etc.
+
+Starting up a new project
+-------------------------
+
+Create a new \"virtualenv\" and switch to it
+
+``` {bash, eval=F}
+conda create --name testenv r
+source activate testenv
+```
+
+You can install any R-packages that are already in the [repo
+\<https://anaconda.org/R\>]() (they are prefixed by [r-]{.title-ref}),
+e.g.,
+
+``` {bash, eval=F}
+conda install r-dplyr
+```
+
+If you come across a package that is not on anaconda\'s servers, you can
+easily build it yourself (if it is on
+[CRAN](https://cran.r-project.org/); have not tried with
+github-packages). Sometimes, it depends on other packages that are not
+there, so you will need to build them, too. Here is an example for
+building [rstan](http://mc-stan.org/interfaces/rstan.html):
+
+``` {bash, eval=F}
+conda skeleton cran rstan
+conda build r-rstan
+```
+
+results in a failure, because it depends on
+[StanHeaders](https://cran.r-project.org/web/packages/StanHeaders/index.html)
+and [inline](https://cran.r-project.org/web/packages/inline/index.html).
+So you will need to to
+
+``` {bash, eval=F}
+conda skeleton cran stanheaders
+conda skeleton cran inline
+conda build r-rstan
+```
+
+This will detect that you got the recipes in your local tree and it will
+also tell you what you have to do to upload the new packages to your own
+channel at [anaconda](https://anaconda.org) (my channel is
+<https://anaconda.org/mittner>)
+
+``` {bash, eval=F}
+# If you want to upload this package to anaconda.org later, type:
+#
+# $ anaconda upload /home/mittner/local/miniconda/conda-bld/linux-64/r-inline-0.3.14-r3.2.1_0.tar.bz2
+#
+# To have conda build upload to anaconda.org automatically, use
+# $ conda config --set anaconda_upload yes
+```
+
+So just follow that (and I also recommend setting it to \"always
+upload\" because, lets be honest, we tend to forget these things):
+
+``` {bash, eval=F}
+conda config --set anaconda_upload yes
+```
+
+Freezing dependencies
+---------------------
+
+Now, all you need to do to reproduce your environment on another
+computer (or in the future) is the equivalent to `pip freeze`{.bash, eval=F
+.sourceCode} which is
+
+``` {bash, eval=F}
+conda env export --name testenv -f environment.yml
+```
+
+If you compiled and uploaded some packages yourself in your private
+channel, you might have to add the channel to the
+`environment.yml` file. The file looks like this:
+
+```
+name: testenv
+dependencies:
+- cairo=1.12.18=4
+- fontconfig=2.11.1=4
+... (more packages here)
+```
+
+So you have to insert ([mittner](https://anaconda.org/mittner) is my
+channel):
+
+```
+name: testenv
+channels:
+- r
+- mittner
+dependencies:
+- cairo=1.12.18=4
+- fontconfig=2.11.1=4
+... (more packages here)
+```
+
+If you put this file into your project-directory, then the user (or you)
+just has to run
+
+``` {bash, eval=F}
+conda env create
+```
+
+and will end up with hopefully the exact same environment you created.
+
+Problems
+--------
+
+Here are some problems I have stumbled over so far.
+
+When using `install.packages()`, I get a Tcl-related error:
+
+```{R, eval=FALSE}
+> install.packages("arm")
+```
+
+```
+--- Please select a CRAN mirror for use in this session ---
+Error in download.file(url, destfile = f, quiet = TRUE) : 
+   unsupported URL scheme
+Error: .onLoad failed in loadNamespace() for 'tcltk', details:
+   call: fun(libname, pkgname)
+   error: Can't find a usable init.tcl in the following directories: 
+      /opt/anaconda1anaconda2anaconda3/lib/tcl8.5 ./lib/tcl8.5 ./lib/tcl8.5 ./library ./library ./tcl8.5.18/library ./tcl8.5.18/library
+This probably means that Tcl wasn't installed properly.
+```
+
+And, for that matter, I don\'t know how conda\'s R-packages behave
+together with `install.packages()` (at least, they are not
+included in the `environment.yml` file, I guess?).
+
+Conclusion
+----------
+
+So far, [conda](http://conda.pydata.org/docs/) looks like a promising
+tool, but I will have to see how it behaves in practice (I will revisit
+this post later to include new info).

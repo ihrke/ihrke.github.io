@@ -1,0 +1,67 @@
+---
+date:   2015-06-23
+categories:   
+  - paper
+tags:   
+  - paper
+  - mind-wandering
+  - bayes
+  - modeling
+title: "Commentary on our mind-wandering paper"
+---
+Commentary on our mind-wandering paper
+======================================
+
+[![](/pics/commentary_axelrod.png){.align-center
+width="100.0%"}](http://journal.frontiersin.org/article/10.3389/fncom.2015.00083/full#)
+
+Vadim Axelrod and Andrei R. Teodorescu wrote an [interesting
+commentary](http://journal.frontiersin.org/article/10.3389/fncom.2015.00083/full#) on our [recent mind-wandering
+paper](http://www.jneurosci.org/content/34/49/16286.abstract) that was
+published in The Journal of Neuroscience last year. I am
+happy that they are supportive of our approach and glad about the
+constructive comments that they give in their paper.
+
+I am particularly happy that someone has gone to the difficulty of
+summarizing and contextualizing our paper because I think that it is
+actually quite hard to read. I think it is a strength of our paper that
+it combines complex from different modalities (fMRI, rsfMRI, pupil
+diameter, behaviour) with sophisticated analysis techniques (MVPA
+techniques, cognitive modeling, Bayesian stats). However, this
+particular feature makes the paper very hard to read, I think. I tried
+my best to prepare the paper in a readable way but found it quite
+challenging to present the paper in a both comprehensive and
+easy-to-read format. Axelrod & Teodorescu\'s comment solves this problem
+for me because there is now an easy-to-read summary out there that is
+independent of our main paper and therefore does not have the obligation
+to comprehensively detail the used methodology.
+
+*I wish there was a commentary on all empirical papers\...*
+
+There is one more comment I\'d like to make regarding the commentary. In
+their comment, the authors focus on different model parameters that
+might be beneficial to study in the mind-wandering context. I do agree
+and I think the MW field should really dig deeper into the cognitive
+modeling research that has been done in other fields. For our own data
+however, it was not possible to focus on the parameters suggested by
+Axelrod and Teodorescu. As I commented in an e-mail to Vadim Axelrod:
+
+> As you note in one part of your paper, the stop-signal paradigm (at
+> least the version we used) did not produce many behavioural errors
+> which make it hard to constrain the more flexible models (such as
+> those estimating between-trial variability). This was one of the
+> reasons we pursued the relatively simple model we ended up with (and
+> used a Bayesian hierarchical modeling approach for incorporating fits
+> for subjects who did not have many errors).
+
+------------------------------------------------------------------------
+
+**References**
+
+- Axelrod V and Teodorescu AR (2015) Commentary: When the brain
+takes a break: a model-based analysis of mind wandering. *Front. Comput.
+Neurosci.* 9:83. doi: 10.3389/fncom.2015.00083
+- Mittner, M., Boekel, W., Tucker, A. M., Turner, B.M., Heathcote,
+A. and Forstmann, B.U. (2014). When the brain takes a break: A
+model-based analysis of mind wandering. *Journal of Neuroscience*,
+34(49):16286-95.

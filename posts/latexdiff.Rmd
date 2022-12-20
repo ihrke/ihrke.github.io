@@ -1,0 +1,109 @@
+---
+title: Highlight changes with latexdiff
+date:   2014-08-25
+categories: 
+  - latex
+tags:   
+  - latex
+  - git
+summary: "Have you ever been asked to provide a resubmission with \"changes highlighted\"?"
+---
+Highlight changes with latexdiff
+================================
+
+Have you ever been asked to provide a resubmission with \"changes
+highlighted\"? Or have you ever received a modified version of your
+latex file and wanted to see the changes in a PDF version?
+
+Well I have and here\'s my solution.
+
+I use to track my papers with [git](http://www.git.org) which makes the
+whole process of integrating your co-authors opinions a breeze.
+
+I will just guide you through the process beginning at zero:
+
+0.  do the research
+1.  when ready to write the paper, make a new directory and initialize
+    it with [git](http://www.git.org)
+
+``` {.sourceCode .bash}
+mkdir awesome_paper
+cd awesome_paper
+git init
+```
+
+2.  create your paper, images and whatnot. Log changes into
+    [git](http://www.git.org) with
+
+``` {.sourceCode .bash}
+git add paper.tex
+git add pics/*.pdf
+git commit -a -m "your commit message goes here"
+```
+
+3.  send your version to your co-authors and receive feedback
+    [paper\_with\_some\_changes.tex]{.title-ref}
+4.  use
+    [latexdiff](https://www.sharelatex.com/blog/2013/02/16/using-latexdiff-for-marking-changes-to-tex-documents.html)
+    to create a nice highlighted PDF
+
+``` {.sourceCode .bash}
+latex-diff paper.tex paper_with_some_changes.tex > paper_diff.tex
+pdflatex paper_diff.tex
+```
+
+5\. submit your paper to your journal of choice (e.g., the [Journal in
+Support of the Null-Hypothesis](http://www.jasnh.com/))
+
+6.  receive angry feedback from the reviewers
+7.  **before** hacking your paper in reply to the undoubtedly
+    ill-informed and biased crangling of the reviewers, tag the paper to
+    make sure you find the version you submitted
+
+``` {.sourceCode .bash}
+git tag first_submission
+```
+
+8.  hack your paper and shut up those ignorant reviewers
+9.  being forced to resubmit a \"changes highlighted\" version of your
+    paper (driving home the point how much you had to mutilize your
+    beautiful paper), do the following:
+
+``` {.sourceCode .bash}
+git show first_submission:paper.tex > paper_firstsub.tex 
+latexdiff paper_firstsub.tex paper.tex > paper_diff.tex
+pdflatex paper_diff.tex
+bibtex paper_diff
+pdflatex paper_diff.tex
+```
+
+10. submit and keep your fingers crossed!
+
+I like to put the last block of commands into a [Makefile]{.title-ref}
+such that all you have to do is a
+
+``` {.sourceCode .bash}
+make first_diff  # results in highlighted version
+make             # results in clutter-free paper
+```
+
+Here is the Makefile:
+
+``` {.sourceCode .bash}
+TARG=paper
+
+$TARG.pdf: $TARG.tex myrefs.bib
+     pdflatex $TARG.tex
+     bibtex $TARG.tex
+     pdflatex $TARG.tex
+
+first_diff: 
+     git show first_submission:$TARG.tex > $TARG_firstsub.tex 
+     latexdiff $TARG_firstsub.tex $TARG.tex > $TARG_diff.tex
+     pdflatex $TARG_diff.tex
+     bibtex $TARG_diff
+     pdflatex $TARG_diff.tex
+```
+
+You might want to look at latexdiff\'s [-t]{.title-ref} switch. You can
+change how deletions and additions are displayed in the final PDF.

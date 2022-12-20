@@ -1,0 +1,111 @@
+---
+date:   2015-10-14
+categories:   
+  - uit
+tags:   
+  - org
+  - uit
+summary: Even more than a year after moving to the best city on earth, Tromsø, and beginning to work at the best university in the country, the University of Tromsø, I stumble across new stuff that I wish I would have known earlier. Here is a list.
+title: Stuff you need to know as new (foreign) employee at UiT
+---
+
+Stuff you need to know as new (foreign) employee at University of Tromsø
+========================================================================
+
+Even more than a year after moving to the best city on earth,
+[Tromsø](http://www.tromso.kommune.no/), and beginning to work at the
+best university in the country, the [University of
+Tromsø](http://uit.no), I stumble across new stuff that I wish I would
+have known earlier. Some of it is probably most interesting to
+foreigners, but most of it might be of interest to you, the Norwegian,
+as well :-)
+
+I will use this blog post to keep an updated list of these things (so
+check back for new entries):
+
+How to find your lecture room?
+------------------------------
+
+This used to be a big problem for me. What the hell does MH AUDS6 mean?
+There used to be no reference whatsoever on the net what this means.
+Slowly, with time, I found out that MH is the health-faculty building
+and that AUDS6 is one of the auditoria. But at various occasions, I had
+a really hard time actually getting to the room indicated on my
+schedule.
+
+This has finally changed! I just found out that there is an awesome map
+of all university buildings on all levels showing every room and a lot
+of details. And what\'s better: The same platform has maps for NTNU, UiB
+and other places.
+
+Here is the link: <http://use.mazemap.com/>
+
+A **good**, Norwegian dictionary
+--------------------------------
+
+Yes, there is [heinzelnisse](http://heinzelnisse.info) for germans and
+[dict.cc](http://dict.cc) for many other languages but these
+dictionaries are **far** from good. If you are advanced, you can try the
+very comprehensive [Bokmålsordboka](http://www.nob-ordbok.uio.no/) (or
+the [Nynorskordboka](http://www.nob-ordbok.uio.no/) if you are into that
+sort of thing) but I often fail to understand the gist of the short
+explanations offered (it\'s norsk-norsk only). There is also something
+called [ordnett](http://www.ordnett.no/) which is available through the
+university\'s subscription but I found it frustratingly bad (unusable
+interface and funny search results).
+
+But today, I found the perfect solution: [Clue](https://clue.no/).
+
+-   free for employees ([instructions for
+    access](https://uit.no/om/orakelet/frag?p_document_id=318424))
+-   many languages
+-   most complete I have seen so far
+-   usable from: [the web](http://clue-online.no), mobile phone and
+    desktop
+
+Data-sharing with other people around the globe
+-----------------------------------------------
+
+This is really cool: [UiT](http://www.uit.no) has an unlimited-usage
+account with [box.com](http://www.box.com). This is a service that works
+pretty much like Dropbox or Google Drive but has much cooler
+collaboration/sharing/download options and unlimited (say that again?)
+space! [Here are UiT\'s instructions](https://uit.no/om/orakelet/frag?p\_document\_id=391981) on how to
+set up your computer to use it.
+
+There is excellent for data-sharing with people from all over the world,
+for data-archiving (unlimited, remember?!) and even for keeping your
+home and work computer in sync.
+
+Letter template for university letters
+--------------------------------------
+
+Ok, this is a bit more nerdy as I write everything that I ever write in
+[LaTeX](http://www.latex-project.org/). I wanted to have a template for
+writing official letters (including university\'s logo etc). I ony found
+this [clearly outdated template](https://uit.no/ansatte/grafiskprofil/artikkel?p\_document\_id=150251)
+for MS Word and used some letters I received to come up with a nice
+[LaTeX](http://www.latex-project.org/) template myself. [Here is a link](https://source.uit.no/matthias.mittner/letter\_templates/tree/master)
+to the templates (english and norwegian versions) and [this is what it
+looks like](/share/letter\_template.pdf).
+
+Here is how to access the git-repo for you who is from nerd-land:
+
+```
+git clone git@source.uit.no:matthias.mittner/letter_templates.git
+```
+
+BIG computation
+---------------
+
+Ok, another entry for nerd-people. [UiT](http://www.uit.no) has a really
+good HPC cluster, [stallo](https://www.notur.no/hardware/stallo), that
+is readily accessible for [UiT](http://www.uit.no) employees. You will
+have to fill out an [online-application](http://docs.notur.no/uit/stallo\_documentation/user\_guide/introduction)
+(takes 5 minutes) and you will quickly get access by the very helpful
+administrators. You will be using
+[stallo](https://www.notur.no/hardware/stallo)\'s queuing system, which
+may need some getting used to (read the docs!).
+
+Here is [stallo](https://www.notur.no/hardware/stallo) \'s
+documentation: [link](http://docs.notur.no/uit/stallo_documentation).

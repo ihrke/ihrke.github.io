@@ -1,0 +1,33 @@
+---
+title: "Matthias Mittner's homepage"
+#format:
+#  html:
+#    page-layout: full
+---
+
+::::{.colums}
+:::{.column width=30%}
+![](pics/matthias_solstrand2.png){.roundedimg .absolute .centered width=90%}
+
+
+
+<a rel="me" href="https://scicomm.xyz/@thias_mittner"></a>
+
+:::
+:::{.column width=60%}
+![](pics/UiT_Cog-Neuro_Logo.png){.alignright height=100px}
+
+## About me
+
+
+I am a professor at the University of Tromsø. My main
+interests within the field of cognitive neuroscience are mind wandering, non-invasive brain stimulation, decision making, pupillometry and selective attention. I am also interested in the development of methodological approaches in my field and enjoy computational methods, cognitive modeling, machine-learning and Bayesian statistics.
+
+
+- [my CV](/share/cv.pdf)
+- [Google Scholar](https://scholar.google.com/citations?hl=en&user=AFB4RYIAAAAJ)
+- [Lab website](https://uit.no/research/cognitive-neuroscience) 
+
+:::
+::::
+

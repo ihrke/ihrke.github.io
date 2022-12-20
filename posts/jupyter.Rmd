@@ -1,0 +1,132 @@
+---
+title:   Multi-Language IPython (Jupyter) setup
+date:   2015-01-08
+summary: Using the IPython (Jupyter) notebook with different languages (Python/R).
+categories:
+  - computer
+tags:
+  - python
+  - computer
+---
+Multi-Language IPython (Jupyter) setup
+======================================
+
+
+![](/pics/jupyter_screenshot1.png){.align-center
+width="30.0%"}
+
+The IPython notebook project (which I adore) is about to be renamed to
+[Jupyter](http://jupyter.org/) to better reflect the fact that it can be
+used with other languages besides Python. At the moment that is under
+heavy development and probably quite unstable but I found myself aching
+for an IR-Notebook. So here is a guide to set up a multi-language
+Jupyter notebook (meaning that you just start the server and can select
+if you want an R-Notebook, a Python-notebook, or one of the other
+availabel
+[kernels](https://github.com/ipython/ipython/wiki/IPython%20kernels%20for%20other%20languages)).
+
+Note that the instructions on this page are likely to break since they
+depend on early development versions of the different packages. I expect
+that the whole procedure is going to be faciliated/documented once the
+Jupyter project gets going.
+
+At first, we set up a bleeding-edge ipython (this is from a bare bones
+python installation):
+
+``` {.sourceCode .bash}
+# setup pip
+wget https://bootstrap.pypa.io/get-pip.py  
+sudo python get-pip.py
+
+# make a virtualenv
+sudo pip install virtualenv
+cd ~
+virtualenv local/python/jupyter
+source local/python/jupyter/bin/activate
+
+## get the cutting edge ipython version
+git clone --recursive https://github.com/ipython/ipython.git
+# and install all its dependencies
+cd ipython
+pip install -e ".[notebook]" 
+```
+
+You can run the notebook with
+
+``` {.sourceCode .bash}
+ipython notebook
+```
+
+while you are in the virtualenv. Stay in the virtualenv for the rest of
+the setup.
+
+Adding R
+--------
+
+For adding R-support, you need the experimental
+[IRKernel](https://github.com/takluyver/IRkernel). Just follow the
+instructions in the \`README\`:
+
+Install dependencies:
+
+``` {.sourceCode .bash}
+sudo apt-get install libzmq3-dev libcurl4-openssl-dev
+```
+
+fire up R and
+
+``` {.sourceCode .R}
+install.packages("devtools")
+# Need RCurl for install_github
+install.packages('RCurl')
+library(devtools)
+install_github('armstrtw/rzmq')
+install_github("takluyver/IRdisplay")
+install_github("takluyver/IRkernel")
+IRkernel::installspec() 
+```
+
+In my case the last line failed with permission problems. The code of
+[IRkernel::installspec]{.title-ref} is as follows:
+
+``` {.sourceCode .R}
+function () 
+{
+     srcdir = system.file("kernelspec", package = "IRkernel")
+     cmd = paste("ipython kernelspec install --replace --name ir", 
+           srcdir, sep = " ")
+     system(cmd, wait = TRUE)
+}
+```
+
+so the function basically makes a system call to [ipython
+kernelspec]{.title-ref} to install the kernel that is located in
+[srcdir]{.title-ref}. You can find out the value of [srcdir]{.title-ref}
+by running the first line of the function
+
+``` {.sourceCode .R}
+print(system.file("kernelspec", package = "IRkernel"))
+```
+
+(in my case the path was
+[/home/mittner/R/x86\_64-unknown-linux-gnu-library/3.1/IRkernel/kernelspec]{.title-ref}).
+
+Now exit R and run the command by hand (supplemented by \"\--user\" to
+install the kernel in the users directory instead of globally \-- that
+was what caused the permission problem):
+
+``` {.sourceCode .bash}
+ipython kernelspec install --replace --name ir --user /home/mittner/R/x86_64-unknown-linux-gnu-library/3.1/IRkernel/kernelspec
+```
+
+Now fire up the notebook and voila:
+
+![](/pics/jupyter_screenshot1.png){width="50.0%"}
+
+and by creating an R-notebook, you have the RNotebook:
+
+![](/pics/jupyter_screenshot2.png){width="100.0%"}
+
+Finally, it\'s possible to add more
+[kernels](https://github.com/ipython/ipython/wiki/IPython%20kernels%20for%20other%20languages)
+for example for [Julia](http://julialang.org/) in a similar way.

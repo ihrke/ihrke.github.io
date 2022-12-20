@@ -1,0 +1,82 @@
+---
+date:   2014-09-16
+categories:
+  - computer
+tags: 
+  - python
+  - ipython
+title: Access IPython Notebook through SSH to avoid firewall
+---
+Access IPython Notebook through SSH to avoid firewall
+=====================================================
+
+I usually run ipython notebook on a server and access the web-interface
+from a different computer. This enables me to start a lengthy
+computation, shut my laptop and come back once it\'s done.
+
+However, I recently had the problem that I was not able to find a good
+way of opening the ipython-specific port in the firewall. Also, it\'s a
+bit dangerous to do so.
+
+I was therefore happy to have stumbled across [a blog
+post](http://wisdomthroughknowledge.blogspot.no/2012/07/accessing-ipython-notebook-remotely.html)
+which told me how to access ipython through a SSH-tunnel. Basically,
+this allows to access ipython running on any computer that you can
+access via SSH.
+
+Here\'s the recipe:
+
+1.  On the server, start the ipython notebook:
+
+```
+ipython notebook --no-browser --port=8889
+```
+
+2.  On the local machine, setup a pipe with
+
+```
+ssh -N -n -L localhost:8889:localhost:8889 user@servername
+```
+
+(this will have to be redone after opening your laptop again)
+
+3.  access your ipython notebook locally with
+    [localhost:8889]{.title-ref}
+
+Setup IPython
+-------------
+
+Here is an outline how I setup my IPython to serve all my scientific
+needs:
+
+1.  make and activate an virtualenv:
+
+``` {.sourceCode .bash}
+virtualenv local/python/name
+source local/python/name/bin/activate
+```
+
+2.  get the most recent ipython
+
+``` {.sourceCode .bash}
+## get the cutting edge ipython version
+git clone --recursive https://github.com/ipython/ipython.git
+# and install all its dependencies
+cd ipython
+pip install -e ".[notebook]" 
+```
+
+3.  get all the cool packages
+
+``` {.sourceCode .bash}
+pip install numpy
+pip install scipy
+pip install matplotlib
+pip install pandas
+pip install rpy2
+pip install seaborn
+pip install pymc
+pip install statsmodels
+pip install ipycache
+pip install pushbullet.py
+```

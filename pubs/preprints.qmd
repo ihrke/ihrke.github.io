@@ -1,0 +1,81 @@
+---
+title: "Preprints"
+author: "Matthias Mittner"
+date: "today"
+---
+
+```{r setup, cache=F, include=FALSE}
+#knitr::opts_chunk$set(echo = TRUE)
+#knitr::opts_knit$set(root.dir = normalizePath(".."))
+library(tidyverse)
+library(jsonlite)
+library(lubridate)
+library(httr)
+library(glue)
+library(bib2df)
+library(R.rsp)
+library(scholar)
+source("../lib/functions.R")
+```
+
+```{r, cache=F, include=FALSE}
+## Options
+##------------------------------------------------------------------------------------
+print.impact=T
+
+
+## preprints
+##------------------------------------------------------------------------------------
+preprints <- get_my_osf_preprints()
+
+# order/filter
+preprints %>% arrange(desc(date)) %>% ungroup -> preprints
+
+# other preprints not on osf
+if(fs::is_file("static/bibtex/preprints.bib")){
+bib2df("static/bibtex/preprints.bib", separate_names = T) %>%
+  select(authors=AUTHOR, journal=JOURNAL, title=TITLE, date=YEAR, 
+         doi=DOI, link=URL) %>%
+  mutate(title=strip_curly_braces(title), date=get_date_from_doi(doi), #lubridate::ymd(sprintf("%i-01-01",date)),
+         status="submitted", unpublished=T, citation="",
+         authors=map(authors, ~.x %>% rename(family_name=last_name,given_name=first_name))) -> preprints.add
+
+for(i in 1:dim(preprints.add)[1]){
+  authors=preprints.add[i,]$authors[[1]]
+
+  if(dim(authors)[1]==1){
+    latexauth<-glue("**<family_name>, <str_sub(given_name, 1,1)>.**", .envir=authors, .open="<", .close=">")
+  } else {
+    latexauth<-glue("{family_name}, {str_sub(given_name, 1,1)}.", .envir=authors) 
+    latexauth=if_else(startsWith(latexauth, "Mittner") | startsWith(latexauth, "Ihrke"), sprintf("**%s**",latexauth), as.character(latexauth))
+    latexauth<-glue_collapse(latexauth, sep = ", ", last = " & ")
+  }
+  ref=glue("{latexauth} ({date}). {title}. {link} status: {status}", .envir=preprints.add[i,])
+  preprints.add$citation[i]=ref
+}
+  
+  
+full_join(preprints,preprints.add) -> preprints
+}
+preprints %>% arrange(desc(date)) %>% ungroup -> preprints
+
+```
+
+
+This is a list of all preprints published by my group, so far. The preprints for which the status is "published" all have a corresponding publication on my [publication list](/publications.qmd).
+
+```{r, echo=F, results='asis'}
+#| column: screen-inset-shaded
+#| 
+mdtohtml <- function(x){
+  purrr::map_chr(x, function(y){
+    markdown::markdownToHTML(text=y, fragment.only = T)
+  })
+}
+
+#knitr::kable(preprints %>% select(date,citation, link, status))
+d <- preprints %>% select(date,citation, link, status) %>% 
+  mutate(link=mdtohtml(link),
+         citation=mdtohtml(citation))
+DT::datatable(d, escape = F)
+```

@@ -1,0 +1,85 @@
+---
+title: "Software"
+---
+
+My [GitHub profile](https://github.com/ihrke)
+
+## Python
+
+::: software
+Pypillometry <https://github.io/ihrke/pypillometry> ![](https://raw.githubusercontent.com/ihrke/pypillometry/master/logo/pypillometry_logo_200x200.png?token=AAIWMEINEM6MUOAPT2NV4I252K5QW){.alignright width=120px}
+: The `pypillometry` package implements functions for the analysis of pupillometric data. Features include preprocessing, blink handling, event-related pupil-dilation, plotting and signal modeling. [Homepage](http://ihrke.github.io/pypillometry) | [GitHub](https://github.com/ihrke/pypillometry) | [Paper](https://joss.theoj.org/papers/10.21105/joss.02348)
+:::
+
+::: software
+Pyrace <https://github.com/ihrke/pyrace> ![](/pics/pyrace.png){.alignright width=120px}
+: Race-models in Python. Currently focus on Stop-Signal-Tasks but supports generic accumulators and experimental designs.
+:::
+
+
+::: software
+LibEEGTools <https://github.com/ihrke/libeegtools> ![](/pics/libeegtools.png){.alignright width=120px}
+: A C-library for processing EEG-data with minimal requirements. Implements filtering (bandpass, wavelets, ...), dynamic time warping, clustering, time-frequency analysis, recurrence plots etc. Comes with a basic Python interface. [Documentation](https://libeegtools.sourceforge.net/api/current/index.html) | [GitHub](https://github.com/ihrke/libeegtools)
+:::
+
+::: software
+Nipype-connect-str <https://github.com/ihrke/nipype_connect_str>
+: tiny grammar for [NiPype](https://nipype.readthedocs.io/en/latest/) to allow for a nicer connection string of nodes in workflow
+:::
+
+## Web-apps
+
+::: software
+Balancinator <https://github.com/ihrke/balancinator> ![](/pics/balancinator.png){.alignright width=120px}
+: The Balancinator is a free and open-source software to visualize distribution of men and women within a specific unit. The Balancinator allows anyone to build generic plots by inserting simple excel sheets instead of writing programming code. [WebApp](https://shiny.uit.no/balancinator/) | [GitHub](https://github.com/ihrke/balancinator)
+:::
+
+::: software
+Balancinator-HE <https://github.com/ihrke/norgeibalanse> ![](/pics/balancinator_he.png){.alignright width=120px}
+: The Balancinator|HE is a free and open-source dashboard to visualize distribution of men and women within higher education in Norway. [WebApp](https://shiny.uit.no/norgeibalanse/) | [GitHub](https://github.com/ihrke/norgeibalanse)
+:::
+
+## JsPsych
+
+::: software
+jspych-plugins-mm <https://github.com/ihrke/jspsych-plugins-mm> ![](/pics/example-gradient-feedback-multi-mm.png){.alignright width=120px}
+: a couple of plugins for jsPsych I have made for our experiments. [Demo](https://ihrke.github.io/jspsych-plugins-mm/) | [GitHub](https://github.com/ihrke/jspsych-plugins-mm)
+:::
+
+::: software
+pavlovian-gonogo <https://github.com/ihrke/pavlovian_gonogo> ![](/pics/pav_gonogo.png){.alignright width=120px}
+: implements the Pavlovian Go/NoGo task ([paper](/papers/Csifcsak2019LH.pdf))
+:::
+
+## R-packages
+
+These are companion packages for my books, see my [publications](publications.qmd).
+
+::: software
+Astatur: <https://ihrke.github.io/astatur/>
+: companion package for: Mehmetoglu, M. & Mittner, M. (in press). Applied Statistics using R. SAGE. [link](https://uk.sagepub.com/en-gb/eur/applied-statistics-using-r/book266647)
+:::
+
+::: software
+Rnorsk: <https://ihrke.github.io/rnorsk/> ![](https://ihrke.github.io/rnorsk/reference/figures/logo.png){.alignright height=100px}
+: Mehmetoglu, M. & Mittner, M. (2020). Innføring i R for statistiske dataanalyser. Universitetsforlaget. [link](https://www.universitetsforlaget.no/innforing-i-r-for-statistiske-dataanalyser)
+:::
+
+## Markdown
+
+I rely on [pandoc](https://pandoc.org/) and a set of templates for writing everything from papers, letters and lectures.
+
+::: software
+markdown-paper <https://github.com/ihrke/markdown-paper> ![](https://github.com/ihrke/markdown-paper/raw/master/pics/paper_elife.png){.alignright width=120px}
+: a setup for writing scientific papers in markdown; supports different styles for various scientific journals (I add new ones when I submit a paper to a new journal), references through bibtex
+:::
+
+::: software
+markdown-talk <https://github.com/ihrke/markdown-talk> ![](/pics/markdown-talk){.alignright width=120px}
+: my setup for producing beamer-based slides for lectures and talks (PDF)
+:::
+
+::: software
+markdown-letter <https://github.com/ihrke/markdown-letter> ![](/pics/markdown-letter){.alignright width=120px}
+: writing latex-based letters with markdown; includes a template for my [UiT](https://uit.no)'s letter head
+:::

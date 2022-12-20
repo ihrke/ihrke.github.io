@@ -1,0 +1,203 @@
+---
+date: 2015-09-02
+categories: 
+  - paper
+tags:   
+  - jags
+  - R
+  - bayes
+  - paper
+title: Publishing Bayesian analyses in a medical journal
+summary:  "New paper: Predictors of response to Web-based cognitive behavioral therapy with face-to-face therapist support for depression: A Bayesian analysis."
+---
+
+Publishing Bayesian analyses in a medical journal
+=================================================
+
+[![](/pics/moodgym.png){.align-center
+width="60.0%"}](http://www.jmir.org/2015/9/e197/)
+
+I am excited to announce that our paper [Predictors of response to
+Web-based cognitive behavioral therapy with face-to-face therapist
+support for depression: A Bayesian
+analysis](http://www.jmir.org/2015/9/e197/) has been accepted for
+publication in the [Journal of Medical Internet
+Research](http://jmir.org) (see below for the full citation).
+This paper is the result of a fruitful collaboration with [Martin
+Eisemann](https://uit.no/om/enhet/ansatte/person?p_document_id=42301&p_dimension_id=88120)\'s
+research group for [Mental
+e-Health](https://uit.no/forskning/forskningsgrupper/gruppe?p_document_id=345713)
+at the [University of Tromsø](http://uit.no).
+
+The project (that was led by soon-to-be-doctor [Ragnhild
+Høifødt](https://uit.no/om/enhet/ansatte/person?p_document_id=56149&p_dimension_id=88120))
+attempted to find individual-level variables that could help to predict
+whether a web-based treatment for depression would be effective or not.
+While the actual finding in the paper are fascinating (and I do
+recommend that you read it!), here I would like to say a few words about
+my experiences about publishing the Bayesian analyses (that are promised
+in the title). This is my second paper that used entirely Bayesian
+statistics (my first one was a paper on the neural basis of
+mind-wandering) and I learned
+a lot while working on the paper, both about appropriate analyses for
+this kind of data and about the process of publishing such analyses in
+communitites that are not yet used to it. The technical details are
+pretty much spelled out in the supplemental material (and, if you ask
+kindly, I am more than happy to share my R/JAGS code).
+
+One issue that was immediately obvious to me was the need for a proper
+documentation of the used models. It is all to common for papers in area
+to say something like \"linear mixed growth-models were used\" relying
+on the common language of the readership and assuming that everyone who
+will find this paper interesting in the future will immediately be able
+to infer exactly which analysis was run. I think this is a
+misconception. Even standard models have different names in different
+literatures and there are many different ways to calculate p-values,
+confidence intervals etc for more complicated statistical analyses.
+Also, standard methods can and will change in the future and it is not
+guaranteed that a researcher in the field twenty years in the future
+will be able to infer (and reproduce!) the exact analyses that were
+conducted. While people get away with this sort of thing when using
+null-hypothesis-testing (presumably because at least the reviewers DO
+know which models have been run as there are limited options), a
+Bayesian model is individually tailored to its application and needs a
+careful description. I therefore wrote up the model in a very unusual
+format, detailing all used distributionary assumptions, parameter
+transformations, priors etc. The methods portion grew accordingly and it
+was pretty obvious that this would be a hard-to-read paper. Still, I did
+what I felt was the right thing and sent it out to JMIR for review.
+
+I was positively surprised by the generally positive attitude of the
+editor and the reviewers who welcomed the Bayesian approach. However,
+one of the reviewers mentioned that
+
+> [...] the justification of Bayesian methods seem somewhat
+> over-enthuasiastic and perhaps unnecessarily dismissive of
+> null-hypthesis testing (I am no fan of null-hypothesis testing either,
+> but still had some doubts with regard to the way this was justified
+> here). Bayesian methods are introduced as being \"preferable\", \"more
+> flexible\", \"more readily interpretable\"; and so forth - but they
+> also strike me (at least the way they are presented here) as complex
+> to the point of seeming obsure (at least to the non-expert).
+
+Fair enough \-- it took me 6 pages to detail the used models while most
+methods section in similar papers using traditional models use maybe a
+paragraph. Here is my response:
+
+> [...] the reviewer argues that Bayesian methods are perceived as
+> being too complex or even obscure. We argue, that this perception is
+> solely due to the conventional practice in publishing statistical
+> analysis. A standardized frequentist analysis (e.g., a linear mixed
+> model fit by ML) is easy to follow for the educated reader but this is
+> solely because of the highly standardized nature of this type of
+> analysis. A reader from a different field of study (where statistical
+> nomenclature and standards may be different) will have a hard time
+> reading a \"standard\" statistical analysis that are so familiar to
+> us. We wrote the methods section in a way that it is comprehensible
+> for a statistically educated reader from any field but we do
+> acknowledge that this came at the cost of readability for more applied
+> readers. If standard analyses would be reported in the same
+> comprehensive way (discussing all hidden assumptions), the description
+> would most certainly fill more pages than we used and seem quite
+> obscure (given that many of the assumptions and concepts underlying
+> NHST are much less intuitive than the Bayesian equivalents).
+
+This is basically what I wrote above, if you want to write up all the
+details of traditional methods, the section would be just as long.
+Anyway, the reviewer went on to make some important points. In
+particular I found this statement interesting:
+
+> Moreover, a main argument for the Bayesian methods seems to be that
+> they present a welcome shift away from arbitrary accepting or
+> rejecting hypotheses based on whether the significance level of .05 is
+> achieved or not. If this is the case, then why present the \"Bayes
+> Factor\" statistics, which seem to again introduce somewhat rigid
+> guidelines as to when H1 or H0 is supported (e.g., Bayes Factor \> 10:
+> \"strong evidence for H1\"). Wouldn\'t a more conventional
+> presentation of effect sizes and confidence intervals achieve the same
+> purpose, but in a much more efficient manner (and one that might be
+> more familiar to most readers, although \"familiarity is better\" is
+> admittedly a very weak argument)?
+
+It refers to Jeffrey\'s table that assigns labels to different ranges
+the Bayes factor can take ([it is on
+wikipedia](https://en.wikipedia.org/wiki/Bayes_factor)) and I agree that
+these labels should be taken with a grain of salt. Here is what I
+responded:
+
+> Bayes Factors quantify the degree of evidence that the data provides
+> in favor of either the null- or the alternative hypothesis. It is thus
+> fundamentally different from p-values (or confidence intervals, at
+> that). However, the interpretation provided in Table 1 to which the
+> reviewer objects is indeed not uncontroversial (similar tables with
+> different wordings and different cut-off values have been proposed).
+> We do not want to put too much emphasis at these labels but rather
+> focus on the exact interpretation of the Bayes Factor: how much more
+> likely one hypothesis is than the other.
+
+I was, however, a little afronted by the suggestion that effect sizes
+and confidence intervals would carry the same information in a more
+efficient way:
+
+> The information contained in the BF is not identical to effect sizes
+> and/or confidence intervals and we argue strongly that confidence
+> intervals are neither more efficient nor more easily interpreted. In
+> fact, research shows that confidence intervals are robustly
+> misinterpreted even by trained researchers (Hoekstra et al., 2014). In
+> their study, they asked a sample of psychological researchers
+> conceptual questions about which questions confidence intervals could
+> or could not answer and they found that 97 % of the researchers failed
+> to correctly answer all questions (meaning that 97% of the researchers
+> fell into at least one fallacy surrounding the interpretation of
+> confidence intervals). We are of the opinion that Bayes Factors are
+> far easier interpretable, by comparison. As an alternative to effect
+> sizes + confidence intervals, we do report the mode of the posterior
+> distribution of the parameter estimates and their 95% highest density
+> interval (the Bayesian equivalent of a confidence interval that is
+> much less subject to misinterpretation) [...].
+
+Also, in the meantime, I took the time to read Morey\'s excellent paper
+[The Fallacy of Placing Confidence in Confidence
+Intervals](https://learnbayes.org/papers/confidenceIntervalsFallacy/)
+wich contains some excellent and pedagogical examples how confidence
+intervals can be misleading.
+
+After long discussions, we concluded in outsourcing the technical
+details of the Bayesian analysis into a supplemental material and wrote
+a short, relatively superficial summary for the main paper. I think this
+is a rather nice way to trade off readability and comprehensibility and
+think that I will use this model in the future. However, it has several
+shortcomings:
+
+1.  the supplemental material is not itself citable
+2.  while the supplemental material does undergo peer review, it is
+    probably not subject to the same strict quality checks as the main
+    paper (I often find typos and more serious errors in these
+    materials).
+
+Given that these supplemental materials are often the most important
+source of information when considering reproducibility of the research
+(especially in papers using the ultra-short format that is typical for
+high-impact journals), I think that their status should be enhanced. One
+possibility would be to publish two versions of the same paper, one
+\"long\" version that includes all the details and a \"short\" version
+that does not. In todays world where no one actually prints full
+journals anymore (or does that still happen?), this should not be too
+much of a problem. A second method would be to make supplemental little
+stand-alone papers that get their own DOI such that they are at least
+directly citable.
+
+------------------------------------------------------------------------
+
+**References**
+
+- Høifødt RS, Mittner M, Lillevoll K, Katla SK, Kolstrup N, Eisemann
+M, Friborg O, Waterloo K Predictors of Response to Web-Based Cognitive
+Behavioral Therapy With High-Intensity Face-to-Face Therapist Guidance
+for Depression: A Bayesian Analysis J Med Internet Res 2015;17(9):e197
+URL: <http://www.jmir.org/2015/9/e197> DOI: 10.2196/jmir.4351 PMID:
+26333818
+- Mittner, M., Boekel, W., Tucker, A. M., Turner, B.M., Heathcote,
+A. and Forstmann, B.U. (2014). When the brain takes a break: A
+model-based analysis of mind wandering. *Journal of Neuroscience*,
+34(49):16286-95.
