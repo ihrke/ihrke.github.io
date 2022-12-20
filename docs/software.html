@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.280">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Arctic Neuroscience - Software</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Arctic Neuroscience - Software">
+<meta property="og:description" content="My GitHub profile">
+<meta property="og:site-name" content="Arctic Neuroscience">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Arctic Neuroscience</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./publications.html">
+ <span class="menu-text">Publications</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./software.html" aria-current="page">
+ <span class="menu-text">Software</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./blog.html">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://scicomm.xyz/@thias_mittner"><i class="bi bi-mastodon" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ihrke"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:matthias.mittner@uit.no"><i class="bi bi-envelope-fill" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#python" id="toc-python" class="nav-link active" data-scroll-target="#python">Python</a></li>
+  <li><a href="#web-apps" id="toc-web-apps" class="nav-link" data-scroll-target="#web-apps">Web-apps</a></li>
+  <li><a href="#jspsych" id="toc-jspsych" class="nav-link" data-scroll-target="#jspsych">JsPsych</a></li>
+  <li><a href="#r-packages" id="toc-r-packages" class="nav-link" data-scroll-target="#r-packages">R-packages</a></li>
+  <li><a href="#markdown" id="toc-markdown" class="nav-link" data-scroll-target="#markdown">Markdown</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/ihrke/ihrke.github.io/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Software</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>My <a href="https://github.com/ihrke">GitHub profile</a></p>
+<section id="python" class="level2">
+<h2 class="anchored" data-anchor-id="python">Python</h2>
+<div class="software">
+<dl>
+<dt>Pypillometry <a href="https://github.io/ihrke/pypillometry" class="uri">https://github.io/ihrke/pypillometry</a> <img src="https://raw.githubusercontent.com/ihrke/pypillometry/master/logo/pypillometry_logo_200x200.png?token=AAIWMEINEM6MUOAPT2NV4I252K5QW" class="alignright img-fluid" width="120"></dt>
+<dd>
+The <code>pypillometry</code> package implements functions for the analysis of pupillometric data. Features include preprocessing, blink handling, event-related pupil-dilation, plotting and signal modeling. <a href="http://ihrke.github.io/pypillometry">Homepage</a> | <a href="https://github.com/ihrke/pypillometry">GitHub</a> | <a href="https://joss.theoj.org/papers/10.21105/joss.02348">Paper</a>
+</dd>
+</dl>
+</div>
+<div class="software">
+<dl>
+<dt>Pyrace <a href="https://github.com/ihrke/pyrace" class="uri">https://github.com/ihrke/pyrace</a> <img src="./pics/pyrace.png" class="alignright img-fluid" width="120"></dt>
+<dd>
+Race-models in Python. Currently focus on Stop-Signal-Tasks but supports generic accumulators and experimental designs.
+</dd>
+</dl>
+</div>
+<div class="software">
+<dl>
+<dt>LibEEGTools <a href="https://github.com/ihrke/libeegtools" class="uri">https://github.com/ihrke/libeegtools</a> <img src="./pics/libeegtools.png" class="alignright img-fluid" width="120"></dt>
+<dd>
+A C-library for processing EEG-data with minimal requirements. Implements filtering (bandpass, wavelets, …), dynamic time warping, clustering, time-frequency analysis, recurrence plots etc. Comes with a basic Python interface. <a href="https://libeegtools.sourceforge.net/api/current/index.html">Documentation</a> | <a href="https://github.com/ihrke/libeegtools">GitHub</a>
+</dd>
+</dl>
+</div>
+<div class="software">
+<dl>
+<dt>Nipype-connect-str <a href="https://github.com/ihrke/nipype_connect_str" class="uri">https://github.com/ihrke/nipype_connect_str</a></dt>
+<dd>
+tiny grammar for <a href="https://nipype.readthedocs.io/en/latest/">NiPype</a> to allow for a nicer connection string of nodes in workflow
+</dd>
+</dl>
+</div>
+</section>
+<section id="web-apps" class="level2">
+<h2 class="anchored" data-anchor-id="web-apps">Web-apps</h2>
+<div class="software">
+<dl>
+<dt>Balancinator <a href="https://github.com/ihrke/balancinator" class="uri">https://github.com/ihrke/balancinator</a> <img src="./pics/balancinator.png" class="alignright img-fluid" width="120"></dt>
+<dd>
+The Balancinator is a free and open-source software to visualize distribution of men and women within a specific unit. The Balancinator allows anyone to build generic plots by inserting simple excel sheets instead of writing programming code. <a href="https://shiny.uit.no/balancinator/">WebApp</a> | <a href="https://github.com/ihrke/balancinator">GitHub</a>
+</dd>
+</dl>
+</div>
+<div class="software">
+<dl>
+<dt>Balancinator-HE <a href="https://github.com/ihrke/norgeibalanse" class="uri">https://github.com/ihrke/norgeibalanse</a> <img src="./pics/balancinator_he.png" class="alignright img-fluid" width="120"></dt>
+<dd>
+The Balancinator|HE is a free and open-source dashboard to visualize distribution of men and women within higher education in Norway. <a href="https://shiny.uit.no/norgeibalanse/">WebApp</a> | <a href="https://github.com/ihrke/norgeibalanse">GitHub</a>
+</dd>
+</dl>
+</div>
+</section>
+<section id="jspsych" class="level2">
+<h2 class="anchored" data-anchor-id="jspsych">JsPsych</h2>
+<div class="software">
+<dl>
+<dt>jspych-plugins-mm <a href="https://github.com/ihrke/jspsych-plugins-mm" class="uri">https://github.com/ihrke/jspsych-plugins-mm</a> <img src="./pics/example-gradient-feedback-multi-mm.png" class="alignright img-fluid" width="120"></dt>
+<dd>
+a couple of plugins for jsPsych I have made for our experiments. <a href="https://ihrke.github.io/jspsych-plugins-mm/">Demo</a> | <a href="https://github.com/ihrke/jspsych-plugins-mm">GitHub</a>
+</dd>
+</dl>
+</div>
+<div class="software">
+<dl>
+<dt>pavlovian-gonogo <a href="https://github.com/ihrke/pavlovian_gonogo" class="uri">https://github.com/ihrke/pavlovian_gonogo</a> <img src="./pics/pav_gonogo.png" class="alignright img-fluid" width="120"></dt>
+<dd>
+implements the Pavlovian Go/NoGo task (<a href="./papers/Csifcsak2019LH.pdf">paper</a>)
+</dd>
+</dl>
+</div>
+</section>
+<section id="r-packages" class="level2">
+<h2 class="anchored" data-anchor-id="r-packages">R-packages</h2>
+<p>These are companion packages for my books, see my <a href="./publications.html">publications</a>.</p>
+<div class="software">
+<dl>
+<dt>Astatur: <a href="https://ihrke.github.io/astatur/" class="uri">https://ihrke.github.io/astatur/</a></dt>
+<dd>
+companion package for: Mehmetoglu, M. &amp; Mittner, M. (in press). Applied Statistics using R. SAGE. <a href="https://uk.sagepub.com/en-gb/eur/applied-statistics-using-r/book266647">link</a>
+</dd>
+</dl>
+</div>
+<div class="software">
+<dl>
+<dt>Rnorsk: <a href="https://ihrke.github.io/rnorsk/" class="uri">https://ihrke.github.io/rnorsk/</a> <img src="https://ihrke.github.io/rnorsk/reference/figures/logo.png" class="alignright" height="100"></dt>
+<dd>
+Mehmetoglu, M. &amp; Mittner, M. (2020). Innføring i R for statistiske dataanalyser. Universitetsforlaget. <a href="https://www.universitetsforlaget.no/innforing-i-r-for-statistiske-dataanalyser">link</a>
+</dd>
+</dl>
+</div>
+</section>
+<section id="markdown" class="level2">
+<h2 class="anchored" data-anchor-id="markdown">Markdown</h2>
+<p>I rely on <a href="https://pandoc.org/">pandoc</a> and a set of templates for writing everything from papers, letters and lectures.</p>
+<div class="software">
+<dl>
+<dt>markdown-paper <a href="https://github.com/ihrke/markdown-paper" class="uri">https://github.com/ihrke/markdown-paper</a> <img src="https://github.com/ihrke/markdown-paper/raw/master/pics/paper_elife.png" class="alignright img-fluid" width="120"></dt>
+<dd>
+a setup for writing scientific papers in markdown; supports different styles for various scientific journals (I add new ones when I submit a paper to a new journal), references through bibtex
+</dd>
+</dl>
+</div>
+<div class="software">
+<dl>
+<dt>markdown-talk <a href="https://github.com/ihrke/markdown-talk" class="uri">https://github.com/ihrke/markdown-talk</a> <img src="./pics/markdown-talk.png" class="alignright img-fluid" width="120"></dt>
+<dd>
+my setup for producing beamer-based slides for lectures and talks (PDF)
+</dd>
+</dl>
+</div>
+<div class="software">
+<dl>
+<dt>markdown-letter <a href="https://github.com/ihrke/markdown-letter" class="uri">https://github.com/ihrke/markdown-letter</a> <img src="./pics/markdown-letter.png" class="alignright img-fluid" width="120"></dt>
+<dd>
+writing latex-based letters with markdown; includes a template for my <a href="https://uit.no">UiT</a>’s letter head
+</dd>
+</dl>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ Copyright 2022, Matthias Mittner
+  </li>  
+</ul>
+    </div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://scicomm.xyz/@thias_mittner">
+      <i class="bi bi-mastodon" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ihrke">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:matthias.mittner@uit.no">
+      <i class="bi bi-envelope-fill" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

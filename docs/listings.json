@@ -1,0 +1,22 @@
+[
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/posts/2017-11-22-resources-for-learning-and-teaching-statistics.html",
+      "/posts/kincog.html",
+      "/posts/stuff_to_know_foreigners.html",
+      "/posts/conda.html",
+      "/posts/guy_review.html",
+      "/posts/jmir2015.html",
+      "/posts/jon_comment_axelrod.html",
+      "/posts/waic_stan.html",
+      "/posts/jupyter.html",
+      "/posts/clavinova.html",
+      "/posts/dic_jags.html",
+      "/posts/ipython_ssh.html",
+      "/posts/latexdiff.html",
+      "/posts/orgmode.html",
+      "/posts/inkscape_import_latex_pdf.html"
+    ]
+  }
+]
