@@ -54,9 +54,10 @@ months=c("jan","feb","mar","apr","may","jun","jul","aug","sep", "oct","nov","dec
 
 
 articles=bib2df("pubs/articles.bib", separate_names = T) %>%
-  select(authors=AUTHOR, journal=JOURNAL, pages=PAGES, title=TITLE, year=YEAR, 
-         doi=DOI, link=URL, vol=VOLUME, num=NUMBER, note=ANNOTE, month=MONTH) %>%
-  mutate(month=ordered(month, levels=months)) %>%
+  select(authors=AUTHOR, journal=JOURNALTITLE, pages=PAGES, title=TITLE, year=YEAR, 
+         note=NOTE,
+         doi=DOI, link=URL, vol=VOLUME, num=NUMBER, month=MONTH, date=DATE) %>%
+  mutate(year= str_sub(date, 1, 4), month=ordered(month, levels=months)) %>%
   mutate(title=strip_curly_braces(title)) %>% 
   mutate(impactfactor=get_impactfactor(journal)$ImpactFactor) 
 articles=left_join(articles, get_citation_info_dimensions(articles$doi),by="doi") %>%
@@ -65,13 +66,13 @@ articles=left_join(articles, get_citation_info_dimensions(articles$doi),by="doi"
   replace(., is.na(.), "") 
 
 
-articles %<>% mutate(note=str_replace_all(note, c("\\[\\["="<","\\]\\]"=">"))) %>%
+articles %>% mutate(note=str_replace_all(note, c("\\[\\["="<","\\]\\]"=">"))) %>%
   mutate(note=map(note, function(x){
     a=read_xml(str_c("<notes>",x,"</notes>"))
     r=a %>% xml_children() %>% xml_text()
     names(r) <- a %>% xml_children() %>% xml_name()
     r
-  }))
+  })) -> articles
 
 chapters=bib2df("pubs/chapters.bib", separate_names = T) %>%
   select(authors=AUTHOR, editors=EDITOR, book=BOOKTITLE, publisher=PUBLISHER, pages=PAGES, title=TITLE, year=YEAR, 
