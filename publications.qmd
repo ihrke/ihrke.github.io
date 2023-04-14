@@ -57,7 +57,9 @@ articles=bib2df("pubs/articles.bib", separate_names = T) %>%
   select(authors=AUTHOR, journal=JOURNALTITLE, pages=PAGES, title=TITLE, year=YEAR, 
          note=NOTE,
          doi=DOI, link=URL, vol=VOLUME, num=NUMBER, month=MONTH, date=DATE) %>%
-  mutate(year= str_sub(date, 1, 4), month=ordered(month, levels=months)) %>%
+  extract(date, c("year","month","day"), regex = "([0-9]+)-?([0-9]?[0-9]?)-?([0-9]?[0-9]?)") %>%
+  mutate(year=as.integer(year), month=as.integer(month)) %>%
+  #mutate(year= str_sub(date, 1, 4), month=ordered(month, levels=months)) %>%
   mutate(title=strip_curly_braces(title)) %>% 
   mutate(impactfactor=get_impactfactor(journal)$ImpactFactor) 
 articles=left_join(articles, get_citation_info_dimensions(articles$doi),by="doi") %>%
@@ -117,7 +119,7 @@ proceedings <- mutate(proceedings,  index=(npub-npreprints-narticles-nchapters):
 ![](pics/sagebook.jpg){height=100px} 
 :::
 ::: {.column width="85%"}
-Mehmetoglu, M. & Mittner, M. (in press). Applied Statistics using R. SAGE. [link](https://uk.sagepub.com/en-gb/eur/applied-statistics-using-r/book266647)
+Mehmetoglu, M. & Mittner, M. (2022). Applied Statistics using R. SAGE. [link](https://uk.sagepub.com/en-gb/eur/applied-statistics-using-r/book266647)
 :::
 ::::
 
