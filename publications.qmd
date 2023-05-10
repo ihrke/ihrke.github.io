@@ -32,13 +32,20 @@ preprints %>% filter(unpublished) %>% arrange(desc(date)) %>% ungroup -> preprin
 
 # other preprints not on osf
 if(fs::is_file("pubs/preprints.bib")){
-bib2df("pubs/preprints.bib", separate_names = T) %>%
-  select(authors=AUTHOR, journal=JOURNAL, title=TITLE, date=YEAR, 
-         doi=DOI, link=URL) %>%
-  mutate(title=strip_curly_braces(title), date=get_date_from_doi(doi),
-         status="submitted", unpublished=T, citation="",
-         authors=map(authors, ~.x %>% rename(family_name=last_name,given_name=first_name))) -> preprints.add
-  
+  bib2df("pubs/preprints.bib", separate_names = T) %>%
+    select(authors=AUTHOR, pages=PAGES, title=TITLE, year=YEAR, 
+           doi=DOI, link=URL, vol=VOLUME, num=NUMBER, month=MONTH, date=DATE) %>% 
+    extract(date, c("year","month","day"), regex = "([0-9]+)-?([0-9]?[0-9]?)-?([0-9]?[0-9]?)") %>%
+    mutate(year=as.integer(year), month=as.integer(month)) %>%
+    mutate(title=strip_curly_braces(title),
+           date=ymd(sprintf("%s-%s-%s",year,month,day)),#date=get_date_from_doi(doi),#lubridate::ymd(sprintf("%i-01-01",date)),
+           status="submitted", unpublished=T,
+           authors=map(authors, ~.x %>% 
+                         rename(family_name=last_name,given_name=first_name) %>%
+                         mutate(family_name=strip_curly_braces(family_name),
+                                given_name=strip_curly_braces(given_name))
+                         )) -> preprints.add  
+
 full_join(preprints,preprints.add) -> preprints
 preprints %>% arrange(desc(date)) %>% ungroup -> preprints
 }
