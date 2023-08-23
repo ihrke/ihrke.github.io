@@ -19,7 +19,7 @@ source("lib/functions.R")
 ```
 
 ```{r, cache=F, include=F}
-print.impact=T
+print.impact=F
 
 
 ## preprints
@@ -67,8 +67,8 @@ articles=bib2df("pubs/articles.bib", separate_names = T) %>%
   extract(date, c("year","month","day"), regex = "([0-9]+)-?([0-9]?[0-9]?)-?([0-9]?[0-9]?)") %>%
   mutate(year=as.integer(year), month=as.integer(month)) %>%
   #mutate(year= str_sub(date, 1, 4), month=ordered(month, levels=months)) %>%
-  mutate(title=strip_curly_braces(title)) %>% 
-  mutate(impactfactor=get_impactfactor(journal)$ImpactFactor) 
+  mutate(title=strip_curly_braces(title))# %>% 
+  #mutate(impactfactor=get_impactfactor(journal)$ImpactFactor) 
 articles=left_join(articles, get_citation_info_dimensions(articles$doi),by="doi") %>%
   arrange(desc(year),desc(month)) %>%
   mutate_if(is.not.list, as.character) %>%
