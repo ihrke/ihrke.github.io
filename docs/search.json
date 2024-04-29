@@ -235,14 +235,14 @@
     "href": "software.html#r-packages",
     "title": "Software",
     "section": "R-packages",
-    "text": "R-packages\nThese are companion packages for my books, see my publications.\n\n\nAstatur: https://ihrke.github.io/astatur/\n\ncompanion package for: Mehmetoglu, M. & Mittner, M. (in press). Applied Statistics using R. SAGE. link\n\n\n\n\n\nRnorsk: https://ihrke.github.io/rnorsk/ \n\nMehmetoglu, M. & Mittner, M. (2020). Innføring i R for statistiske dataanalyser. Universitetsforlaget. link"
+    "text": "R-packages\n\n\nrmedsem: https://ihrke.github.io/rmedsem/ \n\nMediation analysis in structural equation models. GitHub\n\n\n\nThese are companion packages for my books, see my publications.\n\n\nAstatur: https://ihrke.github.io/astatur/\n\ncompanion package for: Mehmetoglu, M. & Mittner, M. (in press). Applied Statistics using R. SAGE. link\n\n\n\n\n\nRnorsk: https://ihrke.github.io/rnorsk/ \n\nMehmetoglu, M. & Mittner, M. (2020). Innføring i R for statistiske dataanalyser. Universitetsforlaget. link"
   },
   {
     "objectID": "software.html#markdown",
     "href": "software.html#markdown",
     "title": "Software",
     "section": "Markdown",
-    "text": "Markdown\nI rely on pandoc and a set of templates for writing everything from papers, letters and lectures.\n\n\nmarkdown-paper https://github.com/ihrke/markdown-paper \n\na setup for writing scientific papers in markdown; supports different styles for various scientific journals (I add new ones when I submit a paper to a new journal), references through bibtex\n\n\n\n\n\nmarkdown-talk https://github.com/ihrke/markdown-talk \n\nmy setup for producing beamer-based slides for lectures and talks (PDF)\n\n\n\n\n\nmarkdown-letter https://github.com/ihrke/markdown-letter \n\nwriting latex-based letters with markdown; includes a template for my UiT’s letter head"
+    "text": "Markdown\nQuarto exensions:\n\n\nquarto MDPI-style https://github.com/ihrke/mdpi \n\na quarto extension for writing papers in the MDPI style\n\n\n\nI rely on pandoc and a set of templates for writing everything from papers, letters and lectures.\n\n\nmarkdown-paper https://github.com/ihrke/markdown-paper \n\na setup for writing scientific papers in markdown; supports different styles for various scientific journals (I add new ones when I submit a paper to a new journal), references through bibtex\n\n\n\n\n\nmarkdown-talk https://github.com/ihrke/markdown-talk \n\nmy setup for producing beamer-based slides for lectures and talks (PDF)\n\n\n\n\n\nmarkdown-letter https://github.com/ihrke/markdown-letter \n\nwriting latex-based letters with markdown; includes a template for my UiT’s letter head"
   },
   {
     "objectID": "pubs/preprints.html",

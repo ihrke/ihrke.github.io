@@ -53,6 +53,13 @@ pavlovian-gonogo <https://github.com/ihrke/pavlovian_gonogo> ![](/pics/pav_gonog
 
 ## R-packages
 
+
+::: software
+rmedsem: <https://ihrke.github.io/rmedsem/> ![](https://ihrke.github.io/rmedsem/logo.png){.alignright height=100px}
+: Mediation analysis in structural equation models. [GitHub](https://github.com/ihrke/rmedsem/)
+:::
+
+
 These are companion packages for my books, see my [publications](publications.qmd).
 
 ::: software
@@ -66,6 +73,13 @@ Rnorsk: <https://ihrke.github.io/rnorsk/> ![](https://ihrke.github.io/rnorsk/ref
 :::
 
 ## Markdown
+
+Quarto exensions:
+
+::: software
+quarto MDPI-style <https://github.com/ihrke/mdpi> ![](https://github.com/ihrke/mdpi/raw/master/pics/mdpi_screenshot.png){.alignright width=120px}
+: a quarto extension for writing papers in the MDPI style
+:::
 
 I rely on [pandoc](https://pandoc.org/) and a set of templates for writing everything from papers, letters and lectures.
 
