@@ -1,54 +1,60 @@
 get_my_osf_preprints <- function(){
-  r=GET("https://api.osf.io/v2/users/dwha7/preprints/")
-  preprint_ids=jsonlite::fromJSON(content(r, "text"))$data$id
-  
-  id=preprint_ids[1]
-  map_df(preprint_ids, function(id){
-    ## get APA-style citation
-    r1=GET(sprintf("https://api.osf.io/v2/preprints/%s/citation/apa/", id))
-    ## get details
-    r2=GET(sprintf("https://api.osf.io/v2/preprints/%s/", id))
-    tab2=jsonlite::fromJSON(content(r2, "text"))
-    ppdate=lubridate::as_date(tab2$data$attributes$date_published)
-    pplink= tab2$data$links$html
+  url <- "https://api.osf.io/v2/users/dwha7/preprints/" 
+  preprints <- NULL
+  while(!is.null(url)){
+    r=GET(url)
+    preprint_ids=jsonlite::fromJSON(content(r, "text"))$data$id
+    url=jsonlite::fromJSON(content(r, "text"))$links$`next`
     
-    ## get authors
-    link=tab2$data$relationships$contributors$links$related$href
-    auth.tab=NULL
-    while(T){ ## sometimes multiple pages (>10 authors)
-      r3=GET(link)
-      tab3=jsonlite::fromJSON(content(r3, "text"))
-      tab3$data$embeds$users$data$attributes %>% select(family_name, middle_names, given_name) %>%
-        mutate(author=sprintf("%s, %s.", family_name, str_sub(given_name, 1,1))) -> tmp
-      auth.tab=bind_rows(auth.tab,tmp)
-      link=tab3$links$`next`
-      if(is.null(link)){
-        break
+    id=preprint_ids[1]
+    map_df(preprint_ids, function(id){
+      ## get APA-style citation
+      r1=GET(sprintf("https://api.osf.io/v2/preprints/%s/citation/apa/", id))
+      ## get details
+      r2=GET(sprintf("https://api.osf.io/v2/preprints/%s/", id))
+      tab2=jsonlite::fromJSON(content(r2, "text"))
+      ppdate=lubridate::as_date(tab2$data$attributes$date_published)
+      pplink= tab2$data$links$html
+      
+      ## get authors
+      link=tab2$data$relationships$contributors$links$related$href
+      auth.tab=NULL
+      while(T){ ## sometimes multiple pages (>10 authors)
+        r3=GET(link)
+        tab3=jsonlite::fromJSON(content(r3, "text"))
+        tab3$data$embeds$users$data$attributes %>% select(family_name, middle_names, given_name) %>%
+          mutate(author=sprintf("%s, %s.", family_name, str_sub(given_name, 1,1))) -> tmp
+        auth.tab=bind_rows(auth.tab,tmp)
+        link=tab3$links$`next`
+        if(is.null(link)){
+          break
+        }
       }
-    }
-    
-    status="unknown"
-    if("submitted" %in% tab2$data$attributes$tags){
-      status="submitted"
-    }
-    if("accepted" %in% tab2$data$attributes$tags){
-      status="accepted"
-    }
-    if("published" %in% tab2$data$attributes$tags){
-      status="published"
-    }
-    
-    ## nice df
-    tibble(
-      date=ppdate,
-      title=tab2$data$attributes$title,
-      authors=list(auth.tab),
-      citation=jsonlite::fromJSON(content(r1, "text"))$data$attributes$citation  ,
-      unpublished=(status!="published"),
-      status=status,
-      link=pplink
-    )
-  }) -> preprints
+      
+      status="unknown"
+      if("submitted" %in% tab2$data$attributes$tags){
+        status="submitted"
+      }
+      if("accepted" %in% tab2$data$attributes$tags){
+        status="accepted"
+      }
+      if("published" %in% tab2$data$attributes$tags){
+        status="published"
+      }
+      
+      ## nice df
+      tibble(
+        date=ppdate,
+        title=tab2$data$attributes$title,
+        authors=list(auth.tab),
+        citation=jsonlite::fromJSON(content(r1, "text"))$data$attributes$citation  ,
+        unpublished=(status!="published"),
+        status=status,
+        link=pplink
+      )
+    }) -> cpreprints
+    preprints <- bind_rows(preprints, cpreprints)
+  }
   return(preprints)
 }
 
