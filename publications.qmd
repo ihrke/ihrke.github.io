@@ -139,7 +139,7 @@ Mehmetoglu, M. & Mittner, M. (2020). Innføring i R for statistiske dataanalyser
 :::
 ::::
 
-## Preprints
+## Preprints/Submitted papers
 
 Go here for a list of [all my preprints](/pubs/preprints.qmd)
 
