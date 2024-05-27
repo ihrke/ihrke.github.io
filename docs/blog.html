@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.475">
+<meta name="generator" content="quarto-1.4.554">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -18,7 +18,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -48,7 +48,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -57,8 +63,10 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script>
@@ -91,65 +99,95 @@ ul.task-list li input[type="checkbox"] {
   })
   </script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="Arctic Neuroscience - Blog">
-<meta property="og:site-name" content="Arctic Neuroscience">
+<meta property="og:site_name" content="Arctic Neuroscience">
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Arctic Neuroscience</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./publications.html">
- <span class="menu-text">Publications</span></a>
+    <a class="nav-link" href="./publications.html"> 
+<span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./software.html">
- <span class="menu-text">Software</span></a>
+    <a class="nav-link" href="./software.html"> 
+<span class="menu-text">Software</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./blog.html" aria-current="page">
- <span class="menu-text">Blog</span></a>
+    <a class="nav-link active" href="./blog.html" aria-current="page"> 
+<span class="menu-text">Blog</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://scicomm.xyz/@thias_mittner"><i class="bi bi-mastodon" role="img">
+    <a class="nav-link" href="https://scicomm.xyz/@thias_mittner"> <i class="bi bi-mastodon" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/ihrke"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/ihrke"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="mailto:matthias.mittner@uit.no"><i class="bi bi-envelope-fill" role="img">
+    <a class="nav-link" href="mailto:matthias.mittner@uit.no"> <i class="bi bi-envelope-fill" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -184,7 +222,9 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
+
 
 
 
@@ -192,29 +232,53 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="stats" data-listing-date-sort="1511305200000" data-listing-file-modified-sort="1671361122376" data-listing-reading-time-sort="1.605">
+<div class="quarto-post image-right" data-index="0" data-categories="linux,computer" data-listing-date-sort="1716817404000" data-listing-file-modified-sort="1716817404173" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1130">
 <div class="thumbnail">
-<a href="./posts/2017-11-22-resources-for-learning-and-teaching-statistics.html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/2017-11-22-resources-for-learning-and-teaching-statistics.html"></a></p>
+<p><a href="./posts/linux_on_thinpad_x1_gen11.html" class="no-external"></a></p><a href="./posts/linux_on_thinpad_x1_gen11.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/linux_on_thinpad_x1_gen11.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2017-11-22-resources-for-learning-and-teaching-statistics.html">
 <h3 class="no-anchor listing-title">
-Resources for learning (and teaching) statistics
+<a href="./posts/linux_on_thinpad_x1_gen11.html" class="no-external">Linux on a Lenovo Thinkpad X1 Carbon Gen 11</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/linux_on_thinpad_x1_gen11.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-This is an on-going collection of resources for learning and teaching statistical concepts.
+<a href="./posts/linux_on_thinpad_x1_gen11.html" class="no-external">This post details my experience installing and running Linux on a Lenovo Thinkpad X1 Carbon Gen 11. </a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/linux_on_thinpad_x1_gen11.html" class="no-external">
+<div class="listing-date">
+May 27, 2024
+</div>
+<div class="listing-author">
+Matthias Mittner
 </div>
 </a>
 </div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="stats" data-listing-date-sort="1511305200000" data-listing-file-modified-sort="1671361122000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="321">
+<div class="thumbnail">
+<p><a href="./posts/2017-11-22-resources-for-learning-and-teaching-statistics.html" class="no-external"></a></p><a href="./posts/2017-11-22-resources-for-learning-and-teaching-statistics.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/2017-11-22-resources-for-learning-and-teaching-statistics.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/2017-11-22-resources-for-learning-and-teaching-statistics.html" class="no-external">Resources for learning (and teaching) statistics</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/2017-11-22-resources-for-learning-and-teaching-statistics.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./posts/2017-11-22-resources-for-learning-and-teaching-statistics.html" class="no-external">This is an on-going collection of resources for learning and teaching statistical concepts.</a>
+</div>
+</div>
 <div class="metadata">
-<a href="./posts/2017-11-22-resources-for-learning-and-teaching-statistics.html">
+<a href="./posts/2017-11-22-resources-for-learning-and-teaching-statistics.html" class="no-external">
 <div class="listing-date">
 Nov 22, 2017
 </div>
@@ -224,378 +288,350 @@ Matthias Mittner
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="paper" data-listing-date-sort="1456700400000" data-listing-file-modified-sort="1585353232000" data-listing-reading-time-sort="1.925">
+<div class="quarto-post image-right" data-index="2" data-categories="paper" data-listing-date-sort="1456700400000" data-listing-file-modified-sort="1585353232000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="385">
 <div class="thumbnail">
-<p><a href="./posts/kincog.html"> <img src="./pics/kincog.png" class="thumnail-image"> </a></p>
+<p><a href="./posts/kincog.html" class="no-external"></a></p><a href="./posts/kincog.html" class="no-external">
+<p class="card-img-top"><img src="pics/kincog.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./posts/kincog.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/kincog.html">
 <h3 class="no-anchor listing-title">
-Association Between Executive Functions, Working Memory, and Manual Dexterity
+<a href="./posts/kincog.html" class="no-external">Association Between Executive Functions, Working Memory, and Manual Dexterity</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/kincog.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-I am thrilled to see…
+<a href="./posts/kincog.html" class="no-external">I am thrilled to see that our fully-Bayesian, open-data paper "Association Between Executive Functions, Working Memory, and Manual Dexterity in Young and Healthy Older…</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/kincog.html">
+<a href="./posts/kincog.html" class="no-external">
 <div class="listing-date">
 Feb 29, 2016
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="uit" data-listing-date-sort="1444773600000" data-listing-file-modified-sort="1585353232000" data-listing-reading-time-sort="2.605">
+<div class="quarto-post image-right" data-index="3" data-categories="uit" data-listing-date-sort="1444773600000" data-listing-file-modified-sort="1585353232000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="521">
 <div class="thumbnail">
-<a href="./posts/stuff_to_know_foreigners.html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/stuff_to_know_foreigners.html"></a></p>
+<p><a href="./posts/stuff_to_know_foreigners.html" class="no-external"></a></p><a href="./posts/stuff_to_know_foreigners.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/stuff_to_know_foreigners.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/stuff_to_know_foreigners.html">
 <h3 class="no-anchor listing-title">
-Stuff you need to know as new (foreign) employee at UiT
+<a href="./posts/stuff_to_know_foreigners.html" class="no-external">Stuff you need to know as new (foreign) employee at UiT</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/stuff_to_know_foreigners.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-Even more than a year after moving to the best city on earth, Tromsø, and beginning to work at the best university in the country, the University of Tromsø, I stumble across new stuff that I wish I would have known earlier. Some of it is probably most interesting to foreigners, but most of it might be of interest to you, the…
+<a href="./posts/stuff_to_know_foreigners.html" class="no-external">Even more than a year after moving to the best city on earth, Tromsø, and beginning to work at the best university in the country, the University of Tromsø, I stumble across…</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/stuff_to_know_foreigners.html">
+<a href="./posts/stuff_to_know_foreigners.html" class="no-external">
 <div class="listing-date">
 Oct 14, 2015
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="software,R" data-listing-date-sort="1443045600000" data-listing-file-modified-sort="1585353232000" data-listing-reading-time-sort="4.735">
+<div class="quarto-post image-right" data-index="4" data-categories="software,R" data-listing-date-sort="1443045600000" data-listing-file-modified-sort="1585353232000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="947">
 <div class="thumbnail">
-<a href="./posts/conda.html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/conda.html"></a></p>
+<p><a href="./posts/conda.html" class="no-external"></a></p><a href="./posts/conda.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/conda.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/conda.html">
 <h3 class="no-anchor listing-title">
-Handling R packages/dependencies with conda.
+<a href="./posts/conda.html" class="no-external">Handling R packages/dependencies with conda.</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/conda.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-Every now and then, I stumble across the case that I want to return to some…<code></code><code></code>
+<a href="./posts/conda.html" class="no-external">Every now and then, I stumble across the case that I want to return to some analysis I have been doing some time in the past only to find out that recent developments and…<code></code><code></code></a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/conda.html">
+<a href="./posts/conda.html" class="no-external">
 <div class="listing-date">
 Sep 24, 2015
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="paper" data-listing-date-sort="1442786400000" data-listing-file-modified-sort="1585353232000" data-listing-reading-time-sort="1.015">
+<div class="quarto-post image-right" data-index="5" data-categories="paper" data-listing-date-sort="1442786400000" data-listing-file-modified-sort="1585353232000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="203">
 <div class="thumbnail">
-<p><a href="./posts/guy_review.html"> <img src="./pics/tutclass_framework.png" class="thumnail-image"> </a></p>
+<p><a href="./posts/guy_review.html" class="no-external"></a></p><a href="./posts/guy_review.html" class="no-external">
+<p class="card-img-top"><img src="pics/tutclass_framework.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./posts/guy_review.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/guy_review.html">
 <h3 class="no-anchor listing-title">
-New paper: Toward a model-based cognitive neuroscience of mind wandering
+<a href="./posts/guy_review.html" class="no-external">New paper: Toward a model-based cognitive neuroscience of mind wandering</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/guy_review.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-I am happy to announce that our review paper on a model-based cognitive neuroscience approach to the study of mind-wandering has been accepted for publication in Neuroscience, (Hawkins et al., accepted). This paper summarizes many of the theoretical ideas that we have been discussing in our group for quite some time and also reviews and…
+<a href="./posts/guy_review.html" class="no-external">I am happy to announce that our review paper on a model-based cognitive neuroscience approach to the study of mind-wandering has been accepted for publication in Neuroscience…</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/guy_review.html">
+<a href="./posts/guy_review.html" class="no-external">
 <div class="listing-date">
 Sep 21, 2015
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="paper" data-listing-date-sort="1441144800000" data-listing-file-modified-sort="1585353232000" data-listing-reading-time-sort="7.495">
+<div class="quarto-post image-right" data-index="6" data-categories="paper" data-listing-date-sort="1441144800000" data-listing-file-modified-sort="1585353232000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1499">
 <div class="thumbnail">
-<p><a href="./posts/jmir2015.html"> <img src="./pics/moodgym.png" class="thumnail-image"> </a></p>
+<p><a href="./posts/jmir2015.html" class="no-external"></a></p><a href="./posts/jmir2015.html" class="no-external">
+<p class="card-img-top"><img src="pics/moodgym.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./posts/jmir2015.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/jmir2015.html">
 <h3 class="no-anchor listing-title">
-Publishing Bayesian analyses in a medical journal
+<a href="./posts/jmir2015.html" class="no-external">Publishing Bayesian analyses in a medical journal</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/jmir2015.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-I am excited to announce that our paper …
+<a href="./posts/jmir2015.html" class="no-external">I am excited to announce that our paper Predictors of response to Web-based cognitive behavioral therapy with face-to-face therapist support for depression: A Bayesian…</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/jmir2015.html">
+<a href="./posts/jmir2015.html" class="no-external">
 <div class="listing-date">
 Sep 2, 2015
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="paper" data-listing-date-sort="1435010400000" data-listing-file-modified-sort="1585353232000" data-listing-reading-time-sort="1.895">
+<div class="quarto-post image-right" data-index="7" data-categories="paper" data-listing-date-sort="1435010400000" data-listing-file-modified-sort="1585353232000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="379">
 <div class="thumbnail">
-<p><a href="./posts/jon_comment_axelrod.html"> <img src="./pics/commentary_axelrod.png" class="thumnail-image"> </a></p>
+<p><a href="./posts/jon_comment_axelrod.html" class="no-external"></a></p><a href="./posts/jon_comment_axelrod.html" class="no-external">
+<p class="card-img-top"><img src="pics/commentary_axelrod.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./posts/jon_comment_axelrod.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/jon_comment_axelrod.html">
 <h3 class="no-anchor listing-title">
-Commentary on our mind-wandering paper
+<a href="./posts/jon_comment_axelrod.html" class="no-external">Commentary on our mind-wandering paper</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/jon_comment_axelrod.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-Vadim Axelrod and Andrei R. Teodorescu wrote an interesting commentary on our recent mind-wandering paper that was published in The Journal of Neuroscience last year. I am happy that they are supportive of our approach…
+<a href="./posts/jon_comment_axelrod.html" class="no-external">Vadim Axelrod and Andrei R. Teodorescu wrote an interesting commentary on our recent mind-wandering paper that was published in The Journal of Neuroscience last year. I am…</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/jon_comment_axelrod.html">
+<a href="./posts/jon_comment_axelrod.html" class="no-external">
 <div class="listing-date">
 Jun 23, 2015
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="bayes" data-listing-date-sort="1434405600000" data-listing-file-modified-sort="1585353232000" data-listing-reading-time-sort="2.34">
+<div class="quarto-post image-right" data-index="8" data-categories="bayes" data-listing-date-sort="1434405600000" data-listing-file-modified-sort="1585353232000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="468">
 <div class="thumbnail">
-<a href="./posts/waic_stan.html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/waic_stan.html"></a></p>
+<p><a href="./posts/waic_stan.html" class="no-external"></a></p><a href="./posts/waic_stan.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/waic_stan.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/waic_stan.html">
 <h3 class="no-anchor listing-title">
-Fixing numerical underflow in WAIC calculation in Stan
+<a href="./posts/waic_stan.html" class="no-external">Fixing numerical underflow in WAIC calculation in Stan</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/waic_stan.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-I recently switched to the amazing software Stan for my MCMC needs. Every now and then, it can be useful to compare different models using some kind of information criterion. Previously, I used the Deviance Information…
+<a href="./posts/waic_stan.html" class="no-external">I recently switched to the amazing software Stan for my MCMC needs. Every now and then, it can be useful to compare different models using some kind of information…</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/waic_stan.html">
+<a href="./posts/waic_stan.html" class="no-external">
 <div class="listing-date">
 Jun 16, 2015
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-categories="computer" data-listing-date-sort="1420671600000" data-listing-file-modified-sort="1585353232000" data-listing-reading-time-sort="1.925">
+<div class="quarto-post image-right" data-index="9" data-categories="computer" data-listing-date-sort="1420671600000" data-listing-file-modified-sort="1585353232000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="385">
 <div class="thumbnail">
-<p><a href="./posts/jupyter.html"> <img src="./pics/jupyter_screenshot1.png" class="thumnail-image"> </a></p>
+<p><a href="./posts/jupyter.html" class="no-external"></a></p><a href="./posts/jupyter.html" class="no-external">
+<p class="card-img-top"><img src="pics/jupyter_screenshot1.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./posts/jupyter.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/jupyter.html">
 <h3 class="no-anchor listing-title">
-Multi-Language IPython (Jupyter) setup
+<a href="./posts/jupyter.html" class="no-external">Multi-Language IPython (Jupyter) setup</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/jupyter.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-The IPython notebook project (which I adore) is about to be renamed to Jupyter to better reflect the fact that it can be used with other languages besides Python. At the moment that is under heavy development and probably quite unstable but I found…
+<a href="./posts/jupyter.html" class="no-external">The IPython notebook project (which I adore) is about to be renamed to Jupyter to better reflect the fact that it can be used with other languages besides Python. At the…</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/jupyter.html">
+<a href="./posts/jupyter.html" class="no-external">
 <div class="listing-date">
 Jan 8, 2015
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="9" data-categories="misc" data-listing-date-sort="1415401200000" data-listing-file-modified-sort="1671192362725" data-listing-reading-time-sort="5.255">
+<div class="quarto-post image-right" data-index="10" data-categories="misc" data-listing-date-sort="1415401200000" data-listing-file-modified-sort="1671192362000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1051">
 <div class="thumbnail">
-<p><a href="./posts/clavinova.html"> <img src="./pics/clavinova/01.jpg" class="thumnail-image"> </a></p>
+<p><a href="./posts/clavinova.html" class="no-external"></a></p><a href="./posts/clavinova.html" class="no-external">
+<p class="card-img-top"><img src="pics/clavinova/01.jpg"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./posts/clavinova.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/clavinova.html">
 <h3 class="no-anchor listing-title">
-(Dis-)Assembling of Clavinova CLP-970
+<a href="./posts/clavinova.html" class="no-external">(Dis-)Assembling of Clavinova CLP-970</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/clavinova.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-I recently had to disassemble my clavinova CLP-970 for various reasons.
+<a href="./posts/clavinova.html" class="no-external">I recently had to disassemble my clavinova CLP-970 for various reasons.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/clavinova.html">
+<a href="./posts/clavinova.html" class="no-external">
 <div class="listing-date">
 Nov 8, 2014
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="10" data-categories="bayes" data-listing-date-sort="1412632800000" data-listing-file-modified-sort="1585353232000" data-listing-reading-time-sort="4.035">
+<div class="quarto-post image-right" data-index="11" data-categories="bayes" data-listing-date-sort="1412632800000" data-listing-file-modified-sort="1585353232000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="807">
 <div class="thumbnail">
-<a href="./posts/dic_jags.html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/dic_jags.html"></a></p>
+<p><a href="./posts/dic_jags.html" class="no-external"></a></p><a href="./posts/dic_jags.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/dic_jags.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/dic_jags.html">
 <h3 class="no-anchor listing-title">
-Get Deviance Information Criterion (DIC) when sampling in JAGS
+<a href="./posts/dic_jags.html" class="no-external">Get Deviance Information Criterion (DIC) when sampling in JAGS</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/dic_jags.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-I use the rjags package from R to sample with JAGS. When sampling with the <span class="title-ref">coda.samples()</span> function…<span class="title-ref"></span><span class="title-ref"></span><span class="title-ref"></span><span class="title-ref"></span>
+<a href="./posts/dic_jags.html" class="no-external">I use the rjags package from R to sample with JAGS. When sampling with the <span class="title-ref">coda.samples()</span> function, there is no way of getting the DIC from these samples (you need to use…<span class="title-ref"></span><span class="title-ref"></span><span class="title-ref"></span><span class="title-ref"></span></a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/dic_jags.html">
+<a href="./posts/dic_jags.html" class="no-external">
 <div class="listing-date">
 Oct 7, 2014
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="11" data-categories="computer" data-listing-date-sort="1410818400000" data-listing-file-modified-sort="1585353232000" data-listing-reading-time-sort="1.095">
+<div class="quarto-post image-right" data-index="12" data-categories="computer" data-listing-date-sort="1410818400000" data-listing-file-modified-sort="1585353232000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="219">
 <div class="thumbnail">
-<a href="./posts/ipython_ssh.html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/ipython_ssh.html"></a></p>
+<p><a href="./posts/ipython_ssh.html" class="no-external"></a></p><a href="./posts/ipython_ssh.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/ipython_ssh.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/ipython_ssh.html">
 <h3 class="no-anchor listing-title">
-Access IPython Notebook through SSH to avoid firewall
+<a href="./posts/ipython_ssh.html" class="no-external">Access IPython Notebook through SSH to avoid firewall</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/ipython_ssh.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-I usually run…
+<a href="./posts/ipython_ssh.html" class="no-external">I usually run ipython notebook on a server and access the web-interface from a different computer. This enables me to start a lengthy computation, shut my laptop and come…</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/ipython_ssh.html">
+<a href="./posts/ipython_ssh.html" class="no-external">
 <div class="listing-date">
 Sep 16, 2014
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="12" data-categories="latex" data-listing-date-sort="1408917600000" data-listing-file-modified-sort="1585353232000" data-listing-reading-time-sort="2.06">
+<div class="quarto-post image-right" data-index="13" data-categories="latex" data-listing-date-sort="1408917600000" data-listing-file-modified-sort="1585353232000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="412">
 <div class="thumbnail">
-<a href="./posts/latexdiff.html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/latexdiff.html"></a></p>
+<p><a href="./posts/latexdiff.html" class="no-external"></a></p><a href="./posts/latexdiff.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/latexdiff.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/latexdiff.html">
 <h3 class="no-anchor listing-title">
-Highlight changes with latexdiff
+<a href="./posts/latexdiff.html" class="no-external">Highlight changes with latexdiff</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/latexdiff.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-Have you ever…
+<a href="./posts/latexdiff.html" class="no-external">Have you ever been asked to provide a resubmission with "changes highlighted"? Or have you ever received a modified version of your latex file and wanted to see the changes…</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/latexdiff.html">
+<a href="./posts/latexdiff.html" class="no-external">
 <div class="listing-date">
 Aug 25, 2014
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="13" data-categories="misc" data-listing-date-sort="1398808800000" data-listing-file-modified-sort="1585353232000" data-listing-reading-time-sort="0.97">
+<div class="quarto-post image-right" data-index="14" data-categories="misc" data-listing-date-sort="1398808800000" data-listing-file-modified-sort="1585353232000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="194">
 <div class="thumbnail">
-<a href="./posts/orgmode.html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/orgmode.html"></a></p>
+<p><a href="./posts/orgmode.html" class="no-external"></a></p><a href="./posts/orgmode.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/orgmode.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/orgmode.html">
 <h3 class="no-anchor listing-title">
-Setup for sharing org-mode agenda with google calendar
+<a href="./posts/orgmode.html" class="no-external">Setup for sharing org-mode agenda with google calendar</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/orgmode.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-Note: this is only one-directional from org-mode to google calendar.
+<a href="./posts/orgmode.html" class="no-external">Note: this is only one-directional from org-mode to google calendar.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/orgmode.html">
+<a href="./posts/orgmode.html" class="no-external">
 <div class="listing-date">
 Apr 30, 2014
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="14" data-categories="latex" data-listing-date-sort="1386802800000" data-listing-file-modified-sort="1585353232000" data-listing-reading-time-sort="0.495">
+<div class="quarto-post image-right" data-index="15" data-categories="latex" data-listing-date-sort="1386802800000" data-listing-file-modified-sort="1585353232000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="99">
 <div class="thumbnail">
-<p><a href="./posts/inkscape_import_latex_pdf.html"> <img src="./pics/inkscape_fonts.png" class="thumnail-image"> </a></p>
+<p><a href="./posts/inkscape_import_latex_pdf.html" class="no-external"></a></p><a href="./posts/inkscape_import_latex_pdf.html" class="no-external">
+<p class="card-img-top"><img src="pics/inkscape_fonts.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./posts/inkscape_import_latex_pdf.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/inkscape_import_latex_pdf.html">
 <h3 class="no-anchor listing-title">
-Import PDF in Inkscape without replacing fonts
+<a href="./posts/inkscape_import_latex_pdf.html" class="no-external">Import PDF in Inkscape without replacing fonts</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/inkscape_import_latex_pdf.html" class="no-external"></a>
 </div>
 <div class="listing-description">
-Inkscape replaces text in PDF with bad fonts (especially when the PDF is generated with latex). I use Inkscape to rearrange…
+<a href="./posts/inkscape_import_latex_pdf.html" class="no-external">Inkscape replaces text in PDF with bad fonts (especially when the PDF is generated with latex). I use Inkscape to rearrange some stuff or do some fine-tuning of a…</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/inkscape_import_latex_pdf.html">
+<a href="./posts/inkscape_import_latex_pdf.html" class="no-external">
 <div class="listing-date">
 Dec 12, 2013
 </div>
@@ -634,9 +670,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -672,10 +722,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -685,8 +752,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -698,9 +774,245 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -750,6 +1062,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </li>  
 </ul>
     </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions"><ul><li><a href="https://github.com/ihrke/ihrke.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
@@ -774,6 +1089,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
 
 
 
