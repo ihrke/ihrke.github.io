@@ -53,6 +53,23 @@ $ lspci
 04:00.0 Non-Volatile memory controller: KIOXIA Corporation NVMe SSD Controller XG8 (rev 01)
 ```
 
+### Fingerprint reader
+
+works perfectly out of the box
+
+```bash
+# install fprintd et al
+$ sudo zypper install fprintd*
+# save and verify that the scan works
+$ fprintd-enroll -f right-index-finger
+$ fprintd-verify 
+```
+
+Helpful links:
+
+- <https://en.opensuse.org/SDB:Using_fingerprint_authentication>
+- [forum instructions for MATE](https://forums.linuxmint.com/viewtopic.php?t=408129)
+
 
 ## Partitioning
 
@@ -73,6 +90,8 @@ $ cat /proc/swaps
 Filename				Type		Size		Used		Priority
 /dev/nvme0n1p3                          partition	52428796	2048		-2
 ```
+
+
 
 ## Desktop
 
@@ -124,6 +143,8 @@ bindel=, XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 6%+
 bindel=, XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 bindl=, XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 ```
+
+It works the same way for brightness using `brightnessctl`, see the config file.
 
 ## Specific software
 
@@ -199,7 +220,7 @@ sudo zypper install rsyslog
 
 - Image viewer: [`imv`](https://sr.ht/~exec64/imv/)
 - Screenshots: [`hyprshot`](https://github.com/Gustash/Hyprshot)
-
+- signing PDF files: [`xournalpp`](https://github.com/xournalpp/xournalpp)
 
 ## Things that just work perfectly as they should
 
@@ -209,3 +230,25 @@ sudo zypper install rsyslog
 - zoom
 - chrome
 - libreoffice
+- zotero
+- 
+
+
+## Small problems encountered and solved
+
+### R: installing `V8` fails (`rstan`, `gt`, ... dependency)
+
+This package requires a package like `libv8-dev` which is not available on OpenSuse. Fortunately, the `V8` maintainer provides an option to compile a static version of this library. 
+
+This is the post: <https://ropensci.org/blog/2020/11/12/installing-v8/> and the steps are:
+
+```r
+# For Linux: download libv8 during installation
+Sys.setenv(DOWNLOAD_STATIC_LIBV8=1)
+install.packages("V8")
+```
+
+### Signing up to iCloud calendar in Thunderbird
+
+There is a [phantastic walkthrough](https://frightanic.com/apple-mac/thunderbird-icloud-calendar-sync/) which worked perfectly for me.
+

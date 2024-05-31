@@ -2,17 +2,20 @@ get_my_osf_preprints <- function(){
   url <- "https://api.osf.io/v2/users/dwha7/preprints/" 
   preprints <- NULL
   while(!is.null(url)){
-    r=GET(url)
-    preprint_ids=jsonlite::fromJSON(content(r, "text"))$data$id
-    url=jsonlite::fromJSON(content(r, "text"))$links$`next`
+    #r=GET(url)
+    r=RCurl::getURL(url)
+    preprint_ids=jsonlite::fromJSON(r)$data$id #content(r, "text"))$data$id
+    url=jsonlite::fromJSON(r)$links$`next` #content(r, "text"))$links$`next`
     
     id=preprint_ids[1]
     map_df(preprint_ids, function(id){
       ## get APA-style citation
-      r1=GET(sprintf("https://api.osf.io/v2/preprints/%s/citation/apa/", id))
+      #r1=GET(sprintf("https://api.osf.io/v2/preprints/%s/citation/apa/", id))
+      r1=RCurl::getURL(sprintf("https://api.osf.io/v2/preprints/%s/citation/apa/", id))
       ## get details
-      r2=GET(sprintf("https://api.osf.io/v2/preprints/%s/", id))
-      tab2=jsonlite::fromJSON(content(r2, "text"))
+      #r2=GET(sprintf("https://api.osf.io/v2/preprints/%s/", id))
+      r2=RCurl::getURL(sprintf("https://api.osf.io/v2/preprints/%s/", id))
+      tab2=jsonlite::fromJSON(r2) #content(r2, "text"))
       ppdate=lubridate::as_date(tab2$data$attributes$date_published)
       pplink= tab2$data$links$html
       
@@ -20,8 +23,9 @@ get_my_osf_preprints <- function(){
       link=tab2$data$relationships$contributors$links$related$href
       auth.tab=NULL
       while(T){ ## sometimes multiple pages (>10 authors)
-        r3=GET(link)
-        tab3=jsonlite::fromJSON(content(r3, "text"))
+        #r3=GET(link)
+        r3=RCurl::getURL(link)
+        tab3=jsonlite::fromJSON(r3) #content(r3, "text"))
         tab3$data$embeds$users$data$attributes %>% select(family_name, middle_names, given_name) %>%
           mutate(author=sprintf("%s, %s.", family_name, str_sub(given_name, 1,1))) -> tmp
         auth.tab=bind_rows(auth.tab,tmp)
@@ -47,7 +51,7 @@ get_my_osf_preprints <- function(){
         date=ppdate,
         title=tab2$data$attributes$title,
         authors=list(auth.tab),
-        citation=jsonlite::fromJSON(content(r1, "text"))$data$attributes$citation  ,
+        citation=jsonlite::fromJSON(r1)$data$attributes$citation, #content(r1, "text"))$data$attributes$citation  ,
         unpublished=(status!="published"),
         status=status,
         link=pplink

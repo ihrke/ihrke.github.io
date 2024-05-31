@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Matthias Mittner">
-<meta name="dcterms.date" content="2024-05-27">
+<meta name="dcterms.date" content="2024-05-31">
 <meta name="description" content="This post details my experience installing and running Linux on a Lenovo Thinkpad X1 Carbon Gen 11.">
 
 <title>Arctic Neuroscience - Linux on a Lenovo Thinkpad X1 Carbon Gen 11</title>
@@ -177,7 +177,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#hardware" id="toc-hardware" class="nav-link active" data-scroll-target="#hardware">Hardware</a></li>
+  <li><a href="#hardware" id="toc-hardware" class="nav-link active" data-scroll-target="#hardware">Hardware</a>
+  <ul>
+  <li><a href="#fingerprint-reader" id="toc-fingerprint-reader" class="nav-link" data-scroll-target="#fingerprint-reader">Fingerprint reader</a></li>
+  </ul></li>
   <li><a href="#partitioning" id="toc-partitioning" class="nav-link" data-scroll-target="#partitioning">Partitioning</a></li>
   <li><a href="#desktop" id="toc-desktop" class="nav-link" data-scroll-target="#desktop">Desktop</a>
   <ul>
@@ -198,6 +201,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#random-things" id="toc-random-things" class="nav-link" data-scroll-target="#random-things">Random things</a></li>
   <li><a href="#things-that-just-work-perfectly-as-they-should" id="toc-things-that-just-work-perfectly-as-they-should" class="nav-link" data-scroll-target="#things-that-just-work-perfectly-as-they-should">Things that just work perfectly as they should</a></li>
+  <li><a href="#small-problems-encountered-and-solved" id="toc-small-problems-encountered-and-solved" class="nav-link" data-scroll-target="#small-problems-encountered-and-solved">Small problems encountered and solved</a>
+  <ul>
+  <li><a href="#r-installing-v8-fails-rstan-gt-dependency" id="toc-r-installing-v8-fails-rstan-gt-dependency" class="nav-link" data-scroll-target="#r-installing-v8-fails-rstan-gt-dependency">R: installing <code>V8</code> fails (<code>rstan</code>, <code>gt</code>, … dependency)</a></li>
+  <li><a href="#signing-up-to-icloud-calendar-in-thunderbird" id="toc-signing-up-to-icloud-calendar-in-thunderbird" class="nav-link" data-scroll-target="#signing-up-to-icloud-calendar-in-thunderbird">Signing up to iCloud calendar in Thunderbird</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/ihrke/ihrke.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -232,7 +240,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 27, 2024</p>
+      <p class="date">May 31, 2024</p>
     </div>
   </div>
   
@@ -286,20 +294,34 @@ Note
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ex">00:1f.4</span> SMBus: Intel Corporation Alder Lake PCH-P SMBus Host Controller <span class="er">(</span><span class="fu">rev</span> 01<span class="kw">)</span></span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ex">00:1f.5</span> Serial bus controller: Intel Corporation Alder Lake-P PCH SPI Controller <span class="er">(</span><span class="fu">rev</span> 01<span class="kw">)</span></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ex">04:00.0</span> Non-Volatile memory controller: KIOXIA Corporation NVMe SSD Controller XG8 <span class="er">(</span><span class="fu">rev</span> 01<span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="fingerprint-reader" class="level3">
+<h3 class="anchored" data-anchor-id="fingerprint-reader">Fingerprint reader</h3>
+<p>works perfectly out of the box</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install fprintd et al</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sudo zypper install fprintd<span class="pp">*</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># save and verify that the scan works</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> fprintd-enroll <span class="at">-f</span> right-index-finger</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> fprintd-verify </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Helpful links:</p>
+<ul>
+<li><a href="https://en.opensuse.org/SDB:Using_fingerprint_authentication" class="uri">https://en.opensuse.org/SDB:Using_fingerprint_authentication</a></li>
+<li><a href="https://forums.linuxmint.com/viewtopic.php?t=408129">forum instructions for MATE</a></li>
+</ul>
+</section>
 </section>
 <section id="partitioning" class="level2">
 <h2 class="anchored" data-anchor-id="partitioning">Partitioning</h2>
 <p>I separated <code>/home</code> and made a separate boot partition. I also made a swap partition with 50GB for hibernation etc.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> df <span class="at">-h</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Filesystem</span>      Size  Used Avail Use% Mounted on</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">/dev/nvme0n1p2</span>  196G   20G  166G  11% /</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">/dev/nvme0n1p4</span>  1.6T  507G  1.1T  33% /home</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">/dev/nvme0n1p1</span>  500M  5.8M  494M   2% /boot/efi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat /proc/swaps</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> df <span class="at">-h</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Filename</span>                Type        Size        Used        Priority</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">/dev/nvme0n1p3</span>                          partition   52428796    2048        <span class="at">-2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Filesystem</span>      Size  Used Avail Use% Mounted on</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">/dev/nvme0n1p2</span>  196G   20G  166G  11% /</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">/dev/nvme0n1p4</span>  1.6T  507G  1.1T  33% /home</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">/dev/nvme0n1p1</span>  500M  5.8M  494M   2% /boot/efi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat /proc/swaps</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Filename</span>                Type        Size        Used        Priority</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">/dev/nvme0n1p3</span>                          partition   52428796    2048        <span class="at">-2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="desktop" class="level2">
 <h2 class="anchored" data-anchor-id="desktop">Desktop</h2>
@@ -311,9 +333,9 @@ Note
 <li><a href="https://wiki.hyprland.org/Configuring/Binds/">Hotkeys</a></li>
 </ul>
 <p>I like it, because it is very fast and does not come with all the GNOME/KDE clutter, yet it is easy to configure. Most configuration files are under <code>~/.config/hypr</code>. To install it, I added the repository</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">zypper</span> addrepo https://download.opensuse.org/repositories/X11:Wayland/openSUSE_Tumbleweed/X11:Wayland.repo</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">zypper</span> refresh</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">zypper</span> install hyprland waybar hyprpaper hyprlock</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">zypper</span> addrepo https://download.opensuse.org/repositories/X11:Wayland/openSUSE_Tumbleweed/X11:Wayland.repo</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">zypper</span> refresh</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">zypper</span> install hyprland waybar hyprpaper hyprlock</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Also, Hyprland can be “remote controlled” through a tool called <code>hyprctl</code> which is very useful.</p>
 <p>My config files are here: <a href="https://github.com/ihrke/dotfiles" class="uri">https://github.com/ihrke/dotfiles</a></p>
 <section id="application-switcher" class="level3">
@@ -324,19 +346,20 @@ Note
 <h3 class="anchored" data-anchor-id="switching-keyboard-languages">Switching keyboard languages</h3>
 <p>I regularly work with multiple languages and wanted a quick way to switch between them.</p>
 <p>I added a custom block to the <a href="https://github.com/ihrke/dotfiles/blob/main/waybar/config">waybar config file</a>:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>   <span class="st">"custom/layout"</span><span class="ex">:</span> {</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>        <span class="st">"exec"</span><span class="ex">:</span> <span class="st">"~/.config/waybar/modules/kblayout.sh"</span>,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"interval"</span><span class="ex">:</span> 1,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"format"</span><span class="ex">:</span> <span class="st">"{} "</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="er">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>   <span class="st">"custom/layout"</span><span class="ex">:</span> {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>        <span class="st">"exec"</span><span class="ex">:</span> <span class="st">"~/.config/waybar/modules/kblayout.sh"</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"interval"</span><span class="ex">:</span> 1,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"format"</span><span class="ex">:</span> <span class="st">"{} "</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="er">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This block calls a script <a href="https://github.com/ihrke/dotfiles/blob/main/waybar/modules/kblayout.sh"><code>~/.config/waybar/modules/kblayout.sh</code></a>.</p>
 </section>
 <section id="media-keys" class="level3">
 <h3 class="anchored" data-anchor-id="media-keys">Media keys</h3>
 <p>I added the following to <a href="https://github.com/ihrke/dotfiles/blob/main/hypr/hyprland.conf"><code>hyprland.conf</code></a> to control the volume with the media keys:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="va">bindel</span><span class="op">=</span>, <span class="ex">XF86AudioRaiseVolume,</span> exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 6%+</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="va">bindel</span><span class="op">=</span>, <span class="ex">XF86AudioLowerVolume,</span> exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="va">bindl</span><span class="op">=</span>, <span class="ex">XF86AudioMute,</span> exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="va">bindel</span><span class="op">=</span>, <span class="ex">XF86AudioRaiseVolume,</span> exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 6%+</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="va">bindel</span><span class="op">=</span>, <span class="ex">XF86AudioLowerVolume,</span> exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="va">bindl</span><span class="op">=</span>, <span class="ex">XF86AudioMute,</span> exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>It works the same way for brightness using <code>brightnessctl</code>, see the config file.</p>
 </section>
 </section>
 <section id="specific-software" class="level2">
@@ -349,19 +372,19 @@ Note
 <h3 class="anchored" data-anchor-id="cisco-vpn-client">Cisco VPN client</h3>
 <p>Installation of the Linux client went without any problems, however, I could not connect to our VPN server because <code>vpnagentd</code> was not running.</p>
 <p>The client is installed into</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/opt/cisco/secureclient</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/opt/cisco/secureclient</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and the GUI can be started with</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/opt/cisco/secureclient/bin/vpnui</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/opt/cisco/secureclient/bin/vpnui</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The configuration for <code>vpnagentd</code> is in</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/systemd/system/vpnagent.service</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/etc/systemd/system/vpnagent.service</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>I followed advice from <a href="https://www.reddit.com/r/openSUSE/comments/112tr3d/comment/j8mxe3t/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button">this blog post</a>.</p>
 <p>To make the <code>vpnagentd</code> agent start, I had to change a setting in <code>/opt/cisco/secureclient/AnyConnectLocalPolicy.xml</code>:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>BypassDownloader<span class="op">&gt;</span>true<span class="op">&lt;</span>/BypassDownloader<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>BypassDownloader<span class="op">&gt;</span>true<span class="op">&lt;</span>/BypassDownloader<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and edit <code>/etc/systemd/system/vpnagent.service</code> and change <code>EnvironmentFile=/etc/environment</code> to <code>EnvironmentFile=-/etc/environment</code> (the minus sign ignores the file if it does not exist - it doesn’t on openSUSE TW).</p>
 <p>After that, I could start the service with</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start vpnagentd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start vpnagentd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You can check the status with</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl status vpnagentd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl status vpnagentd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="rstudio" class="level3">
 <h3 class="anchored" data-anchor-id="rstudio">RStudio</h3>
@@ -377,7 +400,7 @@ Note
 <h2 class="anchored" data-anchor-id="tweaks">Tweaks</h2>
 <section id="get-back-varlogmessages" class="level3">
 <h3 class="anchored" data-anchor-id="get-back-varlogmessages">Get back <code>/var/log/messages</code></h3>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> zypper install rsyslog</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> zypper install rsyslog</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="random-things" class="level2">
@@ -385,6 +408,7 @@ Note
 <ul>
 <li>Image viewer: <a href="https://sr.ht/~exec64/imv/"><code>imv</code></a></li>
 <li>Screenshots: <a href="https://github.com/Gustash/Hyprshot"><code>hyprshot</code></a></li>
+<li>signing PDF files: <a href="https://github.com/xournalpp/xournalpp"><code>xournalpp</code></a></li>
 </ul>
 </section>
 <section id="things-that-just-work-perfectly-as-they-should" class="level2">
@@ -396,9 +420,26 @@ Note
 <li>zoom</li>
 <li>chrome</li>
 <li>libreoffice</li>
+<li>zotero</li>
+<li></li>
 </ul>
+</section>
+<section id="small-problems-encountered-and-solved" class="level2">
+<h2 class="anchored" data-anchor-id="small-problems-encountered-and-solved">Small problems encountered and solved</h2>
+<section id="r-installing-v8-fails-rstan-gt-dependency" class="level3">
+<h3 class="anchored" data-anchor-id="r-installing-v8-fails-rstan-gt-dependency">R: installing <code>V8</code> fails (<code>rstan</code>, <code>gt</code>, … dependency)</h3>
+<p>This package requires a package like <code>libv8-dev</code> which is not available on OpenSuse. Fortunately, the <code>V8</code> maintainer provides an option to compile a static version of this library.</p>
+<p>This is the post: <a href="https://ropensci.org/blog/2020/11/12/installing-v8/" class="uri">https://ropensci.org/blog/2020/11/12/installing-v8/</a> and the steps are:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For Linux: download libv8 during installation</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">DOWNLOAD_STATIC_LIBV8=</span><span class="dv">1</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"V8"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="signing-up-to-icloud-calendar-in-thunderbird" class="level3">
+<h3 class="anchored" data-anchor-id="signing-up-to-icloud-calendar-in-thunderbird">Signing up to iCloud calendar in Thunderbird</h3>
+<p>There is a <a href="https://frightanic.com/apple-mac/thunderbird-icloud-calendar-sync/">phantastic walkthrough</a> which worked perfectly for me.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
