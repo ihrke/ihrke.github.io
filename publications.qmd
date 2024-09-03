@@ -27,7 +27,7 @@ print.impact=F
 preprints <- get_my_osf_preprints()
 
 # order/filter
-preprints %>% filter(unpublished) %>% arrange(desc(date)) %>% ungroup -> preprints
+preprints %>% filter(unpublished, str_detect(link, "psyarxiv")) %>% arrange(desc(date)) %>% ungroup -> preprints
 
 
 # other preprints not on osf
