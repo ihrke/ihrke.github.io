@@ -102,6 +102,9 @@ I use [Obsidian](https://obsidian.md/) for note-taking and it works perfectly on
 
 On Linux, I simply use the vault synced to by this plugin (it is under `/Apps/Obsidian/<my-vault>`) directly. This setup seems to work without hickups, so far. Under the plugin settings, I had to turn on "sync on open" and "sync on save" to make it work.
 
+### Drop-down terminal
+
+I tried [guake](https://github.com/Guake/guake) but it did not work properly with the global keyboard shortcut. I have switched to the GNOME-extension [ddterm](https://extensions.gnome.org/extension/3780/ddterm/) which is great.
 
 ## Tweaks
 
