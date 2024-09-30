@@ -11,7 +11,8 @@ categories:
 ---
 
 ::: {.callout-note}
-This is a living document and I will add to it as I change things or encounter issues.
+This is no longer a living document as my X1 Gen 11 was stolen. I have purchased
+a [Lenovo Thinkpad X1 Carbon Gen 12](linux_on_thinpad_x1_gen12.qmd) which I am currently using.
 :::
 
 I recently got a Lenovo Thinkpad X1 Carbon Gen 11 with Ubuntu Linux pre-installed

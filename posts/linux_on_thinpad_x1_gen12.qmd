@@ -1,0 +1,170 @@
+---
+title: "Linux on a Lenovo Thinkpad X1 Carbon Gen 12"
+description: |
+  This post details my experience installing and running Linux on a 
+  Lenovo Thinkpad X1 Carbon Gen 12.
+author: "Matthias Mittner"
+date: last-modified	
+categories:
+  - linux
+  - computer
+---
+
+::: {.callout-note}
+This is a living document and I will add to it as I change things or encounter issues.
+:::
+
+I recently got a Lenovo Thinkpad X1 Carbon Gen 12 with Ubuntu Linux pre-installed (my 
+old Gen 11 was stolen, see my experience of using Linux on it [here](linux_on_thinpad_x1_carbon_gen11.qmd)).
+This time I decided to stick with the installed Ubuntu and see how far it would fulfill my needs.
+
+My needs are that of a university professor, i.e., I need to interact with colleagues
+using Microsoft products etc., I need to write papers, do data analysis, and run simulations.
+
+## Hardware
+
+Most things just worked out of the box. 
+
+```bash
+$ lspci
+00:00.0 Host bridge: Intel Corporation Device 7d02 (rev 04)
+00:02.0 VGA compatible controller: Intel Corporation Meteor Lake-P [Intel Graphics] (rev 08)
+00:04.0 Signal processing controller: Intel Corporation Device 7d03 (rev 04)
+00:06.0 PCI bridge: Intel Corporation Device 7e4d (rev 20)
+00:06.1 PCI bridge: Intel Corporation Device 7eca (rev 10)
+00:07.0 PCI bridge: Intel Corporation Meteor Lake-P Thunderbolt 4 PCI Express Root Port #0 (rev 02)
+00:07.2 PCI bridge: Intel Corporation Meteor Lake-P Thunderbolt 4 PCI Express Root Port #2 (rev 02)
+00:08.0 System peripheral: Intel Corporation Device 7e4c (rev 20)
+00:0a.0 Signal processing controller: Intel Corporation Device 7d0d (rev 01)
+00:0b.0 Processing accelerators: Intel Corporation Meteor Lake NPU (rev 04)
+00:0d.0 USB controller: Intel Corporation Meteor Lake-P Thunderbolt 4 USB Controller (rev 02)
+00:0d.2 USB controller: Intel Corporation Meteor Lake-P Thunderbolt 4 NHI #0 (rev 02)
+00:0d.3 USB controller: Intel Corporation Meteor Lake-P Thunderbolt 4 NHI #1 (rev 02)
+00:14.0 USB controller: Intel Corporation Meteor Lake-P USB 3.2 Gen 2x1 xHCI Host Controller (rev 20)
+00:14.2 RAM memory: Intel Corporation Device 7e7f (rev 20)
+00:14.3 Network controller: Intel Corporation Meteor Lake PCH CNVi WiFi (rev 20)
+00:15.0 Serial bus controller: Intel Corporation Meteor Lake-P Serial IO I2C Controller #0 (rev 20)
+00:16.0 Communication controller: Intel Corporation Device 7e70 (rev 20)
+00:16.3 Serial controller: Intel Corporation Device 7e73 (rev 20)
+00:1c.0 PCI bridge: Intel Corporation Device 7e38 (rev 20)
+00:1f.0 ISA bridge: Intel Corporation Device 7e03 (rev 20)
+00:1f.3 Audio device: Intel Corporation Meteor Lake-P HD Audio Controller (rev 20)
+00:1f.4 SMBus: Intel Corporation Meteor Lake-P SMBus Controller (rev 20)
+00:1f.5 Serial bus controller: Intel Corporation Meteor Lake-P SPI Controller (rev 20)
+04:00.0 Non-Volatile memory controller: KIOXIA Corporation NVMe SSD Controller XG8 (rev 01)
+49:00.0 Ethernet controller: Intel Corporation Ethernet Controller (2) I225-LMvP (rev 03)
+```
+
+### Fingerprint reader
+
+works perfectly out of the box
+
+```bash
+# install fprintd et al
+$ sudo apt install fprintd*
+# save and verify that the scan works
+$ fprintd-enroll -f right-index-finger
+$ fprintd-verify 
+```
+
+
+
+## Desktop
+
+
+I tried [Budgie](https://ubuntubudgie.org/) and [Unity](https://ubuntuunity.org/) but ended up using the pre-installed [Gnome](https://www.gnome.org/). The other desktops were buggy and I had issues with the scaling of the screen, supporting multiple screens etc. While I am not a big fan of the new Gnome shell, I can tweak it so that I can live with it for now.
+
+## Specific software
+
+### E-mail software
+
+The [Evolution](https://wiki.gnome.org/Apps/Evolution) has improved a lot since last time I tried. In fact, I am now able to access my University Exchange (Office 365) accounts and can even see all the calendar events, invitations and even delegates! Evolution is per now the only software that allows that (I have tried many!). 
+
+The user interface (especially for the calendar) is very rough and ugly but for now functionality beats looks! I like Thunderbirds' interface much better but it does not support the calendar functionality I need (I even tried the paid Owl plugin but it supports only one account and is limited in its support for e.g., delegates). It seems that Thunderbird is working on finally implementing the Exchange protocol, so I will keep an eye on that.
+
+- [Configuring Evolution for EWS from NTNU](https://i.ntnu.no/wiki/-/wiki/English/Setup+of+email+account+in+Evolution)
+- [EWS in Evolution (GNOME)](https://wiki.gnome.org/Apps/Evolution/EWS/OAuth2)
+- [A great post on delegates in Evolution](https://doku.lrz.de/evolution-linux-4427532.html?showLanguage=en_US)
+
+### RStudio
+
+There was an issue when using the latest RStudio version downloaded from <https://rstudio.com/products/rstudio/download/> and it would not start. I found a workaround and adding
+
+```bash
+$ rstudio --no-sandbox
+```
+
+works.
+
+### Obsidian
+
+I use [Obsidian](https://obsidian.md/) for note-taking and it works perfectly on Linux. The only issue I had was getting it to sync with my iPhone. Before, when using a MacBook, I was syncing through iCloud which worked perfectly. On Linux, I was not able to find a syncing client for iCloud that I trusted and I therefore decided to use Dropbox. Unfortunately, the iPhone app cannot directly work on the Dropbox folder and I had to use a plugin called [Remotely Save](https://github.com/remotely-save/remotely-save) which syncs the Obsidian vault from the iPhone to a Dropbox folder. 
+
+On Linux, I simply use the vault synced to by this plugin (it is under `/Apps/Obsidian/<my-vault>`) directly. This setup seems to work without hickups, so far. Under the plugin settings, I had to turn on "sync on open" and "sync on save" to make it work.
+
+
+## Tweaks
+
+### Get back `/var/log/messages`
+
+It is now in `/var/log/syslog`:
+
+```bash
+sudo ln -s /var/log/syslog /var/log/messages
+```
+
+### Resize windows with right mouse button
+
+This is something I have become very familiar with and would not like to miss. Installing `dconf-editor` and changing the setting under `org.gnome.desktop.wm.preferences` to `resize-with-right-button` does the trick.
+
+### Fingerprint authentication (lid close)
+
+Using the fingerprint reader is very easy and can be configured using 
+
+```
+$ sudo pam-auth-update
+```
+
+I often use the laptop with lid closed and two external monitors attached. In that case, I don't want the authentication process to use the fingerprint reader since I can't reach it. I found a great solution [here](https://unix.stackexchange.com/a/743941/11178). Basically, open `/etc/pam.d/system-auth` and add 
+
+```bash
+auth   [success=ignore default=1]  pam_exec.so quiet /usr/local/bin/pam_check_lid
+auth   sufficient                  pam_fprintd.so
+auth   required                    pam_unix.so
+```
+
+(this runs the script `pam_check_lid` before the fingerprint reader is used). The script `pam_check_lid` has to be created with the following content:
+
+```bash
+#!/bin/sh
+LID_STATE=$(cat /proc/acpi/button/lid/LID/state | cut -d':' -f2 | tr -d ' ')
+
+case ${LID_STATE} in
+    closed)
+    echo closed
+    exit 1
+    ;;
+    open*)
+    echo open
+    exit 0
+    ;;
+    *)
+    # LID is open by default
+    echo unknown
+    exit 0
+    ;;
+esac
+```
+
+
+## Things that just work perfectly as they should
+
+- dropbox
+- nordvpn
+- slack
+- zoom
+- chrome
+- libreoffice
+- zotero
+- bitwarden
+
