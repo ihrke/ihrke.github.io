@@ -18,6 +18,9 @@ I recently got a Lenovo Thinkpad X1 Carbon Gen 12 with Ubuntu Linux pre-installe
 old Gen 11 was stolen, see my experience of using Linux on it [here](linux_on_thinpad_x1_carbon_gen11.qmd)).
 This time I decided to stick with the installed Ubuntu and see how far it would fulfill my needs.
 
+I updated the installed Ubuntu version to the most recent one 24.10 (Oracular) using Ubuntu's upgrading system (worked just fine).
+
+
 My needs are that of a university professor, i.e., I need to interact with colleagues
 using Microsoft products etc., I need to write papers, do data analysis, and run simulations.
 
@@ -105,6 +108,35 @@ On Linux, I simply use the vault synced to by this plugin (it is under `/Apps/Ob
 ### Drop-down terminal
 
 I tried [guake](https://github.com/Guake/guake) but it did not work properly with the global keyboard shortcut. I have switched to the GNOME-extension [ddterm](https://extensions.gnome.org/extension/3780/ddterm/) which is great.
+
+
+### PsychoPy
+
+I use [psychopy](https://www.psychopy.org/) for running experiments and installing it on Ubuntu 24.10 took a bit of tinkering to get the version numbers right.
+
+I started with the straight-forward commands provided on the [psychopy](https://www.psychopy.org/download.html) website:
+
+```bash
+$ conda create -n psychopy python=3.10
+$ conda activate psychopy
+$ pip install psychopy # this should complete without errors
+```
+
+This worked but I could not start an experiment, getting an error message that a symbol from `libstdc++.so.6` was missing. The following command installs the right version into the active conda environment:
+
+```bash
+$ conda install -c conda-forge libstdcxx-ng
+```
+
+Next, I got a problem with the incorrect version of `Qt6` (on Ubuntu, the most recent version was 6.6 but psychopy required 6.7). I had to install the correct version using:
+
+```bash
+$ conda install "conda-forge::qt6-main==6.7.3"
+```
+
+(it has to be *exactly* 6.7.3).
+
+Next, there was a weird error complaining about a missing symbol in some library that had to do with Wayland. I started my desktop into Xorg mode and the error disappeared. Weirdly, after that, I could start the experiment in Wayland mode as well (shrug).
 
 ## Tweaks
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Matthias Mittner">
-<meta name="dcterms.date" content="2024-09-30">
+<meta name="dcterms.date" content="2024-11-01">
 <meta name="description" content="This post details my experience installing and running Linux on a Lenovo Thinkpad X1 Carbon Gen 12.">
 
 <title>Linux on a Lenovo Thinkpad X1 Carbon Gen 12 – Arctic Neuroscience</title>
@@ -188,6 +188,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#rstudio" id="toc-rstudio" class="nav-link" data-scroll-target="#rstudio">RStudio</a></li>
   <li><a href="#obsidian" id="toc-obsidian" class="nav-link" data-scroll-target="#obsidian">Obsidian</a></li>
   <li><a href="#drop-down-terminal" id="toc-drop-down-terminal" class="nav-link" data-scroll-target="#drop-down-terminal">Drop-down terminal</a></li>
+  <li><a href="#psychopy" id="toc-psychopy" class="nav-link" data-scroll-target="#psychopy">PsychoPy</a></li>
   </ul></li>
   <li><a href="#tweaks" id="toc-tweaks" class="nav-link" data-scroll-target="#tweaks">Tweaks</a>
   <ul>
@@ -230,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 30, 2024</p>
+      <p class="date">November 1, 2024</p>
     </div>
   </div>
   
@@ -256,6 +257,7 @@ Note
 </div>
 </div>
 <p>I recently got a Lenovo Thinkpad X1 Carbon Gen 12 with Ubuntu Linux pre-installed (my old Gen 11 was stolen, see my experience of using Linux on it <a href="linux_on_thinpad_x1_carbon_gen11.qmd">here</a>). This time I decided to stick with the installed Ubuntu and see how far it would fulfill my needs.</p>
+<p>I updated the installed Ubuntu version to the most recent one 24.10 (Oracular) using Ubuntu’s upgrading system (worked just fine).</p>
 <p>My needs are that of a university professor, i.e., I need to interact with colleagues using Microsoft products etc., I need to write papers, do data analysis, and run simulations.</p>
 <section id="hardware" class="level2">
 <h2 class="anchored" data-anchor-id="hardware">Hardware</h2>
@@ -328,13 +330,27 @@ Note
 <h3 class="anchored" data-anchor-id="drop-down-terminal">Drop-down terminal</h3>
 <p>I tried <a href="https://github.com/Guake/guake">guake</a> but it did not work properly with the global keyboard shortcut. I have switched to the GNOME-extension <a href="https://extensions.gnome.org/extension/3780/ddterm/">ddterm</a> which is great.</p>
 </section>
+<section id="psychopy" class="level3">
+<h3 class="anchored" data-anchor-id="psychopy">PsychoPy</h3>
+<p>I use <a href="https://www.psychopy.org/">psychopy</a> for running experiments and installing it on Ubuntu 24.10 took a bit of tinkering to get the version numbers right.</p>
+<p>I started with the straight-forward commands provided on the <a href="https://www.psychopy.org/download.html">psychopy</a> website:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> conda create <span class="at">-n</span> psychopy python=3.10</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> conda activate psychopy</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pip install psychopy <span class="co"># this should complete without errors</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This worked but I could not start an experiment, getting an error message that a symbol from <code>libstdc++.so.6</code> was missing. The following command installs the right version into the active conda environment:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> conda install <span class="at">-c</span> conda-forge libstdcxx-ng</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Next, I got a problem with the incorrect version of <code>Qt6</code> (on Ubuntu, the most recent version was 6.6 but psychopy required 6.7). I had to install the correct version using:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> conda install <span class="st">"conda-forge::qt6-main==6.7.3"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>(it has to be <em>exactly</em> 6.7.3).</p>
+<p>Next, there was a weird error complaining about a missing symbol in some library that had to do with Wayland. I started my desktop into Xorg mode and the error disappeared. Weirdly, after that, I could start the experiment in Wayland mode as well (shrug).</p>
+</section>
 </section>
 <section id="tweaks" class="level2">
 <h2 class="anchored" data-anchor-id="tweaks">Tweaks</h2>
 <section id="get-back-varlogmessages" class="level3">
 <h3 class="anchored" data-anchor-id="get-back-varlogmessages">Get back <code>/var/log/messages</code></h3>
 <p>It is now in <code>/var/log/syslog</code>:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ln <span class="at">-s</span> /var/log/syslog /var/log/messages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ln <span class="at">-s</span> /var/log/syslog /var/log/messages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="resize-windows-with-right-mouse-button" class="level3">
 <h3 class="anchored" data-anchor-id="resize-windows-with-right-mouse-button">Resize windows with right mouse button</h3>
@@ -345,28 +361,28 @@ Note
 <p>Using the fingerprint reader is very easy and can be configured using</p>
 <pre><code>$ sudo pam-auth-update</code></pre>
 <p>I often use the laptop with lid closed and two external monitors attached. In that case, I don’t want the authentication process to use the fingerprint reader since I can’t reach it. I found a great solution <a href="https://unix.stackexchange.com/a/743941/11178">here</a>. Basically, open <code>/etc/pam.d/system-auth</code> and add</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">auth</span>   [success=ignore default=1]  pam_exec.so quiet /usr/local/bin/pam_check_lid</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">auth</span>   sufficient                  pam_fprintd.so</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">auth</span>   required                    pam_unix.so</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">auth</span>   [success=ignore default=1]  pam_exec.so quiet /usr/local/bin/pam_check_lid</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">auth</span>   sufficient                  pam_fprintd.so</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">auth</span>   required                    pam_unix.so</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>(this runs the script <code>pam_check_lid</code> before the fingerprint reader is used). The script <code>pam_check_lid</code> has to be created with the following content:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/sh</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="va">LID_STATE</span><span class="op">=</span><span class="va">$(</span><span class="fu">cat</span> /proc/acpi/button/lid/LID/state <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span><span class="st">':'</span> <span class="at">-f2</span> <span class="kw">|</span> <span class="fu">tr</span> <span class="at">-d</span> <span class="st">' '</span><span class="va">)</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="cf">case</span> <span class="va">${LID_STATE}</span> <span class="kw">in</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="ss">closed</span><span class="kw">)</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> closed</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exit</span> 1</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">;;</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="ss">open</span><span class="pp">*</span><span class="kw">)</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> open</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exit</span> 0</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">;;</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="pp">*</span><span class="kw">)</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># LID is open by default</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> unknown</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exit</span> 0</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">;;</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="cf">esac</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/sh</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="va">LID_STATE</span><span class="op">=</span><span class="va">$(</span><span class="fu">cat</span> /proc/acpi/button/lid/LID/state <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span><span class="st">':'</span> <span class="at">-f2</span> <span class="kw">|</span> <span class="fu">tr</span> <span class="at">-d</span> <span class="st">' '</span><span class="va">)</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="cf">case</span> <span class="va">${LID_STATE}</span> <span class="kw">in</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="ss">closed</span><span class="kw">)</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> closed</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exit</span> 1</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">;;</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="ss">open</span><span class="pp">*</span><span class="kw">)</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> open</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exit</span> 0</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">;;</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="pp">*</span><span class="kw">)</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># LID is open by default</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> unknown</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exit</span> 0</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">;;</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="cf">esac</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="things-that-just-work-perfectly-as-they-should" class="level2">
