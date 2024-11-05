@@ -191,6 +191,14 @@ case ${LID_STATE} in
 esac
 ```
 
+### App-switcher vs. Window-switcher in GNOME
+
+In GNOME, there is a distinction between switching between windows on the same screen/workspace (bound to <Alt>+Tab) and switching between applications (bound to <Super>+Tab). I find this confusing and want both <Alt>+Tab and <Super>+Tab to switch between applications. The standard settings in GNOME do not support multiple shortcuts for the same command, so I had to use the `dconf-editor` to change the settings:
+
+![](/pics/app-switcher-ubuntu-dconf.png){width=70%}
+
+I also had to turn off the <Alt>+Tab shortcut for switching between windows in the standard settings.
+
 
 ## Things that just work perfectly as they should
 

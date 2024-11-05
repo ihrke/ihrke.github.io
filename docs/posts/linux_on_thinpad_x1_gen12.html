@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Matthias Mittner">
-<meta name="dcterms.date" content="2024-11-01">
+<meta name="dcterms.date" content="2024-11-05">
 <meta name="description" content="This post details my experience installing and running Linux on a Lenovo Thinkpad X1 Carbon Gen 12.">
 
 <title>Linux on a Lenovo Thinkpad X1 Carbon Gen 12 – Arctic Neuroscience</title>
@@ -195,6 +195,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#get-back-varlogmessages" id="toc-get-back-varlogmessages" class="nav-link" data-scroll-target="#get-back-varlogmessages">Get back <code>/var/log/messages</code></a></li>
   <li><a href="#resize-windows-with-right-mouse-button" id="toc-resize-windows-with-right-mouse-button" class="nav-link" data-scroll-target="#resize-windows-with-right-mouse-button">Resize windows with right mouse button</a></li>
   <li><a href="#fingerprint-authentication-lid-close" id="toc-fingerprint-authentication-lid-close" class="nav-link" data-scroll-target="#fingerprint-authentication-lid-close">Fingerprint authentication (lid close)</a></li>
+  <li><a href="#app-switcher-vs.-window-switcher-in-gnome" id="toc-app-switcher-vs.-window-switcher-in-gnome" class="nav-link" data-scroll-target="#app-switcher-vs.-window-switcher-in-gnome">App-switcher vs.&nbsp;Window-switcher in GNOME</a></li>
   </ul></li>
   <li><a href="#things-that-just-work-perfectly-as-they-should" id="toc-things-that-just-work-perfectly-as-they-should" class="nav-link" data-scroll-target="#things-that-just-work-perfectly-as-they-should">Things that just work perfectly as they should</a></li>
   </ul>
@@ -231,7 +232,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 1, 2024</p>
+      <p class="date">November 5, 2024</p>
     </div>
   </div>
   
@@ -383,6 +384,12 @@ Note
 <span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exit</span> 0</span>
 <span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">;;</span></span>
 <span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="cf">esac</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="app-switcher-vs.-window-switcher-in-gnome" class="level3">
+<h3 class="anchored" data-anchor-id="app-switcher-vs.-window-switcher-in-gnome">App-switcher vs.&nbsp;Window-switcher in GNOME</h3>
+<p>In GNOME, there is a distinction between switching between windows on the same screen/workspace (bound to <alt>+Tab) and switching between applications (bound to <super>+Tab). I find this confusing and want both <alt>+Tab and <super>+Tab to switch between applications. The standard settings in GNOME do not support multiple shortcuts for the same command, so I had to use the <code>dconf-editor</code> to change the settings:</super></alt></super></alt></p>
+<p><img src="../pics/app-switcher-ubuntu-dconf.png" class="img-fluid" style="width:70.0%"></p>
+<p>I also had to turn off the <alt>+Tab shortcut for switching between windows in the standard settings.</alt></p>
 </section>
 </section>
 <section id="things-that-just-work-perfectly-as-they-should" class="level2">
