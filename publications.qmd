@@ -151,16 +151,16 @@ for(i in 1:dim(preprints)[1]){
   index=preprints$index[i]
   
   if(dim(authors)[1]==1){
-    latexauth<-glue("**<family_name>, <str_sub(given_name, 1,1)>.**", .envir=authors, .open="<", .close=">")
+    latexauth<-with(authors, glue("**<family_name>, <str_sub(given_name, 1,1)>.**", .open="<", .close=">"))
   } else {
-    latexauth<-glue("{family_name}, {str_sub(given_name, 1,1)}.", .envir=authors) 
+    latexauth<-with(authors, glue("{family_name}, {str_sub(given_name, 1,1)}."))
     latexauth=if_else(startsWith(latexauth, "Mittner") | startsWith(latexauth, "Ihrke"), sprintf("**%s**",latexauth), as.character(latexauth))
     latexauth<-glue_collapse(latexauth, sep = ", ", last = " & ")
   }
-  ref=glue("<div class='reference'><span class='refnum'>[{index}]</span>
+  ref=with(preprints[i,], glue("<div class='reference'><span class='refnum'>[{index}]</span>
            <span class='ref'>
            {latexauth} ({date}). {title}. {link} status: {status}
-           </span></div>", .envir=preprints[i,])
+           </span></div>"))
   cat(ref,"\n")
 }
 }
@@ -185,9 +185,9 @@ for(i in 1:dim(articles)[1]){
   authors=articles[i,]$authors[[1]]
   index=articles$index[i]
   if(dim(authors)[1]==1){
-    latexauth<-glue("**<last_name>, <str_sub(first_name, 1,1)>.**", .envir=authors, .open="<", .close=">")
+    latexauth<-with(authors, glue("**<last_name>, <str_sub(first_name, 1,1)>.**", .open="<", .close=">"))
   } else {
-    latexauth<-glue("{last_name}, {str_sub(first_name, 1,1)}.", .envir=authors) 
+    latexauth<-with(authors, glue("{last_name}, {str_sub(first_name, 1,1)}.")) 
     latexauth=if_else(startsWith(latexauth, "Mittner") | startsWith(latexauth, "Ihrke"), sprintf("**%s**",latexauth), as.character(latexauth))
     latexauth<-glue_collapse(latexauth, sep = ", ", last = " & ")
   }
@@ -207,18 +207,18 @@ for(i in 1:dim(articles)[1]){
     impact=glue('<span style="float:left" class="__dimensions_badge_embed__" data-doi="{cdoi}" data-style="small_rectangle"></span><script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>')
   }
   notes=articles[i,"note"][[1]][[1]]
-  cnotes=glue("<div class='notes'><div class='note journal'><a href='http://doi.org/{doi}'>journal</a></div>", .envir=articles[i,])
+  cnotes=with(articles[i,], glue("<div class='notes'><div class='note journal'><a href='http://doi.org/{doi}'>journal</a></div>"))
   for(name in names(notes)){
     notecontent=notes[name] 
     cnotes=str_c(cnotes, glue("<div class='note {name}'><a href='{notecontent}'>{name}</a></div>"))
   }
   cnotes=str_c(cnotes,"</div>")
   
-  ref=glue("<div class='reference'><span class='refnum'>[{index}]</span>
+  ref=with(articles[i,], glue("<div class='reference'><span class='refnum'>[{index}]</span>
            <span class='ref'>
            {latexauth} ({year}). {title}. *{journal}*. {vol}{cnum}{cpages} [doi:{doi}](https://doi.org/{doi})
            <br>{cnotes}
-           {impact}</span></div>", .envir=articles[i,])
+           {impact}</span></div>"))
   #ref=glue("\n::::::{.reference}\n[[<index>]]{.refnum}\n[<latexauth> (<year>). <title>. *<journal>*. <vol><cnum><cpages> doi:<doi> <impact> ]{.ref}\n::::::\n", .open="<", .close=">",.envir=articles[i,])
   cat(ref,"\n")
 }
@@ -236,13 +236,13 @@ for(i in 1:dim(chapters)[1]){
   index=chapters$index[i]
   
   if(dim(authors)[1]==1){
-    latexauth<-glue("**<last_name>, <str_sub(first_name, 1,1)>.**", .envir=authors, .open="<", .close=">")
+    latexauth<-with(authors, glue("**<last_name>, <str_sub(first_name, 1,1)>.**", .open="<", .close=">"))
   } else {
-    latexauth<-glue("{last_name}, {str_sub(first_name, 1,1)}.", .envir=authors) 
+    latexauth<-with(authors, glue("{last_name}, {str_sub(first_name, 1,1)}."))
     latexauth=if_else(startsWith(latexauth, "Mittner") | startsWith(latexauth, "Ihrke"), sprintf("**%s**",latexauth), as.character(latexauth))
     latexauth<-glue_collapse(latexauth, sep = ", ", last = " & ")
   }
-  latexed<-glue("{last_name}, {str_sub(first_name, 1,1)}.", .envir=editors) 
+  latexed<-with(editors, glue("{last_name}, {str_sub(first_name, 1,1)}."))
   latexed<-glue_collapse(latexed, sep = ", ", last = " & ")
 
   impact=""
@@ -252,10 +252,10 @@ for(i in 1:dim(chapters)[1]){
     #impact="{{% dimensions 10.3389/fpsyg.2019.00130 %}}"
     impact=glue('<span class="__dimensions_badge_embed__" data-doi="{cdoi}" data-style="small_rectangle"></span><script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>')
   }
-  ref=glue("<div class='reference'><span class='refnum'>[{index}]</span>
+  ref=with(chapters[i,], glue("<div class='reference'><span class='refnum'>[{index}]</span>
            <span class='ref'>
            {latexauth} ({year}). {title}. In {latexed} (Eds.), *{book}*. {publisher} [doi:{doi}](https://doi.org/{doi})
-           {impact}</span></div>", .envir=chapters[i,])
+           {impact}</span></div>"))
   #ref=glue("\n::::::{.reference}\n[[<index>]]{.refnum}\n[<latexauth> (<year>). <title>. *<journal>*. <vol><cnum><cpages> doi:<doi> <impact> ]{.ref}\n::::::\n", .open="<", .close=">",.envir=chapters[i,])
   cat(ref,"\n")
 }
@@ -271,9 +271,9 @@ for(i in 1:dim(proceedings)[1]){
   index=proceedings$index[i]
   
   if(dim(authors)[1]==1){
-    latexauth<-glue("**<last_name>, <str_sub(first_name, 1,1)>.**", .envir=authors, .open="<", .close=">")
+    latexauth<-with(authors, glue("**<last_name>, <str_sub(first_name, 1,1)>.**",  .open="<", .close=">"))
   } else {
-    latexauth<-glue("{last_name}, {str_sub(first_name, 1,1)}.", .envir=authors) 
+    latexauth<-with(authors, glue("{last_name}, {str_sub(first_name, 1,1)}.")) 
     latexauth=if_else(startsWith(latexauth, "Mittner") | startsWith(latexauth, "Ihrke"), sprintf("**%s**",latexauth), as.character(latexauth))
     latexauth<-glue_collapse(latexauth, sep = ", ", last = " & ")
   }
@@ -284,10 +284,10 @@ for(i in 1:dim(proceedings)[1]){
     #impact="{{% dimensions 10.3389/fpsyg.2019.00130 %}}"
     impact=glue('<span class="__dimensions_badge_embed__" data-doi="{cdoi}" data-style="small_rectangle"></span><script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>')
   }
-  ref=glue("<div class='reference'><span class='refnum'>[{index}]</span>
+  ref=with(proceedings[i,], glue("<div class='reference'><span class='refnum'>[{index}]</span>
            <span class='ref'>
            {latexauth} ({year}). {title}. *{series}*, {book}, pp. {pages}. [doi:{doi}](https://doi.org/{doi})
-           {impact}</span></div>", .envir=proceedings[i,])
+           {impact}</span></div>"))
   #ref=glue("\n::::::{.reference}\n[[<index>]]{.refnum}\n[<latexauth> (<year>). <title>. *<journal>*. <vol><cnum><cpages> doi:<doi> <impact> ]{.ref}\n::::::\n", .open="<", .close=">",.envir=proceedings[i,])
   cat(ref,"\n")
 }

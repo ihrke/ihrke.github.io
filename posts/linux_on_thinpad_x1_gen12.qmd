@@ -199,6 +199,14 @@ In GNOME, there is a distinction between switching between windows on the same s
 
 I also had to turn off the <Alt>+Tab shortcut for switching between windows in the standard settings.
 
+## Cool apps
+
+Some cool apps I stumbled upon and that I use:
+
+- [Astra Monitor](https://extensions.gnome.org/extension/6682/astra-monitor/)
+- [ncdu](https://dev.yorhel.nl/ncdu)
+- [Bitwarden](https://bitwarden.com/)
+
 
 ## Things that just work perfectly as they should
 
@@ -209,5 +217,4 @@ I also had to turn off the <Alt>+Tab shortcut for switching between windows in t
 - chrome
 - libreoffice
 - zotero
-- bitwarden
 
