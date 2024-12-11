@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.33">
+<meta name="generator" content="quarto-1.7.1">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -35,10 +35,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-07ba0ad10f5680c660e360ac31d2f3b6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2bb0ec5e928ee8c40b12725cb7836c35.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-19a6939d6535cf26b02bc4561cffaf84.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-cdd86b70dd7b1ce00330327521333af5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -191,6 +191,9 @@ ul.task-list li input[type="checkbox"] {
 <section id="preprintssubmitted-papers" class="level2">
 <h2 class="anchored" data-anchor-id="preprintssubmitted-papers">Preprints/Submitted papers</h2>
 <p>Go here for a list of <a href="./pubs/preprints.html">all my preprints</a></p>
+<div class="reference">
+<span class="refnum">[70]</span> <span class="ref"> <strong>Mittner, M.</strong> &amp; Groot, J. (2024-11-27). A novel method for modeling tonic and phasic pupil dynamics in humans. https://osf.io/preprints/psyarxiv/7ju4a/ status: submitted </span>
+</div>
 <div class="reference">
 <span class="refnum">[69]</span> <span class="ref"> Alexandersen, A., Karlsen, K., Csifcsak, G. &amp; <strong>Mittner, M.</strong> (2024-11-12). Unravelling the threads of thought: Probing the impact of contextual factors on mind wandering. https://osf.io/preprints/psyarxiv/ywdv2/ status: submitted </span>
 </div>
@@ -1256,8 +1259,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -1368,7 +1369,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
