@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Matthias Mittner">
-<meta name="dcterms.date" content="2024-12-11">
+<meta name="dcterms.date" content="2024-12-12">
 <meta name="description" content="This post details my experience installing and running Linux on a Lenovo Thinkpad X1 Carbon Gen 12.">
 
 <title>Linux on a Lenovo Thinkpad X1 Carbon Gen 12 – Arctic Neuroscience</title>
@@ -236,7 +236,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 11, 2024</p>
+      <p class="date">December 12, 2024</p>
     </div>
   </div>
   
@@ -365,10 +365,9 @@ Note
 <h3 class="anchored" data-anchor-id="fingerprint-authentication-lid-close">Fingerprint authentication (lid close)</h3>
 <p>Using the fingerprint reader is very easy and can be configured using</p>
 <pre><code>$ sudo pam-auth-update</code></pre>
-<p>I often use the laptop with lid closed and two external monitors attached. In that case, I don’t want the authentication process to use the fingerprint reader since I can’t reach it. I found a great solution <a href="https://unix.stackexchange.com/a/743941/11178">here</a>. Basically, open <code>/etc/pam.d/system-auth</code> and add</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">auth</span>   [success=ignore default=1]  pam_exec.so quiet /usr/local/bin/pam_check_lid</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">auth</span>   sufficient                  pam_fprintd.so</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">auth</span>   required                    pam_unix.so</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>I often use the laptop with lid closed and two external monitors attached. In that case, I don’t want the authentication process to use the fingerprint reader since I can’t reach it. I found a great solution <a href="https://unix.stackexchange.com/a/743941/11178">here</a>.</p>
+<p>This solution is for an earlier Ubuntu version, for the current one, the changes have to be made in <code>/etc/pam.d/common-auth</code>. I added the following line before the “default” block:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">auth</span>   [success=ignore default=1]  pam_exec.so quiet /usr/local/bin/pam_check_lid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>(this runs the script <code>pam_check_lid</code> before the fingerprint reader is used). The script <code>pam_check_lid</code> has to be created with the following content:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/sh</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="va">LID_STATE</span><span class="op">=</span><span class="va">$(</span><span class="fu">cat</span> /proc/acpi/button/lid/LID/state <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span><span class="st">':'</span> <span class="at">-f2</span> <span class="kw">|</span> <span class="fu">tr</span> <span class="at">-d</span> <span class="st">' '</span><span class="va">)</span></span>
@@ -388,6 +387,10 @@ Note
 <span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exit</span> 0</span>
 <span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">;;</span></span>
 <span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="cf">esac</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The script needs to be globally readable and executable (but <em>NOT</em> writable). I tested the script using <code>pamtester</code> at a local copy before moving it to <code>/etc/pam.d/</code>:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pamtester common-auth <span class="op">&lt;</span>username<span class="op">&gt;</span> authenticate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>While at it, I also set the maximum number of tries for the fingerprint up to 3 in <code>/etc/pam.d/common-auth</code> (because I often fail to place my finger correctly the first time):</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">auth</span>    [success=3 default=ignore]  pam_fprintd.so max-tries=3 timeout=10 <span class="co"># debug</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="app-switcher-vs.-window-switcher-in-gnome" class="level3">
 <h3 class="anchored" data-anchor-id="app-switcher-vs.-window-switcher-in-gnome">App-switcher vs.&nbsp;Window-switcher in GNOME</h3>

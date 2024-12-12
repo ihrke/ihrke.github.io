@@ -160,12 +160,12 @@ Using the fingerprint reader is very easy and can be configured using
 $ sudo pam-auth-update
 ```
 
-I often use the laptop with lid closed and two external monitors attached. In that case, I don't want the authentication process to use the fingerprint reader since I can't reach it. I found a great solution [here](https://unix.stackexchange.com/a/743941/11178). Basically, open `/etc/pam.d/system-auth` and add 
+I often use the laptop with lid closed and two external monitors attached. In that case, I don't want the authentication process to use the fingerprint reader since I can't reach it. I found a great solution [here](https://unix.stackexchange.com/a/743941/11178).
+
+This solution is for an earlier Ubuntu version, for the current one, the changes have to be made in `/etc/pam.d/common-auth`. I added the following line before the "default" block:
 
 ```bash
 auth   [success=ignore default=1]  pam_exec.so quiet /usr/local/bin/pam_check_lid
-auth   sufficient                  pam_fprintd.so
-auth   required                    pam_unix.so
 ```
 
 (this runs the script `pam_check_lid` before the fingerprint reader is used). The script `pam_check_lid` has to be created with the following content:
@@ -190,6 +190,19 @@ case ${LID_STATE} in
     ;;
 esac
 ```
+
+The script needs to be globally readable and executable (but *NOT* writable). I tested the script using `pamtester` at a local copy before moving it to `/etc/pam.d/`:
+
+```bash
+$ pamtester common-auth <username> authenticate
+```
+
+While at it, I also set the maximum number of tries for the fingerprint up to 3 in `/etc/pam.d/common-auth` (because I often fail to place my finger correctly the first time):
+
+```bash
+auth	[success=3 default=ignore]	pam_fprintd.so max-tries=3 timeout=10 # debug
+```
+
 
 ### App-switcher vs. Window-switcher in GNOME
 
