@@ -224,6 +224,15 @@ Somehow that happened very often and I found it very annoying. I found a solutio
 gsettings set org.gnome.mutter auto-maximize false
 ```
 
+### Set default file browser
+
+I prefer the `nemo` file browser over the default `nautilus`. The default app setting in Gnome does not allow to change the default browser, but I found a solution using `xdg-mime` ([link](https://wiki.archlinux.org/title/Xdg-utils#xdg-mime)):
+
+```bash
+$ xdg-mime query default inode/directory 
+$ xdg-mime default nemo.desktop inode/directory
+```
+
 ## Cool apps
 
 Some cool apps I stumbled upon and that I use:

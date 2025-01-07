@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Matthias Mittner">
-<meta name="dcterms.date" content="2024-12-12">
+<meta name="dcterms.date" content="2025-01-07">
 <meta name="description" content="This post details my experience installing and running Linux on a Lenovo Thinkpad X1 Carbon Gen 12.">
 
 <title>Linux on a Lenovo Thinkpad X1 Carbon Gen 12 – Arctic Neuroscience</title>
@@ -199,6 +199,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#app-switcher-vs.-window-switcher-in-gnome" id="toc-app-switcher-vs.-window-switcher-in-gnome" class="nav-link" data-scroll-target="#app-switcher-vs.-window-switcher-in-gnome">App-switcher vs.&nbsp;Window-switcher in GNOME</a></li>
   <li><a href="#fix-lock-screen-on-suspend" id="toc-fix-lock-screen-on-suspend" class="nav-link" data-scroll-target="#fix-lock-screen-on-suspend">Fix lock screen on suspend</a></li>
   <li><a href="#do-not-open-new-windows-in-fullscreen" id="toc-do-not-open-new-windows-in-fullscreen" class="nav-link" data-scroll-target="#do-not-open-new-windows-in-fullscreen">Do not open new windows in fullscreen</a></li>
+  <li><a href="#set-default-file-browser" id="toc-set-default-file-browser" class="nav-link" data-scroll-target="#set-default-file-browser">Set default file browser</a></li>
   </ul></li>
   <li><a href="#cool-apps" id="toc-cool-apps" class="nav-link" data-scroll-target="#cool-apps">Cool apps</a></li>
   <li><a href="#things-that-just-work-perfectly-as-they-should" id="toc-things-that-just-work-perfectly-as-they-should" class="nav-link" data-scroll-target="#things-that-just-work-perfectly-as-they-should">Things that just work perfectly as they should</a></li>
@@ -236,7 +237,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 12, 2024</p>
+      <p class="date">January 7, 2025</p>
     </div>
   </div>
   
@@ -406,6 +407,12 @@ Note
 <h3 class="anchored" data-anchor-id="do-not-open-new-windows-in-fullscreen">Do not open new windows in fullscreen</h3>
 <p>Somehow that happened very often and I found it very annoying. I found a solution <a href="https://askubuntu.com/questions/1412195/how-can-i-prevent-apps-from-opening-new-windows-in-full-window-mode">here</a> that works perfectly. Change the setting under <code>org.gnome.mutter</code> to <code>false</code> or use</p>
 <pre><code>gsettings set org.gnome.mutter auto-maximize false</code></pre>
+</section>
+<section id="set-default-file-browser" class="level3">
+<h3 class="anchored" data-anchor-id="set-default-file-browser">Set default file browser</h3>
+<p>I prefer the <code>nemo</code> file browser over the default <code>nautilus</code>. The default app setting in Gnome does not allow to change the default browser, but I found a solution using <code>xdg-mime</code> (<a href="https://wiki.archlinux.org/title/Xdg-utils#xdg-mime">link</a>):</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> xdg-mime query default inode/directory </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> xdg-mime default nemo.desktop inode/directory</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="cool-apps" class="level2">
