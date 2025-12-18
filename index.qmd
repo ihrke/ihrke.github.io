@@ -24,7 +24,7 @@ I am a professor at the University of Tromsø. My main
 interests within the field of cognitive neuroscience are mind wandering, non-invasive brain stimulation, decision making, pupillometry and selective attention. I am also interested in the development of methodological approaches in my field and enjoy computational methods, cognitive modeling, machine-learning and Bayesian statistics.
 
 
-- [my CV](/share/cv.pdf)
+- [my CV](https://github.com/ihrke/cv-mittner/blob/main/cv_matthias.pdf)
 - [Google Scholar](https://scholar.google.com/citations?hl=en&user=AFB4RYIAAAAJ)
 - [Lab website](https://uit.no/research/cognitive-neuroscience) 
 

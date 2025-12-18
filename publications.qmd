@@ -18,21 +18,39 @@ library(xml2)
 source("lib/functions.R")
 ```
 
+
 ```{r, cache=F, include=F}
 print.impact=F
 
 
 ## preprints
 ##------------------------------------------------------------------------------------
-preprints <- get_my_osf_preprints()
+#preprints <- get_my_osf_preprints()
 
 # order/filter
-preprints %>% filter(unpublished, str_detect(link, "psyarxiv")) %>% arrange(desc(date)) %>% ungroup -> preprints
+#preprints %>% filter(unpublished, str_detect(link, "psyarxiv")) %>% arrange(desc(date)) %>% ungroup -> preprints
+
+bib2df("../org/cv/data/bib/psyarxiv.bib", separate_names = T) |> 
+      select(authors=AUTHOR, pages=PAGES, title=TITLE, year=YEAR, 
+           link=URL, vol=VOLUME, num=NUMBER, month=MONTH, date=DATE) %>% 
+    extract(date, c("year","month","day"), regex = "([0-9]+)-?([0-9]?[0-9]?)-?([0-9]?[0-9]?)") %>%
+    mutate(year=as.integer(year), month=as.integer(month)) %>%
+    mutate(title=strip_curly_braces(title),
+           date=ymd(sprintf("%s-%s-%s",year,month,day)),#date=get_date_from_doi(doi),#lubridate::ymd(sprintf("%i-01-01",date)),
+           status="submitted", unpublished=T,
+           authors=map(authors, ~.x %>% 
+                         rename(family_name=last_name,given_name=first_name) %>%
+                         mutate(family_name=strip_curly_braces(family_name),
+                                given_name=strip_curly_braces(given_name))
+                         )) -> preprints
+
 
 
 # other preprints not on osf
-if(fs::is_file("pubs/preprints.bib")){
-  bib2df("pubs/preprints.bib", separate_names = T) %>%
+# skip if empty 
+if(fs::is_file("../org/cv/data/bib/preprints.bib") & dim(bib2df("../org/cv/data/bib/preprints.bib"))[1]>0){
+  
+  bib2df("../org/cv/data/bib/preprints.bib", separate_names = T) %>%
     select(authors=AUTHOR, pages=PAGES, title=TITLE, year=YEAR, 
            doi=DOI, link=URL, vol=VOLUME, num=NUMBER, month=MONTH, date=DATE) %>% 
     extract(date, c("year","month","day"), regex = "([0-9]+)-?([0-9]?[0-9]?)-?([0-9]?[0-9]?)") %>%
@@ -46,8 +64,8 @@ if(fs::is_file("pubs/preprints.bib")){
                                 given_name=strip_curly_braces(given_name))
                          )) -> preprints.add  
 
-full_join(preprints,preprints.add) -> preprints
-preprints %>% arrange(desc(date)) %>% ungroup -> preprints
+  full_join(preprints,preprints.add) -> preprints
+  preprints %>% arrange(desc(date)) %>% ungroup -> preprints
 }
 
 ```
@@ -60,7 +78,7 @@ is.not.list=function(x){ !is.list(x)}
 months=c("jan","feb","mar","apr","may","jun","jul","aug","sep", "oct","nov","dec")
 
 
-articles=bib2df("pubs/articles.bib", separate_names = T) %>%
+articles=bib2df("../org/cv/data/bib/articles.bib", separate_names = T) %>%
   select(authors=AUTHOR, journal=JOURNALTITLE, pages=PAGES, title=TITLE, year=YEAR, 
          note=NOTE,
          doi=DOI, link=URL, vol=VOLUME, num=NUMBER, month=MONTH, date=DATE) %>%
@@ -83,7 +101,7 @@ articles %>% mutate(note=str_replace_all(note, c("\\[\\["="<","\\]\\]"=">"))) %>
     r
   })) -> articles
 
-chapters=bib2df("pubs/chapters.bib", separate_names = T) %>%
+chapters=bib2df("../org/cv/data/bib/chapters.bib", separate_names = T) %>%
   select(authors=AUTHOR, editors=EDITOR, book=BOOKTITLE, publisher=PUBLISHER, pages=PAGES, title=TITLE, year=YEAR, 
          doi=DOI, link=URL) %>%
   mutate(title=strip_curly_braces(title), 
@@ -93,7 +111,7 @@ chapters=left_join(chapters, get_citation_info_dimensions(chapters$doi), by="doi
   arrange(desc(year))
 
 
-proceedings=bib2df("pubs/proceedings.bib", separate_names = T) %>% 
+proceedings=bib2df("../org/cv/data/bib/proceedings.bib", separate_names = T) %>% 
   select(authors=AUTHOR, book=BOOKTITLE, series=SERIES, pages=PAGES, title=TITLE, year=YEAR, 
          doi=DOI, link=URL) %>%
   mutate(title=strip_curly_braces(title),
