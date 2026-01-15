@@ -36,6 +36,16 @@ jobs:
           packages: |
             any::knitr
             any::rmarkdown
+            any::tidyverse
+            any::bib2df
+            any::glue
+            any::httr
+            any::jsonlite
+            any::lubridate
+            any::R.rsp
+            any::scholar
+            any::xml2
+            any::devtools
 
       - name: Render Quarto project
         run: quarto render
