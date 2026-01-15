@@ -8,61 +8,43 @@ date: "today"
 library(tidyverse)
 library(lubridate)
 library(glue)
-library(bib2df)
-library(fs)
 library(DT)
+library(openalexR)
 source("../lib/functions.R")
+
+# Your ORCID
+MY_ORCID <- "0000-0003-0205-7353"
 ```
 
 ```{r, cache=F, include=FALSE}
-## preprints from psyarxiv.bib
-bib2df("../../org/cv/data/bib/psyarxiv.bib", separate_names = T) |>
-  select(authors=AUTHOR, pages=PAGES, title=TITLE, year=YEAR,
-         link=URL, vol=VOLUME, num=NUMBER, month=MONTH, date=DATE) %>%
-  extract(date, c("year","month","day"), regex = "([0-9]+)-?([0-9]?[0-9]?)-?([0-9]?[0-9]?)") %>%
-  mutate(year=as.integer(year), month=as.integer(month)) %>%
-  mutate(title=strip_curly_braces(title),
-         date=ymd(sprintf("%s-%s-%s",year,month,day)),
-         status="submitted", unpublished=T, citation="",
-         authors=map(authors, ~.x %>%
-                       rename(family_name=last_name,given_name=first_name) %>%
-                       mutate(family_name=strip_curly_braces(family_name),
-                              given_name=strip_curly_braces(given_name))
-                       )) -> preprints
-
-# other preprints not on psyarxiv
-if(fs::is_file("../../org/cv/data/bib/preprints.bib") & dim(bib2df("../../org/cv/data/bib/preprints.bib"))[1]>0){
-  bib2df("../../org/cv/data/bib/preprints.bib", separate_names = T) %>%
-    select(authors=AUTHOR, pages=PAGES, title=TITLE, year=YEAR,
-           doi=DOI, link=URL, vol=VOLUME, num=NUMBER, month=MONTH, date=DATE) %>%
-    extract(date, c("year","month","day"), regex = "([0-9]+)-?([0-9]?[0-9]?)-?([0-9]?[0-9]?)") %>%
-    mutate(year=as.integer(year), month=as.integer(month)) %>%
-    mutate(title=strip_curly_braces(title),
-           date=ymd(sprintf("%s-%s-%s",year,month,day)),
-           status="submitted", unpublished=T, citation="",
-           authors=map(authors, ~.x %>%
-                         rename(family_name=last_name,given_name=first_name) %>%
-                         mutate(family_name=strip_curly_braces(family_name),
-                                given_name=strip_curly_braces(given_name))
-                         )) -> preprints.add
-  full_join(preprints, preprints.add) -> preprints
-}
+## Fetch all preprints from OpenAlex by ORCID
+## This automatically finds preprints from PsyArXiv, bioRxiv, and other preprint servers
+preprints <- get_preprints_openalex(MY_ORCID)
 
 # Build citation strings
-for(i in 1:dim(preprints)[1]){
-  authors=preprints[i,]$authors[[1]]
-  if(dim(authors)[1]==1){
-    latexauth<-glue_data(authors, "**{family_name}, {str_sub(given_name, 1,1)}.**")
-  } else {
-    latexauth<-glue_data(authors, "{family_name}, {str_sub(given_name, 1,1)}.")
-    latexauth=if_else(startsWith(latexauth, "Mittner") | startsWith(latexauth, "Ihrke"), sprintf("**%s**",latexauth), as.character(latexauth))
-    latexauth<-glue_collapse(latexauth, sep = ", ", last = " & ")
+preprints$citation <- ""
+if(nrow(preprints) > 0) {
+  for(i in 1:nrow(preprints)){
+    authors <- preprints[i,]$authors[[1]]
+    if(is.null(authors) || nrow(authors) == 0){
+      latexauth <- "Unknown"
+    } else if(nrow(authors) == 1){
+      latexauth <- glue_data(authors, "**{family_name}, {str_sub(given_name, 1,1)}.**")
+    } else {
+      latexauth <- glue_data(authors, "{family_name}, {str_sub(given_name, 1,1)}.")
+      latexauth <- if_else(
+        startsWith(latexauth, "Mittner") | startsWith(latexauth, "Ihrke"),
+        sprintf("**%s**", latexauth),
+        as.character(latexauth)
+      )
+      latexauth <- glue_collapse(latexauth, sep = ", ", last = " & ")
+    }
+    ref <- with(preprints[i,], glue("{latexauth} ({date}). {title}. [{source}]({link})"))
+    preprints$citation[i] <- ref
   }
-  ref=with(preprints[i,], glue("{latexauth} ({date}). {title}. {link} status: {status}"))
-  preprints$citation[i]=ref
 }
 
-preprints %>% arrange(desc(date)) %>% ungroup -> preprints
+preprints %>% arrange(desc(date)) -> preprints
 ```
 
 
@@ -70,16 +52,17 @@ This is a list of all preprints published by my group, so far. The preprints for
 
 ```{r, echo=F, results='asis'}
 #| column: screen-inset-shaded
-#| 
 mdtohtml <- function(x){
   purrr::map_chr(x, function(y){
     markdown::markdownToHTML(text=y, fragment.only = T)
   })
 }
 
-#knitr::kable(preprints %>% select(date,citation, link, status))
-d <- preprints %>% select(date,citation, link, status) %>% 
-  mutate(link=mdtohtml(link),
-         citation=mdtohtml(citation))
-DT::datatable(d, escape = F)
+d <- preprints %>%
+  select(date, citation, source, link) %>%
+  mutate(
+    link = mdtohtml(sprintf("[link](%s)", link)),
+    citation = mdtohtml(citation)
+  )
+DT::datatable(d, escape = F, colnames = c("Date", "Citation", "Source", "Link"))
 ```

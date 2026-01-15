@@ -58,6 +58,7 @@ jobs:
             any::fs
             any::DT
             any::markdown
+            any::openalexR
 
       - name: Render Quarto project
         run: quarto render

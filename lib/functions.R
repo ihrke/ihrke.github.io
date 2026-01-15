@@ -1,3 +1,65 @@
+get_preprints_openalex <- function(orcid) {
+  # Fetch all works by this ORCID that are preprints
+  works <- openalexR::oa_fetch(
+    entity = "works",
+    author.orcid = orcid,
+    type = "preprint"
+  )
+
+  if (is.null(works) || nrow(works) == 0) {
+    return(tibble(
+      title = character(),
+      doi = character(),
+      date = as.Date(character()),
+      authors = list(),
+      link = character(),
+      source = character(),
+      status = character()
+    ))
+  }
+
+  # Process works into the expected format
+  # Column names from openalexR: landing_page_url, source_display_name, authorships
+
+  works %>%
+    mutate(
+      title = display_name,
+      date = as.Date(publication_date),
+      link = coalesce(landing_page_url, oa_url, paste0("https://doi.org/", doi)),
+      # Determine source from URL if source_display_name is NA
+      source = case_when(
+        !is.na(source_display_name) ~ source_display_name,
+        str_detect(link, "psyarxiv|osf\\.io") ~ "PsyArXiv",
+        str_detect(link, "biorxiv") ~ "bioRxiv",
+        str_detect(link, "medrxiv") ~ "medRxiv",
+        str_detect(link, "arxiv\\.org") ~ "arXiv",
+        TRUE ~ "Preprint"
+      ),
+      status = "submitted",
+      # Convert author info to expected format
+      authors = map(authorships, function(auth_list) {
+        if (is.null(auth_list) || nrow(auth_list) == 0) {
+          return(tibble(family_name = character(), given_name = character()))
+        }
+        auth_list %>%
+          mutate(
+            # Split "First Last" format from display_name
+            name_parts = str_split(display_name, "\\s+"),
+            given_name = map_chr(name_parts, ~paste(.x[-length(.x)], collapse = " ")),
+            family_name = map_chr(name_parts, ~.x[length(.x)])
+          ) %>%
+          select(family_name, given_name)
+      })
+    ) %>%
+    select(title, doi, date, authors, link, source, status) %>%
+    # Keep only the most recent version of each preprint (by title)
+    arrange(desc(date)) %>%
+    group_by(title) %>%
+    slice(1) %>%
+    ungroup() %>%
+    arrange(desc(date))
+}
+
 get_my_osf_preprints <- function(){
   #r=httr::GET("https://api.osf.io/v2/users/dwha7/preprints/")
   #r <- rvest::read_html("https://osf.io/v2/users/dwha7/preprints/")
