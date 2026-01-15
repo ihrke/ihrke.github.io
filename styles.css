@@ -131,6 +131,11 @@ dd {
 }
 
 
+/* Smaller h3 headings in posts */
+.content h3 {
+  font-size: 1.3rem;
+}
+
 .rev-lists > ol {
   list-style-type:none;
   counter-reset:item 6;
