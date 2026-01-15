@@ -9,3 +9,6 @@ _site/*
 
 **/*.quarto_ipynb
 tmp
+
+# Generated Quarto output (rendered by GitHub Actions)
+docs/
