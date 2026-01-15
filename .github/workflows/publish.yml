@@ -22,6 +22,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Fetch bib files from cv-mittner repo
+        run: |
+          # Clone the cv-mittner repo to get bib files
+          git clone --depth 1 https://github.com/ihrke/cv-mittner.git /tmp/cv-mittner
+          # Create the expected directory structure (publications.qmd expects ../org/cv/data/bib/)
+          mkdir -p ../org/cv/data/bib
+          # Copy all bib files
+          cp /tmp/cv-mittner/data/bib/*.bib ../org/cv/data/bib/
+
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
