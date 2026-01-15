@@ -5,12 +5,15 @@ description: |
   building a 646-line N-back experiment with EyeLink integration in 20 minutes.
 author: "Matthias Mittner"
 date: 2026-01-15
+image: /pics/psychopy_ai_coding.jpg
 categories:
   - psychopy
   - AI
   - programming
   - research
 ---
+
+![](/pics/psychopy_ai_coding.jpg){fig-alt="Split illustration showing AI-assisted coding on the left and a running psychology experiment with eye-tracker on the right"}
 
 If you've ever written a PsychoPy experiment from scratch, you know the pain: timing precision, counterbalancing logic, eye-tracker integration, edge cases for response collection, data logging formats... What should be a straightforward task---present stimuli, collect responses---becomes hours of boilerplate code and debugging.
 

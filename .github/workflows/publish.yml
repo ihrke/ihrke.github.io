@@ -55,6 +55,9 @@ jobs:
             any::scholar
             any::xml2
             any::devtools
+            any::fs
+            any::DT
+            any::markdown
 
       - name: Render Quarto project
         run: quarto render

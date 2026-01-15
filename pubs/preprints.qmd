@@ -5,60 +5,64 @@ date: "today"
 ---
 
 ```{r setup, cache=F, include=FALSE}
-#knitr::opts_chunk$set(echo = TRUE)
-#knitr::opts_knit$set(root.dir = normalizePath(".."))
 library(tidyverse)
-library(jsonlite)
 library(lubridate)
-library(httr)
 library(glue)
 library(bib2df)
-library(R.rsp)
-library(scholar)
+library(fs)
+library(DT)
 source("../lib/functions.R")
 ```
 
 ```{r, cache=F, include=FALSE}
-## Options
-##------------------------------------------------------------------------------------
-print.impact=T
-
-
-## preprints
-##------------------------------------------------------------------------------------
-preprints <- get_my_osf_preprints()
-
-# order/filter
-preprints %>% arrange(desc(date)) %>% ungroup -> preprints
-
-# other preprints not on osf
-if(fs::is_file("static/bibtex/preprints.bib")){
-bib2df("static/bibtex/preprints.bib", separate_names = T) %>%
-  select(authors=AUTHOR, journal=JOURNAL, title=TITLE, date=YEAR, 
-         doi=DOI, link=URL) %>%
-  mutate(title=strip_curly_braces(title), date=get_date_from_doi(doi), #lubridate::ymd(sprintf("%i-01-01",date)),
+## preprints from psyarxiv.bib
+bib2df("../../org/cv/data/bib/psyarxiv.bib", separate_names = T) |>
+  select(authors=AUTHOR, pages=PAGES, title=TITLE, year=YEAR,
+         link=URL, vol=VOLUME, num=NUMBER, month=MONTH, date=DATE) %>%
+  extract(date, c("year","month","day"), regex = "([0-9]+)-?([0-9]?[0-9]?)-?([0-9]?[0-9]?)") %>%
+  mutate(year=as.integer(year), month=as.integer(month)) %>%
+  mutate(title=strip_curly_braces(title),
+         date=ymd(sprintf("%s-%s-%s",year,month,day)),
          status="submitted", unpublished=T, citation="",
-         authors=map(authors, ~.x %>% rename(family_name=last_name,given_name=first_name))) -> preprints.add
+         authors=map(authors, ~.x %>%
+                       rename(family_name=last_name,given_name=first_name) %>%
+                       mutate(family_name=strip_curly_braces(family_name),
+                              given_name=strip_curly_braces(given_name))
+                       )) -> preprints
 
-for(i in 1:dim(preprints.add)[1]){
-  authors=preprints.add[i,]$authors[[1]]
+# other preprints not on psyarxiv
+if(fs::is_file("../../org/cv/data/bib/preprints.bib") & dim(bib2df("../../org/cv/data/bib/preprints.bib"))[1]>0){
+  bib2df("../../org/cv/data/bib/preprints.bib", separate_names = T) %>%
+    select(authors=AUTHOR, pages=PAGES, title=TITLE, year=YEAR,
+           doi=DOI, link=URL, vol=VOLUME, num=NUMBER, month=MONTH, date=DATE) %>%
+    extract(date, c("year","month","day"), regex = "([0-9]+)-?([0-9]?[0-9]?)-?([0-9]?[0-9]?)") %>%
+    mutate(year=as.integer(year), month=as.integer(month)) %>%
+    mutate(title=strip_curly_braces(title),
+           date=ymd(sprintf("%s-%s-%s",year,month,day)),
+           status="submitted", unpublished=T, citation="",
+           authors=map(authors, ~.x %>%
+                         rename(family_name=last_name,given_name=first_name) %>%
+                         mutate(family_name=strip_curly_braces(family_name),
+                                given_name=strip_curly_braces(given_name))
+                         )) -> preprints.add
+  full_join(preprints, preprints.add) -> preprints
+}
 
+# Build citation strings
+for(i in 1:dim(preprints)[1]){
+  authors=preprints[i,]$authors[[1]]
   if(dim(authors)[1]==1){
-    latexauth<-glue("**<family_name>, <str_sub(given_name, 1,1)>.**", .envir=authors, .open="<", .close=">")
+    latexauth<-glue_data(authors, "**{family_name}, {str_sub(given_name, 1,1)}.**")
   } else {
-    latexauth<-glue("{family_name}, {str_sub(given_name, 1,1)}.", .envir=authors) 
+    latexauth<-glue_data(authors, "{family_name}, {str_sub(given_name, 1,1)}.")
     latexauth=if_else(startsWith(latexauth, "Mittner") | startsWith(latexauth, "Ihrke"), sprintf("**%s**",latexauth), as.character(latexauth))
     latexauth<-glue_collapse(latexauth, sep = ", ", last = " & ")
   }
-  ref=glue("{latexauth} ({date}). {title}. {link} status: {status}", .envir=preprints.add[i,])
-  preprints.add$citation[i]=ref
+  ref=with(preprints[i,], glue("{latexauth} ({date}). {title}. {link} status: {status}"))
+  preprints$citation[i]=ref
 }
-  
-  
-full_join(preprints,preprints.add) -> preprints
-}
-preprints %>% arrange(desc(date)) %>% ungroup -> preprints
 
+preprints %>% arrange(desc(date)) %>% ungroup -> preprints
 ```
 
 

@@ -15,7 +15,7 @@ This is a living document and I will add to it as I change things or encounter i
 :::
 
 I recently got a Lenovo Thinkpad X1 Carbon Gen 12 with Ubuntu Linux pre-installed (my 
-old Gen 11 was stolen, see my experience of using Linux on it [here](linux_on_thinpad_x1_carbon_gen11.qmd)).
+old Gen 11 was stolen, see my experience of using Linux on it [here](linux_on_thinpad_x1_gen11.qmd)).
 This time I decided to stick with the installed Ubuntu and see how far it would fulfill my needs.
 
 I updated the installed Ubuntu version to the most recent one 24.10 (Oracular) using Ubuntu's upgrading system (worked just fine).
