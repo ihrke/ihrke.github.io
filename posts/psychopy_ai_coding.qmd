@@ -2,7 +2,7 @@
 title: "Never Write PsychoPy Scripts Again"
 description: |
   A case study in human-AI collaboration for experiment development:
-  building a 646-line N-back experiment with EyeLink integration in 20 minutes.
+  building a 646-line N-back experiment with EyeLink integration.
 author: "Matthias Mittner"
 date: 2026-01-15
 image: /pics/psychopy_ai_coding.jpg
@@ -17,7 +17,7 @@ categories:
 
 If you've ever written a PsychoPy experiment from scratch, you know the pain: timing precision, counterbalancing logic, eye-tracker integration, edge cases for response collection, data logging formats... What should be a straightforward task---present stimuli, collect responses---becomes hours of boilerplate code and debugging.
 
-This post documents a conversation where I built a 646-line N-back experiment with EyeLink eye-tracker integration. The entire process took about 20 minutes of prompting. The conversation shows both the power of AI-assisted coding and the importance of domain expertise in guiding the process.
+This post documents a conversation with an AI where I built a 646-line N-back experiment with EyeLink eye-tracker integration. The entire process took about 60-90 minutes of prompting and reviewing. The conversation shows both the power of AI-assisted coding and the importance of domain expertise in guiding the process.
 
 ::: {.callout-warning}
 ## Do not use the script as is!
@@ -36,12 +36,12 @@ The complete script and supporting files are available as a [GitHub Gist](https:
 
 ## Setup and Tools
 
-I used **Claude Opus 4.5** through the [Cursor IDE](https://cursor.sh/), which is included in the paid plan. Cursor allows you to reference files in your project using the `@filename` syntax, which made it easy to point the AI to existing code and specifications.
+I used **Claude Opus 4.5** through the [Cursor IDE](https://cursor.sh/) with the paid plan, though I think that this task would also fit under the free plan. Cursor allows you to reference files in your project using the `@filename` syntax, which made it easy to point the AI to existing code and specifications.
 
 For this project, I had:
 
 - A reference PsychoPy script ([`foreshortening_exp.py`](https://gist.github.com/ihrke/da68ddf014c0d0ff7ca61711309836eb#file-foreshortening_exp-py)) from a previous experiment that demonstrated our lab's conventions for EyeLink integration, logging, and code structure
-- A specifications file ([`specs.md`](https://gist.github.com/ihrke/da68ddf014c0d0ff7ca61711309836eb#file-specs-md)) with basic task requirements
+- A specifications file ([`specs.md`](https://gist.github.com/ihrke/da68ddf014c0d0ff7ca61711309836eb#file-specs-md)) with basic task specs from a previous brainstorming meeting (copied from Slack)
 - The [`EyeLinkCoreGraphicsPsychoPy.py`](https://gist.github.com/ihrke/da68ddf014c0d0ff7ca61711309836eb#file-eyelinkcoregraphicspsychopy-py) helper module for eye-tracker calibration graphics
 
 Having a reference script was crucial---it gave the AI concrete examples of how we handle eye-tracker setup, coordinate conversions, CSV logging, and other lab-specific conventions.
@@ -466,8 +466,6 @@ subject_id,session_num,run,luminance,block_num,block_type,trial_num,digit,color,
 
 **The bottom line:**
 
-This experiment would have taken me several hours to write from scratch. Instead, it took ~20 minutes of prompting, with most of that time spent thinking about experimental design rather than PsychoPy syntax.
+It took ~60 minutes of prompting, and I made only minimal changes to the code manually. What felt refreshing was that most of my time was actually spent thinking about experimental design rather than PsychoPy syntax. I still needed to know what counterbalancing means, how to achieve accurate trigger timing for pupillometry, and how n-back sequences should be constructed. But I didn't need to remember the EyeLink API, PsychoPy's event handling quirks, or CSV formatting details. It is still crucial to be fluent in the programming language as I would not have been able to spot some of the issues without intimate knowledge of both PsychoPy and Python. 
 
-The AI didn't replace my expertise---it amplified it. I still needed to know what counterbalancing means, why trigger timing matters for pupillometry, and how n-back sequences should be constructed. But I didn't need to remember the EyeLink API, PsychoPy's event handling quirks, or CSV formatting details.
-
-For researchers who run behavioral experiments: this is the future. Your time is better spent on experimental design and data analysis than on reimplementing the same timing loops and logging boilerplate for the hundredth time.
+For researchers who run behavioral experiments: this is the future. Your time is better spent on experimental design and data analysis than on reimplementing the same timing loops and logging boilerplate for the hundredth time. On the other hand, it poses a dilemma for new researchers just learning the trade: It may feel unnecessary to learn a programming language and the ins and outs of, for example, the eye-tracker API since the generated code is of such high quality. However, as I have found in this experiment, it is absolutely crucial to possess that knowledge to productively use AI for these tasks. This resonates with my general impression that AI can help you be more productive in areas where you are already an expert but that it can lead you to superficial solutions and grave mistakes where you are not.
