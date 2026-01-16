@@ -3,7 +3,7 @@ title: "Never Write PsychoPy Scripts Again"
 description: |
   A case study in human-AI collaboration for experiment development:
   building a 646-line N-back experiment with EyeLink integration.
-author: "Matthias Mittner"
+author: "Claude & Matthias Mittner"
 date: 2026-01-15
 image: /pics/psychopy_ai_coding.jpg
 categories:
