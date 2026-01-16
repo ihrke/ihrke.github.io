@@ -7,7 +7,7 @@ My [GitHub profile](https://github.com/ihrke)
 ## Python
 
 ::: software
-Pypillometry <https://github.io/ihrke/pypillometry> ![](https://raw.githubusercontent.com/ihrke/pypillometry/master/logo/pypillometry_logo_200x200.png?token=AAIWMEINEM6MUOAPT2NV4I252K5QW){.alignright width=120px}
+Pypillometry <https://ihrke.github.io/pypillometry> ![](https://raw.githubusercontent.com/ihrke/pypillometry/master/logo/pypillometry_logo_200x200.png){.alignright width=120px}
 : The `pypillometry` package implements functions for the analysis of pupillometric data. Features include preprocessing, blink handling, event-related pupil-dilation, plotting and signal modeling. [Homepage](http://ihrke.github.io/pypillometry) | [GitHub](https://github.com/ihrke/pypillometry) | [Paper](https://joss.theoj.org/papers/10.21105/joss.02348)
 :::
 
@@ -77,7 +77,7 @@ Rnorsk: <https://ihrke.github.io/rnorsk/> ![](https://ihrke.github.io/rnorsk/ref
 Quarto exensions:
 
 ::: software
-quarto MDPI-style <https://github.com/ihrke/mdpi> ![](https://github.com/ihrke/mdpi/raw/master/pics/mdpi_screenshot.png){.alignright width=120px}
+quarto MDPI-style <https://github.com/ihrke/mdpi> ![](https://raw.githubusercontent.com/ihrke/mdpi/main/pics/mdpi_screenshot.png){.alignright width=120px}
 : a quarto extension for writing papers in the MDPI style
 :::
 
@@ -89,11 +89,11 @@ markdown-paper <https://github.com/ihrke/markdown-paper> ![](https://github.com/
 :::
 
 ::: software
-markdown-talk <https://github.com/ihrke/markdown-talk> ![](/pics/markdown-talk){.alignright width=120px}
+markdown-talk <https://github.com/ihrke/markdown-talk> ![](/pics/markdown-talk.png){.alignright width=120px}
 : my setup for producing beamer-based slides for lectures and talks (PDF)
 :::
 
 ::: software
-markdown-letter <https://github.com/ihrke/markdown-letter> ![](/pics/markdown-letter){.alignright width=120px}
+markdown-letter <https://github.com/ihrke/markdown-letter> ![](/pics/markdown-letter.png){.alignright width=120px}
 : writing latex-based letters with markdown; includes a template for my [UiT](https://uit.no)'s letter head
 :::

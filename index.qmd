@@ -5,7 +5,7 @@ title: "Matthias Mittner's homepage"
 #    page-layout: full
 ---
 
-::::{.colums}
+::::{.columns}
 :::{.column width=30%}
 ![](pics/matthias_solstrand2.png){.roundedimg .absolute .centered width=90%}
 

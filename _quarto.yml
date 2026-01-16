@@ -8,6 +8,7 @@ project:
 
 website:
   title: "Arctic Neuroscience"
+  favicon: pics/UiT_Cog-Neuro_Logo.png
   open-graph: true
   repo-url: https://github.com/ihrke/ihrke.github.io
   repo-actions: [issue]  
@@ -28,9 +29,8 @@ website:
         href: https://github.com/ihrke
       - icon: envelope-fill
         href: mailto:matthias.mittner@uit.no
-  page-footer: 
-    left: 
-      - "Copyright 2022, Matthias Mittner" 
+  page-footer:
+    left: "Copyright {{< meta date >}}, Matthias Mittner" 
     right: 
       - icon: mastodon
         href: https://scicomm.xyz/@thias_mittner
@@ -38,6 +38,9 @@ website:
         href: https://github.com/ihrke
       - icon: envelope-fill
         href: mailto:matthias.mittner@uit.no
+
+date: today
+date-format: "YYYY"
 
 format:
   html:
